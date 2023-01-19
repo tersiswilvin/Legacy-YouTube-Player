@@ -1,0 +1,151 @@
+.ytp-time-display {
+    line-height: 39px !important;
+}
+.ytp-larger-tap-buttons .ytp-chrome-bottom, .ytp-embed-mobile-exp .ytp-chrome-bottom, .ytp-embed-mobile-exp.ytp-small-mode .ytp-chrome-bottom, .ytp-embed-mobile-exp .ytp-chrome-bottom .ytp-chrome-controls, .ytp-embed-mobile-exp.ytp-small-mode .ytp-chrome-bottom .ytp-chrome-controls, .ytp-chrome-controls {
+    height: 36px !important;
+}
+.ytp-exp-bigger-button-like-mobile .ytp-chrome-controls, .ytp-small-mode .ytp-chrome-controls, .ytp-exp-bigger-button-like-mobile.ytp-small-mode .ytp-chrome-controls, .ytp-chrome-bottom {
+    height: 36px !important;
+}
+
+.ytp-chapter-title .ytp-chapter-title-chevron svg, ytd-watch-flexy[fullscreen] #player-theater-container .ytp-chrome-controls svg {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.ytp-chrome-controls .ytp-button, .ytp-replay-button {
+    height: 36px;
+    width: 36px;
+    padding: 0 !important;
+}
+.ytp-play-button.ytp-button[aria-label="Play (k)"], .ytp-play-button.ytp-button[aria-label="Pause (k)"], .ytp-play-button.ytp-button[aria-label="Play (k)"],.ytp-play-button.ytp-button[aria-label="Play (k)"] svg, .ytp-play-button.ytp-button[aria-label="Pause (k)"] svg {
+    width: 46px;
+}
+.ytp-chrome-controls svg {
+    width: 36px;
+    height: 36px;
+}
+.ytp-big-mode .ytp-chrome-top .ytp-button, .ytp-big-mode .ytp-chrome-controls .ytp-button, .ytp-big-mode .ytp-chrome-top .ytp-button, .ytp-big-mode .ytp-chrome-controls .ytp-button svg {
+    width: 54px;
+    height: 54px !important;
+}
+ytd-watch-flexy[fullscreen] #player-theater-container .ytp-play-button.ytp-button[aria-label="Play (k)"], ytd-watch-flexy[fullscreen] #player-theater-container .ytp-play-button.ytp-button[aria-label="Pause (k)"] {
+    width: 69px !important;
+}
+ytd-watch-flexy[fullscreen] #player-theater-container svg {
+    width: 54px !important;
+    height: 54px !important;
+}
+ytd-watch-flexy[fullscreen] #player-theater-container .ytp-play-button.ytp-button[aria-label="Play (k)"] svg, ytd-watch-flexy[fullscreen] #player-theater-container .ytp-play-button.ytp-button[aria-label="Pause (k)"] svg {
+    width: 69px !important;
+    height: 54px !important;
+}
+ytd-watch-flexy[fullscreen] #player-theater-container .ytp-chrome-bottom, .ytp-big-mode .ytp-chrome-bottom {
+    height: 54px !important;
+    padding-top: 4px !important;
+}
+
+ytd-watch-flexy[fullscreen] #player-theater-container .ytp-fullerscreen-edu-chevron svg {
+    width: 24px !important;
+    height: 24px !important;
+}
+
+ytd-watch-flexy[fullscreen] #player-theater-container .ytp-chrome-controls, ytd-watch-flexy[fullscreen] #player-theater-container .ytp-time-display {
+    color: white;
+    line-height: 53px !important;
+}
+ytd-watch-flexy[fullscreen] #player-theater-container .ytp-progress-bar-container {
+    bottom: 52.5px !important;
+    height: 8px;
+}
+ytd-watch-flexy[fullscreen] #player-theater-container .ytp-chrome-controls, .ytp-big-mode .ytp-chrome-controls {
+    height: 54px !important;
+}
+.ytp-larger-tap-buttons .ytp-chrome-controls, .ytp-larger-tap-buttons .ytp-time-display {
+    line-height: 35px;
+    height: 35px;
+    color: white;
+}
+.ytp-doubletap-ui-legacy, yt-interaction.yt-icon-button, .ytp-button.ytp-settings-button:nth-child(6), #reduxSubDiv #notification-preference-button, button.ytp-miniplayer-button.ytp-button, .ytp-menuitem-icon svg {
+    display: none !important;
+}
+.ytp-exp-bigger-button-like-mobile .ytp-settings-menu {
+    bottom: 53px !important;
+}
+.ytp-exp-bigger-button-like-mobile .ytp-chrome-controls .ytp-button.ytp-mute-button {
+    padding: 0;
+}
+.ytp-progress-bar-container {
+    bottom: 39px !important;
+}
+.ytp-larger-tap-buttons .ytp-progress-bar-container {
+    bottom: 39px;
+}
+.ytp-big-mode .ytp-volume-slider {
+    min-height: 40px;
+}
+
+.ytp-chapter-title.ytp-button {
+    width: 100% !important;
+}
+
+.ytp-volume-area svg {
+    transform: none;
+}
+
+.ytp-tooltip:not([aria-hidden=true]) {
+        transform: none;
+    -moz-transition: -moz-transform .1s cubic-bezier(0.4,0.0,1,1),opacity .1s cubic-bezier(0.4,0.0,1,1);
+    -webkit-transition: -webkit-transform .1s cubic-bezier(0.4,0.0,1,1),opacity .1s cubic-bezier(0.4,0.0,1,1);
+    -ms-transition: -ms-transform .1s cubic-bezier(0.4,0.0,1,1),opacity .1s cubic-bezier(0.4,0.0,1,1);
+    transition: transform .1s cubic-bezier(0.4,0.0,1,1),opacity .1s cubic-bezier(0.4,0.0,1,1);
+}
+.ytp-tooltip {
+    -webkit-transition: -webkit-transform .1s cubic-bezier(0,0,0.2,1),opacity .1s cubic-bezier(0,0,0.2,1);
+    transition: transform .1s cubic-bezier(0,0,0.2,1),opacity .1s cubic-bezier(0,0,0.2,1),-webkit-transform .1s cubic-bezier(0,0,0.2,1),opacity .1s cubic-bezier(0,0,0.2,1);
+}
+
+.ytp-chrome-controls .ytp-button[aria-pressed]:after {
+    bottom: 9px;
+}
+.ytp-chrome-controls .ytp-button[aria-pressed=true]:after {
+    width: 21px;
+    left: 8px;
+}
+
+.ytp-big-mode .ytp-chrome-controls .ytp-button[aria-pressed]:after {
+    left: 27px;
+    bottom: 13px;
+}
+.ytp-big-mode .ytp-chrome-controls .ytp-button[aria-pressed=true]:after {
+    width: 32px;
+    left: 12px;
+}
+
+.ytp-larger-tap-buttons .ytp-chrome-controls .ytp-button[aria-pressed]:after {
+    left: 17px;
+    bottom: 8px;
+}
+.ytp-larger-tap-buttons .ytp-chrome-controls .ytp-button[aria-pressed=true]:after {
+    width: 23px;
+    left: 7px;
+    bottom: 8px;
+}
+
+ytd-watch-flexy[fullscreen] #player-theater-container .ytp-larger-tap-buttons .ytp-chrome-controls .ytp-button[aria-pressed]:after {
+    left: 27px;
+    bottom: 13px;
+}
+ytd-watch-flexy[fullscreen] #player-theater-container .ytp-larger-tap-buttons .ytp-chrome-controls .ytp-button[aria-pressed=true]:after {
+    width: 33px;
+    left: 11px;
+    bottom: 13px;
+}
+
+.ytp-big-mode .ytp-volume-slider-active .ytp-volume-panel {
+    width: 72px;
+}
+
+.ytp-heat-map.ytp-progress-bar-hover:not(.ad-showing) .ytp-heat-map-container {
+	opacity: 0;
+}
