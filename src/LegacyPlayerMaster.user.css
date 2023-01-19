@@ -6,7 +6,7 @@
 @author         Me
 ==/UserStyle== */
 
-@-moz-document domain("example.com") {
+@-moz-document domain("youtube.com") {
     .ytp-time-display {
         line-height: 39px !important;
     }
