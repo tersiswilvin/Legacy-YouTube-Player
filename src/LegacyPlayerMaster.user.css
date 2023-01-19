@@ -1,9 +1,9 @@
 /* ==UserStyle==
-@name           1/19/2023, 1:47:22 PM
-@namespace      github.com/openstyles/stylus
+@name           Small Player
+@namespace      userstyles.world/user/tersiswilvin
 @version        1.0.0
-@description    A new userstyle
-@author         Me
+@description    A smaller player heavily based on the 2016 - 2017 player /w Redux support.
+@author         TersisWilvin
 ==/UserStyle== */
 
 @-moz-document domain("youtube.com") {
