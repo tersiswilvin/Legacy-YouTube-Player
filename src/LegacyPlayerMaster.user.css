@@ -1,7 +1,7 @@
 /* ==UserStyle==
-@name           Small Player
+@name           YouTube Small Player
 @namespace      userstyles.world/user/tersiswilvin
-@version        1.0.1.2
+@version        1.0.3.1
 @description    A smaller player heavily based on the 2016 - 2017 player /w Redux support.
 @author         TersisWilvin
 ==/UserStyle== */
@@ -123,7 +123,6 @@
     .ytp-doubletap-ui-legacy,
     yt-interaction.yt-icon-button,
     .ytp-button.ytp-settings-button:nth-child(6),
-    #reduxSubDiv #notification-preference-button,
     button.ytp-miniplayer-button.ytp-button,
     .ytp-menuitem-icon svg {
         display: none !important;
