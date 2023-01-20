@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Small Player
 @namespace      userstyles.world/user/tersiswilvin
-@version        1.0.1
+@version        1.0.1.2
 @description    A smaller player heavily based on the 2016 - 2017 player /w Redux support.
 @author         TersisWilvin
 ==/UserStyle== */
@@ -40,12 +40,12 @@
         padding: 0 !important;
     }
 
-	.ytp-chrome-controls .ytp-play-button,
-	.ytp-chrome-controls .ytp-play-button svg,
-	.ytp-chrome-controls .ytp-play-button[title="Play (k)"],
-	.ytp-chrome-controls .ytp-play-button[title="Pause (k)"],
-	.ytp-chrome-controls .ytp-play-button[title="Play (k)"] svg,
-	.ytp-chrome-controls .ytp-play-button[title="Pause (k)"] svg,
+    .ytp-chrome-controls .ytp-play-button,
+    .ytp-chrome-controls .ytp-play-button svg,
+    .ytp-chrome-controls .ytp-play-button[title="Play (k)"],
+    .ytp-chrome-controls .ytp-play-button[title="Pause (k)"],
+    .ytp-chrome-controls .ytp-play-button[title="Play (k)"] svg,
+    .ytp-chrome-controls .ytp-play-button[title="Pause (k)"] svg,
     .ytp-play-button.ytp-button[aria-label="Play (k)"],
     .ytp-play-button.ytp-button[aria-label="Pause (k)"],
     .ytp-play-button.ytp-button[aria-label="Play (k)"],
@@ -68,7 +68,8 @@
     }
 
     ytd-watch-flexy[fullscreen] #player-theater-container .ytp-play-button.ytp-button[aria-label="Play (k)"],
-    ytd-watch-flexy[fullscreen] #player-theater-container .ytp-play-button.ytp-button[aria-label="Pause (k)"] {
+    ytd-watch-flexy[fullscreen] #player-theater-container .ytp-play-button.ytp-button[aria-label="Pause (k)"],
+    .ytp-big-mode .ytp-chrome-controls .ytp-play-button {
         width: 69px !important;
     }
 
@@ -95,12 +96,14 @@
     }
 
     ytd-watch-flexy[fullscreen] #player-theater-container .ytp-chrome-controls,
-    ytd-watch-flexy[fullscreen] #player-theater-container .ytp-time-display {
+    ytd-watch-flexy[fullscreen] #player-theater-container .ytp-time-display,
+    .ytp-big-mode .ytp-time-display {
         color: white;
         line-height: 53px !important;
     }
 
-    ytd-watch-flexy[fullscreen] #player-theater-container .ytp-progress-bar-container {
+    ytd-watch-flexy[fullscreen] #player-theater-container .ytp-progress-bar-container,
+    .ytp-big-mode .ytp-progress-bar-container {
         bottom: 52.5px !important;
         height: 8px;
     }
