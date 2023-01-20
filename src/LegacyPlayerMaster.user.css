@@ -1,14 +1,14 @@
 /* ==UserStyle==
 @name           YouTube Small Player
 @namespace      userstyles.world/user/tersiswilvin
-@version        1.0.3.1
+@version        1.0.4
 @description    A smaller player heavily based on the 2016 - 2017 player /w Redux support.
 @author         TersisWilvin
 ==/UserStyle== */
 
 @-moz-document domain("youtube.com") {
-    .ytp-time-display {
-        line-height: 39px !important;
+    .ytp-time-display, .ytp-chapter-title-content {
+        line-height: 39px;
     }
 
     .ytp-larger-tap-buttons .ytp-chrome-bottom,
@@ -17,7 +17,7 @@
     .ytp-embed-mobile-exp .ytp-chrome-bottom .ytp-chrome-controls,
     .ytp-embed-mobile-exp.ytp-small-mode .ytp-chrome-bottom .ytp-chrome-controls,
     .ytp-chrome-controls {
-        height: 36px !important;
+        height: 36px;
     }
 
     .ytp-exp-bigger-button-like-mobile .ytp-chrome-controls,
@@ -29,15 +29,15 @@
 
     .ytp-chapter-title .ytp-chapter-title-chevron svg,
     ytd-watch-flexy[fullscreen] #player-theater-container .ytp-chrome-controls svg {
-        width: 100% !important;
-        height: 100% !important;
+        width: 100%;
+        height: 100%;
     }
 
-    .ytp-chrome-controls .ytp-button,
+    .ytp-chrome-controls .ytp-button, .ytp-chrome-controls .ytp-button.ytp-mute-button,
     .ytp-replay-button {
         height: 36px;
         width: 36px;
-        padding: 0 !important;
+        padding: 0;
     }
 
     .ytp-chrome-controls .ytp-play-button,
@@ -64,35 +64,35 @@
     .ytp-big-mode .ytp-chrome-top .ytp-button,
     .ytp-big-mode .ytp-chrome-controls .ytp-button svg {
         width: 54px;
-        height: 54px !important;
+        height: 54px;
     }
 
     ytd-watch-flexy[fullscreen] #player-theater-container .ytp-play-button.ytp-button[aria-label="Play (k)"],
     ytd-watch-flexy[fullscreen] #player-theater-container .ytp-play-button.ytp-button[aria-label="Pause (k)"],
     .ytp-big-mode .ytp-chrome-controls .ytp-play-button {
-        width: 69px !important;
+        width: 69px;
     }
 
     ytd-watch-flexy[fullscreen] #player-theater-container svg {
-        width: 54px !important;
-        height: 54px !important;
+        width: 54px;
+        height: 54px;
     }
 
     ytd-watch-flexy[fullscreen] #player-theater-container .ytp-play-button.ytp-button[aria-label="Play (k)"] svg,
     ytd-watch-flexy[fullscreen] #player-theater-container .ytp-play-button.ytp-button[aria-label="Pause (k)"] svg {
-        width: 69px !important;
-        height: 54px !important;
+        width: 69px;
+        height: 54px;
     }
 
     ytd-watch-flexy[fullscreen] #player-theater-container .ytp-chrome-bottom,
     .ytp-big-mode .ytp-chrome-bottom {
         height: 54px !important;
-        padding-top: 4px !important;
+        padding-top: 4px;
     }
 
     ytd-watch-flexy[fullscreen] #player-theater-container .ytp-fullerscreen-edu-chevron svg {
-        width: 24px !important;
-        height: 24px !important;
+        width: 24px;
+        height: 24px;
     }
 
     ytd-watch-flexy[fullscreen] #player-theater-container .ytp-chrome-controls,
@@ -125,7 +125,7 @@
     .ytp-button.ytp-settings-button:nth-child(6),
     button.ytp-miniplayer-button.ytp-button,
     .ytp-menuitem-icon svg {
-        display: none !important;
+        display: none;
     }
 
     .ytp-exp-bigger-button-like-mobile .ytp-settings-menu {
@@ -137,7 +137,7 @@
     }
 
     .ytp-progress-bar-container {
-        bottom: 39px !important;
+        bottom: 39px;
     }
 
     .ytp-larger-tap-buttons .ytp-progress-bar-container {
@@ -149,7 +149,7 @@
     }
 
     .ytp-chapter-title.ytp-button {
-        width: 100% !important;
+        width: 100%;
     }
 
     .ytp-volume-area svg {
@@ -172,6 +172,11 @@
     .ytp-chrome-controls .ytp-button[aria-pressed]:after {
         bottom: 9px;
     }
+	
+	.ytp-chapter-container #chapterVote button svg {
+		width: 22px;
+		height: 22px;
+	}
 
     .ytp-chrome-controls .ytp-button[aria-pressed=true]:after {
         width: 21px;
