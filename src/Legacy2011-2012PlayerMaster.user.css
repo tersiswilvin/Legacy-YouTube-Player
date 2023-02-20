@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           2012 HTML5 Player
-@version        20230218.1.21
+@version        20230220.1.21.1
 @namespace      userstyles.world/user/tersiswilvin
 @description    A late 2011/2012 Html5 Player aimed to be more accurate.
 @author         TersisWilvin
@@ -1327,7 +1327,7 @@
 	& when (@Html5PlayerStyle = 2012E) {
 		button.ytp-size-button.ytp-button:after, .ytp-big-mode button.ytp-size-button.ytp-button:after {
 			content: '';
-			background: no-repeat url(//web.archive.org/web/20120104193852im_/http://s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -250px -38px;
+			background: no-repeat url(http://s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -250px -38px;
 			height: 14px;
 			width: 21px;
 			vertical-align: middle;
@@ -2348,7 +2348,7 @@
 		
 		/*/=={ Watch on TV }==/*/
 		button.ytp-remote-button.ytp-button {
-			background: no-repeat url(//web.archive.org/web/20150603135727im_/https://s.ytimg.com/yts/imgbin/player-common-vfltpXKhi.png) -407px -340px;
+			background: no-repeat url(https://s.ytimg.com/yts/imgbin/player-common-vfltpXKhi.png) -407px -340px;
 			background-size: auto;
 			width: 30px;
 			height: 26px;
@@ -2362,7 +2362,7 @@
 			height: 25px;
 		}
 		button.ytp-remote-button.ytp-button:hover {
-			background: no-repeat url(//web.archive.org/web/20150603135727im_/https://s.ytimg.com/yts/imgbin/player-common-vfltpXKhi.png) -34px -230px;
+			background: no-repeat url(https://s.ytimg.com/yts/imgbin/player-common-vfltpXKhi.png) -34px -230px;
 			background-size: auto;
 			width: 30px;
 			height: 26px;
