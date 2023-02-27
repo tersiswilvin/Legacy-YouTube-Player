@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           2012 HTML5 Player
-@version        20230223.1.22
+@version        20230227.1.22.1
 @namespace      userstyles.world/user/tersiswilvin
 @description    A Pre2015 YouTube Html5 Player aimed to be more accurate.
 @author         TersisWilvin
@@ -12,7 +12,7 @@
 @var            select              BezelStyle                    "Bezel Style"              ["2012M*","2013"]
 @var            checkbox            QualityBadges                 "Display Quality Badges"   0
 @var            checkbox            FillPlayerSize                "Full Size Player"         0
-@var            select              PlayButtonType                "Play button Style"        ["2010M","2012E*", "2014M", "2016M"]
+@var            select              PlayButtonType                "Play button Style"        ["2010M","2012E*", "2013E", "2014M", "2016M"]
 @var            select              Html5PlayerStyle              "Player Style"             ["2012E","2012M*","2012L"]
 @var            select              ThemeStyle                    "Player Theme"             ["Light", "Dark*"]
 @var            select              ThumbnailType                 "Preview Style"            ["2012M*","2013"]
@@ -214,7 +214,8 @@
 		}
 	}
 		
-	.ytp-chrome-controls .ytp-live .ytp-live-badge, .ytp-big-mode .ytp-chrome-controls .ytp-live .ytp-live-badge {
+	.ytp-chrome-controls .ytp-live-badge, .ytp-small-mode .ytp-chrome-controls .ytp-live-badge, .ytp-big-mode .ytp-chrome-controls .ytp-live-badge {
+		margin-top: 7px;
 		margin-left: 8px;
 		padding: 1px 4px;
 		line-height: 1;
@@ -2227,7 +2228,7 @@
 			color: #000
 		}
 		
-		.ytp-chrome-controls .ytp-live .ytp-live-badge, .ytp-big-mode .ytp-chrome-controls .ytp-live .ytp-live-badge {
+		.ytp-chrome-controls .ytp-live-badge, .ytp-small-mode .ytp-chrome-controls .ytp-live-badge, .ytp-big-mode .ytp-chrome-controls .ytp-live-badge {
 			display: none;
 		}
 		
@@ -2400,7 +2401,7 @@
 			color: #000
 		}
 		
-		.ytp-chrome-controls .ytp-live .ytp-live-badge, .ytp-big-mode .ytp-chrome-controls .ytp-live .ytp-live-badge {
+		.ytp-chrome-controls .ytp-live-badge, .ytp-small-mode .ytp-chrome-controls .ytp-live-badge, .ytp-big-mode .ytp-chrome-controls .ytp-live-badge {
 			color: #333;
 			background: #ccc;
 			background-image: -moz-linear-gradient(top,#ccc 0,#bbb 100%);
@@ -2593,6 +2594,21 @@
 	
 		.ytp-time-current {
 			color: #000;
+		}
+		
+		.ytp-chrome-controls .ytp-live-badge, .ytp-small-mode .ytp-chrome-controls .ytp-live-badge, .ytp-big-mode .ytp-chrome-controls .ytp-live-badge {
+			color: #333;
+			background: #ccc;
+			background-image: -moz-linear-gradient(top,#ccc 0,#bbb 100%);
+			background-image: -ms-linear-gradient(top,#ccc 0,#bbb 100%);
+			background-image: -o-linear-gradient(top,#ccc 0,#bbb 100%);
+			background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,#ccc),color-stop(100%,#bbb));
+			background-image: -webkit-linear-gradient(top,#ccc 0,#bbb 100%);
+			background-image: linear-gradient(to bottom,#ccc 0,#bbb 100%);
+			-moz-box-shadow: 0 -1px 0 0 #bbb;
+			-ms-box-shadow: 0 -1px 0 0 #bbb;
+			-webkit-box-shadow: 0 -1px 0 0 #bbb;
+			box-shadow: 0 -1px 0 0 #bbb;
 		}
 		
 		/*/=={ Play }==/*/
@@ -2889,14 +2905,21 @@
 			margin-top: -30px;
 			background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='html5-big-play-button html5-center-overlay html5-scalable-icon'%3E%3Cpath fill='%23380308' d='M89.2,34.4c-0.064,2.649-0.265,5.434-0.6,8.35c-0.467,3.733-1.05,6.867-1.75,9.4 c-1.4,5.133-4.4,8.184-9,9.149c-3.533,0.733-7.6,1.217-12.2,1.45c-4.033,0.233-9.867,0.35-17.5,0.35H40.1 c-10.567,0-20.133-0.6-28.7-1.8c-4.467-0.667-7.467-3.716-9-9.149c-0.7-2.533-1.267-5.667-1.7-9.4 c-0.361-2.916-0.578-5.699-0.65-8.35c0.122,2.316,0.338,4.733,0.65,7.25c0.433,3.732,1,6.866,1.7,9.399 c1.533,5.435,4.533,8.483,9,9.15c8.567,1.2,18.133,1.8,28.7,1.8h8.05c7.633,0,13.467-0.117,17.5-0.35 c4.6-0.233,8.667-0.718,12.2-1.45c4.6-0.967,7.6-4.018,9-9.15c0.7-2.533,1.283-5.667,1.75-9.399 C88.89,39.134,89.089,36.717,89.2,34.4z'/%3E%3Cpath class='html5-overlay-button-background' d='M86.85,10.9c0.7,2.532,1.283,5.684,1.75,9.449c0.433,3.733,0.65,7.268,0.65,10.601V31 c0,3.333-0.217,6.883-0.65,10.65c-0.467,3.732-1.05,6.866-1.75,9.399c-1.4,5.133-4.4,8.185-9,9.15 c-3.533,0.732-7.6,1.216-12.2,1.45C61.617,61.883,55.783,62,48.15,62H40.1c-10.567,0-20.133-0.6-28.7-1.8 c-4.467-0.667-7.467-3.717-9-9.15c-0.7-2.533-1.267-5.667-1.7-9.399C0.233,37.883,0,34.333,0,31v-0.05 c0-3.333,0.233-6.867,0.7-10.601c0.433-3.767,1-6.917,1.7-9.449c1.4-5.134,4.4-8.184,9-9.15c3.5-0.7,7.567-1.183,12.2-1.45 C27.533,0.1,33.367,0,41.1,0h8.05c10.8,0,20.367,0.583,28.7,1.75C82.317,2.417,85.317,5.467,86.85,10.9z' style='&%2310; fill: url(%23html5-big-play-button-black);&%2310;'/%3E%3Cg viewBox='-15.025 -15.151 30.05 30.303' transform='matrix(1 0 0 -1 47.375 29.75)'%3E%3Cpath fill='%23FCFCFC' d='M10.275,4c3.167-1.866,4.75-3.199,4.75-4c0-0.8-1.583-2.149-4.75-4.05 c-1.367-0.8-4.517-2.482-9.45-5.05c-4.5-2.333-7.233-3.733-8.2-4.2c-2.533-1.232-4.066-1.85-4.6-1.85 c-1.233-0.033-2.083,0.399-2.55,1.3c-0.333,0.667-0.5,1.75-0.5,3.25v21.2c0,1.5,0.167,2.583,0.5,3.25 c0.467,0.899,1.317,1.333,2.55,1.3c0.534,0,2.067-0.617,4.6-1.85c0.967-0.468,3.7-1.867,8.2-4.2C5.758,6.533,8.908,4.833,10.275,4 z'/%3E%3C/g%3E%3Cdefs%3E%3ClinearGradient id='html5-big-play-button-red' gradientUnits='userSpaceOnUse' x1='44.625' y1='0' x2='44.625' y2='62'%3E%3Cstop offset='0' style='stop-color:%23CD332D'/%3E%3Cstop offset='0.8549' style='stop-color:%236E0610'/%3E%3C/linearGradient%3E%3ClinearGradient id='html5-big-play-button-black' gradientUnits='userSpaceOnUse' x1='44.625' y1='0' x2='44.625' y2='62'%3E%3Cstop offset='0' style='stop-color:%233E3D3D'/%3E%3Cstop offset='0.7451' style='stop-color:%23131313'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E");
 		}
-		& when (@PlayButtonType = 2014) {
+		& when (@PlayButtonType = 2013E) {
+			width: 84px;
+			height: 59px;
+			margin-left: -30px;
+			margin-top: -25px;
+			background: url("data:image/svg+xml,%3Csvg xmlns:xlink='http://www.w3.org/1999/xlink' xmlns='http://www.w3.org/2000/svg' height='58.6px' width='84.15px'%3E%3Cg transform='matrix(1.0, 0.0, 0.0, 1.0, 42.05, 29.3)'%3E%3Cpath d='M-11.35 -15.05 L16.25 -0.25 -11.35 14.6 -11.35 -15.05' fill='%23ffffff' fill-rule='evenodd' stroke='none'/%3E%3Cpath d='M31.55 -28.1 Q34.9 -27.8 37.4 -25.5 39.95 -23.2 40.6 -19.85 42.1 -10.1 42.1 -0.25 42.1 9.6 40.6 19.35 39.95 22.75 37.4 25.25 34.8 27.75 31.55 28.1 L0.0 29.3 Q-6.9 29.35 -15.75 28.9 L-31.5 28.0 Q-34.75 27.7 -37.35 25.2 -39.9 22.75 -40.55 19.35 -42.05 9.6 -42.05 -0.25 -42.05 -10.1 -40.55 -19.85 -39.9 -23.2 -37.35 -25.55 -34.85 -27.8 -31.5 -28.15 L0.0 -29.3 31.55 -28.1 M-11.35 -15.05 L-11.35 14.6 16.25 -0.25 -11.35 -15.05' fill='%231f1f1f' fill-opacity='0.8980392' fill-rule='evenodd' stroke='none'/%3E%3C/g%3E%3C/svg%3E");
+		}
+		& when (@PlayButtonType = 2014M) {
 			width: 85px;
 			height: 60px;
 			margin-left: -42px;
 			margin-top: -30px;
 			background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' fill='%231F1F1F' class='ytp-large-play-button-svg' d='M84.15,26.4v6.35c0,2.833-0.15,5.967-0.45,9.4c-0.133,1.7-0.267,3.117-0.4,4.25l-0.15,0.95c-0.167,0.767-0.367,1.517-0.6,2.25c-0.667,2.367-1.533,4.083-2.6,5.15c-1.367,1.4-2.967,2.383-4.8,2.95c-0.633,0.2-1.316,0.333-2.05,0.4c-0.767,0.1-1.3,0.167-1.6,0.2c-4.9,0.367-11.283,0.617-19.15,0.75c-2.434,0.034-4.883,0.067-7.35,0.1h-2.95C38.417,59.117,34.5,59.067,30.3,59c-8.433-0.167-14.05-0.383-16.85-0.65c-0.067-0.033-0.667-0.117-1.8-0.25c-0.9-0.133-1.683-0.283-2.35-0.45c-2.066-0.533-3.783-1.5-5.15-2.9c-1.033-1.067-1.9-2.783-2.6-5.15C1.317,48.867,1.133,48.117,1,47.35L0.8,46.4c-0.133-1.133-0.267-2.55-0.4-4.25C0.133,38.717,0,35.583,0,32.75V26.4c0-2.833,0.133-5.95,0.4-9.35l0.4-4.25c0.167-0.966,0.417-2.05,0.75-3.25c0.7-2.333,1.567-4.033,2.6-5.1c1.367-1.434,2.967-2.434,4.8-3c0.633-0.167,1.333-0.3,2.1-0.4c0.4-0.066,0.917-0.133,1.55-0.2c4.9-0.333,11.283-0.567,19.15-0.7C35.65,0.05,39.083,0,42.05,0L45,0.05c2.467,0,4.933,0.034,7.4,0.1c7.833,0.133,14.2,0.367,19.1,0.7c0.3,0.033,0.833,0.1,1.6,0.2c0.733,0.1,1.417,0.233,2.05,0.4c1.833,0.566,3.434,1.566,4.8,3c1.066,1.066,1.933,2.767,2.6,5.1c0.367,1.2,0.617,2.284,0.75,3.25l0.4,4.25C84,20.45,84.15,23.567,84.15,26.4z M33.3,41.4L56,29.6L33.3,17.75V41.4z' style=' fill: %231f1f1f; opacity: .9;%0A'%3E%3C/path%3E%3Cpolygon fill-rule='evenodd' clip-rule='evenodd' fill='%23FFFFFF' points='33.3,41.4 33.3,17.75 56,29.6'%3E%3C/polygon%3E%3C/svg%3E");
 		}
-		& when (@PlayButtonType = 2016) {
+		& when (@PlayButtonType = 2016M) {
 			width: 68px;
 			height: 48px;
 			margin-left: -34px;
@@ -2912,10 +2935,13 @@
 		& when (@PlayButtonType = 2012E) {
 			background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='html5-big-play-button html5-center-overlay html5-scalable-icon'%3E%3Cpath fill='%23380308' d='M89.2,34.4c-0.064,2.649-0.265,5.434-0.6,8.35c-0.467,3.733-1.05,6.867-1.75,9.4 c-1.4,5.133-4.4,8.184-9,9.149c-3.533,0.733-7.6,1.217-12.2,1.45c-4.033,0.233-9.867,0.35-17.5,0.35H40.1 c-10.567,0-20.133-0.6-28.7-1.8c-4.467-0.667-7.467-3.716-9-9.149c-0.7-2.533-1.267-5.667-1.7-9.4 c-0.361-2.916-0.578-5.699-0.65-8.35c0.122,2.316,0.338,4.733,0.65,7.25c0.433,3.732,1,6.866,1.7,9.399 c1.533,5.435,4.533,8.483,9,9.15c8.567,1.2,18.133,1.8,28.7,1.8h8.05c7.633,0,13.467-0.117,17.5-0.35 c4.6-0.233,8.667-0.718,12.2-1.45c4.6-0.967,7.6-4.018,9-9.15c0.7-2.533,1.283-5.667,1.75-9.399 C88.89,39.134,89.089,36.717,89.2,34.4z'/%3E%3Cpath class='html5-overlay-button-background' d='M86.85,10.9c0.7,2.532,1.283,5.684,1.75,9.449c0.433,3.733,0.65,7.268,0.65,10.601V31 c0,3.333-0.217,6.883-0.65,10.65c-0.467,3.732-1.05,6.866-1.75,9.399c-1.4,5.133-4.4,8.185-9,9.15 c-3.533,0.732-7.6,1.216-12.2,1.45C61.617,61.883,55.783,62,48.15,62H40.1c-10.567,0-20.133-0.6-28.7-1.8 c-4.467-0.667-7.467-3.717-9-9.15c-0.7-2.533-1.267-5.667-1.7-9.399C0.233,37.883,0,34.333,0,31v-0.05 c0-3.333,0.233-6.867,0.7-10.601c0.433-3.767,1-6.917,1.7-9.449c1.4-5.134,4.4-8.184,9-9.15c3.5-0.7,7.567-1.183,12.2-1.45 C27.533,0.1,33.367,0,41.1,0h8.05c10.8,0,20.367,0.583,28.7,1.75C82.317,2.417,85.317,5.467,86.85,10.9z' style='&%2310; fill: url(%23html5-big-play-button-red);&%2310;'/%3E%3Cg viewBox='-15.025 -15.151 30.05 30.303' transform='matrix(1 0 0 -1 47.375 29.75)'%3E%3Cpath fill='%23FCFCFC' d='M10.275,4c3.167-1.866,4.75-3.199,4.75-4c0-0.8-1.583-2.149-4.75-4.05 c-1.367-0.8-4.517-2.482-9.45-5.05c-4.5-2.333-7.233-3.733-8.2-4.2c-2.533-1.232-4.066-1.85-4.6-1.85 c-1.233-0.033-2.083,0.399-2.55,1.3c-0.333,0.667-0.5,1.75-0.5,3.25v21.2c0,1.5,0.167,2.583,0.5,3.25 c0.467,0.899,1.317,1.333,2.55,1.3c0.534,0,2.067-0.617,4.6-1.85c0.967-0.468,3.7-1.867,8.2-4.2C5.758,6.533,8.908,4.833,10.275,4 z'/%3E%3C/g%3E%3Cdefs%3E%3ClinearGradient id='html5-big-play-button-red' gradientUnits='userSpaceOnUse' x1='44.625' y1='0' x2='44.625' y2='62'%3E%3Cstop offset='0' style='stop-color:%23CD332D'/%3E%3Cstop offset='0.8549' style='stop-color:%236E0610'/%3E%3C/linearGradient%3E%3ClinearGradient id='html5-big-play-button-black' gradientUnits='userSpaceOnUse' x1='44.625' y1='0' x2='44.625' y2='62'%3E%3Cstop offset='0' style='stop-color:%233E3D3D'/%3E%3Cstop offset='0.7451' style='stop-color:%23131313'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E")
 		}
-		& when (@PlayButtonType = 2014) {
+		& when (@PlayButtonType = 2013E) {
+			background: url("data:image/svg+xml,%3Csvg xmlns:xlink='http://www.w3.org/1999/xlink' xmlns='http://www.w3.org/2000/svg' height='58.6px' width='84.15px'%3E%3Cg transform='matrix(1.0, 0.0, 0.0, 1.0, 42.05, 29.3)'%3E%3Cpath d='M-11.35 -15.05 L16.25 -0.25 -11.35 14.6 -11.35 -15.05' fill='%23ffffff' fill-rule='evenodd' stroke='none'/%3E%3Cpath d='M31.55 -28.1 Q34.9 -27.8 37.4 -25.5 39.95 -23.2 40.6 -19.85 42.1 -10.1 42.1 -0.25 42.1 9.6 40.6 19.35 39.95 22.75 37.4 25.25 34.8 27.75 31.55 28.1 L0.0 29.3 Q-6.9 29.35 -15.75 28.9 L-31.5 28.0 Q-34.75 27.7 -37.35 25.2 -39.9 22.75 -40.55 19.35 -42.05 9.6 -42.05 -0.25 -42.05 -10.1 -40.55 -19.85 -39.9 -23.2 -37.35 -25.55 -34.85 -27.8 -31.5 -28.15 L0.0 -29.3 31.55 -28.1 M-11.35 -15.05 L-11.35 14.6 16.25 -0.25 -11.35 -15.05' fill='url(%23gradient0)' fill-rule='evenodd' stroke='none'/%3E%3C/g%3E%3Cdefs%3E%3ClinearGradient gradientTransform='matrix(0.0, 0.0358, -0.0514, 0.0, 0.05, 0.0)' gradientUnits='userSpaceOnUse' id='gradient0' spreadMethod='pad' x1='-819.2' x2='819.2'%3E%3Cstop offset='0.0' stop-color='%23cd332d'/%3E%3Cstop offset='0.8549019607843137' stop-color='%236e0610'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E");
+		}
+		& when (@PlayButtonType = 2014M) {
 			background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' fill='%231F1F1F' class='ytp-large-play-button-svg' d='M84.15,26.4v6.35c0,2.833-0.15,5.967-0.45,9.4c-0.133,1.7-0.267,3.117-0.4,4.25l-0.15,0.95c-0.167,0.767-0.367,1.517-0.6,2.25c-0.667,2.367-1.533,4.083-2.6,5.15c-1.367,1.4-2.967,2.383-4.8,2.95c-0.633,0.2-1.316,0.333-2.05,0.4c-0.767,0.1-1.3,0.167-1.6,0.2c-4.9,0.367-11.283,0.617-19.15,0.75c-2.434,0.034-4.883,0.067-7.35,0.1h-2.95C38.417,59.117,34.5,59.067,30.3,59c-8.433-0.167-14.05-0.383-16.85-0.65c-0.067-0.033-0.667-0.117-1.8-0.25c-0.9-0.133-1.683-0.283-2.35-0.45c-2.066-0.533-3.783-1.5-5.15-2.9c-1.033-1.067-1.9-2.783-2.6-5.15C1.317,48.867,1.133,48.117,1,47.35L0.8,46.4c-0.133-1.133-0.267-2.55-0.4-4.25C0.133,38.717,0,35.583,0,32.75V26.4c0-2.833,0.133-5.95,0.4-9.35l0.4-4.25c0.167-0.966,0.417-2.05,0.75-3.25c0.7-2.333,1.567-4.033,2.6-5.1c1.367-1.434,2.967-2.434,4.8-3c0.633-0.167,1.333-0.3,2.1-0.4c0.4-0.066,0.917-0.133,1.55-0.2c4.9-0.333,11.283-0.567,19.15-0.7C35.65,0.05,39.083,0,42.05,0L45,0.05c2.467,0,4.933,0.034,7.4,0.1c7.833,0.133,14.2,0.367,19.1,0.7c0.3,0.033,0.833,0.1,1.6,0.2c0.733,0.1,1.417,0.233,2.05,0.4c1.833,0.566,3.434,1.566,4.8,3c1.066,1.066,1.933,2.767,2.6,5.1c0.367,1.2,0.617,2.284,0.75,3.25l0.4,4.25C84,20.45,84.15,23.567,84.15,26.4z M33.3,41.4L56,29.6L33.3,17.75V41.4z' style=' fill: %23cc181e; opacity: 1;%0A'%3E%3C/path%3E%3Cpolygon fill-rule='evenodd' clip-rule='evenodd' fill='%23FFFFFF' points='33.3,41.4 33.3,17.75 56,29.6'%3E%3C/polygon%3E%3C/svg%3E");
 		}
-		& when (@PlayButtonType = 2016) {
+		& when (@PlayButtonType = 2016M) {
 			background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='100%25' version='1.1' viewBox='0 0 68 48' width='100%25'%3E%3Cpath class='ytp-large-play-button-bg' d='m .66,37.62 c 0,0 .66,4.70 2.70,6.77 2.58,2.71 5.98,2.63 7.49,2.91 5.43,.52 23.10,.68 23.12,.68 .00,-1.3e-5 14.29,-0.02 23.81,-0.71 1.32,-0.15 4.22,-0.17 6.81,-2.89 2.03,-2.07 2.70,-6.77 2.70,-6.77 0,0 .67,-5.52 .67,-11.04 l 0,-5.17 c 0,-5.52 -0.67,-11.04 -0.67,-11.04 0,0 -0.66,-4.70 -2.70,-6.77 C 62.03,.86 59.13,.84 57.80,.69 48.28,0 34.00,0 34.00,0 33.97,0 19.69,0 10.18,.69 8.85,.84 5.95,.86 3.36,3.58 1.32,5.65 .66,10.35 .66,10.35 c 0,0 -0.55,4.50 -0.66,9.45 l 0,8.36 c .10,4.94 .66,9.45 .66,9.45 z' fill='%231f1f1e' fill-opacity='1' style='fill: %23cc181e;'%3E%3C/path%3E%3Cpath d='m 26.96,13.67 18.37,9.62 -18.37,9.55 -0.00,-19.17 z' fill='%23fff'%3E%3C/path%3E%3Cpath d='M 45.02,23.46 45.32,23.28 26.96,13.67 43.32,24.34 45.02,23.46 z' fill='%23ccc'%3E%3C/path%3E%3C/svg%3E");
 			-moz-transition: opacity .1s cubic-bezier(0.0,0.0,0.2,1);
 			-webkit-transition: opacity .1s cubic-bezier(0.0,0.0,0.2,1);
