@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           2012 HTML5 Player
-@version        20230227.1.22.1
+@version        20230304.1.22.2
 @namespace      userstyles.world/user/tersiswilvin
 @description    A Pre2015 YouTube Html5 Player aimed to be more accurate.
 @author         TersisWilvin
@@ -9,15 +9,15 @@
 @var            select              AutoHideStyle                 "Autohide Animation"       ["Hide", "Show*"]
 @var            select              AnimationType                 "Autohide Animation Style" ["Pulsate*","Fade"]
 @var            checkbox            AutoHideCursor                "Autohide Cursor"          0
-@var            select              BezelStyle                    "Bezel Style"              ["2012M*","2013"]
+@var            select              BezelStyle                    "Bezel Style"              ["2012M*","2014"]
 @var            checkbox            QualityBadges                 "Display Quality Badges"   0
 @var            checkbox            FillPlayerSize                "Full Size Player"         0
 @var            select              PlayButtonType                "Play button Style"        ["2010M","2012E*", "2013E", "2014M", "2016M"]
 @var            select              Html5PlayerStyle              "Player Style"             ["2012E","2012M*","2012L"]
 @var            select              ThemeStyle                    "Player Theme"             ["Light", "Dark*"]
-@var            select              ThumbnailType                 "Preview Style"            ["2012M*","2013"]
+@var            select              ThumbnailType                 "Preview Style"            ["2012M*","2014"]
 @var            checkbox            SquareScrubber                "Use Square Scrubber"      0
-@var            select              TopbarType                    "Topbar Style"             ["2012E","2012M*","2013"]
+@var            select              TopbarType                    "Topbar Style"             ["2012E","2012M*","2014"]
 @var            checkbox            ThumbnailArrow                "Remove Preview Arrow"     1
 @var            checkbox            RemoveExtras                  "Remove Extras"            1
 @var            checkbox            UseWatermark                  "Use Watermark instead"    0
@@ -60,7 +60,7 @@
 		}
 	}
 	
-	.ytp-suggested-action, .html5-video-player .ytp-chrome-controls .ytp-button svg, .ytp-miniplayer-button-container svg, .ytp-spinner-left, .ytp-spinner-right, button.ytp-subtitles-button.ytp-button[aria-pressed]:after, .iv-branding, .ytp-heat-map.ytp-progress-bar-hover:not(.ad-showing) .ytp-heat-map-container, .ytp-heat-map.ytp-fine-scrubbing-enable:not(.ad-showing) .ytp-heat-map-container, .ytp-pip-button.ytp-button, .ytp-title-enable-channel-logo .ytp-title-channel, .ytp-chrome-top .ytp-overflow-button, .ytp-share-icon svg, .ytp-watch-later-icon svg, .ytp-show-watch-later-title .ytp-watch-later-title, .ytp-show-share-title .ytp-share-title, .html5-video-player:not(.ytp-big-mode) .ytp-chrome-top .ytp-cards-button, .ytp-big-mode .ytp-chrome-top .ytp-cards-button, .ytp-chrome-top .ytp-cards-button, .ytp-large-play-button svg, .ytp-button[data-tooltip-target-id="ytp-autonav-toggle-button"] {
+	.ytp-suggested-action, .html5-video-player .ytp-chrome-controls .ytp-button svg, .ytp-miniplayer-button-container svg, .ytp-spinner-left, .ytp-spinner-right, button.ytp-subtitles-button.ytp-button[aria-pressed]:after, .iv-branding, .ytp-heat-map.ytp-progress-bar-hover:not(.ad-showing) .ytp-heat-map-container, .ytp-heat-map.ytp-fine-scrubbing-enable:not(.ad-showing) .ytp-heat-map-container, .ytp-pip-button.ytp-button, .ytp-title-enable-channel-logo .ytp-title-channel, .ytp-chrome-top .ytp-overflow-button, .ytp-share-icon svg, .ytp-watch-later-icon svg, .ytp-show-watch-later-title .ytp-watch-later-title, .ytp-show-share-title .ytp-share-title, .html5-video-player:not(.ytp-big-mode) .ytp-chrome-top .ytp-cards-button, .ytp-big-mode .ytp-chrome-top .ytp-cards-button, .ytp-chrome-top .ytp-cards-button, .ytp-large-play-button svg, .ytp-button[data-tooltip-target-id="ytp-autonav-toggle-button"], .ytp-chrome-top .ytp-playlist-menu-button {
 		display: none !important;
 	}
 	& when (@RemoveExtras = 1) {
@@ -316,7 +316,7 @@
 			-webkit-border-radius: 10px;
 			border-radius: 10px;
 		}
-		& when (@BezelStyle = 2013) {
+		& when (@BezelStyle = 2014) {
 			animation: ytp-bezel-fadeout .5s linear;
 			border-radius: 3px;
 		}
@@ -344,7 +344,7 @@
 			border-bottom: 15px solid transparent;
 			border-left: 20px solid white;
 		}
-		& when (@BezelStyle = 2013) {
+		& when (@BezelStyle = 2014) {
 			margin: 18px 20px;
 			border-top: 12px solid transparent;
 			border-bottom: 12px solid transparent;
@@ -358,7 +358,7 @@
 			border-right: 10px solid #fff;
 			border-left: 10px solid #fff;
 		}
-		& when (@BezelStyle = 2013) {
+		& when (@BezelStyle = 2014) {
 			margin: 18px 20px;
 			width: 5px;
 			height: 23px;
@@ -429,7 +429,7 @@
 			-webkit-transition: top 0.05s ease-in;
 			transition: top 0.05s ease-in;
 		}
-		& when (@TopbarType = 2013) {
+		& when (@TopbarType = 2014) {
 			height: 30px;
 			-moz-transition: opacity .25s cubic-bezier(0.0,0.0,0.2,1);
 			-webkit-transition: opacity .25s cubic-bezier(0.0,0.0,0.2,1);
@@ -463,7 +463,7 @@
 			-webkit-transition: top 0.5s ease-in;
 			transition: top 0.5s ease-in;
 		}
-		& when (@TopbarType = 2013) {
+		& when (@TopbarType = 2014) {
 			-moz-transition: opacity .25s cubic-bezier(0.4,0,0.2,1);
 			-webkit-transition: opacity .25s cubic-bezier(0.4,0,0.2,1);
 			transition: opacity .25s cubic-bezier(0.4,0,0.2,1);
@@ -482,7 +482,7 @@
 			font-size: 16px;
 			line-height: 29px;
 		}
-		& when (@TopbarType = 2013) {
+		& when (@TopbarType = 2014) {
 			font-size: 13px;
 			line-height: 30px;
 			width: calc(100% - 101px);
@@ -506,7 +506,7 @@
 			font-size: 16px;
 			line-height: 29px;
 		}
-		& when (@TopbarType = 2013) {
+		& when (@TopbarType = 2014) {
 			text-align: center;
 			text-decoration: none;
 			color: #ccc;
@@ -555,7 +555,7 @@
 		& when (@TopbarType = 2012M) {
 			padding: 0 9px;
 		}
-		& when (@TopbarType = 2013) {
+		& when (@TopbarType = 2014) {
 			padding: 0;
 		}
 	}
@@ -567,7 +567,7 @@
 		& when (@TopbarType = 2012M) {
 			margin-right: 7px;
 		}
-		& when (@TopbarType = 2013) {
+		& when (@TopbarType = 2014) {
 			margin-right: 8px;
 		}
 	}
@@ -595,7 +595,7 @@
 			height: 23px;
 			margin: 3px 0 0 0;
 		}
-		& when (@TopbarType = 2013) {
+		& when (@TopbarType = 2014) {
 			background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGwqWf5.png) -34px -1769px;
 			background-size: auto;
 			width: 26px;
@@ -609,7 +609,7 @@
 			width: 22px;
 			height: 23px;
 		}
-		& when (@TopbarType = 2013) {
+		& when (@TopbarType = 2014) {
 			opacity: 1;
 		}
 	}
@@ -620,7 +620,7 @@
 			height: 23px;
 			margin: 3px 0 0 0;
 		}
-		& when (@TopbarType = 2013) {
+		& when (@TopbarType = 2014) {
 			background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGwqWf5.png) -59px -161px;
 			background-size: auto;
 			width: 26px;
@@ -634,7 +634,7 @@
 			width: 22px;
 			height: 23px;
 		}
-		& when (@TopbarType = 2013) {
+		& when (@TopbarType = 2014) {
 			opacity: 1;
 		}
 	}
@@ -2818,7 +2818,7 @@
 				bottom: 39px;
 			}
 		}
-		& when (@ThumbnailType = 2013) {
+		& when (@ThumbnailType = 2014) {
 			background-color: rgba(31,31,31,0.8);
 			-moz-border-radius: 0;
 			-webkit-border-radius: 0;
@@ -2844,7 +2844,7 @@
 			& when (@ThumbnailType = 2012) {
 				border-top: 5px solid rgba(22,22,22,0.8);
 			}
-			& when (@ThumbnailType = 2013) {
+			& when (@ThumbnailType = 2014) {
 				border-top: 5px solid rgba(31,31,31,0.8);
 			}
 			border-left: 5px solid transparent;
@@ -2857,7 +2857,7 @@
 			width: 100%;
 			bottom: 0;
 		}
-		& when (@ThumbnailType = 2013)  {
+		& when (@ThumbnailType = 2014)  {
 			position: absolute;
 			bottom: 2px;
 		}
@@ -2877,7 +2877,7 @@
 			line-height: 12px;
 			text-align: center;
 		}
-		& when (@ThumbnailType = 2013) {
+		& when (@ThumbnailType = 2014) {
 			background: rgba(31,31,31,0.45);
 			border-radius: 0;
 			display: inline-block;
