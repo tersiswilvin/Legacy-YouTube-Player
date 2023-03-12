@@ -42,14 +42,14 @@
 		user-select: none;
 		cursor: pointer;
 	}
-	.html5-video-player:not(.ytp-transparent), .html5-video-player.unstarted-mode, .html5-video-player.ad-showing, .html5-video-player.ended-mode, .html5-video-player.ytp-fullscreen {
+	.html5-video-player:not(.ytp-transparent), .html5-video-player.unstarted-mode, .html5-video-player.ad-showing, .html5-video-player.ended-mode {
 		background-color: white;
 	}
-	.html5-video-container {
+	.html5-video-player:not(.ytp-fullscreen) .html5-video-container {
 		background-color: black;
 		position: absolute;
 		top: 0;
-		bottom: 30px;
+		bottom: 31px;
 		left: 0;
 		right: 0;
 	}
@@ -57,7 +57,7 @@
 		-o-object-fit: unset;
 		object-fit: unset;
 	}
-	.html5-video-player .video-click-tracking, .html5-video-player .video-stream {
+	.html5-video-player:not(.ytp-fullscreen) .video-click-tracking, .html5-video-player:not(.ytp-fullscreen) .video-stream {
 		height: 100% !important;
 	}
 	.ytp-large-play-button {
@@ -493,15 +493,18 @@
 	.ytp-size-button.ytp-button:hover:after {
 		background-position: -29px -144px;
 	}
-	/*/ TODO : Add polymer support /*/
-	.watch-wide .ytp-size-button.ytp-button:after {
+	
+	.watch-wide .ytp-size-button.ytp-button:after, #player-theater-container .ytp-size-button.ytp-button:after {
 		background-position: 0 -168px;
 	}
-	.watch-wide .ytp-size-button.ytp-button:hover:after {
+	.watch-wide .ytp-size-button.ytp-button:hover:after, #player-theater-container .ytp-size-button.ytp-button:hover:after {
 		background-position: -29px -168px;
 	}
 	
 	/*/== MiniPlayer ==/*/
+	.ytp-miniplayer-button.ytp-button {
+		display: none;
+	}
 	
 	/*/== Settings ==/*/
 	.ytp-settings-button.ytp-button {
