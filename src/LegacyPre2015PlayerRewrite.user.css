@@ -114,6 +114,11 @@
 		z-index: 912;
 		padding-top: 0;
 	}
+	.ytp-big-mode .ytp-chrome-bottom {
+		height: 31px;
+		padding-top: 0;
+		bottom: 39px; /*/ Taskbar spacing for development, remove prior to releasing. /*/
+	}
 	.ytp-chrome-controls {
 		background: -moz-linear-gradient(top,#d6d6d6,white);
 		background: -webkit-gradient(linear,left top,left bottom,from(#d6d6d6),to(white));
@@ -124,6 +129,10 @@
 		cursor: auto;
 		line-height: 30px;
 		font-size: 12px;
+	}
+	.ytp-big-mode .ytp-chrome-controls {
+		height: 30px;
+		line-height: 30px;
 	}
 	.ytp-autohide .ytp-playlist-menu-button, .ytp-autohide .ytp-back-button, .ytp-autohide .ytp-title-channel, .ytp-autohide .ytp-title, .ytp-autohide .ytp-chrome-top .ytp-watch-later-button, .ytp-autohide .ytp-chrome-top .ytp-share-button, .ytp-autohide .ytp-chrome-top .ytp-copylink-button, .ytp-autohide:not(.ytp-cards-teaser-shown) .ytp-cards-button, .ytp-autohide .ytp-overflow-button, .ytp-autohide .ytp-chrome-bottom, .ytp-chrome-top[aria-hidden=true], .ytp-chrome-bottom[aria-hidden=true] {
 		opacity: 1;
@@ -323,6 +332,9 @@
 		cursor: pointer;
 		width: auto
 	}
+	.ytp-big-mode .ytp-chrome-controls .ytp-button {
+		width: auto;
+	}
 	.ytp-chrome-controls .ytp-button:active {
 		box-shadow: inset 1px 1px 4px #aaa;
 		-webkit-box-shadow: inset 1px 1px 4px #aaa;
@@ -454,6 +466,9 @@
 		margin-left: 10px;
 		padding: 0;
 	}
+	.ytp-big-mode .ytp-time-display {
+		line-height: 30px;
+	}
 	.ytp-time-current, .ytp-time-separator, .ytp-time-duration {
 		color: inherit;
 		text-shadow: none;
@@ -478,7 +493,7 @@
 		background-position: 0 -218px
 	}
 	.ytp-fullscreen .ytp-fullscreen-button.ytp-button:hover:before {
-		background-position: 0 -218px
+		background-position: -29px -218px
 	}
 	
 	/*/== Size ==/*/
