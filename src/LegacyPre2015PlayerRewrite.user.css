@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Pre2015 HTML5 Player Rewrite
-@version      20230313.1.23
+@version      20230314.1.23
 @namespace    userstyles.world/user/tersiswilvin
 @description  A 2011 to 2015 Html5 YouTube Player aimed to be accurate.
 @author       TersisWilvin
@@ -118,6 +118,9 @@
 		z-index: 912;
 		padding-top: 0;
 	}
+	.ytp-embed .ytp-chrome-bottom {
+		height: 31px !important;
+	}
 	.ytp-big-mode .ytp-chrome-bottom {
 		height: 31px !important;
 		padding-top: 0;
@@ -133,6 +136,10 @@
 		cursor: auto;
 		line-height: 30px;
 		font-size: 12px;
+	}
+	.ytp-embed .ytp-chrome-controls {
+		height: 30px;
+		line-height: 30px;
 	}
 	.ytp-big-mode .ytp-chrome-controls {
 		height: 30px;
@@ -152,6 +159,9 @@
 		position: absolute;
 		width: 100%;
 		margin-top: -18px;
+		bottom: unset;
+	}
+	.ytp-embed .ytp-progress-bar-container {
 		bottom: unset;
 	}
 	.ytp-small-mode .ytp-progress-bar-container, .ytp-big-mode .ytp-progress-bar-container {
@@ -356,6 +366,10 @@
 		cursor: pointer;
 		width: auto
 	}
+	.ytp-embed .ytp-chrome-controls .ytp-button {
+		padding: 3px 0 2px 1px;
+		width: auto;
+	}
 	.ytp-small-mode .ytp-chrome-controls .ytp-button, .ytp-small-mode .ytp-replay-button {
 		width: auto;
 		opacity: 0.5;
@@ -416,6 +430,9 @@
 		padding-bottom: 1px;
 		padding-right: 0;
 		border-right: none;
+	}
+	.ytp-embed .ytp-chrome-controls .ytp-button.ytp-mute-button {
+		padding: 3px 0 2px 1px;
 	}
 	.ytp-mute-button:after {
 		content: '';
@@ -537,6 +554,9 @@
 		margin-left: 10px;
 		padding: 0;
 	}
+	.ytp-small-mode .ytp-time-display, .ytp-embed .ytp-time-display {
+		line-height: 30px;
+	}
 	.ytp-big-mode .ytp-time-display {
 		line-height: 30px;
 	}
@@ -595,6 +615,14 @@
 	/*/== MiniPlayer ==/*/
 	.ytp-miniplayer-button.ytp-button {
 		display: none;
+	}
+	
+	/*/== Watch on YouTube ==/*/
+	.ytp-chrome-controls .ytp-button.ytp-youtube-button, .ytp-small-mode .ytp-chrome-controls .ytp-button.ytp-youtube-button, .ytp-embed .ytp-chrome-controls .ytp-button.ytp-youtube-button, .ytp-embed.ytp-small-mode .ytp-chrome-controls .ytp-button.ytp-youtube-button, .ytp-dni.ytp-embed .ytp-chrome-controls .ytp-button.ytp-youtube-button {
+		background: transparent;
+		border: none;
+		padding: 0;
+		width: auto;
 	}
 	
 	/*/== Settings ==/*/
