@@ -168,7 +168,7 @@
 		bottom: unset;
 		height: 18px !important;
 	}
-	.ytp-chapter-hover-container {
+	.ytp-chapter-hover-container:not(.ytp-exp-chapter-hover-container) {
 		width: 100% !important;
 	}
 	.ytp-progress-list {
