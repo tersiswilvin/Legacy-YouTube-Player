@@ -1,11 +1,12 @@
 /* ==UserStyle==
 @name           2012 HTML5 Player
-@version        20230311.1.22.4
+@version        20230316.1.22.5
 @namespace      userstyles.world/user/tersiswilvin
 @description    A Pre2015 YouTube Html5 Player aimed to be more accurate.
 @author         TersisWilvin
 @license        CC-BY-SA-4.0
 @preprocessor   less
+@var            checkbox            7ktubeFix                     "Apply 7ktube Fix"           0
 @var            select              AutoHideStyle                 "AutoHide Mode"              ["Hide", "Show*"]
 @var            select              AutoHideAnimation             "AutoHide Animation"         ["Pulsate*","Fade"]
 @var            checkbox            AutoHideCursor                "AutoHide Cursor"            0
@@ -3004,4 +3005,164 @@
 			opacity: 1;
 		}
 	}
+	
+	& when (@7ktubeFix = 1) {
+		.ytp-chrome-bottom .ytp-chrome-controls .ytp-button {
+			height: 26px !important;
+			& when (@Html5PlayerStyle = 2012E) {
+				width: 32px !important;
+			}
+			& when (@Html5PlayerStyle = 2012M) {
+				width: 30px !important;
+			}
+			& when (@Html5PlayerStyle = 2012L) {
+				width: 30px !important;
+			}
+		}
+		
+		/*/=={ Play }==/*/
+		ytd-app .ytp-chrome-controls .ytp-play-button.ytp-button {
+			height: 26px !important;
+			& when (@Html5PlayerStyle = 2012E) {
+				width: 58px !important;
+			}
+			& when (@Html5PlayerStyle = 2012M) {
+				width: 55px !important;
+			}
+			& when (@Html5PlayerStyle = 2012L) {
+				width: 52px !important;
+			}
+		}
+
+		/*/=={ Volume }==/*/
+		.ytp-chrome-bottom .ytp-chrome-controls .ytp-mute-button.ytp-button {
+			height: 26px !important;
+			& when (@Html5PlayerStyle = 2012E) {
+				width: 34px !important;
+			}
+			& when (@Html5PlayerStyle = 2012M) {
+				width: 30px !important;
+			}
+			& when (@Html5PlayerStyle = 2012L) {
+				width: 35px !important;
+			}
+			padding: 0 !important;
+		}
+
+		/*/=={ Volume Slider }==/*/
+		.ytp-volume-slider {
+			margin-top: 0;
+		}
+		.ytp-volume-slider-handle {
+			& when not (@Html5PlayerStyle = 2012L) {
+				margin-top: 7px !important;
+			}
+			& when (@Html5PlayerStyle = 2012L) {
+				margin-top: 6px !important;
+			}
+		}
+		.ytp-volume-slider-handle:before {
+			& when not (@Html5PlayerStyle = 2012L) {
+				background: transparent !important;
+				background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAAAOCAYAAADdeGlVAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAABIAAAASABGyWs+AAAACXZwQWcAAABmAAAADgBV/HzAAAABW0lEQVRYw+2YsWqDQBjH/3dcBZekWCFk71KcsnQSksU36Bt06wP0ITqXkjfofqsZkrUUnNwKHbJYUKdSiUquQ1sxTYfESzkv+IOD78S7+//9+JRPIoSAbhBCqlgIMQZwB+ASwBOAW0LIQkdfGx5lDHiet/O9i/n8YKKLsqziLMsSwzCsn3me56lpmmcnjG2sGU8me53h+/7B9DaByW/RjMfhsPHaq+WyiimlVllLFKXUarJn2yAXpql1zT/H8da1035ftSxp2P1goFqDFPVqOSbYx3qtWoMURVGolvAvsPcuMa2EvXWJaSXsdbVSrUGKo01MOBqp1iDFXx//fXuWNqKswbzu9RqfO03TKg7DcMuA4zikazB35PeDeZHZbDarwiiKYNt2NY+/+xrtq0YIod2o47puwjkXQRAIzrlwXTfR1Vd9SL3KVFH/iQnAA/AA4BxfhXgDwNfRV51Pa+CPkys0tRoAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAAElFTkSuQmCC) !important;
+				background-position: 0 -2px !important;
+			}
+			& when (@Html5PlayerStyle = 2012L) {
+				background: #b91f1f !important;
+			}
+		}
+		/*/=={ Next }==/*/
+		.ytp-chrome-bottom .ytp-chrome-controls .ytp-next-button.ytp-button {
+			height: 26px !important;
+			width: 30px !important;
+		}
+
+		/*/=={ FullScreen }==/*/
+		.ytp-chrome-bottom .ytp-chrome-controls .ytp-fullscreen-button.ytp-button {
+			& when (@Html5PlayerStyle = 2012E) {
+				width: 32px !important;
+			}
+			& when (@Html5PlayerStyle = 2012M) {
+				width: 30px !important;
+			}
+			& when (@Html5PlayerStyle = 2012L) {
+				width: 30px !important;
+			}
+			height: 26px !important;
+		}
+
+		/*/=={ Watch on TV }==/*/
+
+		/*/=={ Theater Mode }==/*/
+		.ytp-chrome-bottom .ytp-chrome-controls .ytp-size-button.ytp-button {
+			& when (@Html5PlayerStyle = 2012E) {
+				width: 32px !important;
+			}
+			& when (@Html5PlayerStyle = 2012M) {
+				width: 30px !important;
+			}
+			& when (@Html5PlayerStyle = 2012L) {
+				width: 30px !important;
+			}
+			height: 26px!important;
+		}
+
+		/*/=={ Watch Later }==/*/
+		.ytp-chrome-bottom .ytp-chrome-controls .ytp-watch-later-button.ytp-button {
+			height: 26px !important;
+			& when (@Html5PlayerStyle = 2012E) {
+				width: 32px !important;
+			}
+			& when (@Html5PlayerStyle = 2012M) {
+				width: 30px !important;
+			}
+			& when (@Html5PlayerStyle = 2012L) {
+				width: 30px !important;
+			}
+		}
+
+		/*/=={ Settings }==/*/
+		.ytp-chrome-bottom .ytp-chrome-controls .ytp-settings-button.ytp-button {
+			& when (@Html5PlayerStyle = 2012E) {
+				width: auto !important;
+			}
+			& when (@Html5PlayerStyle = 2012M) {
+				width: 30px !important;
+			}
+			& when (@Html5PlayerStyle = 2012L) {
+				width: 30px !important;
+			}
+			height: 26px !important;
+		}
+	
+		/*/=={ Watch on YouTube }==/*/
+
+		/*/=={ Subtitles }==/*/
+		.ytp-chrome-bottom .ytp-chrome-controls .ytp-subtitles-button.ytp-button {
+			& when (@Html5PlayerStyle = 2012E) {
+				width: 36px !important;
+			}
+			& when (@Html5PlayerStyle = 2012M) {
+				width: 30px !important;
+			}
+			& when (@Html5PlayerStyle = 2012L) {
+				width: 30px !important;
+			}
+			height: 26px !important;
+		}
+
+		/*/=={ MiniPlayer (Polymer) }==/*/
+		.ytp-chrome-bottom .ytp-chrome-controls .ytp-miniplayer-button.ytp-button {
+			& when (@Html5PlayerStyle = 2012E) {
+				width: 32px !important;
+			}
+			& when (@Html5PlayerStyle = 2012M) {
+				width: 30px !important;
+			}
+			& when (@Html5PlayerStyle = 2012L) {
+				width: 30px !important;
+			}
+			height: 26px !important;
+		}
 	}
+}
