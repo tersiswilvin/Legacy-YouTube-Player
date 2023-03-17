@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           2012 HTML5 Player
-@version        20230316.1.22.5
+@version        20230316.1.22.6
 @namespace      userstyles.world/user/tersiswilvin
 @description    A Pre2015 YouTube Html5 Player aimed to be more accurate.
 @author         TersisWilvin
@@ -2910,6 +2910,9 @@
 			border-right: 5px solid transparent;
 		}
 	}
+	.ytp-big-mode .ytp-tooltip.ytp-preview:not(.ytp-text-detail):after {
+		left: 116px;
+	}
 	.ytp-tooltip.ytp-preview:not(.ytp-text-detail) .ytp-tooltip-text-wrapper {
 		& when (@ThumbnailType = 2012)  {
 			display: block;
@@ -3018,6 +3021,14 @@
 			& when (@Html5PlayerStyle = 2012L) {
 				width: 30px !important;
 			}
+		}
+		.ytp-big-mode .ytp-chrome-top .ytp-button {
+			height: auto !important;
+			width: auto !important;
+		}
+		
+		.ytp-watch-later-icon {
+			display: block !important;
 		}
 		
 		/*/=={ Play }==/*/
