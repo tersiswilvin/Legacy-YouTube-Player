@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           2012 HTML5 Player
-@version        20230316.1.22.6
+@version        20230318.1.22.7
 @namespace      userstyles.world/user/tersiswilvin
 @description    A Pre2015 YouTube Html5 Player aimed to be more accurate.
 @author         TersisWilvin
@@ -1825,7 +1825,7 @@
 		-webkit-user-select: none;
 		-webkit-user-drag: none;
 	}
-	.ytp-panel {
+	.ytp-contextmenu .ytp-panel {
 		overflow-y: hidden;
 		overflow-x: hidden;
 		min-width: auto;
