@@ -23,6 +23,7 @@
 ==/UserStyle== */
 @-moz-document url-prefix("http://"), url-prefix("https://") {
 	
+	/*/== Html5 Player ==/*/
 	.ytp-large-play-button svg, .ytp-heat-map-container, .ytp-gradient-top, .ytp-gradient-bottom, .ytp-chrome-controls .ytp-button svg, #sponsorBlockDurationAfterSkips, .skipButtonControlBarContainer, #infoButton, #submitButton, #deleteButton, #cancelSegmentButton, #startSegmentButton {
 		display: none !important;
 	}
@@ -741,11 +742,12 @@
 	}
 	.ytp-fullscreen.ytp-autohide.playing-mode .ytp-impression-link:after {
 		top: 233px;
-		-webkit-transition-property: top;
+		opacity: 0;
+		-webkit-transition-property: top,opacity;
 		-webkit-transition-duration: 1s;
-		-moz-transition-property: top;
+		-moz-transition-property: top,opacity;
 		-moz-transition-duration: 1s;
-		-o-transition-property: top;
+		-o-transition-property: top,opacity;
 		-o-transition-duration: 1s;
 	}
 	.ytp-impression-link-content {
@@ -835,7 +837,11 @@
 		}
 	}
 	
-	/*/ 
+	/*/
+	== Info ==
+	Pre2015 HTML5 Player
+	By TersisWilvin (9T2K) ₂₀₂₃
+	
 	== Player Date Info ==
 	
 	M1 :
