@@ -23,7 +23,6 @@
 ==/UserStyle== */
 @-moz-document url-prefix("http://"), url-prefix("https://") {
 	
-	/*/ TODO : Controls animation while in fullscreen /*/
 	.ytp-large-play-button svg, .ytp-heat-map-container, .ytp-gradient-top, .ytp-gradient-bottom, .ytp-chrome-controls .ytp-button svg, #sponsorBlockDurationAfterSkips, .skipButtonControlBarContainer, #infoButton, #submitButton, #deleteButton, #cancelSegmentButton, #startSegmentButton {
 		display: none !important;
 	}
@@ -50,7 +49,7 @@
 		background-color: black;
 		position: absolute;
 		top: 0;
-		bottom: 31px;
+		bottom: 30px;
 		left: 0;
 		right: 0;
 	}
@@ -129,7 +128,7 @@
 	
 	/*/=={ Controls Base }==/*/
 	.ytp-chrome-bottom {
-		height: 31px !important; /*/ Originally 29px but changed to 31px to fit everything. /*/
+		height: 29px !important;
 		position: absolute;
 		width: 100% !important;
 		left: 0 !important;
@@ -138,12 +137,26 @@
 		padding-top: 0;
 	}
 	.ytp-embed .ytp-chrome-bottom {
-		height: 31px !important;
+		height: 29px !important;
 	}
 	.ytp-big-mode .ytp-chrome-bottom {
-		height: 31px !important;
+		height: 29px !important;
 		padding-top: 0;
 		bottom: 39px; /*/ Taskbar spacing for development, remove or comment out prior to releasing. /*/
+	}
+	.ytp-fullscreen.playing-mode .ytp-chrome-bottom {
+		height: 209px !important;
+		overflow: hidden;
+	}
+	.ytp-fullscreen.ytp-autohide.playing-mode .ytp-chrome-bottom {
+		height: 0 !important;
+		opacity: 0 !important;
+		-webkit-transition-property: height,opacity;
+		-webkit-transition-duration: 1s;
+		-moz-transition-property: height,opacity;
+		-moz-transition-duration: 1s;
+		-o-transition-property: height,opacity;
+		-o-transition-duration: 1s;
 	}
 	.ytp-chrome-controls {
 		background: -moz-linear-gradient(top,#d6d6d6,white);
@@ -164,6 +177,10 @@
 		height: 30px;
 		line-height: 30px;
 	}
+	.ytp-fullscreen.playing-mode .ytp-chrome-controls {
+		position: relative;
+		top: 180px;
+	}
 	.ytp-autohide .ytp-playlist-menu-button, .ytp-autohide .ytp-back-button, .ytp-autohide .ytp-title-channel, .ytp-autohide .ytp-title, .ytp-autohide .ytp-chrome-top .ytp-watch-later-button, .ytp-autohide .ytp-chrome-top .ytp-share-button, .ytp-autohide .ytp-chrome-top .ytp-copylink-button, .ytp-autohide:not(.ytp-cards-teaser-shown) .ytp-cards-button, .ytp-autohide .ytp-overflow-button, .ytp-autohide .ytp-chrome-bottom, .ytp-chrome-top[aria-hidden=true], .ytp-chrome-bottom[aria-hidden=true] {
 		opacity: 1;
 		-webkit-transition: none;
@@ -177,7 +194,7 @@
 		overflow: hidden;
 		position: absolute;
 		width: 100%;
-		margin-top: -18px;
+		margin-top: -19px;
 		bottom: unset;
 	}
 	.ytp-embed .ytp-progress-bar-container {
@@ -186,6 +203,9 @@
 	.ytp-small-mode .ytp-progress-bar-container, .ytp-big-mode .ytp-progress-bar-container {
 		bottom: unset;
 		height: 18px !important;
+	}
+	.ytp-fullscreen.playing-mode .ytp-progress-bar-container {
+		top: 180px;
 	}
 	.ytp-chapter-hover-container:not(.ytp-exp-chapter-hover-container) {
 		width: 100% !important;
@@ -198,7 +218,7 @@
 		transform: scaleY(1);
 		-webkit-transition: none;
 		transition: none;
-}
+	}
 	.ytp-progress-list {
 		height: 4px;
 		width: 100%;
@@ -715,6 +735,18 @@
 	}
 	.ytp-impression-link:hover:after {
 		opacity: 0.8;
+	}
+	.ytp-fullscreen.playing-mode .ytp-impression-link:after {
+		top: 52px;
+	}
+	.ytp-fullscreen.ytp-autohide.playing-mode .ytp-impression-link:after {
+		top: 233px;
+		-webkit-transition-property: top;
+		-webkit-transition-duration: 1s;
+		-moz-transition-property: top;
+		-moz-transition-duration: 1s;
+		-o-transition-property: top;
+		-o-transition-duration: 1s;
 	}
 	.ytp-impression-link-content {
 		display: none;
