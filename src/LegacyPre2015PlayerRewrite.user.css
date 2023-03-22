@@ -716,7 +716,7 @@
 		border-radius: 0;
 		bottom: 0;
 		right: 0;
-		height: 31px;
+		height: 29px;
 		z-index: 10;
 	}
 	.ytp-impression-link:after {
@@ -736,7 +736,7 @@
 	.ytp-impression-link:hover:after {
 		opacity: 0.8;
 	}
-	.ytp-fullscreen.playing-mode .ytp-impression-link:after {
+	.ytp-fullscreen .ytp-impression-link:after {
 		top: 52px;
 	}
 	.ytp-fullscreen.ytp-autohide.playing-mode .ytp-impression-link:after {
