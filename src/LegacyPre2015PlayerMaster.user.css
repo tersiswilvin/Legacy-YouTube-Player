@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           2012 HTML5 Player
-@version        20230318.1.22.7
+@version        20230323.1.22.8
 @namespace      userstyles.world/user/tersiswilvin
 @description    A Pre2015 YouTube Html5 Player aimed to be more accurate.
 @author         TersisWilvin
@@ -3032,7 +3032,7 @@
 		}
 		
 		/*/=={ Play }==/*/
-		ytd-app .ytp-chrome-controls .ytp-play-button.ytp-button {
+		ytd-app .ytp-chrome-controls .ytp-play-button.ytp-button, .ytp-big-mode .ytp-chrome-controls .ytp-play-button.ytp-button {
 			height: 26px !important;
 			& when (@Html5PlayerStyle = 2012E) {
 				width: 58px !important;
@@ -3080,6 +3080,12 @@
 			}
 			& when (@Html5PlayerStyle = 2012L) {
 				background: #b91f1f !important;
+			}
+		}
+		& when not (@Html5PlayerStyle = 2012L) {
+			.ytp-big-mode .ytp-volume-slider-handle:before {
+				background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAAOCAYAAAHiaRFqAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF9SURBVGhD7dkxa8JAFAfwu0mcLCSDFRWxgy1ZuxQEC7FfoF9DaL9Kl/QrdE/n7FaL4pCpXyEOTpIhXHPyQpz0yj3Ktfx/8Lj3ku1iLu9O4Sr57HmKcmuvux1lDlFKfVBqjW22nhYLcT0aUWVHJoMB2yPkcrvZCN/zqIKT4jh27gE6i/N95oTX8AdYPztcOBflfw9r1h+X57nSQSWcId+6XUyWgfvl8jD2e73DCMAiTVOlg0oAe+V2YlKGNqFLcIakEU447q0ajQbmzICTe2jX6D19BUdsZtC8G6gadw3NuxknD7Jcow/WKjhgM4N+wcDxbjAIAswZ8BiPx9v1eq30SJcA4Lfs9/ttURSqCl3TLQAW8qbZRO8OLD6zjLLaRatFGYA9+d7vY8ECFnerFWW1y3abMgB78qXTwYIFLB7nc8pqV8MhZQD25HQ6xYIFLKIooqw2m80oA7CHv7yATZIkyvd9qoTIskyEYYjfGAA46aGMrzJ0165HXQMwEeIbL1mI2ftk/oMAAAAOZVhJZk1NACoAAAAIAAAAAAAAANJTkwAAAABJRU5ErkJggg==) !important;
+				background-position: 0 -2px !important;
 			}
 		}
 		/*/=={ Next }==/*/
