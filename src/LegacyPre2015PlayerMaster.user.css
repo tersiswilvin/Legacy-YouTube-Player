@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           2012 HTML5 Player
-@version        20230324.1.22.9
+@version        20230324.1.22.10
 @namespace      userstyles.world/user/tersiswilvin
 @description    A Pre2015 YouTube Html5 Player aimed to be more accurate.
 @author         TersisWilvin
@@ -3053,17 +3053,19 @@
 			transition: opacity .1s cubic-bezier(0.4,0.0,1,1);
 		}
 	}
-	.html5-video-player:hover .ytp-large-play-button:before {
-		opacity: .5;
-		-moz-transition: opacity .1s cubic-bezier(0.0,0.0,0.2,1);
-		-webkit-transition: opacity .1s cubic-bezier(0.0,0.0,0.2,1);
-		transition: opacity .1s cubic-bezier(0.0,0.0,0.2,1);
-	}
-	.html5-video-player:hover .ytp-large-play-button:after {
-		opacity: 1;
-		-moz-transition: opacity .1s cubic-bezier(0.0,0.0,0.2,1);
-		-webkit-transition: opacity .1s cubic-bezier(0.0,0.0,0.2,1);
-		transition: opacity .1s cubic-bezier(0.0,0.0,0.2,1);
+	& when (@PlayButtonType = 2016M) {
+		.html5-video-player:hover .ytp-large-play-button:before {
+			opacity: .5;
+			-moz-transition: opacity .1s cubic-bezier(0.0,0.0,0.2,1);
+			-webkit-transition: opacity .1s cubic-bezier(0.0,0.0,0.2,1);
+			transition: opacity .1s cubic-bezier(0.0,0.0,0.2,1);
+		}
+		.html5-video-player:hover .ytp-large-play-button:after {
+			opacity: 1;
+			-moz-transition: opacity .1s cubic-bezier(0.0,0.0,0.2,1);
+			-webkit-transition: opacity .1s cubic-bezier(0.0,0.0,0.2,1);
+			transition: opacity .1s cubic-bezier(0.0,0.0,0.2,1);
+		}
 	}
 	.html5-video-player:hover .ytp-large-play-button {
 		& when (@PlayButtonType = 2012E) {
