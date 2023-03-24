@@ -10,6 +10,7 @@
 @var          checkbox                                                  AutohideCursor    "Autohide Cursor"            0
 @var          checkbox                                                  Autohide          "Autohide Player Controls"   0
 @var          select                                                    Bezel             "Bezel Period"               ["N/A"]
+@var          checkbox                                                  DevTaskbarHeight  "Dev Taskbar Space"          1
 @var          checkbox                                                  QualityBadges     "Display Quality Badges"     0
 @var          checkbox                                                  FillPlayerSpace   "Fill Player Space"          0
 @var          select                                                    PlayButton        "Play Button Period"         ["2010M", "2011M"]
@@ -171,7 +172,9 @@
 	.ytp-big-mode .ytp-chrome-bottom {
 		height: 29px !important;
 		padding-top: 0;
-		bottom: 39px; /*/ Taskbar spacing for development, remove or comment out prior to releasing. /*/
+		& when (@DevTaskbarHeight = 1) {
+			bottom: 39px; /*/ Taskbar spacing for development, remove or comment out prior to releasing. /*/
+		}
 	}
 	.ytp-fullscreen.playing-mode .ytp-chrome-bottom {
 		height: 209px !important;
@@ -571,7 +574,7 @@
 	}
 	
 	/*/== Volume Slider ==/*/
-	.ytp-volume-panel, .ytp-volume-slider-active .ytp-volume-panel {
+	.ytp-volume-panel, .ytp-volume-slider-active .ytp-volume-panel, .ytp-big-mode .ytp-volume-slider-active .ytp-volume-panel {
 		margin-right: 0;
 		display: inline-block;
 		border-right: 1px solid #ccc;
