@@ -206,6 +206,10 @@
 		height: 30px;
 		line-height: 30px;
 	}
+	.ytp-small-mode .ytp-chrome-controls {
+		height: 30px;
+		line-height: 30px;
+	}
 	.ytp-fullscreen.playing-mode .ytp-chrome-controls {
 		position: relative;
 		top: 180px;
@@ -527,7 +531,7 @@
 	}
 	
 	/*/== Next ==/*/
-	.ytp-next-button.ytp-button {
+	.ytp-next-button.ytp-button, .ytp-small-mode .ytp-next-button.ytp-button {
 		display: none;
 	}
 	
