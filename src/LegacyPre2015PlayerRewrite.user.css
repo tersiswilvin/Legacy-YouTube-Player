@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Pre2015 HTML5 Player Rewrite
-@version      20230322.1.23
+@version      20230324.1.23
 @namespace    userstyles.world/user/tersiswilvin
 @description  A 2011 to 2015 Html5 YouTube Player aimed to be accurate.
 @author       TersisWilvin
@@ -34,29 +34,53 @@
 	
 	/*/=={ Player Framework }==/*/
 	.html5-video-player {
-		box-sizing: border-box;
-		-webkit-box-sizing: border-box;
-		-moz-box-sizing: border-box;
-		-ms-box-sizing: border-box;
-		width: 100%;
-		height: 100%;
-		background-color: white;
-		z-index: 900;
-		-webkit-user-select: none;
-		-moz-user-select: none;
-		user-select: none;
-		cursor: pointer;
+		& when (@PlayerPeriod = 2011) {
+			& when (@PlayerMonth = Mid) {
+				font-family: Arial,Helvetica,sans-serif;
+			}
+			box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			-ms-box-sizing: border-box;
+			width: 100%;
+			height: 100%;
+			background-color: white;
+			& when (@PlayerMonth = Early) {
+				z-index: 900;
+			}
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			user-select: none;
+			cursor: pointer;
+			& when (@PlayerMonth = Mid) {
+				overflow: hidden;
+			}
+		}
 	}
 	.html5-video-player:not(.ytp-transparent), .html5-video-player.unstarted-mode, .html5-video-player.ad-showing, .html5-video-player.ended-mode {
 		background-color: white;
 	}
 	.html5-video-player .html5-video-container {
-		background-color: black;
+		& when (@PlayerMonth = Early) {
+			background-color: black;
+		}
+		& when (@PlayerMonth = Mid) {
+			background: #000 no-repeat scroll center center;
+		}
 		position: absolute;
 		top: 0;
-		bottom: 30px;
+		& when (@PlayerMonth = Early) {
+			bottom: 30px;
+		}
+		& when (@PlayerMonth = Mid) {
+			bottom: 25px;
+		}
 		left: 0;
 		right: 0;
+		& when (@PlayerMonth = Mid) {
+			z-index: 920;
+			*height: 100%;
+		}
 	}
 	.ytp-fullscreen .html5-video-container {
 		bottom: 0;
