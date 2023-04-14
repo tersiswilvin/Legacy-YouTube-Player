@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           2012 HTML5 Player
-@version        20230413.1.22.12
+@version        20230413.1.22.13
 @namespace      userstyles.world/user/tersiswilvin
 @description    A Pre2015 YouTube Html5 Player aimed to be more accurate.
 @author         TersisWilvin
@@ -63,7 +63,7 @@
 		}
 	}
 	
-	.ytp-suggested-action, .html5-video-player .ytp-chrome-controls .ytp-button svg, .ytp-miniplayer-button-container svg, .ytp-spinner-left, .ytp-spinner-right, button.ytp-subtitles-button.ytp-button[aria-pressed]:after, .iv-branding, .ytp-heat-map.ytp-progress-bar-hover:not(.ad-showing) .ytp-heat-map-container, .ytp-heat-map.ytp-fine-scrubbing-enable:not(.ad-showing) .ytp-heat-map-container, .ytp-pip-button.ytp-button, .ytp-title-enable-channel-logo .ytp-title-channel, .ytp-chrome-top .ytp-overflow-button, .ytp-share-icon svg, .ytp-watch-later-icon svg, .ytp-show-watch-later-title .ytp-watch-later-title, .ytp-show-share-title .ytp-share-title, .html5-video-player:not(.ytp-big-mode) .ytp-chrome-top .ytp-cards-button, .ytp-big-mode .ytp-chrome-top .ytp-cards-button, .ytp-chrome-top .ytp-cards-button, .ytp-large-play-button svg, .ytp-button[data-tooltip-target-id="ytp-autonav-toggle-button"], .ytp-chrome-top .ytp-playlist-menu-button {
+	.ytp-suggested-action, .html5-video-player .ytp-chrome-controls .ytp-button svg, .ytp-miniplayer-button-container svg, .ytp-spinner-left, .ytp-spinner-right, button.ytp-subtitles-button.ytp-button[aria-pressed]:after, .iv-branding, .ytp-heat-map.ytp-progress-bar-hover:not(.ad-showing) .ytp-heat-map-container, .ytp-heat-map.ytp-fine-scrubbing-enable:not(.ad-showing) .ytp-heat-map-container, .ytp-pip-button.ytp-button, .ytp-title-enable-channel-logo .ytp-title-channel, .ytp-chrome-top .ytp-overflow-button, .ytp-share-icon svg, .ytp-watch-later-icon svg, .ytp-show-watch-later-title .ytp-watch-later-title, .ytp-show-share-title .ytp-share-title, .html5-video-player:not(.ytp-big-mode) .ytp-chrome-top .ytp-cards-button, .ytp-big-mode .ytp-chrome-top .ytp-cards-button, .ytp-chrome-top .ytp-cards-button, .ytp-large-play-button svg, .ytp-button[data-tooltip-target-id="ytp-autonav-toggle-button"], .ytp-chrome-top .ytp-playlist-menu-button, .ytp-fine-scrubbing-exp .ytp-preview:not(.ytp-text-detail) .ytp-tooltip-edu {
 		display: none !important;
 	}
 	& when (@RemoveExtras = 1) {
