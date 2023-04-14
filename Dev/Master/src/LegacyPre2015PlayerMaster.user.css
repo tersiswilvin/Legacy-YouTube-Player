@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           2012 HTML5 Player
-@version        20230324.1.22.11
+@version        20230413.1.22.12
 @namespace      userstyles.world/user/tersiswilvin
 @description    A Pre2015 YouTube Html5 Player aimed to be more accurate.
 @author         TersisWilvin
@@ -2903,7 +2903,7 @@
 		.ytp-tooltip.ytp-preview:not(.ytp-text-detail):after {
 			content: '';
 			position: absolute;
-			left: 76px;
+			left: 46%;
 			bottom: -5px;
 			width: 0;
 			height: 0;
