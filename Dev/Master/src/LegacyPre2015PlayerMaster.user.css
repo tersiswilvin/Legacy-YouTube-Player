@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           2012 HTML5 Player
-@version        20230324.1.22.11
+@version        20230416.1.22.14
 @namespace      userstyles.world/user/tersiswilvin
 @description    A Pre2015 YouTube Html5 Player aimed to be more accurate.
 @author         TersisWilvin
@@ -12,7 +12,6 @@
 @var            checkbox            AutoHideCursor                "AutoHide Cursor"            0
 @var            select              BezelStyle                    "Bezel Style"                ["2012M*","2014"]
 @var            checkbox            QualityBadges                 "Display Quality Badges"     0
-@var            checkbox            FillPlayerSize                "Full Size Player"           0
 @var            select              PlayButtonType                "Play button Style"          ["2010M", "2011M", "2012E*", "2013E", "2014M", "2016M"]
 @var            select              Html5PlayerStyle              "Player Style"               ["2012E","2012M*","2012L"]
 @var            select              ThemeStyle                    "Player Theme"               ["Light", "Dark*"]
@@ -63,7 +62,7 @@
 		}
 	}
 	
-	.ytp-suggested-action, .html5-video-player .ytp-chrome-controls .ytp-button svg, .ytp-miniplayer-button-container svg, .ytp-spinner-left, .ytp-spinner-right, button.ytp-subtitles-button.ytp-button[aria-pressed]:after, .iv-branding, .ytp-heat-map.ytp-progress-bar-hover:not(.ad-showing) .ytp-heat-map-container, .ytp-heat-map.ytp-fine-scrubbing-enable:not(.ad-showing) .ytp-heat-map-container, .ytp-pip-button.ytp-button, .ytp-title-enable-channel-logo .ytp-title-channel, .ytp-chrome-top .ytp-overflow-button, .ytp-share-icon svg, .ytp-watch-later-icon svg, .ytp-show-watch-later-title .ytp-watch-later-title, .ytp-show-share-title .ytp-share-title, .html5-video-player:not(.ytp-big-mode) .ytp-chrome-top .ytp-cards-button, .ytp-big-mode .ytp-chrome-top .ytp-cards-button, .ytp-chrome-top .ytp-cards-button, .ytp-large-play-button svg, .ytp-button[data-tooltip-target-id="ytp-autonav-toggle-button"], .ytp-chrome-top .ytp-playlist-menu-button {
+	.ytp-suggested-action, .html5-video-player .ytp-chrome-controls .ytp-button svg, .ytp-miniplayer-button-container svg, .ytp-spinner-left, .ytp-spinner-right, button.ytp-subtitles-button.ytp-button[aria-pressed]:after, .iv-branding, .ytp-heat-map.ytp-progress-bar-hover:not(.ad-showing) .ytp-heat-map-container, .ytp-heat-map.ytp-fine-scrubbing-enable:not(.ad-showing) .ytp-heat-map-container, .ytp-pip-button.ytp-button, .ytp-title-enable-channel-logo .ytp-title-channel, .ytp-chrome-top .ytp-overflow-button, .ytp-share-icon svg, .ytp-watch-later-icon svg, .ytp-show-watch-later-title .ytp-watch-later-title, .ytp-show-share-title .ytp-share-title, .html5-video-player:not(.ytp-big-mode) .ytp-chrome-top .ytp-cards-button, .ytp-big-mode .ytp-chrome-top .ytp-cards-button, .ytp-chrome-top .ytp-cards-button, .ytp-large-play-button svg, .ytp-button[data-tooltip-target-id="ytp-autonav-toggle-button"], .ytp-chrome-top .ytp-playlist-menu-button, .ytp-fine-scrubbing-exp .ytp-preview:not(.ytp-text-detail) .ytp-tooltip-edu {
 		display: none !important;
 	}
 	& when (@RemoveExtras = 1) {
@@ -183,7 +182,7 @@
 		display: none;
 	}
 	
-	& when (@FillPlayerSize = 0) {
+	& when (@AutoHideStyle = Show) {
 		.ytp-cued-thumbnail-overlay-image {
 			background-size: 100%;
 			-moz-background-size: 100%;
@@ -394,28 +393,6 @@
 				-webkit-transition: opacity .25s cubic-bezier(0.4,0,0.2,1);
 				transition: opacity .25s cubic-bezier(0.4,0,0.2,1);
 				opacity: 0;
-			}
-		}
-		& when (@FillPlayerSize = 0) {
-			.html5-video-player:not(.ytp-big-mode).ytp-autohide .html5-video-container, .html5-video-player.ytp-autohide .__cxt-ar-annotations-container__ {
-				height: 100%;
-			}
-			.html5-video-player:not(.ytp-big-mode):not(.ytp-autohide) .html5-video-container, .html5-video-player:not(.ytp-autohide) .__cxt-ar-annotations-container__ {
-				-moz-transition: height 0s ease-in;
-				-ms-transition: height 0s ease-in;
-				-o-transition: height 0s ease-in;
-				-webkit-transition: height 0s ease-in;
-				transition: height 0s ease-in;
-			}
-			& when (@AutoHideAnimation = Pulsate) {
-				/*/ This looks ugly with no animation but ¯\_(ツ)_/¯, it looks good when full size player option is enabled. /*/
-				.html5-video-player:not(.ytp-big-mode).ytp-autohide .html5-video-container, .html5-video-player.ytp-autohide .__cxt-ar-annotations-container__ {
-					-moz-transition: height 0.45s ease-in;
-					-ms-transition: height 0.45s ease-in;
-					-o-transition: height 0.45s ease-in;
-					-webkit-transition: height 0.5s ease-in;
-					transition: height 0.45s ease-in;
-				}
 			}
 		}
 	}
@@ -2903,7 +2880,7 @@
 		.ytp-tooltip.ytp-preview:not(.ytp-text-detail):after {
 			content: '';
 			position: absolute;
-			left: 76px;
+			left: 46%;
 			bottom: -5px;
 			width: 0;
 			height: 0;
