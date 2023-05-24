@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           2012 HTML5 Player
-@version        20230508.1.22.18
+@version        20230524.1.22.19
 @namespace      userstyles.world/user/tersiswilvin
 @description    A Pre2015 YouTube Html5 Player aimed to be more accurate.
 @author         TersisWilvin
@@ -111,6 +111,10 @@
 			-webkit-transition: opacity .25s cubic-bezier(0.0,0.0,0.2,1);
 			transition: opacity .25s cubic-bezier(0.0,0.0,0.2,1);
 		}
+	}
+	
+	html[pseudo-static] body #movie_player[aria-label="YouTube Video Player"] .ytp-chrome-bottom {
+		width: 100% !important;
 	}
 	
 	.ytp-chrome-top,
