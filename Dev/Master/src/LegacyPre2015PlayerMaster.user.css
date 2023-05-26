@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           2012 HTML5 Player
-@version        20230524.1.22.19
+@version        20230525.1.22.20
 @namespace      userstyles.world/user/tersiswilvin
 @description    A Pre2015 YouTube Html5 Player aimed to be more accurate.
 @author         TersisWilvin
@@ -224,6 +224,15 @@
 			object-fit: unset;
 			overflow-clip-margin: content-box;
 			overflow: clip;
+		}
+		html[pseudo-static] body .html5-video-container {
+			width: 100% !important;
+			height: auto !important;
+		}
+		html[pseudo-static] body ytd-watch-flexy #movie_player[aria-label="YouTube Video Player"] video {
+			height: 100% !important;
+			max-height: 100% !important;
+			min-height: 100% !important;
 		}
 	}
 	
