@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           2012 HTML5 Player
-@version        20230525.1.22.20
+@version        20230806.1.22.21
 @namespace      userstyles.world/user/tersiswilvin
 @description    A Pre2015 YouTube Html5 Player aimed to be more accurate.
 @author         TersisWilvin
@@ -1036,6 +1036,10 @@
 			-o-transition: -o-transform 0.5s;
 			-webkit-transition: -webkit-transform 0.5s;
 		}
+	}
+	
+	#movie_player:not(.ytp-big-mode) .ytp-tooltip.sponsorCategoryTooltipVisible > .ytp-tooltip-text-wrapper {
+		transform: none !important;
 	}
 	
 	/*/=={ Play }==/*/
