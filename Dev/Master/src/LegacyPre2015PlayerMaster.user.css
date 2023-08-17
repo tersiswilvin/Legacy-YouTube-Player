@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           2012 HTML5 Player
-@version        20230816.1.22.22
+@version        20230816.1.22.24
 @namespace      userstyles.world/user/tersiswilvin
 @description    A Pre2015 YouTube Html5 Player aimed to be more accurate.
 @author         TersisWilvin
@@ -14,7 +14,7 @@
 @var            checkbox            QualityBadges                 "Display Quality Badges"     0
 @var            select              PlayButtonType                "Play button Style"          ["2010M", "2011M", "2012E*", "2013E", "2014M", "2016M"]
 @var            select              Html5PlayerStyle              "Player Style"               ["2012E","2012M*","2012L"]
-@var            checkbox            NoFullWidthPlayer             "No Full Width Player"       1
+@var            checkbox            NoFullWidthPlayer             "No Full Width Player"       0
 @var            select              ThemeStyle                    "Player Theme"               ["Light", "Dark*"]
 @var            select              ThumbnailType                 "Preview Style"              ["2012M*","2014"]
 @var            select              ProgressColor                 "Progress Color"             ["Red*", "White"]
@@ -95,7 +95,7 @@
 	}
 	
 	.ytp-chrome-bottom, .ytp-small-mode .ytp-chrome-bottom, .ytp-embed .ytp-chrome-bottom {
-        & when (@NoFullWidthPlayer = 1) {
+        & when (@NoFullWidthPlayer = 0) {
             left: 0 !important;
             width: 100% !important;
         }
