@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           2012 HTML5 Player
-@version        20230816.1.22.24
+@version        20230924.1.22.25
 @namespace      userstyles.world/user/tersiswilvin
 @description    A Pre2015 YouTube Html5 Player aimed to be more accurate.
 @author         TersisWilvin
@@ -102,6 +102,7 @@
 		height: auto !important;
 		padding-top: 0;
 		cursor: auto;
+        z-index: 930;
 		& when (@AutoHideAnimation = Pulsate) {
 			-moz-transition: bottom 0.05s ease-in;
 			-ms-transition: bottom 0.05s ease-in;
@@ -398,6 +399,150 @@
 		}
 	}
 	
+    .ytp-autonav-endscreen-cancelled-state.ended-mode .ytp-cued-thumbnail-overlay {
+        display: block !important
+    }
+
+    .html5-endscreen {
+        bottom: 30px;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: auto;
+        background: rgba(0,0,0,0.5);
+        cursor: default;
+        overflow: hidden;
+        z-index: 860;
+    }
+    .ytp-autonav-endscreen-cancelled-state.ended-mode .html5-endscreen {
+        text-align: center;
+        background: #000;
+    }
+    :not(.ytp-mweb-player) .html5-endscreen {
+        cursor: default;
+        overflow: hidden;
+        z-index: 860;
+    }
+    :not(.ytp-mweb-player) .html5-endscreen.ytp-endscreen-paginate {
+        left: 0;
+        right: 0;
+    }
+    .ytp-autonav-endscreen-cancelled-state.ended-mode .ytp-endscreen-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 100%;
+        height: max-content !important;
+        width: 100%;
+        max-width: 1000px;
+        margin: 10px auto;
+        margin-left: 0 !important;
+        margin-top: 10px !important;
+        overflow: hidden;
+        -moz-transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+        -o-transform: translate(-50%,-50%);
+        -webkit-transform: translate(-50%,-50%);
+        transform: translate(-50%,-50%);
+        text-align: center;
+    }
+    .ytp-videowall-still {
+        opacity: 1;
+        position: relative;
+        display: inline-block;
+        color: #fff;
+        text-align: center;
+        cursor: pointer;
+        overflow: hidden;
+        vertical-align: top;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        background-clip: content-box;
+        border: 1px solid #000;
+        -webkit-transform: none;
+        -ms-transform: none;
+        -o-transform: none;
+        transform: none;
+        -moz-transition: opacity 0.3s ease;
+        -ms-transition: opacity 0.3s ease;
+        -o-transition: opacity 0.3s ease;
+        -webkit-transition: opacity 0.3s ease;
+        transition: opacity 0.3s ease;
+        -moz-box-sizing: border-box;
+        -ms-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        width: 163px !important;
+        height: 112px !important;
+        top: unset !important;
+        left: unset !important;
+    }
+    .ytp-videowall-still-round-medium .ytp-videowall-still-image, .ytp-videowall-still-round-large .ytp-videowall-still-image {
+        border-radius: 0;
+    }
+    .ytp-videowall-still-info-content {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        text-align: left;
+        background: #000;
+        opacity: 0;
+        -moz-transition: opacity 0.3s ease;
+        -ms-transition: opacity 0.3s ease;
+        -o-transition: opacity 0.3s ease;
+        -webkit-transition: opacity 0.3s ease;
+        transition: opacity 0.3s ease;
+        bottom: unset;
+        padding: 0;
+        will-change: unset !important;
+    }
+    .ytp-videowall-still:focus .ytp-videowall-still-info-content, .ytp-videowall-still:hover .ytp-videowall-still-info-content, .ytp-videowall-still.ytp-videowall-show-text .ytp-videowall-still-info-content {
+        opacity: 0.86;
+    }
+    .ytp-videowall-still-info-title {
+        display: block;
+        padding: 10px 10px 0;
+        font-size: 13px;
+        line-height: 15px;
+        color: #fff;
+        height: 30px;
+        overflow: hidden;
+    }
+    .ytp-videowall-still-info-author {
+        position: absolute;
+        bottom: 25px;
+        left: 10px;
+        display: block;
+        height: 11px;
+        font-size: 11px;
+        color: #999;
+        overflow: hidden;
+        margin: 0;
+        float: none;
+    }
+
+    .ytp-videowall-still-info-duration {
+        background: transparent;
+        position: absolute;
+        bottom: 10px;
+        font-size: 11px;
+        color: #666;
+        left: auto;
+        right: 10px;
+        text-align: right;
+        opacity: 1
+    }
+    .ytp-videowall-still-info-live {
+        left: auto;
+        right: 10px;
+        bottom: 10px;
+        opacity: 1
+    }
+    
 	.ytp-chrome-controls .ytp-button, .ytp-replay-button, .ytp-autohide .ytp-playlist-menu-button, .ytp-autohide .ytp-back-button, .ytp-autohide .ytp-title-channel, .ytp-autohide .ytp-title, .ytp-autohide .ytp-chrome-top .ytp-watch-later-button, .ytp-autohide .ytp-chrome-top .ytp-share-button, .ytp-autohide .ytp-chrome-top .ytp-copylink-button, .ytp-autohide:not(.ytp-cards-teaser-shown) .ytp-cards-button, .ytp-autohide .ytp-overflow-button, .ytp-autohide .ytp-chrome-bottom, .ytp-chrome-top[aria-hidden=true], .ytp-chrome-bottom[aria-hidden=true], .ytp-small-mode .ytp-chrome-controls .ytp-button, .ytp-small-mode .ytp-replay-button {
 		opacity: 1;
 	}
