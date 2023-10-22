@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           2012 HTML5 Player
-@version        20230924.1.22.25
+@version        20231022.1.22.26
 @namespace      userstyles.world/user/tersiswilvin
 @description    A Pre2015 YouTube Html5 Player aimed to be more accurate.
 @author         TersisWilvin
@@ -12,21 +12,23 @@
 @var            checkbox            AutoHideCursor                "AutoHide Cursor"            0
 @var            select              BezelStyle                    "Bezel Style"                ["2012M*","2014"]
 @var            checkbox            QualityBadges                 "Display Quality Badges"     0
+@var            checkbox            NoFullWidthPlayer             "No Full Width Player"       0
 @var            select              PlayButtonType                "Play button Style"          ["2010M", "2011M", "2012E*", "2013E", "2014M", "2016M"]
 @var            select              Html5PlayerStyle              "Player Style"               ["2012E","2012M*","2012L"]
-@var            checkbox            NoFullWidthPlayer             "No Full Width Player"       0
 @var            select              ThemeStyle                    "Player Theme"               ["Light", "Dark*"]
 @var            select              ThumbnailType                 "Preview Style"              ["2012M*","2014"]
 @var            select              ProgressColor                 "Progress Color"             ["Red*", "White"]
-@var            checkbox            SquareScrubber                "Use Square Scrubber"        0
-@var            select              TopbarType                    "Topbar Style"               ["2012E","2012M*","2014"]
 @var            checkbox            ThumbnailArrow                "Remove Preview Arrow"       1
 @var            checkbox            RemoveExtras                  "Remove Extras"              1
+@var            checkbox            TooltipCrtFix                 "Tooltip 2012L Caret Fix"    0
+@var            checkbox            TooltipLgyLbl                 "Tooltip Legacy Labels"      1
+@var            checkbox            TooltipOGHgt                  "Tooltip Original Height"    0
+@var            select              TopbarType                    "Topbar Style"               ["2012E","2012M*","2014"]
 @var            checkbox            UseLegacyAdColors             "Use Legacy Theme Ad Colors" 0
+@var            checkbox            SquareScrubber                "Use Square Scrubber"        0
 @var            checkbox            UseWatermark                  "Use Watermark instead"      0
 ==/UserStyle== */
 @-moz-document url-prefix("https://"), url-prefix("http://") {
-
 	@-webkit-keyframes ytp-bezel-fadeout {
 		0% {
 			opacity: 1;
@@ -223,6 +225,7 @@
 		}
 		.html5-video-player:not(.ytp-big-mode):not(.ytp-player-minimized) .video-stream {
 			height: 100% !important;
+            top: 0 !important;
 		}
 		.ytp-fit-cover-video .html5-main-video {
 			object-fit: unset;
@@ -1498,6 +1501,10 @@
 			display: none;
 		}
 	}
+    .ytp-big-mode a.ytp-next-button.ytp-button {
+        height: 26px;
+        width: 30px;
+    }
 	a.ytp-next-button.ytp-button:hover {
 		background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -153px -151px;
 	}
@@ -1614,7 +1621,7 @@
 	}
 	
 	/*/=={ Default Mode }==/*/
-	#player-theater-container  button.ytp-size-button.ytp-button, #player-theater-container .ytp-embed button.ytp-size-button.ytp-button, .watch-wide  button.ytp-size-button.ytp-button {
+	#player-full-bleed-container button.ytp-size-button.ytp-button, #player-theater-container  button.ytp-size-button.ytp-button, #player-full-bleed-container .ytp-embed button.ytp-size-button.ytp-button, #player-theater-container .ytp-embed button.ytp-size-button.ytp-button, .watch-wide  button.ytp-size-button.ytp-button {
 		& when not (@Html5PlayerStyle = 2012E) {
 			background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -57px -124px;
 			width: 30px;
@@ -1627,7 +1634,7 @@
 		height: 26px;
 		display: inline-block;
 	}
-	#player-theater-container .ytp-big-mode button.ytp-size-button.ytp-button {
+	#player-full-bleed-container .ytp-big-mode button.ytp-size-button.ytp-button, #player-theater-container .ytp-big-mode button.ytp-size-button.ytp-button {
 		height: 25px;
 		& when not (@Html5PlayerStyle = 2012E) {
 			width: 30px;
@@ -1636,21 +1643,21 @@
 			width: 32px;
 		}
 	}
-	#player-theater-container button.ytp-size-button.ytp-button:focus, #player-theater-container button.ytp-size-button.ytp-button:hover, .watch-wide  button.ytp-size-button.ytp-button:focus, .watch-wide  button.ytp-size-button.ytp-button:hover {
+	#player-full-bleed-container button.ytp-size-button.ytp-button:hover, #player-full-bleed-container button.ytp-size-button.ytp-button:focus, #player-theater-container button.ytp-size-button.ytp-button:focus, #player-theater-container button.ytp-size-button.ytp-button:hover, .watch-wide  button.ytp-size-button.ytp-button:focus, .watch-wide  button.ytp-size-button.ytp-button:hover {
 		& when not (@Html5PlayerStyle = 2012E) {
 			background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -32px -232px;
 		}
 	}
 	
 	& when (@Html5PlayerStyle = 2012E) {
-		#player-theater-container  button.ytp-size-button.ytp-button:after, #player-theater-container .ytp-embed button.ytp-size-button.ytp-button:after, .watch-wide  button.ytp-size-button.ytp-button:after {
+		#player-full-bleed-container  button.ytp-size-button.ytp-button:after, #player-full-bleed-container .ytp-embed button.ytp-size-button.ytp-button:after, #player-theater-container  button.ytp-size-button.ytp-button:after, #player-theater-container .ytp-embed button.ytp-size-button.ytp-button:after, .watch-wide  button.ytp-size-button.ytp-button:after {
 			content: '';
 			background: no-repeat url(http://s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -232px -39px;
 			height: 10px;
 			width: 16px;
 			display: inline-block;
 		}
-		#player-theater-container button.ytp-size-button.ytp-button:focus:after, #player-theater-container button.ytp-size-button.ytp-button:hover:after, .watch-wide  button.ytp-size-button.ytp-button:focus:after, .watch-wide  button.ytp-size-button.ytp-button:hover:after {
+		#player-full-bleed-container button.ytp-size-button.ytp-button:focus:after, #player-full-bleed-container button.ytp-size-button.ytp-button:hover:after, #player-theater-container button.ytp-size-button.ytp-button:focus:after, #player-theater-container button.ytp-size-button.ytp-button:hover:after, .watch-wide  button.ytp-size-button.ytp-button:focus:after, .watch-wide  button.ytp-size-button.ytp-button:hover:after {
 			background: no-repeat url(http://s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -214px -40px
 		}
 	}
@@ -1914,7 +1921,7 @@
 	}
 	
 	& when (@Html5PlayerStyle = 2012E) {
-		button.ytp-miniplayer-button.ytp-button ~ button.ytp-size-button.ytp-button, #player-theater-container button.ytp-miniplayer-button.ytp-button ~ button.ytp-size-button.ytp-button {
+		button.ytp-miniplayer-button.ytp-button ~ button.ytp-size-button.ytp-button, #player-full-bleed-container button.ytp-miniplayer-button.ytp-button ~ button.ytp-size-button.ytp-button, #player-theater-container button.ytp-miniplayer-button.ytp-button ~ button.ytp-size-button.ytp-button {
 			border-left: 0
 		}
 		button.ytp-miniplayer-button.ytp-button:after, .ytp-embed button.ytp-miniplayer-button.ytp-button:after {
@@ -2338,16 +2345,16 @@
 		}
 	
 		/*/=={ Default Mode }==*/
-		#player-theater-container  button.ytp-size-button.ytp-button, #player-theater-container .ytp-embed button.ytp-size-button.ytp-button, .watch-wide  button.ytp-size-button.ytp-button {
+		#player-full-bleed-container  button.ytp-size-button.ytp-button, #player-full-bleed-container .ytp-embed button.ytp-size-button.ytp-button, #player-theater-container  button.ytp-size-button.ytp-button, #player-theater-container .ytp-embed button.ytp-size-button.ytp-button, .watch-wide  button.ytp-size-button.ytp-button {
 			background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -918px;
 			height: 26px;
 			width: 30px;
 		}
-		#player-theater-container .ytp-big-mode button.ytp-size-button.ytp-button {
+		#player-full-bleed-container .ytp-big-mode button.ytp-size-button.ytp-button, #player-theater-container .ytp-big-mode button.ytp-size-button.ytp-button {
 			height: 25px;
 			width: 30px;
 		}
-		#player-theater-container button.ytp-size-button.ytp-button:focus, #player-theater-container button.ytp-size-button.ytp-button:hover, .watch-wide  button.ytp-size-button.ytp-button:focus, .watch-wide  button.ytp-size-button.ytp-button:hover {
+		#player-full-bleed-container button.ytp-size-button.ytp-button:focus, #player-full-bleed-container button.ytp-size-button.ytp-button:hover, #player-theater-container button.ytp-size-button.ytp-button:focus, #player-theater-container button.ytp-size-button.ytp-button:hover, .watch-wide  button.ytp-size-button.ytp-button:focus, .watch-wide  button.ytp-size-button.ytp-button:hover {
 			background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1836px;
 		}
 		
@@ -2552,10 +2559,10 @@
 		}
 		
 		/*/=={ Theater Mode }==/*/
-		#player-theater-container button.ytp-size-button.ytp-button:after, #player-theater-container .ytp-embed button.ytp-size-button.ytp-button:after, .watch-wide button.ytp-size-button.ytp-button:after {
+		#player-full-bleed-container button.ytp-size-button.ytp-button:after, #player-full-bleed-container .ytp-embed button.ytp-size-button.ytp-button:after, #player-theater-container button.ytp-size-button.ytp-button:after, #player-theater-container .ytp-embed button.ytp-size-button.ytp-button:after, .watch-wide button.ytp-size-button.ytp-button:after {
 			background: no-repeat url(http://s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -232px -39px;
 		}
-		#player-theater-container button.ytp-size-button.ytp-button:focus:after, #player-theater-container button.ytp-size-button.ytp-button:hover:after, .watch-wide button.ytp-size-button.ytp-button:focus:after, .watch-wide button.ytp-size-button.ytp-button:hover:after {
+		#player-full-bleed-container button.ytp-size-button.ytp-button:focus:after, #player-full-bleed-container button.ytp-size-button.ytp-button:hover:after, #player-theater-container button.ytp-size-button.ytp-button:focus:after, #player-theater-container button.ytp-size-button.ytp-button:hover:after, .watch-wide button.ytp-size-button.ytp-button:focus:after, .watch-wide button.ytp-size-button.ytp-button:hover:after {
 			background: no-repeat url(http://s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -214px -40px
 		}
 		
@@ -2738,10 +2745,10 @@
 		}
 	
 		/*/=={ Default Mode }==/*/
-		#player-theater-container  button.ytp-size-button.ytp-button, #player-theater-container .ytp-embed button.ytp-size-button.ytp-button, .watch-wide  button.ytp-size-button.ytp-button {
+		#player-full-bleed-container  button.ytp-size-button.ytp-button, #player-full-bleed-container .ytp-embed button.ytp-size-button.ytp-button, #player-theater-container  button.ytp-size-button.ytp-button, #player-theater-container .ytp-embed button.ytp-size-button.ytp-button, .watch-wide  button.ytp-size-button.ytp-button {
 			background: no-repeat url("http://s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png") -57px -124px;
 		}
-		#player-theater-container button.ytp-size-button.ytp-button:focus, #player-theater-container button.ytp-size-button.ytp-button:hover, .watch-wide  button.ytp-size-button.ytp-button:focus, .watch-wide  button.ytp-size-button.ytp-button:hover {
+		#player-full-bleed-container button.ytp-size-button.ytp-button:focus, #player-full-bleed-container button.ytp-size-button.ytp-button:hover, #player-theater-container button.ytp-size-button.ytp-button:focus, #player-theater-container button.ytp-size-button.ytp-button:hover, .watch-wide  button.ytp-size-button.ytp-button:focus, .watch-wide  button.ytp-size-button.ytp-button:hover {
 			background: no-repeat url("http://s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png") -32px -232px;
 		}
 		
@@ -2914,10 +2921,10 @@
 		}
 	
 		/*/=={ Default Mode }==*/
-		#player-theater-container  button.ytp-size-button.ytp-button, #player-theater-container .ytp-embed button.ytp-size-button.ytp-button, .watch-wide  button.ytp-size-button.ytp-button {
+		#player-full-bleed-container  button.ytp-size-button.ytp-button, #player-full-bleed-container .ytp-embed button.ytp-size-button.ytp-button, #player-theater-container  button.ytp-size-button.ytp-button, #player-theater-container .ytp-embed button.ytp-size-button.ytp-button, .watch-wide  button.ytp-size-button.ytp-button {
 			background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -918px;
 		}
-		#player-theater-container button.ytp-size-button.ytp-button:focus, #player-theater-container button.ytp-size-button.ytp-button:hover, .watch-wide  button.ytp-size-button.ytp-button:focus, .watch-wide  button.ytp-size-button.ytp-button:hover {
+		#player-full-bleed-container button.ytp-size-button.ytp-button:focus, #player-full-bleed-container button.ytp-size-button.ytp-button:hover, #player-theater-container button.ytp-size-button.ytp-button:focus, #player-theater-container button.ytp-size-button.ytp-button:hover, .watch-wide  button.ytp-size-button.ytp-button:focus, .watch-wide  button.ytp-size-button.ytp-button:hover {
 			background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1836px;
 		}
 		
@@ -3417,4 +3424,365 @@
 			height: 26px !important;
 		}
 	}
+    ytd-watch-flexy[rounded-player-large][default-layout] #ytd-player.ytd-watch-flexy {
+        border-radius: 0;
+    }
+    & when not (@Html5PlayerStyle = 2012E) {
+        .html5-video-player .ytp-tooltip.ytp-bottom:not(.ytp-preview) {
+            display: none;
+        }
+        .ytp-chrome-controls .ytp-button, .ytp-replay-button, .ytp-exp-bottom-control-flexbox .ytp-left-controls, .html5-video-player, ytd-watch-flexy[rounded-player-large][default-layout] #ytd-player.ytd-watch-flexy {
+            overflow: visible;
+        }
+        .ytp-prev-button, .ytp-play-button, .ytp-mute-button, .ytp-subtitles-button, .ytp-settings-button, .ytp-watch-later-button, .ytp-miniplayer-button, .ytp-size-button, .ytp-fullscreen-button {
+            &::before {
+                content: "";
+                display: block;
+                & when (@TooltipOGHgt = 0) {
+                    top: calc(-50% - 9px);
+                }
+                & when (@TooltipOGHgt = 1) {
+                    top: calc(-50% + 9px);
+                }
+                left: 50%;
+                position: relative;
+                transform: translate(-50%);
+                & when (@Html5PlayerStyle = 2012M) {
+                    z-index: 1000;
+                }
+                & when (@Html5PlayerStyle = 2012L) {
+                    & when (@TooltipCrtFix = 0) {
+                        z-index: 1000001;
+                    }
+                    & when (@TooltipCrtFix = 1) {
+                        z-index: 1000002;
+                    }
+                }
+                width: 0;
+                height: 0;
+                vertical-align: top;
+                border: 1px solid transparent;
+                & when (@Html5PlayerStyle = 2012M) {
+                    border-width: 5px 5px 0 5px;
+                }
+                & when (@Html5PlayerStyle = 2012L) {
+                    border-width: 5px 5px 0 5px;
+                }
+                & when (@TooltipCrtFix = 0) or (@Html5PlayerStyle = 2012M) {
+                    border-top-color: #000;
+                }
+                & when (@Html5PlayerStyle = 2012L) and (@TooltipCrtFix = 1) {
+                    border-top-color: #333;
+                }
+                opacity: 0;
+                .ytp-big-mode & {
+                    width: 0;
+                    left: 50%
+                }
+            }
+            &:after {
+                content: "";
+                line-height: 1;
+                font-family: arial, sans-serif;
+                display: block;
+                position: relative;
+                transform: translate(-50%);
+                & when (@TooltipOGHgt = 0) {
+                    & when (@Html5PlayerStyle = 2012M) {
+                        top: calc(-50% - 43px);
+                    }
+                    & when (@Html5PlayerStyle = 2012L) {
+                        top: calc(-50% - 37px);
+                    }
+                }
+                & when (@TooltipOGHgt = 1) {
+                    & when (@Html5PlayerStyle = 2012M) {
+                        top: calc(-50% - 25px);
+                    }
+                    & when (@Html5PlayerStyle = 2012L) {
+                        top: calc(-50% - 19px);
+                    }
+                }
+                left: 50%;
+                width: max-content;
+                & when (@Html5PlayerStyle = 2012M) {
+                    z-index: 999;
+                }
+                & when (@Html5PlayerStyle = 2012L) {
+                    z-index: 1000001;
+                }
+                & when (@Html5PlayerStyle = 2012M) {
+                    padding: 0.75em
+                }
+                & when (@Html5PlayerStyle = 2012L) {
+                    padding: 6px;
+                }
+                color: #fff;
+                & when (@Html5PlayerStyle = 2012M) {
+                    background-image: -moz-linear-gradient(top,#4a4a4a 0,#000 100%);
+                    background-image: -ms-linear-gradient(top,#4a4a4a 0,#000 100%);
+                    background-image: -o-linear-gradient(top,#4a4a4a 0,#000 100%);
+                    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,#4a4a4a),color-stop(100%,#000));
+                    background-image: -webkit-linear-gradient(top,#4a4a4a 0,#000 100%);
+                    background-image: linear-gradient(to bottom,#4a4a4a 0,#000 100%);
+                }
+                & when (@Html5PlayerStyle = 2012L) {
+                    background: #333;
+                }
+                opacity: 0;
+                & when (@Html5PlayerStyle = 2012M) {
+                    font-size: 100%;
+                }
+                & when (@Html5PlayerStyle = 2012L) {
+                    font-size: 11px;
+                    font-weight: bold;
+                }
+                white-space: nowrap;
+                -moz-border-radius: 2px;
+                -webkit-border-radius: 2px;
+                border-radius: 2px;
+                & when (@Html5PlayerStyle = 2012M) {
+                    -moz-box-shadow: 0 0 3px #333;
+                    -ms-box-shadow: 0 0 3px #333;
+                    -webkit-box-shadow: 0 0 3px #333;
+                    box-shadow: 0 0 3px #333;
+                }
+                & when (@Html5PlayerStyle = 2012L) {
+                    -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+                    -ms-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+                    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+                    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+                }
+            }
+            &:hover:before {
+                & when (@Html5PlayerStyle = 2012M) {
+                    opacity: 1;
+                }
+                & when (@Html5PlayerStyle = 2012L) {
+                    & when (@TooltipCrtFix = 0) {
+                        opacity: .75;
+                    }
+                    & when (@TooltipCrtFix = 1) {
+                        opacity: .95;
+                    }
+                }
+                -moz-transition: opacity 0.2s ease-out;
+                -o-transition: opacity 0.2s ease-out;
+                -webkit-transition: opacity 0.2s ease-out;
+            }
+            &:hover:after {
+                & when (@Html5PlayerStyle = 2012M) {
+                    opacity: 1;
+                }
+                & when (@Html5PlayerStyle = 2012L) {
+                    opacity: .95;
+                }
+                -moz-transition: opacity 0.2s ease-out;
+                -o-transition: opacity 0.2s ease-out;
+                -webkit-transition: opacity 0.2s ease-out;
+            }
+        }
+        .ytp-play-button {
+            &:after {
+                content: "Pause";
+                .paused-mode & {
+                    content: "Play";
+                }
+                .ended-mode & {
+                    content: "Replay"
+                }
+            }
+            &:not(.ytp-play-button-playlist):before {
+                & when (@TooltipOGHgt = 0) {
+                    top: calc(-50% - 9px);
+                }
+                & when (@TooltipOGHgt = 1) {
+                    top: calc(-50% + 9px);
+                }
+                left: 50%;
+                position: relative;
+                width: 0;
+                bottom: unset;
+            }
+            .ytp-big-mode &:not(.ytp-play-button-playlist)::before {
+                width: max-content;
+                left: 50%;
+            }
+            .ytp-big-mode.playing-mode &:after {
+                left: 75%
+            }
+        }
+        button.ytp-mute-button.ytp-button[data-title-no-tooltip="Mute"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Demp"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Susdur"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Bisukan"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Senyap"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Isključi zvuk"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Silencia"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Ztlumit"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Lyd fra"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Stummschalten"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Vaigistamine"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Silenciar"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Desaktibatu audioa"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="I-mute"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Désactiver le son"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Isključi ton"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Thulisa"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Hljóð af"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Zima sauti"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Izslēgt skaņu"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Nutildyti"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Némítás"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Geluid uitzetten"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Kutt lyd"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Ovozsiz qilish"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Pa zë"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Tắt tiếng"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Sessiz"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Выключыць гук"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Заглушаване"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Үнүн басуу"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Дыбысты өшіру"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Исклучи звук"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Дуугүй болгох"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Отключение звука"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Искључи звук"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Вимкнути звук"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Σίγαση"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Անջատել ձայնը"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="השתקה"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="خاموش کریں"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="كتم الصوت"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="بی‌صدا"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="म्यूट गर्नुहोस्"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="म्यूट करा"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="म्यूट करें"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="মিউট কৰক"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="মিউট"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="ਮਿਊਟ ਕਰੋ"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="અવાજ બંધ"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="ମ୍ୟୁଟ୍ କରନ୍ତୁ"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="ஒலியடக்கு"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="మ్యూట్ చేయి"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="ಮ್ಯೂಟ್"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="നിശബ്‌ദമാക്കുക"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="නිහඬ කරන්න"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="ปิดเสียง"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="ປິດສຽງ"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="အသံတိတ်"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="დადუმება"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="ድምጸ ከል አድርግ"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="បិទសំឡេង"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="静音"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="靜音"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="ミュート（消音）"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="음소거"] {
+            &:after {
+                content: "Mute"
+            }
+        }
+        button.ytp-mute-button.ytp-button[data-title-no-tooltip="Unmute"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Ontdemp"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Səsi bərpa et"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Bunyikan"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Nyahsenyap"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Uključivanje zvuka"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Deixa de silenciar"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Zrušit ztlumení"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Lyd til"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Stummschaltung aufheben"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Vaigistuse tühistamine"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Activar sonido"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Aktibatu audioa"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="I-unmute"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Activer le son"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Habilitar o son"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Uključi ton"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Susa ukuthula"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Hljóð á"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Washa Sauti"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Ieslēgt skaņu"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Įjungti garsą"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Némítás feloldása"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Geluid aanzetten"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Slå på lyd"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Ovozni yoqish"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Me zë"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Bật âm thanh"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Sesi aç"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Уключыць гук"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Включване на звука"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Үнүн чыгаруу"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Дыбысты қосу"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Вклучи звук"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Дууг нээх"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Включить звук"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Укључи звук"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Увімкнути звук"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Αναίρεση σίγασης"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="Միացնել ձայնը"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="ביטול השתקה"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="آواز چالو کریں"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="إلغاء كتم الصوت"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="لغو بیصدایی"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="अनम्यूट गर्नुहोस्"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="अनम्यूट करा"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="अनम्यूट करें"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="আনমিউট কৰক"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="সশব্দ"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="ਅਣਮਿਊਟ"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="અવાજ ચાલુ કરો"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="ଅନ୍‍ମ୍ୟୁଟ୍ କରନ୍ତୁ"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="ஒலி இயக்கு"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="మ్యూట్ తీసివేయండి"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="ಅನ್‌ಮ್ಯೂಟ್ ಮಾಡಿ"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="അൺമ്യൂട്ട് ചെയ്യുക"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="නිහඬහරණය"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="เปิดเสียง"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="ເປີດສຽງ"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="အသံမပိတ်"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="დადუმების მოხსნა"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="ድምጸ ከል አታድርግ"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="លែងបិទសំឡេង"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="取消静音"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="解除靜音"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="ミュート解除"], button.ytp-mute-button.ytp-button[data-title-no-tooltip="음소거 해제"] {
+            &:after {
+                content: "Unmute"
+            }
+        }
+        .ytp-subtitles-button {
+            &:after {
+                content: "Captions";
+            }
+            button&.ytp-button[aria-pressed] {
+                &:after {
+                    content: "Captions";
+                    display: block !important;
+                    left: 50%;
+                    bottom: 0;
+                    position: relative;
+                    width: max-content;
+                    height: auto;
+                    & when (@Html5PlayerStyle = 2012M) {
+                        padding: 0.75em
+                    }
+                    & when (@Html5PlayerStyle = 2012L) {
+                        padding: 6px;
+                    }
+                    color: #fff;
+                    & when (@Html5PlayerStyle = 2012M) {
+                        background: none;
+                        background-image: -moz-linear-gradient(top,#4a4a4a 0,#000 100%);
+                        background-image: -ms-linear-gradient(top,#4a4a4a 0,#000 100%);
+                        background-image: -o-linear-gradient(top,#4a4a4a 0,#000 100%);
+                        background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,#4a4a4a),color-stop(100%,#000));
+                        background-image: -webkit-linear-gradient(top,#4a4a4a 0,#000 100%);
+                        background-image: linear-gradient(to bottom,#4a4a4a 0,#000 100%);
+                    }
+                    & when (@Html5PlayerStyle = 2012L) {
+                        background: #333;
+                    }
+                    -webkit-border-radius: 2px;
+                    border-radius: 2px;
+                    -webkit-transition: none;
+                    -o-transition: none;
+                    transition: none;
+                }
+                &:hover:after {
+                    -moz-transition: opacity 0.2s ease-out;
+                    -o-transition: opacity 0.2s ease-out;
+                    -webkit-transition: opacity 0.2s ease-out;
+                }
+            }
+            .ytp-big-mode .ytp-chrome-controls &.ytp-button[aria-pressed]:after {
+                height: auto;
+                left: 50%;
+                width: max-content;
+                -webkit-border-radius: 2px;
+                border-radius: 2px;
+                bottom: unset;
+            }
+        }
+        .ytp-settings-button, .ytp-settings-button.ytp-hd-quality-badge, .ytp-settings-button.ytp-4k-quality-badge, .ytp-settings-button.ytp-5k-quality-badge, .ytp-settings-button.ytp-8k-quality-badge {
+            &:after, .ytp-big-mode &:after {
+                content: "Settings";
+                & when (@Html5PlayerStyle = 2012M) {
+                    font-size: 100%;
+                    font-weight: normal;
+                }
+                & when (@Html5PlayerStyle = 2012L) {
+                    font-size: 11px;
+                    font-weight: bold;
+                }
+                line-height: 1;
+                display: block;
+                position: relative;
+                width: max-content;
+                height: auto;
+                & when (@TooltipOGHgt = 0) {
+                    & when (@Html5PlayerStyle = 2012M) {
+                        top: calc(-50% - 43px);
+                    }
+                    & when (@Html5PlayerStyle = 2012L) {
+                        top: calc(-50% - 37px);
+                    }
+                }
+                & when (@TooltipOGHgt = 1) {
+                    & when (@Html5PlayerStyle = 2012M) {
+                        top: calc(-50% - 25px);
+                    }
+                    & when (@Html5PlayerStyle = 2012L) {
+                        top: calc(-50% - 19px);
+                    }
+                }
+                & when (@Html5PlayerStyle = 2012M) {
+                    background: none;
+                    background-image: -moz-linear-gradient(top,#4a4a4a 0,#000 100%);
+                    background-image: -ms-linear-gradient(top,#4a4a4a 0,#000 100%);
+                    background-image: -o-linear-gradient(top,#4a4a4a 0,#000 100%);
+                    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,#4a4a4a),color-stop(100%,#000));
+                    background-image: -webkit-linear-gradient(top,#4a4a4a 0,#000 100%);
+                    background-image: linear-gradient(to bottom,#4a4a4a 0,#000 100%);
+                }
+                & when (@Html5PlayerStyle = 2012L) {
+                    background: #333;
+                }
+                -webkit-border-radius: 2px;
+                border-radius: 2px;
+                right: unset;
+                & when (@Html5PlayerStyle = 2012M) {
+                    padding: 0.75em
+                }
+                & when (@Html5PlayerStyle = 2012L) {
+                    padding: 6px;
+                }
+                text-shadow: none;
+            }
+            button.ytp-button&[aria-expanded="true"] {
+                &:before, &:after {
+                    display: none
+                }
+            }
+        }
+        .ytp-watch-later-button {
+            .ytp-watch-later-icon {
+                display: none;
+            }
+            &:after {
+                content: "Watch later";
+            }
+        }
+        .ytp-miniplayer-button:after {
+                & when (@TooltipLgyLbl = 0) {
+                    content: "Miniplayer";
+                }
+                & when (@TooltipLgyLbl = 1) {
+                    content: "Small player";
+                } 
+        }
+        .ytp-size-button:after {
+            & when (@TooltipLgyLbl = 0) {
+                content: "Theater mode";
+            }
+            & when (@TooltipLgyLbl = 1) {
+                content: "Large player";
+            }
+            #player-full-bleed-container &, #player-theater-container &, .watch-wide & {
+                & when (@TooltipLgyLbl = 0) {
+                    content: "Default view";
+                }
+                & when (@TooltipLgyLbl = 1) {
+                    content: "Small player";
+                }
+             }
+        }
+        .ytp-fullscreen-button {
+            &:after {
+                content: "Full screen";
+                #player-full-bleed-container ytd-player &, #player-theater-container ytd-player & {
+                    left: -35%;
+                }
+                .ytp-big-mode & {
+                    content: "Exit full screen";
+                    left: -75%;
+                    width: max-content;
+                }
+            }
+            button&.ytp-button:after {
+                display: block
+            }
+        }
+    }
 }
