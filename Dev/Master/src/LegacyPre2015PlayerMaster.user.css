@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           2012 HTML5 Player
-@version        20231204.1.22.27
+@version        20231204.1.22.28
 @namespace      userstyles.world/user/tersiswilvin
 @description    A Pre2015 YouTube Html5 Player aimed to be more accurate.
 @author         TersisWilvin
@@ -109,7 +109,7 @@
 		cursor: auto;
         z-index: 930;
         .ytp-big-mode & {
-            bottom: 40px
+            /*bottom: 40px*/
         }
 		& when (@AutoHideAnimation = Pulsate) {
 			-moz-transition: bottom 0.05s ease-in;
