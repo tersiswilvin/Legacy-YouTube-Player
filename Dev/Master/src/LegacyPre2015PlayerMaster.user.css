@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           2012 HTML5 Player
-@version        20231204.1.22.28
+@version        20231210.1.22.29
 @namespace      userstyles.world/user/tersiswilvin
 @description    A Pre2015 YouTube Html5 Player aimed to be more accurate.
 @author         TersisWilvin
@@ -12,6 +12,7 @@
 @var            checkbox            AutoHideCursor                "AutoHide Cursor"            0
 @var            select              BezelStyle                    "Bezel Style"                ["2012M*","2014"]
 @var            checkbox            QualityBadges                 "Display Quality Badges"     0
+@var            checkbox            TVStaticErrors                "Legacy Error Background"    1
 @var            checkbox            NoFullWidthPlayer             "No Full Width Player"       0
 @var            select              PlayButtonType                "Play button Style"          ["2010M", "2011M", "2012E*", "2013E", "2014M", "2016M"]
 @var            select              Html5PlayerStyle              "Player Style"               ["2012E","2012M*","2012L"]
@@ -818,6 +819,51 @@
 		}
 	}
 	
+    .ytp-error {
+        font-family: Arial,Helvetica,sans-serif;
+        background-color: black;
+        & when (@TVStaticErrors = 0) {
+            background-color: black;
+        }
+        & when (@TVStaticErrors = 1) {
+            background: url(https://lh3.googleusercontent.com/pw/AL9nZEVqpHgMTsooIDDFibEdw5mA66kXus8QZKELsMMoLrnivKljI4jhjFf83rABr1FQgD2vQuO4YA83Ya96urMMnHnBm6fAEQANj3LsTdDoQcBuCNm46sQyrt0NvHvppNcJjEvckAEF1bhzM7lZVsLWFUrx=w800-h450-no?authuser=0) no-repeat;
+            background-size: cover;
+        }
+        font-size: 14px;
+        font-weight: normal;
+        line-height: 20px;
+        color: #fff;
+        text-align: center;
+        position: absolute;
+        z-index: 950;
+        width: 100%;
+        height: 100%;
+        display: table;
+        .ytp-error-icon-container {
+            display: none
+        }
+        .ytp-error-content {
+            position: unset;
+            width: 100%;
+            height: 100%;
+            max-width: 100%;
+            display: table;
+            .ytp-error-content-wrap {
+                margin: 0;
+                display: table-cell;
+                vertical-align: middle;
+                &-reason {
+                    font-size: 100%;
+                    font-weight: normal;
+                }
+                .ytp-large-width-mode &-subreason {
+                    font-size: 85%;
+                    font-weight: normal;
+                }
+            }
+        }
+    }
+    
 	/*/=={ Scrubber }==/*/
 	.ytp-scrubber-container, .ytp-big-mode .ytp-scrubber-container {
 		margin: 0 8px;
