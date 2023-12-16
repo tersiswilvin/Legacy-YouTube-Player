@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           2012 HTML5 Player
-@version        20231210.1.22.29
+@version        20231215.1.22.30
 @namespace      userstyles.world/user/tersiswilvin
 @description    A Pre2015 YouTube Html5 Player aimed to be more accurate.
 @author         TersisWilvin
@@ -27,8 +27,9 @@
 @var            checkbox            TooltipLgyLbl                 "Tooltip Legacy Labels"      1
 @var            checkbox            TooltipOGHgt                  "Tooltip Original Height"    0
 @var            select              TopbarType                    "Topbar Style"               ["2012E","2012M*","2014"]
+@var            checkbox            LegacyCaptionsEnabled         "Use Legacy Captions"        1
 @var            checkbox            UseLegacyAdColors             "Use Legacy Theme Ad Colors" 0
-@var            checkbox            TooltipsEnabled               "Use Legacy Tooltips"        1
+@var            checkbox            LegacyTooltipsEnabled         "Use Legacy Tooltips"        1
 @var            checkbox            SquareScrubber                "Use Square Scrubber"        0
 @var            checkbox            UseWatermark                  "Use Watermark instead"      0
 ==/UserStyle== */
@@ -235,6 +236,10 @@
             padding-bottom: 30px;
             box-sizing: border-box;
 		}
+        .ytp-caption-window-container when (@LegacyCaptionsEnabled = 1) {
+            width: unset;
+            height: unset;
+        }
 		.ytp-fit-cover-video .html5-main-video {
 			object-fit: unset;
 			overflow-clip-margin: content-box;
@@ -1013,7 +1018,7 @@
 			-o-transition-duration: 0.5s;
 			-ms-transition-duration: 0.5s;
 		}
-        & when (@TooltipsEnabled = 1) {
+        & when (@LegacyTooltipsEnabled = 1) {
             overflow-x: clip;
         }
 	}
@@ -1976,19 +1981,228 @@
 		display: none;
 	}
 	
-	.caption-window.ytp-caption-window-bottom {
-		margin-bottom: 32px;
-		-webkit-transition: margin-bottom 0.5s;
-		transition: margin-bottom 0.5s;
-	}
-	.html5-video-player:not(.ytp-autohide):hover .caption-window.ytp-caption-window-bottom,  .paused-mode .caption-window.ytp-caption-window-bottom  {
-		margin-bottom: 40px;
-	}
-	& when (@AutoHideStyle = Show) {
-		.ytp-autohide .caption-window.ytp-caption-window-bottom, .ytp-hide-controls .caption-window.ytp-caption-window-bottom {
-			margin-bottom: 32px;
-		}
-	}
+    & when (@LegacyCaptionsEnabled = 0) {
+        .caption-window.ytp-caption-window-bottom {
+            margin-bottom: 43px;
+            bottom: 0 !important;
+            & when (@AutoHideStyle = Show) and (@AutoHideAnimation = Pulsate) {
+                -moz-transition: margin-bottom 0.5s ease-in;
+                -ms-transition: margin-bottom 0.5s ease-in;
+                -o-transition: margin-bottom 0.5s ease-in;
+                -webkit-transition: margin-bottom 0.5s ease-in;
+                transition: margin-bottom 0.5s ease-in;
+            }
+            & when (@AutoHideStyle = Hide) and (@AutoHideAnimation = Pulsate) {
+                -moz-transition: margin-bottom 0.05s ease-in;
+                -ms-transition: margin-bottom 0.05s ease-in;
+                -o-transition: margin-bottom 0.05s ease-in;
+                -webkit-transition: margin-bottom 0.05s ease-in;
+                transition: margin-bottom 0.05s ease-in;
+            }
+            & when (@AutoHideAnimation = Fade) {
+                -moz-transition: none;
+                -webkit-transition: none;
+                transition: none;
+            }
+        }
+        .html5-video-player:not(.ytp-autohide):hover .caption-window.ytp-caption-window-bottom,  .paused-mode .caption-window.ytp-caption-window-bottom  {
+            margin-bottom: 48px;
+        }
+        & when (@AutoHideStyle = Show) {
+            .ytp-autohide .caption-window.ytp-caption-window-bottom, .ytp-hide-controls .caption-window.ytp-caption-window-bottom {
+                margin-bottom: 43px;
+                -moz-transition: margin-bottom 0.5s ease-in;
+                -ms-transition: margin-bottom 0.5s ease-in;
+                -o-transition: margin-bottom 0.5s ease-in;
+                -webkit-transition: margin-bottom 0.5s ease-in;
+                transition: margin-bottom 0.5s ease-in;
+            }
+        }
+        & when (@AutoHideStyle = Hide) {
+            .ytp-autohide .caption-window.ytp-caption-window-bottom, .ytp-hide-controls .caption-window.ytp-caption-window-bottom {
+                & when (@AutoHideAnimation = Pulsate) {
+                    -moz-transition: margin-bottom 0.5s ease-in;
+                    -ms-transition: margin-bottom 0.5s ease-in;
+                    -o-transition: margin-bottom 0.5s ease-in;
+                    -webkit-transition: margin-bottom 0.5s ease-in;
+                    transition: margin-bottom 0.5s ease-in;
+                }
+                & when (@AutoHideAnimation = Fade) {
+                    -moz-transition: margin-bottom 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+                    -webkit-transition: margin-bottom 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+                    transition: margin-bottom 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+                }
+            }
+        }
+    }
+    & when (@LegacyCaptionsEnabled = 1) {
+        .ytp-caption-window-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 35px;
+            width: unset;
+            height: unset;
+            & when (@AutoHideAnimation = Pulsate) {
+                -moz-transition: bottom 0.05s ease-in;
+                -ms-transition: bottom 0.05s ease-in;
+                -o-transition: bottom 0.05s ease-in;
+                -webkit-transition: bottom 0.05s ease-in;
+                transition: bottom 0.05s ease-in;
+            }
+            & when (@AutoHideAnimation = Fade) {
+                -moz-transition: none;
+                -webkit-transition: none;
+                transition: none;
+            }
+        }
+        .html5-video-player:not(.ytp-big-mode) .ytp-caption-window-container {
+            bottom: 30px;
+        }
+        .html5-video-player.ytp-big-mode .ytp-caption-window-container {
+            top: 30px
+        }
+        .html5-video-player.ytp-big-mode.ytp-autohide .ytp-caption-window-container {
+            bottom: 0;
+            & when (@AutoHideAnimation = Pulsate) {
+                -moz-transition: bottom 0.5s ease-in;
+                -ms-transition: bottom 0.5s ease-in;
+                -o-transition: bottom 0.5s ease-in;
+                -webkit-transition: bottom 0.5s ease-in;
+                transition: bottom 0.5s ease-in;
+            }
+            & when (@AutoHideAnimation = Fade) {
+                -moz-transition: bottom 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+                -webkit-transition: bottom 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+                transition: bottom 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+        }
+        & when (@AutoHideStyle = Hide) {
+            .html5-video-player.ytp-autohide:not(.ytp-big-mode) .ytp-caption-window-container {
+                bottom: 0px;
+                & when (@AutoHideAnimation = Pulsate) {
+                    -moz-transition: bottom 0.5s ease-in;
+                    -ms-transition: bottom 0.5s ease-in;
+                    -o-transition: bottom 0.5s ease-in;
+                    -webkit-transition: bottom 0.5s ease-in;
+                    transition: bottom 0.5s ease-in;
+                }
+                & when (@AutoHideAnimation = Fade) {
+                    -moz-transition: bottom 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+                    -webkit-transition: bottom 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+                    transition: bottom 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+                }
+            }
+        }
+
+        .html5-video-player .caption-window {
+            cursor: -webkit-unset;
+            cursor: unset;
+            &.ytp-caption-window-bottom {
+                position: absolute;
+                top: 100%!important;
+                white-space: normal;
+                width: 80% !important;
+                z-index: 1000;
+                padding-bottom: 15px;
+                margin: 0 !important;
+                text-align: center !important;
+                overflow: unset !important;
+                left: 50% !important;
+                height: unset !important;
+                bottom: unset !important;
+                /*/ anchor-point-7 /*/
+                -moz-transform: translate(-50%,-100%);
+                -ms-transform: translate(-50%,-100%);
+                -o-transform: translate(-50%,-100%);
+                -webkit-transform: translate(-50%,-100%);
+                transform: translate(-50%,-100%);
+                -webkit-transition: none;
+                transition: none;
+            }
+            &.ytp-caption-window-top {
+                left: 5% !important;
+                top: 5% !important;
+            }
+            svg {
+                vertical-align: text-bottom;
+            }
+        }
+        .captions-text {
+            display: inline-block !important;
+            overflow-wrap: unset !important;
+            transform: none !important;
+            background-color: rgba(8, 8, 8, 0);
+            font-size: 21px;
+            -webkit-cursor: -webkit-default;
+            cursor: default;
+            .ytp-big-mode & {
+                font-size: 48px;
+            }
+            .ytp-caption-window-rollup.ytp-rollup-mode & {
+                -webkit-transition: none;
+                transition: none;
+            }
+            .ytp-caption-window-rollup &:before {
+                content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAsCAQAAACnWtJ+AAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAAAEgAAABIAEbJaz4AAAAJdnBBZwAAACQAAAAsALDekYcAAARFSURBVEjH7ZZJbFQFGMd/b5l9hi50w9LNpp2SFimBggJVkqHSEkMiCSKoCBgTvUhU7MHAxbicNIFwMhhPEoyRKFGjFomBCoG0bCFpAamF0pTpRqedDjPzpu/zMG0p02k7NsaT3+19efm9/7c/+JdMSerVUFEwGUPmD1Kw4MSJikGQMGOpgdRpHisZFL+7+dJhysjBkeSNlMxCDqt273/wQKT3zpMbyEGfD0Yjk+V174TCIiLh0Pt7yMPyzzEKLsorXu3yi4iEwrsOUE062nzCWoTv2yYREZHtn7CWPGyoqONVTFlPGst8jXHMFz9QRwEOdJxkkE0mzlS1WVlMw+U2EZEuP1vx4saCh2JqfvqIGkrwpFJBBQ9PTOjZe5DVLMSCm1I2tpwTud2+soF8rHODdPLwnW0VEWm/zfOU4MBGPr6Tp+Pw5q8owT4zQJ0EucmurgT4uokehhnDQe6+el8twMnmdUeIzN3lCgtY/vZnIiL9AXZQjhMbBTx3vVNEpP0OW6nAg4qChpasgvq4Livu2iqA9g4GCTKGlcydK8uLAN74nE76CKNjwwJEiWAkAylYcJUUArS2M0wEwU7GKz6AM1d/v0IvoyikkfXBClX2X6Cf4UcDnVCk48jKAOjsIYSBgg3PkjKAUy30McIYTha9ueHAp9HQNy9fuUyY8PQlY6WYbfHqsJsKHNgo5oW4p/QtKnFhYzH19wdFRG62UIn70Uyp46Gpk1MeI4agoE6M660AUUw0nPXl6RnQP7LpCJKoZqL8yrRKPPSYSLwgVYsB+gM3A0QTt+fDpp++VCXhSRQBcNqTDbE6/pKJOalEHfdMVEVHR8EkcqIdoDBrZyk29GQ5AhNjYBjAl4cFDRgjOhgAeKkUOxomo9fvdNwC+Hjb9IZUxzExwgP3AZY+hh0dMBjt6gFYWYYHO0KQ7vc+jIb+bN3cyDCx5KHFCHV2A9RW4sYKRAicuQjQ8BTZLEAjjP/46cYtZbsuXmWQaLJkm0QZvdEJUFKIBzsQYejH8wDegr3PkIMLGKHn4Fk66SWUOMATigyC318CqCgiAzc6BkM/X2v6A2DfixSShQ2TMEFGZ7t2NorYfPeeiMiho6whCwtulnj3xC/KhfPUkjvbadKmaHMWZ69eCulph5sZIkQUc8CIBJ9dA/n56Vd/aSM02SQzggQFvSP2Wr1Fz0ob8p/vYIQIMYyz9x6PLqs5duj17xgkPDPooenksv74r48sfw0HeVTs3YiXXOypniQXFd7d/QERkS9PUEcBdjSsuPDgwjo7ZuqtEswBWaA/vQKqvTfuXvMTIoKBQRRjrn09FWRiIqf61paUFsKmVf6/Lt4llNh4qZmKBy9buntERCKj69azcL6/NRrpVFXu8HeJHD1EFWmpJjjxngsxIn1D535zt20/Rh/BxOGcyZJ9T8eGFZUYYYxUOmcmUHzNKkiqkP/tP7a/AWM8u6WDedEoAAAAAElFTkSuQmCC);
+                display: block;
+                left: -36px;
+                opacity: 0.5;
+                position: absolute;
+                top: 50%;
+                -moz-transform: translate(0,-50%);
+                -ms-transform: translate(0,-50%);
+                -o-transform: translate(0,-50%);
+                -webkit-transform: translate(0,-50%);
+                transform: translate(0,-50%);
+            }
+            .ytp-caption-window-rollup &:after {
+                content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAsCAQAAACnWtJ+AAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAAAEgAAABIAEbJaz4AAAAJdnBBZwAAACQAAAAsALDekYcAAAQ/SURBVEjH7ZZbTFxVFIa/M2cuB2aGOx3KbbgEBgLWVqEGWtI2RIHGaNTUao01ND6oD5Imoj6gD4b20aY1mtgYjTHW6EMTm9SYYhrTIqYGKraYgrUUoYRSKHSAmQ5zWz7MMGVgBsZL4ovrvJzss/eff/1r7X8d+JdCSWiPig4hSOCfAKlomDESxI0bHxJv23psksjG3t9pUXtc+PGtxWqt0JNd1zh2ReTu3dYOtrIBQ7yN6zHS7bJn20HT3u+44e7y4cf5d1ippLG5tcPtEREZm6x4gXLMsZSNp5GCDh0KECTQ7xyeeWo7pJhzLV9dZg4PwcSAQpUyY0TBjw/fwHxhxpZyqCzp/vX6TVx4E0lHh5Uiar45RC1FWDFgwcGesUkRkf4rtJCPMREgI3m1zUMXRXp/pIlSLBjI5KG2oyIiIo2vswlrIq2sUdz9eejQd+doJA8TSRTzxOAfIiI9fTSSs7LesTRSMH082lBSYocSu+tWz3UW8ALG7LQdD0BWxqEuplnAH4+JgoqKgg4rFewZHBURGRrhUQowkUw5+6adIiIH32ULKdHJ6SJvBsykkooFPR6mGHnpOEC5fX8NGRgJsMDM4DBAQzUWjMvOLgNSsbCxs+Wd3eSTioKLW9//cv4SwPONpKMhLDLXNwhQXIgZQyxGCkbS7q9uP/7WZy+3sJEkAswzdbYXoLIMKyYUfLhHJgCy0klCH81oSR0LVVd7RURmZ2gmHxNmqkpfDdWOpynCRBIVtIZX9lIU3UtLqILs/mh6HtLSm8tJRiWI95ozop8OBcEfqZQ+fIFWAAkBvFed006A6vywkBK5Ucqq9lu1oot80KEmawCKICt8cLUrrlpZEluPaX9pYRbAqUEWCaKgj3RvgCACy9IJhldi9JEc3gswfG1oFBdBVLTnSgFmnHgJACqGxhyA23P4VhrJEpCf+cfbL5/zuts7GWcBQcNaUwYwNoELH6BHuy8X4PYsHvzRUPpwxl5m+i5teuVg3snfmcWDnhSyW+oAzl/EySJgxNJQBTAyjht/dGr3VHDjY/bIKH58KJjZ0LbDUQBw+gJ3WAQ0rMWFAL+N4MIbi1EIKhCWUiGZLApfewag64dvB7iDDwMW0ivsAF//zEL8Cbcc3EbDTxdERNwexwEqsWAgi/pjJ0REbtzkMeyYYosd3WzqkQdrtwK8/d7QAFNhzWyPbAM4eXZtN1rOKJPNXxwV+fQD6slFQ3/Pat0exwHKSV4fBhQ0bDjamqgghyTU5eZ/8gw7sa07WCNQRsxYMWNERaOAhz85JSIy7XS0UoE5MZglsNBjxEb9s4dD9tH5IXVkJconGi6FqhffDI3sM900YUf76zCgI3P7zkWXiMj4BE/iwBqz0gkwSqX6xDGRybGqfVSTtu4fVdwwYaP6yze27aKM9PjqrD94dRjQ0BPEy+JaQzExpRRW++b/8V/FnxY9mQsrANWLAAAAAElFTkSuQmCC);
+                display: block;
+                opacity: 0.5;
+                position: absolute;
+                right: -36px;
+                top: 50%;
+                -moz-transform: translate(0,-50%);
+                -ms-transform: translate(0,-50%);
+                -o-transform: translate(0,-50%);
+                -webkit-transform: translate(0,-50%);
+                transform: translate(0,-50%);
+            }
+        }
+        .html5-video-player .caption-visual-line {
+            background-color: rgb(8, 8, 8) !important;
+            text-shadow: rgb(34, 34, 34) 0px 0px 4px, rgb(34, 34, 34) 0px 0px 4px, rgb(34, 34, 34) 0px 0px 4px, rgb(34, 34, 34) 0px 0px 4px;
+            vertical-align: inherit;
+            .ytp-caption-segment {
+                color: rgb(255, 255, 255) !important;
+                fill: rgb(255, 255, 255) !important;
+                background-color: transparent !important;
+                font-size: 21px !important;
+                font-family: "Arial Unicode Ms", Arial, Helvetica, Verdana, "PT Sans Caption", sans-serif !important;
+                &:first-child {
+                    &:before {
+                        content: "\000a0"
+                    }
+                    padding: 0
+                }
+                &:last-child {
+                    &:after {
+                        content: "\000a0"
+                    }
+                    padding: 0
+                }
+            }
+        }
+        .html5-video-player.ytp-big-mode .caption-visual-line .ytp-caption-segment {
+            font-size: 48px !important
+        }
+        .ytp-rollup-mode .caption-visual-line:first-child {
+            display: none !important;
+        }
+    }
+    
 	& when (@Html5PlayerStyle = 2012E) {
 		button.ytp-subtitles-button.ytp-button:before, .ytp-embed button.ytp-subtitles-button.ytp-button:before {
 			content: '';
@@ -3648,7 +3862,7 @@
     ytd-watch-flexy[rounded-player-large][default-layout] #ytd-player.ytd-watch-flexy, ytd-channel-video-player-renderer[rounded] #player.ytd-channel-video-player-renderer {
         border-radius: 0;
     }
-    & when not (@Html5PlayerStyle = 2012E) and (@TooltipsEnabled = 1) {
+    & when not (@Html5PlayerStyle = 2012E) and (@LegacyTooltipsEnabled = 1) {
         .html5-video-player .ytp-tooltip.ytp-bottom:not(.ytp-preview) {
             display: none;
         }
