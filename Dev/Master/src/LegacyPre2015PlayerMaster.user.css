@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           2012 HTML5 Player
-@version        20231215.1.22.30
+@version        20240131.1.22.31
 @namespace      userstyles.world/user/tersiswilvin
 @description    A Pre2015 YouTube Html5 Player aimed to be more accurate.
 @author         TersisWilvin
@@ -101,7 +101,7 @@
 		}
 	}
 	
-	.ytp-chrome-bottom, .ytp-small-mode .ytp-chrome-bottom, .ytp-embed .ytp-chrome-bottom {
+	.ytp-chrome-bottom, html[disable-flexy-player="true"]:not([static]):not([pseudo-static]) body ytd-watch-flexy:not([theater]):not([fullscreen]):not([no-top-margin]):not([reduced-top-margin]) #movie_player[aria-label="YouTube Video Player"] .ytp-chrome-bottom, .ytp-small-mode .ytp-chrome-bottom, .ytp-embed .ytp-chrome-bottom {
         & when (@NoFullWidthPlayer = 0) {
             left: 0 !important;
             width: 100% !important;
@@ -2134,12 +2134,8 @@
             overflow-wrap: unset !important;
             transform: none !important;
             background-color: rgba(8, 8, 8, 0);
-            font-size: 21px;
             -webkit-cursor: -webkit-default;
             cursor: default;
-            .ytp-big-mode & {
-                font-size: 48px;
-            }
             .ytp-caption-window-rollup.ytp-rollup-mode & {
                 -webkit-transition: none;
                 transition: none;
@@ -2179,7 +2175,6 @@
                 color: rgb(255, 255, 255) !important;
                 fill: rgb(255, 255, 255) !important;
                 background-color: transparent !important;
-                font-size: 21px !important;
                 font-family: "Arial Unicode Ms", Arial, Helvetica, Verdana, "PT Sans Caption", sans-serif !important;
                 &:first-child {
                     &:before {
@@ -2194,9 +2189,6 @@
                     padding: 0
                 }
             }
-        }
-        .html5-video-player.ytp-big-mode .caption-visual-line .ytp-caption-segment {
-            font-size: 48px !important
         }
         .ytp-rollup-mode .caption-visual-line:first-child {
             display: none !important;
