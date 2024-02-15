@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           2012 HTML5 Player
-@version        20240209.1.22.32
+@version        20240215.1.22.33
 @namespace      userstyles.world/user/tersiswilvin
 @description    A Pre2015 YouTube Html5 Player aimed to be more accurate.
 @author         TersisWilvin
@@ -996,6 +996,11 @@
 		}
 	}
 	
+    .ytp-color-party .ytp-scrubber-button.ytp-swatch-background-color {
+        -webkit-animation: none;
+        animation: none
+    }
+    
 	/*/=={ Progress Bar }==/*/
 	.ytp-progress-bar-container, .ytp-small-mode .ytp-progress-bar-container {
 		top: -3px;
@@ -1231,6 +1236,72 @@
     & when (@RemoveChapterSpace = 1) {
         .ytp-chapter-hover-container, .ytp-exp-chapter-hover-container  {
             margin-right: 0 !important;
+        }
+    }
+    
+    & when not (@Html5PlayerStyle = 2012L) {
+        @-webkit-keyframes ytp-party-background-color {
+            0% {
+                background-color: #f00;
+                background-image: linear-gradient(0deg, rgba(0, 0, 0, .5), transparent);
+            }
+
+            20% {
+                background-color: #0f0;
+                background-image: linear-gradient(0deg, rgba(0, 0, 0, .5), transparent);
+            }
+
+            40% {
+                background-color: #00f;
+                background-image: linear-gradient(0deg, rgba(0, 0, 0, .5), transparent);
+            }
+
+            60% {
+                background-color: #f0f;
+                background-image: linear-gradient(0deg, rgba(0, 0, 0, .5), transparent);
+            }
+
+            80% {
+                background-color: #ff0;
+                background-image: linear-gradient(0deg, rgba(0, 0, 0, .5), transparent);
+            }
+
+            100% {
+                background-color: #0ff;
+                background-image: linear-gradient(0deg, rgba(0, 0, 0, .5), transparent);
+            }
+        }
+
+        @keyframes ytp-party-background-color {
+            0% {
+                background-color: #f00;
+                background-image: linear-gradient(0deg, rgba(0, 0, 0, .5), transparent);
+            }
+
+            20% {
+                background-color: #0f0;
+                background-image: linear-gradient(0deg, rgba(0, 0, 0, .5), transparent);
+            }
+
+            40% {
+                background-color: #00f;
+                background-image: linear-gradient(0deg, rgba(0, 0, 0, .5), transparent);
+            }
+
+            60% {
+                background-color: #f0f;
+                background-image: linear-gradient(0deg, rgba(0, 0, 0, .5), transparent);
+            }
+
+            80% {
+                background-color: #ff0;
+                background-image: linear-gradient(0deg, rgba(0, 0, 0, .5), transparent);
+            }
+
+            100% {
+                background-color: #0ff;
+                background-image: linear-gradient(0deg, rgba(0, 0, 0, .5), transparent);
+            }
         }
     }
     
