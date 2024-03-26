@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player
 @namespace      userstyles.world/user/tersiswilvin
-@version        1.1.4
+@version        1.1.5
 @description    A cosmic panda player layout for V3.
 @author         TersisWilvin
 @license        CC-BY-SA-4.0
@@ -11,7 +11,10 @@
 @//var          checkbox                                          DEVMode       "Dev Mode"                    1
 @var            checkbox                                          QualityBadges "Display Quality Badges"      0
 @var            checkbox                                          ExtraSFNItems "Extra Stats for nerds items" 0
+@var            checkbox                                          FlashVA       "Flash Volume Animation"      0
+@var            checkbox                                          ForceWOYTi    "Force Watch On Youtube icon" 0
 @var            checkbox                                          Forceinfobar  "Force infobar"               0
+@var            checkbox                                          HESR          "Hide Extra Settings Rows"    1
 @var            checkbox                                          IBIO          "Infobar Icons Only"          0
 @var            select                                            PlayerMonth   "Player Month"                ["Middle*", "Late"]
 @var            checkbox                                          TooltipCrtFix "Tooltip 2012L Caret Fix"     0
@@ -542,15 +545,30 @@
         border-radius: 3px 3px 0 0;
         padding: 0;
         &-row {
+            & when (@HESR = 1) {
+                &:first-child {
+                    border-left: none;
+                    box-shadow: none
+                }
+            }
             display: inline-block;
             vertical-align: top;
             box-shadow: 1px 0 0 0 #2b2b2b inset;
             border-left: 1px solid #000;
+            & when (@HESR = 1) {
+                &:has([aria-label="Speed"]) {
+                    border-left: none;
+                    box-shadow: none
+                }
+            }
             padding: 0 3px;
             min-height: 135px;
             &:first-child {
                 border-left: transparent;
                 box-shadow: none
+            }
+            &:has(.ytp-segmented-control) when (@HESR = 1) {
+                display: none
             }
         }
         &-cell {
@@ -593,6 +611,10 @@
         background: none;
         border: none;
         bottom: 0!important;
+        &-content {
+            max-height: unset;
+            overflow-y: unset;
+        }
         &-button {
             color: #aaa;
             padding: 4px 7px;
@@ -1254,6 +1276,9 @@
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) 0 -156px;
                 height: 25px;
                 width: 52px;
+                & when (@ForceWOYTi = 1) {
+                    display: block !important;
+                }
                 &:focus, &:hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) 0 -183px;
                     height: 25px;
@@ -1493,10 +1518,18 @@
     }
     
     .ytp-volume-panel {
-        -webkit-transition: width 0.5s ease-in 0.5s;
-        -moz-transition: width 0.5s ease-in 0.5s;
-        -o-transition: width 0.5s ease-in 0.5s;
-        -ms-transition: width 0.5s ease-in 0.5s;
+        & when (@FlashVA = 0) {
+            -webkit-transition: width 0.5s ease-in 0.5s;
+            -moz-transition: width 0.5s ease-in 0.5s;
+            -o-transition: width 0.5s ease-in 0.5s;
+            -ms-transition: width 0.5s ease-in 0.5s;
+        }
+        & when (@FlashVA = 1) {
+            -webkit-transition: width 0.5s ease-in 0s;
+            -moz-transition: width 0.5s ease-in 0s;
+            -o-transition: width 0.5s ease-in 0s;
+            -ms-transition: width 0.5s ease-in 0s;
+        }
         .ytp-volume-control-hover & , .ytp-volume-slider-active & {
             width: 1px;
             -webkit-transition: width 0.5s ease-in 0.5s;
@@ -1506,6 +1539,12 @@
         }
         &:focus, .ytp-volume-control:hover & {
             width: 56px;
+            & when (@FlashVA = 0) {
+                width: 56px;
+            }
+            & when (@FlashVA = 1) {
+                width: 62px;
+            }
             -webkit-transition: width 0.1s linear 0s;
             -moz-transition: width 0.1s linear 0s;
             -o-transition: width 0.1s linear 0s;
@@ -1621,6 +1660,10 @@
         height: 13px;
         width: 51px;
         margin: 7px 6px 0 1px;
+        & when (@FlashVA = 1) {
+            float: right;
+            right: -4px;
+        }
         &-foreground {
             bottom: unset;
             height: 14px;
@@ -1689,9 +1732,13 @@
         box-shadow: 0 1px 0 0 rgba(255,255,255,0.2), inset -1px -1px 1px 0 rgba(0,0,0,0.2);
     }
     
+    .countdowntimer {
+        z-index: 930;
+    }
+    
     /*/
     == Info ==
-    2014 Cosmic Panda Player
+    V3 Cosmic Panda Player
     By TersisWilvin ( 9T2K )
     
     == Player Date Info ==
