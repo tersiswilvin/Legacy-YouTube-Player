@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player
 @namespace      userstyles.world/user/tersiswilvin
-@version        1.1.7
+@version        1.1.6
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
 @license        CC-BY-SA-4.0
@@ -1940,23 +1940,6 @@
                 display: none;
             }
         }
-    }
-    
-    .annotation-link-icon {
-        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAQAAACR313BAAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAAAEgAAABIAEbJaz4AAAAJdnBBZwAAAA8AAAAPAGMcExMAAAB2SURBVBjTnZG7CYBQDEXvUxEEUbByA9dyFSs3cAYHsHIDW1uneC5wLPyAf/HcLocEkhjQA470rs1lxo/dM6XYsgKwVWtWhLCw19mTThnudUIPQEF11iHdIoVLe9Q+zSKFiPGPwwNytIsFA5LM5U2sIm9e/udLJnOJqhuNa71/AAAAAElFTkSuQmCC);
-        background-size: contain;
-        position: absolute;
-        opacity: 0.8;
-        &:not(.annotation:hover &) {
-            opacity: 0.6 !important
-        }
-    }
-    .annotation-close-button {
-        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 21 21' style='stroke: lightgray;stroke-width: 2px;fill: black;opacity: 0.85;position: absolute;top: 0;left: 0;'%3E%3Ccircle cx='10' cy='10' r='8'%3E%3C/circle%3E%3Cpath d='M 7,7 L 13,13'%3E%3C/path%3E%3Cpath d='M 7,13 L 13,7'%3E%3C/path%3E%3C/svg%3E");
-        top: 5px;
-        right: 5px;
-        width: 21px;
-        height: 21px
     }
     
     /*/
