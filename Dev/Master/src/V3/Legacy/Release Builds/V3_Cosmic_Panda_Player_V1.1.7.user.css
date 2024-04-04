@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player
 @namespace      userstyles.world/user/tersiswilvin
-@version        1.1.8
+@version        1.1.7
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
 @license        CC-BY-SA-4.0
@@ -1031,8 +1031,6 @@
         -ms-transition: height 0.5s, top 0.5s, -ms-transform 0.5s;
         -o-transition: height 0.5s, top 0.5s, -o-transform 0.5s;
         -webkit-transition: height 0.5s, top 0.5s, -webkit-transform 0.5s;
-        -webkit-transform-origin: unset !important;
-        transform-origin: unset !important;
         .disabled-control-seek &,.autominimize-progress-bar:not(.ytp-block-autohide) &,html:not([data-player-size=fullscreen]) :not(.ideal-aspect).autominimize-progress-bar-non-aspect:not(.ytp-block-autohide) &, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &,.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &,html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) & {
             top: -8px;
             -moz-transform: scale(0);
@@ -1879,7 +1877,7 @@
         padding: 0
     }
     
-    html:not([data-player-size=fullscreen]) .html5-video-player:not(.ideal-aspect).autominimize-progress-bar-non-aspect .ytp-player-content.ytp-subtitles-player-content, .html5-video-player:not(.ad-interrupting):not(.hide-info-bar):not(.playing-mode) .ytp-player-content.ytp-subtitles-player-content, .ytp-block-autohide:not(.ad-interrupting):not(.hide-info-bar) .ytp-player-content.ytp-subtitles-player-content, .ended-mode.endscreen-loaded:not(.el-detailpage):not(.house-brand):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content, html[data-player-size=fullscreen] .html5-video-player:not(.house-brand):not(.ad-interrupting):not(.playing-mode) .ytp-player-content.ytp-subtitles-player-content, html[data-player-size=fullscreen] .ytp-block-autohide:not(.house-brand):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content {
+    html:not([data-player-size=fullscreen]) .html5-video-player:not(.ideal-aspect).autominimize-progress-bar-non-aspect .ytp-player-content.ytp-subtitles-player-content {
         bottom: 43px;
         -moz-transition: bottom 0.05s ease-in;
         -ms-transition: bottom 0.05s ease-in;
@@ -1887,15 +1885,7 @@
         -webkit-transition: bottom 0.05s ease-in;
         transition: bottom 0.05s ease-in;
     }
-    html:not([data-player-size=fullscreen]) .html5-video-player:not(.ideal-aspect).autominimize-progress-bar-non-aspect .html5-video-content .caption-window, .html5-video-player:not(.ad-interrupting):not(.hide-info-bar):not(.playing-mode) .html5-video-content .caption-window, .ytp-block-autohide:not(.ad-interrupting):not(.hide-info-bar) .html5-video-content .caption-window, .ended-mode.endscreen-loaded:not(.el-detailpage):not(.house-brand):not(.ad-interrupting) .html5-video-content .caption-window, html[data-player-size=fullscreen] .html5-video-player:not(.house-brand):not(.ad-interrupting):not(.playing-mode) .html5-video-content .caption-window {
-        padding-bottom: 13px;
-        -moz-transition: padding-bottom 0.05s ease-in;
-        -ms-transition: padding-bottom 0.05s ease-in;
-        -o-transition: padding-bottom 0.05s ease-in;
-        -webkit-transition: padding-bottom 0.05s ease-in;
-        transition: padding-bottom 0.05s ease-in;
-    }
-    .disabled-control-seek .ytp-player-content.ytp-subtitles-player-content,.autominimize-progress-bar:not(.ytp-block-autohide) .ytp-player-content.ytp-subtitles-player-content, html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) .ytp-player-content.ytp-subtitles-player-content, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content, .ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content {
+    .disabled-control-seek .ytp-player-content.ytp-subtitles-player-content,.autominimize-progress-bar:not(.ytp-block-autohide) .ytp-player-content.ytp-subtitles-player-content, html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) .ytp-player-content.ytp-subtitles-player-content, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content, .ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content, html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) & {
         bottom: 38px;
         -moz-transition: bottom 0.5s ease-in;
         -ms-transition: bottom 0.5s ease-in;
@@ -1903,37 +1893,20 @@
         -webkit-transition: bottom 0.5s ease-in;
         transition: bottom 0.5s ease-in;
     }
-    .disabled-control-seek .html5-video-content .caption-window,.autominimize-progress-bar:not(.ytp-block-autohide) .html5-video-content .caption-window, html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) .html5-video-content .caption-window, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) .html5-video-content .caption-window, .ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) .html5-video-content .caption-window {
-        padding-bottom: 8px;
-        -moz-transition: padding-bottom 0.5s ease-in;
-        -ms-transition: padding-bottom 0.5s ease-in;
-        -o-transition: padding-bottom 0.5s ease-in;
-        -webkit-transition: padding-bottom 0.5s ease-in;
-        transition: padding-bottom 0.5s ease-in;
+    .html5-video-player:not(.ad-interrupting):not(.hide-info-bar):not(.playing-mode) .ytp-player-content.ytp-subtitles-player-content, .ytp-block-autohide:not(.ad-interrupting):not(.hide-info-bar) .ytp-player-content.ytp-subtitles-player-content, .ended-mode.endscreen-loaded:not(.el-detailpage):not(.house-brand):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content, html[data-player-size=fullscreen] .html5-video-player:not(.house-brand):not(.ad-interrupting):not(.playing-mode) .ytp-player-content.ytp-subtitles-player-content, html[data-player-size=fullscreen] .ytp-block-autohide:not(.house-brand):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content {
+        bottom: 43px;
+        -moz-transition: bottom 0.05s ease-in;
+        -ms-transition: bottom 0.05s ease-in;
+        -o-transition: bottom 0.05s ease-in;
+        -webkit-transition: bottom 0.05s ease-in;
+        transition: bottom 0.05s ease-in;
     }
-    html[data-player-size=fullscreen] .ytp-block-autohide:not(.house-brand):not(.ad-interrupting) .html5-video-content .caption-window {
-        padding-bottom: 43px;
-        -moz-transition: padding-bottom 0.05s ease-in;
-        -ms-transition: padding-bottom 0.05s ease-in;
-        -o-transition: padding-bottom 0.05s ease-in;
-        -webkit-transition: padding-bottom 0.05s ease-in;
-        transition: padding-bottom 0.05s ease-in;
-    }
-    html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide) .ytp-player-content.ytp-subtitles-player-content, html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content {
-        bottom: 0;
+    html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide) .ytp-player-content.ytp-subtitles-player-content {
         -moz-transition: bottom 0.5s ease-in;
         -ms-transition: bottom 0.5s ease-in;
         -o-transition: bottom 0.5s ease-in;
         -webkit-transition: bottom 0.5s ease-in;
         transition: bottom 0.5s ease-in;
-    }
-    html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide) .html5-video-content .caption-window, html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) .html5-video-content .caption-window {
-        padding-bottom: 0;
-        -moz-transition: padding-bottom 0.5s ease-in;
-        -ms-transition: padding-bottom 0.5s ease-in;
-        -o-transition: padding-bottom 0.5s ease-in;
-        -webkit-transition: padding-bottom 0.5s ease-in;
-        transition: padding-bottom 0.5s ease-in;
     }
     
     & not when (@PlayButtonStyle = 2014) {
