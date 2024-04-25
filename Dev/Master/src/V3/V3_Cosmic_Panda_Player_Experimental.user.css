@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player
 @namespace      userstyles.world/user/tersiswilvin
-@version        1.1.9
+@version        1.1.10
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
 @license        CC-BY-SA-4.0
@@ -1439,6 +1439,9 @@
         }
         &-prev {
             transform: scalex(-1);
+            & when (@HPaNB = 0) {
+                display: block !important;
+            }
             & when (@HPaNB = 1) {
                 display: none !important;
             }
@@ -1484,6 +1487,9 @@
             }
         }
         &-next {
+            & when (@HPaNB = 0) {
+                display: block !important;
+            }
             & when (@HPaNB = 1) {
                 display: none !important;
             }
@@ -2684,6 +2690,7 @@
     X => Not Started
     ! => Deciding
     % => Pending
+    & => Started
     * => Finished
     /*/
 }
