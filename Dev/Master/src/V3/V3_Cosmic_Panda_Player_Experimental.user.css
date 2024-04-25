@@ -1641,6 +1641,16 @@
                     height: 25px;
                     width: 30px;
                 }
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -89px -124px;
+                    height: 25px;
+                    width: 30px;
+                    &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -96px -97px;
+                        height: 25px;
+                        width: 30px;
+                    }
+                }
             }
             & when (@PlayerMonth = Late) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1998px;
@@ -1662,6 +1672,16 @@
                     background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -64px -151px;
                     height: 25px;
                     width: 30px;
+                }
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) 0 -70px;
+                    height: 25px;
+                    width: 30px;
+                    &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -64px -151px;
+                        height: 25px;
+                        width: 30px;
+                    }
                 }
             }
             & when (@PlayerMonth = Late) {
@@ -1805,6 +1825,16 @@
                 height: 25px;
                 width: 30px;
             }
+            .light-theme & {
+                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -89px -16px;
+                height: 25px;
+                width: 30px;
+                &:focus, &:hover {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -32px -205px;
+                    height: 25px;
+                    width: 30px;
+                }
+            }
         }
         & when (@PlayerMonth = Late) {
             background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1458px;
@@ -1826,6 +1856,16 @@
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -32px -232px;
                 height: 25px;
                 width: 30px;
+            }
+            .light-theme & {
+                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -57px -124px;
+                height: 25px;
+                width: 30px;
+                &:focus, &:hover {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -32px -232px;
+                    height: 25px;
+                    width: 30px;
+                }
             }
         }
         & when (@PlayerMonth = Late) {
