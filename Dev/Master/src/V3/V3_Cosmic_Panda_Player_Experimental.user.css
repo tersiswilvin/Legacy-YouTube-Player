@@ -1274,40 +1274,40 @@
         &-play {
             & when (@PlayerMonth = Middle) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -96px -232px;
-                height: 25px;
+                height: 26px;
                 width: 55px;
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -121px -43px;
-                    height: 25px;
+                    height: 26px;
                     width: 55px;
                 }
                 .light-theme & {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -96px -232px;
-                    height: 25px;
+                    height: 26px;
                     width: 55px;
                     &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -121px -43px;
-                        height: 25px;
+                        height: 26px;
                         width: 55px;
                     }
                 }
             }
             & when (@PlayerMonth = Late) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1323px;
-                height: 25px;
+                height: 26px;
                 width: 55px;
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -459px;
-                    height: 25px;
+                    height: 26px;
                     width: 55px;
                 }
                 .light-theme & {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1323px;
-                    height: 25px;
+                    height: 26px;
                     width: 55px;
                     &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -459px;
-                        height: 25px;
+                        height: 26px;
                         width: 55px;
                     }
                 }
@@ -1316,36 +1316,36 @@
         &-pause {
             & when (@PlayerMonth = Middle) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -64px -178px;
-                height: 25px;
+                height: 26px;
                 width: 55px;
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -64px -259px;
-                    height: 25px;
+                    height: 26px;
                     width: 55px;
                 }
                 .light-theme & {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -64px -178px;
-                    height: 25px;
+                    height: 26px;
                     width: 55px;
                     &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -64px -259px;
-                        height: 25px;
+                        height: 26px;
                         width: 55px;
                     }
                 }
             }
             & when (@PlayerMonth = Late) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1134px;
-                height: 25px;
+                height: 26px;
                 width: 55px;
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -513px;
-                    height: 25px;
+                    height: 26px;
                     width: 55px;
                 }
                 .light-theme & {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1134px;
-                    height: 25px;
+                    height: 26px;
                     width: 55px;
                     &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -513px;
@@ -1356,40 +1356,40 @@
         &-stop {
             & when (@PlayerMonth = Middle) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) 0 -124px;
-                height: 25px;
+                height: 26px;
                 width: 55px;
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -96px -151px;
-                    height: 25px;
+                    height: 26px;
                     width: 55px;
                 }
                 .light-theme & {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -96px -151px;
-                    height: 25px;
+                    height: 26px;
                     width: 55px;
                     &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) 0 -124px;
-                        height: 25px;
+                        height: 26px;
                         width: 55px;
                     }
                 }
             }
             & when (@PlayerMonth = Late) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -891px;
-                height: 25px;
+                height: 26px;
                 width: 55px;
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1296px;
-                    height: 25px;
+                    height: 26px;
                     width: 55px;
                 }
                 .light-theme & {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -891px;
-                    height: 25px;
+                    height: 26px;
                     width: 55px;
                     &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1296px;
-                        height: 25px;
+                        height: 26px;
                         width: 55px;
                     }
                 }
@@ -1398,40 +1398,40 @@
         &-replay {
             & when (@PlayerMonth = Middle) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -96px -286px;
-                height: 25px;
+                height: 26px;
                 width: 55px;
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -32px -16px;
-                    height: 25px;
+                    height: 26px;
                     width: 55px;
                 }
                 .light-theme & {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -96px -286px;
-                    height: 25px;
+                    height: 26px;
                     width: 55px;
                     &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -32px -16px;
-                        height: 25px;
+                        height: 26px;
                         width: 55px;
                     }
                 }
             }
             & when (@PlayerMonth = Late) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1053px;
-                height: 25px;
+                height: 26px;
                 width: 55px;
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1566px;
-                    height: 25px;
+                    height: 26px;
                     width: 55px;
                 }
                 .light-theme & {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1053px;
-                    height: 25px;
+                    height: 26px;
                     width: 55px;
                     &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1566px;
-                        height: 25px;
+                        height: 26px;
                         width: 55px;
                     }
                 }
@@ -1444,40 +1444,40 @@
             }
             & when (@PlayerMonth = Middle) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -32px -43px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                     background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -153px -151px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                 }
                 .light-theme & {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -32px -43px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                     &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -153px -151px;
-                        height: 25px;
+                        height: 26px;
                         width: 30px;
                     }
                 }
             }
             & when (@PlayerMonth = Late) {
                 background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -2132px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                     background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0px -485px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                 }
                 .light-theme & {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -2132px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                     &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0px -485px;
-                        height: 25px;
+                        height: 26px;
                         width: 30px;
                     }
                 }
@@ -1489,40 +1489,40 @@
             }
             & when (@PlayerMonth = Middle) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -32px -43px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                     background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -153px -151px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                 }
                 .light-theme & {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -32px -43px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                     &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -153px -151px;
-                        height: 25px;
+                        height: 26px;
                         width: 30px;
                     }
                 }
             }
             & when (@PlayerMonth = Late) {
                 background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -2132px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                     background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0px -485px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                 }
                 .light-theme & {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -2132px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                     &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0px -485px;
-                        height: 25px;
+                        height: 26px;
                         width: 30px;
                     }
                 }
@@ -1531,40 +1531,40 @@
         &-volume {
             & when (@PlayerMonth = Middle) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -153px -232px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
                 &:focus, &:hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -32px -97px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                 }
                 .light-theme & {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -153px -232px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                     &:focus, &:hover {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -32px -97px;
-                        height: 25px;
+                        height: 26px;
                         width: 30px;
                     }
                 }
             }
             & when (@PlayerMonth = Late) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1269px;
-                height: 25px;
+                height: 26px;
                 width: 35px;
                 &:focus, &:hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -27px;
-                    height: 25px;
+                    height: 26px;
                     width: 35px;
                 }
                 .light-theme & {
                     background: no-repeat url(///s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1269px;
-                    height: 25px;
+                    height: 26px;
                     width: 35px;
                     &:focus, &:hover {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -27px;
-                        height: 25px;
+                        height: 26px;
                         width: 35px;
                     }
                 }
@@ -1573,40 +1573,40 @@
             &[data-value=off] {
                 & when (@PlayerMonth = Middle) {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -121px -16px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                     &:focus, &:hover {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) 0 -43px;
-                        height: 25px;
+                        height: 26px;
                         width: 30px;
                     }
                     .light-theme & {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -121px -16px;
-                        height: 25px;
+                        height: 26px;
                         width: 30px;
                         &:focus, &:hover {
                             background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) 0 -43px;
-                            height: 25px;
+                            height: 26px;
                             width: 30px;
                         }
                     }
                 }
                 & when (@PlayerMonth = Late) {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1107px;
-                    height: 25px;
+                    height: 26px;
                     width: 35px;
                     &:focus, &:hover {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -783px;
-                        height: 25px;
+                        height: 26px;
                         width: 35px;
                     }
                     .light-theme & {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1107px;
-                        height: 25px;
+                        height: 26px;
                         width: 35px;
                         &:focus, &:hover {
                             background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -783px;
-                            height: 25px;
+                            height: 26px;
                             width: 35px;
                         }
                     }
@@ -1615,40 +1615,40 @@
             &[data-value=min] {
                 & when (@PlayerMonth = Middle) {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -153px -232px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                     &:focus, &:hover {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -32px -97px;
-                        height: 25px;
+                        height: 26px;
                         width: 30px;
                     }
                     .light-theme & {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -153px -232px;
-                        height: 25px;
+                        height: 26px;
                         width: 30px;
                         &:focus, &:hover {
                             background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -32px -97px;
-                            height: 25px;
+                            height: 26px;
                             width: 30px;
                         }
                     }
                 }
                 & when (@PlayerMonth = Late) {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1269px;
-                    height: 25px;
+                    height: 26px;
                     width: 35px;
                     &:focus, &:hover {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -27px;
-                        height: 25px;
+                        height: 26px;
                         width: 35px;
                     }
                     .light-theme & {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1269px;
-                        height: 25px;
+                        height: 26px;
                         width: 35px;
                         &:focus, &:hover {
                             background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -27px;
-                            height: 25px;
+                            height: 26px;
                             width: 35px;
                         }
                     }
@@ -1657,40 +1657,40 @@
             &[data-value=normal], &[data-value=quiet] {
                 & when (@PlayerMonth = Middle) {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -121px -259px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                     &:focus, &:hover {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -96px -205px;
-                        height: 25px;
+                        height: 26px;
                         width: 30px;
                     }
                     .light-theme & {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -121px -259px;
-                        height: 25px;
+                        height: 26px;
                         width: 30px;
                         &:focus, &:hover {
                             background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -96px -205px;
-                            height: 25px;
+                            height: 26px;
                             width: 30px;
                         }
                     }
                 }
                 & when (@PlayerMonth = Late) {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1539px;
-                    height: 25px;
+                    height: 26px;
                     width: 35px;
                     &:focus, &:hover {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -2025px;
-                        height: 25px;
+                        height: 26px;
                         width: 35px;
                     }
                     .light-theme & {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1539px;
-                        height: 25px;
+                        height: 26px;
                         width: 35px;
                         &:focus, &:hover {
                             background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -2025px;
-                            height: 25px;
+                            height: 26px;
                             width: 35px;
                         }
                     }
@@ -1699,40 +1699,40 @@
             &[data-value=max], &[data-value=loud] {
                 & when (@PlayerMonth = Middle) {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -153px -259px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                     &:focus, &:hover {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -121px -124px;
-                        height: 25px;
+                        height: 26px;
                         width: 30px;
                     }
                     .light-theme & {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -153px -259px;
-                        height: 25px;
+                        height: 26px;
                         width: 30px;
                         &:focus, &:hover {
                             background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -121px -124px;
-                            height: 25px;
+                            height: 26px;
                             width: 30px;
                         }
                     }
                 }
                 & when (@PlayerMonth = Late) {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1485px;
-                    height: 25px;
+                    height: 26px;
                     width: 35px;
                     &:focus, &:hover {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -378px;
-                        height: 25px;
+                        height: 26px;
                         width: 35px;
                     }
                     .light-theme & {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1485px;
-                        height: 25px;
+                        height: 26px;
                         width: 35px;
                         &:focus, &:hover {
                             background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -378px;
-                            height: 25px;
+                            height: 26px;
                             width: 35px;
                         }
                     }
@@ -1742,40 +1742,40 @@
         &-fullscreen-enter {
             & when (@PlayerMonth = Middle) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -89px -124px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -96px -97px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                 }
                 .light-theme & {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -89px -124px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                     &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -96px -97px;
-                        height: 25px;
+                        height: 26px;
                         width: 30px;
                     }
                 }
             }
             & when (@PlayerMonth = Late) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1998px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1377px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                 }
                 .light-theme & {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1998px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                     &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1377px;
-                        height: 25px;
+                        height: 26px;
                         width: 30px;
                     }
                 }
@@ -1784,40 +1784,40 @@
         &-fullscreen-exit {
             & when (@PlayerMonth = Middle) {
                 background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) 0 -70px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                     background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -64px -151px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                 }
                 .light-theme & {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) 0 -70px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                     &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -64px -151px;
-                        height: 25px;
+                        height: 26px;
                         width: 30px;
                     }
                 }
             }
             & when (@PlayerMonth = Late) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -2187px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1647px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                 }
                 .light-theme & {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -2187px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                     &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1647px;
-                        height: 25px;
+                        height: 26px;
                         width: 30px;
                     }
                 }
@@ -1829,40 +1829,40 @@
             }
             & when (@PlayerMonth = Middle) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) 0 -156px;
-                height: 25px;
+                height: 26px;
                 width: 52px;
                 &:focus, &:hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) 0 -183px;
-                    height: 25px;
+                    height: 26px;
                     width: 52px;
                 }
                 .light-theme & {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) 0 -156px;
-                    height: 25px;
+                    height: 26px;
                     width: 52px;
                     &:focus, &:hover {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) 0 -183px;
-                        height: 25px;
+                        height: 26px;
                         width: 52px;
                     }
                 }
             }
             & when (@PlayerMonth = Late) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1863px;
-                height: 25px;
+                height: 26px;
                 width: 52px;
                 &:focus, &:hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -945px;
-                    height: 25px;
+                    height: 26px;
                     width: 52px;
                 }
                 .light-theme & {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1863px;
-                    height: 25px;
+                    height: 26px;
                     width: 52px;
                     &:focus, &:hover {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -945px;
-                        height: 25px;
+                        height: 26px;
                         width: 52px;
                     }
                 }
@@ -1871,69 +1871,69 @@
         &-playlist {
             & when (@PlayerMonth = Middle) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -64px -97px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
                 &:focus, &:hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -32px -259px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                 }
                 .playlist-loaded &, .playlist-loaded &:focus, .playlist-loaded &:hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) 0 -16px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                 }
                 .light-theme & {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -64px -97px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                     &:focus, &:hover {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -32px -259px;
-                        height: 25px;
+                        height: 26px;
                         width: 30px;
                     }
                     .playlist-loaded&, .playlist-loaded&:focus, .playlist-loaded&:hover {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) 0 -16px;
-                        height: 25px;
+                        height: 26px;
                         width: 30px;
                     }
                 }
             }
             & when (@PlayerMonth = Late) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -216px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
                 &:focus, &:hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -324px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                 }
                 .playlist-loaded & {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1512px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                     &:focus, &:hover {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -837px;
-                        height: 25px;
+                        height: 26px;
                         width: 30px;
                     }
                 }
                 .light-theme & {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -216px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                     &:focus, &:hover {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -324px;
-                        height: 25px;
+                        height: 26px;
                         width: 30px;
                     }
                     .playlist-loaded& {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1512px;
-                        height: 25px;
+                        height: 26px;
                         width: 30px;
                         &:focus, &:hover {
                             background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -837px;
-                            height: 25px;
+                            height: 26px;
                             width: 30px;
                         }
                     }
@@ -1943,40 +1943,40 @@
         &-watch-later {
             & when (@PlayerMonth = Middle) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) 0 -259px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
                 &:focus, &:hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -64px -232px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                 }
                 .light-theme & {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) 0 -259px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                     &:focus, &:hover {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -64px -232px;
-                        height: 25px;
+                        height: 26px;
                         width: 30px;
                     }
                 }
             }
             & when (@PlayerMonth = Late) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1971px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
                 &:focus, &:hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -189px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                 }
                 .light-theme & {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1971px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                     &:focus, &:hover {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -189px;
-                        height: 25px;
+                        height: 26px;
                         width: 30px;
                     }
                 }
@@ -1986,40 +1986,40 @@
     .ytp-size-toggle-large {
         & when (@PlayerMonth = Middle) {
             background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -89px -16px;
-            height: 25px;
+            height: 26px;
             width: 30px;
             &:focus, &:hover {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -32px -205px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
             }
             .light-theme & {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -89px -16px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
                 &:focus, &:hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -32px -205px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                 }
             }
         }
         & when (@PlayerMonth = Late) {
             background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1458px;
-            height: 25px;
+            height: 26px;
             width: 30px;
             &:focus, &:hover {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1620px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
             }
             .light-theme & {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1458px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
                 &:focus, &:hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1620px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                 }
             }
@@ -2028,40 +2028,40 @@
     .ytp-size-toggle-small {
         & when (@PlayerMonth = Middle) {
             background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -57px -124px;
-            height: 25px;
+            height: 26px;
             width: 30px;
             &:focus, &:hover {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -32px -232px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
             }
             .light-theme & {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -57px -124px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
                 &:focus, &:hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -32px -232px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                 }
             }
         }
         & when (@PlayerMonth = Late) {
             background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -918px;
-            height: 25px;
+            height: 26px;
             width: 30px;
             &:focus, &:hover {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1836px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
             }
             .light-theme & {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -918px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
                 &:focus, &:hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1836px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                 }
             }
@@ -2070,40 +2070,40 @@
     .ytp-settings-button, .ytp-settings-button-active {
         & when (@PlayerMonth = Middle) {
             background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -153px -124px;
-            height: 25px;
+            height: 26px;
             width: 30px;
             &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -128px -205px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
             }
             .light-theme & {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -153px -124px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -128px -205px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                 }
             }
         }
         & when (@PlayerMonth = Late) {
             background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -810px;
-            height: 25px;
+            height: 26px;
             width: 30px;
             &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -675px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
             }
             .light-theme & {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -810px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -675px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                 }
             }
@@ -2127,20 +2127,20 @@
         }
         & when (@PlayerMonth = Middle) {
             background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -153px -124px #141414;
-            height: 25px;
+            height: 26px;
             width: 30px;
             &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -128px -205px #141414;
-                height: 25px;
+                height: 26px;
                 width: 30px;
             }
             .light-theme & {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -153px -124px #f1f1f1;
-                height: 25px;
+                height: 26px;
                 width: 30px;
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -128px -205px #f1f1f1;
-                    height: 25px;
+                    height: 26px;
                 width: 30px;
                 }
             }
@@ -2161,59 +2161,59 @@
     .ytp-subtitles-button {
         & when (@PlayerMonth = Middle) {
             background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -64px -205px;
-            height: 25px;
+            height: 26px;
             width: 30px;
             &:focus, &:hover {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -64px -286px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
             }
             &-active, &-active:focus, &-active:hover {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -32px -151px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
             }
             .cc-international & {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -153px -286px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
                 &:focus, &:hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) 0 -286px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                 }
                 &-active, &-active:focus, &-active:hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -32px -286px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                 }
             }
             .light-theme & {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -64px -205px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
                 &:focus, &:hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -64px -286px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                 }
                 &-active, &-active:focus, &-active:hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -32px -151px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                 }
                 .cc-international& {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -153px -286px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                     &:focus, &:hover {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) 0 -286px;
-                        height: 25px;
+                        height: 26px;
                         width: 30px;
                     }
                     &-active, &-active:focus, &-active:hover {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -32px -286px;
-                        height: 25px;
+                        height: 26px;
                         width: 30px;
                     }
                 }
@@ -2221,39 +2221,39 @@
         }
         & when (@PlayerMonth = Late) {
             background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1593px;
-            height: 25px;
+            height: 26px;
             width: 30px;
             &:focus, &:hover {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -108px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
             }
             &-active {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -756px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
                 &:focus, &:hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1782px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                 }
             }
             .cc-international & {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -54px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
                 &:focus, &:hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -243px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                 }
                 &-active {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -2079px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                     &:focus, &:hover {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -135px;
-                        height: 25px;
+                        height: 26px;
                         width: 30px;
                     }
                 }
