@@ -1,14 +1,15 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player
 @namespace      userstyles.world/user/tersiswilvin
-@version        1.1.8
+@version        1.1.9
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
 @license        CC-BY-SA-4.0
 @preprocessor   less
-@var            checkbox                                          AHCursor        "Auto Hide Cursor"            0
+@var            select                                            Autohide        "Autohide Preset"             ["Off", "On", "Fade*", "Auto"]
+@var            checkbox                                          AhCursor        "Autohide Cursor"             0
 @var            checkbox                                          CMIcons         "Context Menu Icons"          0
-@//var          checkbox                                          DEVMode         "Dev Mode"                    1
+@var            checkbox                                          DEVMode         "Developer Mode"              0
 @var            checkbox                                          QualityBadges   "Display Quality Badges"      0
 @var            checkbox                                          ExtraSFNItems   "Extra Stats for nerds items" 0
 @var            checkbox                                          FlashVA         "Flash Volume Animation"      0
@@ -19,6 +20,7 @@
 @var            checkbox                                          IBIO            "Infobar Icons Only"          0
 @var            select                                            PlayButtonStyle "Play Button Style"           ["2012E*", "2013E", "2014"]
 @var            select                                            PlayerMonth     "Player Month"                ["Middle*", "Late"]
+@var            checkbox                                          Flash7Warning   "Show Flash7 Warning"         1
 @var            checkbox                                          TooltipCrtFix   "Tooltip 2012L Caret Fix"     0
 ==/UserStyle== */
 
@@ -30,22 +32,26 @@
     .html5-video-player {
         position: unset;
         color: unset;
-        & when (@AHCursor = 0) {
+        & when (@AhCursor = 0) {
             cursor: pointer;
         }
-        &.ytp-block-autohide when (@AHCursor = 1) {
+        &.ytp-block-autohide when (@AhCursor = 1) {
             cursor: pointer;
         }
-        &:not(.ytp-block-autohide) when (@AHCursor = 1) {
+        &:not(.ytp-block-autohide) when (@AhCursor = 1) {
             cursor: none
         }
-        & when (@AHCursor = 0) {
+        & when (@AhCursor = 0) {
             html[data-player-size=fullscreen] &:not(.ytp-block-autohide) {
                 cursor: pointer;
             }
         }
         .captions-asr .caption-window-transform:before {
             content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAsCAQAAACnWtJ+AAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAAAEgAAABIAEbJaz4AAAAJdnBBZwAAACQAAAAsALDekYcAAARFSURBVEjH7ZZJbFQFGMd/b5l9hi50w9LNpp2SFimBggJVkqHSEkMiCSKoCBgTvUhU7MHAxbicNIFwMhhPEoyRKFGjFomBCoG0bCFpAamF0pTpRqedDjPzpu/zMG0p02k7NsaT3+19efm9/7c/+JdMSerVUFEwGUPmD1Kw4MSJikGQMGOpgdRpHisZFL+7+dJhysjBkeSNlMxCDqt273/wQKT3zpMbyEGfD0Yjk+V174TCIiLh0Pt7yMPyzzEKLsorXu3yi4iEwrsOUE062nzCWoTv2yYREZHtn7CWPGyoqONVTFlPGst8jXHMFz9QRwEOdJxkkE0mzlS1WVlMw+U2EZEuP1vx4saCh2JqfvqIGkrwpFJBBQ9PTOjZe5DVLMSCm1I2tpwTud2+soF8rHODdPLwnW0VEWm/zfOU4MBGPr6Tp+Pw5q8owT4zQJ0EucmurgT4uokehhnDQe6+el8twMnmdUeIzN3lCgtY/vZnIiL9AXZQjhMbBTx3vVNEpP0OW6nAg4qChpasgvq4Livu2iqA9g4GCTKGlcydK8uLAN74nE76CKNjwwJEiWAkAylYcJUUArS2M0wEwU7GKz6AM1d/v0IvoyikkfXBClX2X6Cf4UcDnVCk48jKAOjsIYSBgg3PkjKAUy30McIYTha9ueHAp9HQNy9fuUyY8PQlY6WYbfHqsJsKHNgo5oW4p/QtKnFhYzH19wdFRG62UIn70Uyp46Gpk1MeI4agoE6M660AUUw0nPXl6RnQP7LpCJKoZqL8yrRKPPSYSLwgVYsB+gM3A0QTt+fDpp++VCXhSRQBcNqTDbE6/pKJOalEHfdMVEVHR8EkcqIdoDBrZyk29GQ5AhNjYBjAl4cFDRgjOhgAeKkUOxomo9fvdNwC+Hjb9IZUxzExwgP3AZY+hh0dMBjt6gFYWYYHO0KQ7vc+jIb+bN3cyDCx5KHFCHV2A9RW4sYKRAicuQjQ8BTZLEAjjP/46cYtZbsuXmWQaLJkm0QZvdEJUFKIBzsQYejH8wDegr3PkIMLGKHn4Fk66SWUOMATigyC318CqCgiAzc6BkM/X2v6A2DfixSShQ2TMEFGZ7t2NorYfPeeiMiho6whCwtulnj3xC/KhfPUkjvbadKmaHMWZ69eCulph5sZIkQUc8CIBJ9dA/n56Vd/aSM02SQzggQFvSP2Wr1Fz0ob8p/vYIQIMYyz9x6PLqs5duj17xgkPDPooenksv74r48sfw0HeVTs3YiXXOypniQXFd7d/QERkS9PUEcBdjSsuPDgwjo7ZuqtEswBWaA/vQKqvTfuXvMTIoKBQRRjrn09FWRiIqf61paUFsKmVf6/Lt4llNh4qZmKBy9buntERCKj69azcL6/NRrpVFXu8HeJHD1EFWmpJjjxngsxIn1D535zt20/Rh/BxOGcyZJ9T8eGFZUYYYxUOmcmUHzNKkiqkP/tP7a/AWM8u6WDedEoAAAAAElFTkSuQmCC);
+            background: none;
+            background-size: unset;
+            width: unset;
+            height: unset;
             display: block;
             left: -36px;
             opacity: 0.5;
@@ -60,6 +66,10 @@
         }
         .captions-asr .caption-window-transform:after {
             content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAsCAQAAACnWtJ+AAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAAAEgAAABIAEbJaz4AAAAJdnBBZwAAACQAAAAsALDekYcAAAQ/SURBVEjH7ZZbTFxVFIa/M2cuB2aGOx3KbbgEBgLWVqEGWtI2RIHGaNTUao01ND6oD5Imoj6gD4b20aY1mtgYjTHW6EMTm9SYYhrTIqYGKraYgrUUoYRSKHSAmQ5zWz7MMGVgBsZL4ovrvJzss/eff/1r7X8d+JdCSWiPig4hSOCfAKlomDESxI0bHxJv23psksjG3t9pUXtc+PGtxWqt0JNd1zh2ReTu3dYOtrIBQ7yN6zHS7bJn20HT3u+44e7y4cf5d1ippLG5tcPtEREZm6x4gXLMsZSNp5GCDh0KECTQ7xyeeWo7pJhzLV9dZg4PwcSAQpUyY0TBjw/fwHxhxpZyqCzp/vX6TVx4E0lHh5Uiar45RC1FWDFgwcGesUkRkf4rtJCPMREgI3m1zUMXRXp/pIlSLBjI5KG2oyIiIo2vswlrIq2sUdz9eejQd+doJA8TSRTzxOAfIiI9fTSSs7LesTRSMH082lBSYocSu+tWz3UW8ALG7LQdD0BWxqEuplnAH4+JgoqKgg4rFewZHBURGRrhUQowkUw5+6adIiIH32ULKdHJ6SJvBsykkooFPR6mGHnpOEC5fX8NGRgJsMDM4DBAQzUWjMvOLgNSsbCxs+Wd3eSTioKLW9//cv4SwPONpKMhLDLXNwhQXIgZQyxGCkbS7q9uP/7WZy+3sJEkAswzdbYXoLIMKyYUfLhHJgCy0klCH81oSR0LVVd7RURmZ2gmHxNmqkpfDdWOpynCRBIVtIZX9lIU3UtLqILs/mh6HtLSm8tJRiWI95ozop8OBcEfqZQ+fIFWAAkBvFed006A6vywkBK5Ucqq9lu1oot80KEmawCKICt8cLUrrlpZEluPaX9pYRbAqUEWCaKgj3RvgCACy9IJhldi9JEc3gswfG1oFBdBVLTnSgFmnHgJACqGxhyA23P4VhrJEpCf+cfbL5/zuts7GWcBQcNaUwYwNoELH6BHuy8X4PYsHvzRUPpwxl5m+i5teuVg3snfmcWDnhSyW+oAzl/EySJgxNJQBTAyjht/dGr3VHDjY/bIKH58KJjZ0LbDUQBw+gJ3WAQ0rMWFAL+N4MIbi1EIKhCWUiGZLApfewag64dvB7iDDwMW0ivsAF//zEL8Cbcc3EbDTxdERNwexwEqsWAgi/pjJ0REbtzkMeyYYosd3WzqkQdrtwK8/d7QAFNhzWyPbAM4eXZtN1rOKJPNXxwV+fQD6slFQ3/Pat0exwHKSV4fBhQ0bDjamqgghyTU5eZ/8gw7sa07WCNQRsxYMWNERaOAhz85JSIy7XS0UoE5MZglsNBjxEb9s4dD9tH5IXVkJconGi6FqhffDI3sM900YUf76zCgI3P7zkWXiMj4BE/iwBqz0gkwSqX6xDGRybGqfVSTtu4fVdwwYaP6yze27aKM9PjqrD94dRjQ0BPEy+JaQzExpRRW++b/8V/FnxY9mQsrANWLAAAAAElFTkSuQmCC);
+            background: none;
+            background-size: unset;
+            width: unset;
+            height: unset;
             display: block;
             opacity: 0.5;
             position: absolute;
@@ -71,6 +81,49 @@
             -webkit-transform: translate(0, -50%);
             transform: translate(0, -50%);
             margin: 0
+        }
+        & when (@Flash7Warning = 1) {
+            [class*="flash7"] ~ * &:before {
+                content: "V3 Cosmic Panda Player does not support Flash7 Player.\APlease disable either Flash7 Player or V3 Cosmic Panda Player.";
+                text-align: center;
+                color: #fff;
+                font-size: 13px;
+                line-height: 20px;
+                font-weight: bold;
+                white-space: pre;
+                text-shadow: 0 -1px 1px rgba(0, 0, 0, .45);
+                background-color: #913d37;
+                filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr=#c95145,EndColorStr=#913d37);
+                background-image: -moz-linear-gradient(top, #c95145 0, #913d37 45px);
+                background-image: -ms-linear-gradient(top, #c95145 0, #913d37 45px);
+                background-image: -o-linear-gradient(top, #c95145 0, #913d37 45px);
+                background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #c95145), color-stop(45px, #913d37));
+                background-image: -webkit-linear-gradient(top, #c95145 0, #913d37 45px);
+                background-image: linear-gradient(to bottom, #c95145 0, #913d37 45px);
+                width: 100%;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+                border-radius: 3px;
+                padding: 10px;
+                position: absolute;
+                z-index: 1000;
+                cursor: auto;
+                top: 0;
+                -moz-transition: top 0.05s ease-in;
+                -ms-transition: top 0.05s ease-in;
+                -o-transition: top 0.05s ease-in;
+                -webkit-transition: top 0.05s ease-in;
+                transition: top 0.05s ease-in;
+            }
+            [class*="flash7"] ~ * &.autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting):before, [class*="flash7"] ~ * &.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting):before, html[data-player-size=fullscreen] [class*="flash7"] ~ * &.autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting):before {
+                top: -100px;
+                -moz-transition: top 0.5s ease-in;
+                -ms-transition: top 0.5s ease-in;
+                -o-transition: top 0.5s ease-in;
+                -webkit-transition: top 0.5s ease-in;
+                transition: top 0.5s ease-in;
+            }
         }
     }
     
@@ -224,10 +277,10 @@
     }
     
     .html5-info-bar {
-        & when (@Forceinfobar = 0) /*and (@DEVMode = 0)*/ {
+        & when (@Forceinfobar = 0) and (@DEVMode = 0) {
             display: none;
         }
-        & when (@Forceinfobar = 1) /*or (@DEVMode = 1)*/ {
+        & when (@Forceinfobar = 1) or (@DEVMode = 1) {
             display: block;
         }
         height: 28px;
@@ -867,6 +920,14 @@
     .html5-video-container {
         bottom: 30px;
         z-index: 920;
+        & when (@Autohide = On) or (@Autohide = Auto) {
+            .html5-video-player:not(.ended-mode) &, html:not([data-player-size=fullscreen]) :not(.ideal-aspect).autominimize-progress-bar-non-aspect:not(.cued-mode) & {
+                bottom: 0
+            }
+            .video-stream {
+                height: 100% !important;
+            }
+        }
     }
     .html5-main-video {
         z-index: unset;
@@ -875,16 +936,35 @@
     .html5-video-controls {
         min-height: 26px;
         z-index: 930;
-        /*
         html[data-player-size=fullscreen] & when (@DEVMode = 1) {
             bottom: 39px;
         }
-        */
         -moz-transition: bottom 0.05s ease-in;
         -ms-transition: bottom 0.05s ease-in;
         -o-transition: bottom 0.05s ease-in;
         -webkit-transition: bottom 0.05s ease-in;
         transition: bottom 0.05s ease-in;
+        .cued-mode & when (@Autohide = On) or (@Autohide = Auto) {
+            bottom: -35px;
+        }
+        .disabled-control-seek &,.autominimize-progress-bar:not(.ytp-block-autohide) &,html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) &, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &,.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) & {
+            & when (@Autohide = On) {
+                bottom: -35px;
+                -moz-transition: bottom 0.5s ease-in;
+                -ms-transition: bottom 0.5s ease-in;
+                -o-transition: bottom 0.5s ease-in;
+                -webkit-transition: bottom 0.5s ease-in;
+                transition: bottom 0.5s ease-in;
+            }
+            & when (@Autohide = Auto) {
+                bottom: -27px;
+                -moz-transition: bottom 0.5s ease-in;
+                -ms-transition: bottom 0.5s ease-in;
+                -o-transition: bottom 0.5s ease-in;
+                -webkit-transition: bottom 0.5s ease-in;
+                transition: bottom 0.5s ease-in;
+            }
+        }
         .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &,.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &,html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) & {
             bottom: -35px;
             -moz-transition: bottom 0.5s ease-in;
@@ -908,7 +988,12 @@
         -webkit-transition: height 0.05s ease-in;
         transition: height 0.05s ease-in;
         .disabled-control-seek &,.autominimize-progress-bar:not(.ytp-block-autohide) &,html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) &, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &,.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &,html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) & {
-            height: 3px !important;
+            & when (@Autohide = Off) or (@Autohide = On) {
+                height: 8px !important;
+            }
+            & when (@Autohide = Fade) or (@Autohide = Auto) {
+                height: 3px !important;
+            }
             -moz-transition: height 0.5s ease-in;
             -ms-transition: height 0.5s ease-in;
             -o-transition: height 0.5s ease-in;
@@ -948,7 +1033,12 @@
         bottom: unset;
         z-index: -2;
         .disabled-control-seek &,.autominimize-progress-bar:not(.ytp-block-autohide) &,html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) &, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &,.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &,html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) & {
-            height: 3px;
+            & when (@Autohide = Off) or (@Autohide = On) {
+                height: 8px;
+            }
+            & when (@Autohide = Fade) or (@Autohide = Auto) {
+                height: 3px;
+            }
             -moz-transition: height 0.5s ease-in;
             -ms-transition: height 0.5s ease-in;
             -o-transition: height 0.5s ease-in;
@@ -976,9 +1066,18 @@
             background-image: -webkit-linear-gradient(top, #c00 0, #600 100%);
             background-image: linear-gradient(to bottom, #c00 0, #600 100%);
             filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr=#cc0000,EndColorStr=#660000);
+            .html5-progress-bar.white & {
+                background-image: -moz-linear-gradient(top, #eee 0, #949494 100%);
+                background-image: -ms-linear-gradient(top, #eee 0, #949494 100%);
+                background-image: -o-linear-gradient(top, #eee 0, #949494 100%);
+                background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #eee), color-stop(100%, #949494));
+                background-image: -webkit-linear-gradient(top, #eee 0, #949494 100%);
+                background-image: linear-gradient(to bottom, #eee 0, #949494 100%);
+                filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr=#eee,EndColorStr=#949494);
+            }
         }
         & when (@PlayerMonth = Late) {
-                background: #b91f1f;
+            background: #b91f1f;
         }
     }
     .ytp-load-progress, .ytp-spacecast-load-progress {
@@ -1033,18 +1132,35 @@
         -webkit-transition: height 0.5s, top 0.5s, -webkit-transform 0.5s;
         -webkit-transform-origin: unset !important;
         transform-origin: unset !important;
-        .disabled-control-seek &,.autominimize-progress-bar:not(.ytp-block-autohide) &,html:not([data-player-size=fullscreen]) :not(.ideal-aspect).autominimize-progress-bar-non-aspect:not(.ytp-block-autohide) &, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &,.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &,html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) & {
-            top: -8px;
-            -moz-transform: scale(0);
-            -ms-transform: scale(0);
-            -o-transform: scale(0);
-            -webkit-transform: scale(0);
-            transform: scale(0);
-            transition: height 0.5s, top 0.5s, transform 0.5s;
-            -moz-transition: height 0.5s, top 0.5s, -moz-transform 0.5s;
-            -ms-transition: height 0.5s, top 0.5s, -ms-transform 0.5s;
-            -o-transition: height 0.5s, top 0.5s, -o-transform 0.5s;
-            -webkit-transition: height 0.5s, top 0.5s, -webkit-transform 0.5s;
+        & when not (@Autohide = Off) {
+            .disabled-control-seek &,.autominimize-progress-bar:not(.ytp-block-autohide) &,html:not([data-player-size=fullscreen]) :not(.ideal-aspect).autominimize-progress-bar-non-aspect:not(.ytp-block-autohide) &, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &,.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &,html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) & {
+                top: -8px;
+                -moz-transform: scale(0);
+                -ms-transform: scale(0);
+                -o-transform: scale(0);
+                -webkit-transform: scale(0);
+                transform: scale(0);
+                transition: height 0.5s, top 0.5s, transform 0.5s;
+                -moz-transition: height 0.5s, top 0.5s, -moz-transform 0.5s;
+                -ms-transition: height 0.5s, top 0.5s, -ms-transform 0.5s;
+                -o-transition: height 0.5s, top 0.5s, -o-transform 0.5s;
+                -webkit-transition: height 0.5s, top 0.5s, -webkit-transform 0.5s;
+            }
+        }
+        & when (@Autohide = Off) {
+            .disabled-control-seek &,.autominimize-progress-bar:not(.ytp-block-autohide) &,html:not([data-player-size=fullscreen]) :not(.ideal-aspect).autominimize-progress-bar-non-aspect:not(.ytp-block-autohide) &, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &,.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &,html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) & {
+                top: -5px;
+                -moz-transform: none;
+                -ms-transform: none;
+                -o-transform: none;
+                -webkit-transform: none;
+                transform: none;
+                transition: height 0.5s, top 0.5s, transform 0.5s;
+                -moz-transition: height 0.5s, top 0.5s, -moz-transform 0.5s;
+                -ms-transition: height 0.5s, top 0.5s, -ms-transform 0.5s;
+                -o-transition: height 0.5s, top 0.5s, -o-transform 0.5s;
+                -webkit-transition: height 0.5s, top 0.5s, -webkit-transform 0.5s;
+            }
         }
         .html5-progress-bar:focus &, &:active, &:hover, .seeking-mode & {
             & when (@PlayerMonth = Middle) {
@@ -1065,6 +1181,17 @@
                     -moz-border-radius: 4px;
                     -webkit-border-radius: 4px;
                     border-radius: 4px;
+                }
+            }
+        }
+        .html5-progress-bar.white:focus &, .html5-progress-bar.white &:hover, .html5-progress-bar.white &:active {
+            & when (@PlayerMonth = Middle) {
+                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) -33px -118px;
+            }
+            & when (@PlayerMonth = Late) {
+                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) -101px -169px;
+                &:after {
+                    background: #bbb;
                 }
             }
         }
@@ -1089,13 +1216,30 @@
                 -ms-box-shadow: inset 0 -5px 5px #000;
                 -webkit-box-shadow: inset 0 -5px 5px #000;
                 box-shadow: inset 0 -5px 5px #000;
+                .light-theme & {
+                    filter: none;
+                    background: #f1f1f1;
+                    cursor: default;
+                    -moz-box-shadow: inset 0 -5px 5px #fff;
+                    -ms-box-shadow: inset 0 -5px 5px #fff;
+                    -webkit-box-shadow: inset 0 -5px 5px #fff;
+                    box-shadow: inset 0 -5px 5px #fff;
+                }
             }
+        }
+        .light-theme & {
+            color: #000;
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAdCAAAAABOalm1AAAACXBIWXMAAABIAAAASABGyWs+AAAACXZwQWcAAAABAAAAHQAh4gKwAAAAKUlEQVQI1x3CiQkAIAwEwfTfpW9M1BIEl2PGnl052EgEljgmBro0VJQPA6waTMFaRdkAAAAASUVORK5CYII=);
+            background-repeat: repeat-x;
         }
     }
     & when (@PlayerMonth = Late) {
         .html5-player-chrome {
             padding: 1px 0 0;
             background: #1b1b1b;
+            .light-theme & {
+                background: #ccc;
+            }
         }
     }
     .ytp-button {
@@ -1113,104 +1257,183 @@
         -ms-box-sizing: content-box;
         -webkit-box-sizing: content-box;
         box-sizing: content-box;
-        /*
         .html5-player-chrome & when (@DEVMode = 1) {
             display: block !important;
         }
-        */
         & when (@PlayerMonth = Middle) {
             &-play, &-pause, &-replay, &-stop, &-watch-on-youtube {
                 &, &:hover, &:focus {
                     border-right: 1px solid #222;
                     padding-right: 1px;
+                    .light-theme & {
+                        border-color: #ccc;
+                    }
                 }
             }
         }
         &-play {
             & when (@PlayerMonth = Middle) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -96px -232px;
-                height: 25px;
+                height: 26px;
                 width: 55px;
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -121px -43px;
-                    height: 25px;
+                    height: 26px;
                     width: 55px;
+                }
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -96px -232px;
+                    height: 26px;
+                    width: 55px;
+                    &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -121px -43px;
+                        height: 26px;
+                        width: 55px;
+                    }
                 }
             }
             & when (@PlayerMonth = Late) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1323px;
-                height: 25px;
+                height: 26px;
                 width: 55px;
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -459px;
-                    height: 25px;
+                    height: 26px;
                     width: 55px;
+                }
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1323px;
+                    height: 26px;
+                    width: 55px;
+                    &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -459px;
+                        height: 26px;
+                        width: 55px;
+                    }
                 }
             }
         }
         &-pause {
             & when (@PlayerMonth = Middle) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -64px -178px;
-                height: 25px;
+                height: 26px;
                 width: 55px;
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -64px -259px;
-                    height: 25px;
+                    height: 26px;
                     width: 55px;
+                }
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -64px -178px;
+                    height: 26px;
+                    width: 55px;
+                    &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -64px -259px;
+                        height: 26px;
+                        width: 55px;
+                    }
                 }
             }
             & when (@PlayerMonth = Late) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1134px;
-                height: 25px;
+                height: 26px;
                 width: 55px;
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -513px;
-                    height: 25px;
+                    height: 26px;
                     width: 55px;
+                }
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1134px;
+                    height: 26px;
+                    width: 55px;
+                    &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -513px;
+                    }
                 }
             }
         }
         &-stop {
             & when (@PlayerMonth = Middle) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) 0 -124px;
-                height: 25px;
+                height: 26px;
                 width: 55px;
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -96px -151px;
-                    height: 25px;
+                    height: 26px;
                     width: 55px;
+                }
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -96px -151px;
+                    height: 26px;
+                    width: 55px;
+                    &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) 0 -124px;
+                        height: 26px;
+                        width: 55px;
+                    }
                 }
             }
             & when (@PlayerMonth = Late) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -891px;
-                height: 25px;
+                height: 26px;
                 width: 55px;
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1296px;
-                    height: 25px;
+                    height: 26px;
                     width: 55px;
+                }
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -891px;
+                    height: 26px;
+                    width: 55px;
+                    &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1296px;
+                        height: 26px;
+                        width: 55px;
+                    }
                 }
             }
         }
         &-replay {
             & when (@PlayerMonth = Middle) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -96px -286px;
-                height: 25px;
+                height: 26px;
                 width: 55px;
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -32px -16px;
-                    height: 25px;
+                    height: 26px;
                     width: 55px;
+                }
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -96px -286px;
+                    height: 26px;
+                    width: 55px;
+                    &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -32px -16px;
+                        height: 26px;
+                        width: 55px;
+                    }
                 }
             }
             & when (@PlayerMonth = Late) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1053px;
-                height: 25px;
+                height: 26px;
                 width: 55px;
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1566px;
-                    height: 25px;
+                    height: 26px;
                     width: 55px;
+                }
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1053px;
+                    height: 26px;
+                    width: 55px;
+                    &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1566px;
+                        height: 26px;
+                        width: 55px;
+                    }
                 }
             }
         }
@@ -1221,22 +1444,42 @@
             }
             & when (@PlayerMonth = Middle) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -32px -43px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                     background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -153px -151px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
+                }
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -32px -43px;
+                    height: 26px;
+                    width: 30px;
+                    &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -153px -151px;
+                        height: 26px;
+                        width: 30px;
+                    }
                 }
             }
             & when (@PlayerMonth = Late) {
                 background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -2132px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                     background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0px -485px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
+                }
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -2132px;
+                    height: 26px;
+                    width: 30px;
+                    &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0px -485px;
+                        height: 26px;
+                        width: 30px;
+                    }
                 }
             }
         }
@@ -1246,66 +1489,337 @@
             }
             & when (@PlayerMonth = Middle) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -32px -43px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                     background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -153px -151px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
+                }
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -32px -43px;
+                    height: 26px;
+                    width: 30px;
+                    &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -153px -151px;
+                        height: 26px;
+                        width: 30px;
+                    }
                 }
             }
             & when (@PlayerMonth = Late) {
                 background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -2132px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                     background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0px -485px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
+                }
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -2132px;
+                    height: 26px;
+                    width: 30px;
+                    &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0px -485px;
+                        height: 26px;
+                        width: 30px;
+                    }
+                }
+            }
+        }
+        &-volume {
+            & when (@PlayerMonth = Middle) {
+                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -153px -232px;
+                height: 26px;
+                width: 30px;
+                &:focus, &:hover {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -32px -97px;
+                    height: 26px;
+                    width: 30px;
+                }
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -153px -232px;
+                    height: 26px;
+                    width: 30px;
+                    &:focus, &:hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -32px -97px;
+                        height: 26px;
+                        width: 30px;
+                    }
+                }
+            }
+            & when (@PlayerMonth = Late) {
+                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1269px;
+                height: 26px;
+                width: 35px;
+                &:focus, &:hover {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -27px;
+                    height: 26px;
+                    width: 35px;
+                }
+                .light-theme & {
+                    background: no-repeat url(///s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1269px;
+                    height: 26px;
+                    width: 35px;
+                    &:focus, &:hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -27px;
+                        height: 26px;
+                        width: 35px;
+                    }
+                }
+            }
+
+            &[data-value=off] {
+                & when (@PlayerMonth = Middle) {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -121px -16px;
+                    height: 26px;
+                    width: 30px;
+                    &:focus, &:hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) 0 -43px;
+                        height: 26px;
+                        width: 30px;
+                    }
+                    .light-theme & {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -121px -16px;
+                        height: 26px;
+                        width: 30px;
+                        &:focus, &:hover {
+                            background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) 0 -43px;
+                            height: 26px;
+                            width: 30px;
+                        }
+                    }
+                }
+                & when (@PlayerMonth = Late) {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1107px;
+                    height: 26px;
+                    width: 35px;
+                    &:focus, &:hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -783px;
+                        height: 26px;
+                        width: 35px;
+                    }
+                    .light-theme & {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1107px;
+                        height: 26px;
+                        width: 35px;
+                        &:focus, &:hover {
+                            background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -783px;
+                            height: 26px;
+                            width: 35px;
+                        }
+                    }
+                }
+            }
+            &[data-value=min] {
+                & when (@PlayerMonth = Middle) {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -153px -232px;
+                    height: 26px;
+                    width: 30px;
+                    &:focus, &:hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -32px -97px;
+                        height: 26px;
+                        width: 30px;
+                    }
+                    .light-theme & {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -153px -232px;
+                        height: 26px;
+                        width: 30px;
+                        &:focus, &:hover {
+                            background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -32px -97px;
+                            height: 26px;
+                            width: 30px;
+                        }
+                    }
+                }
+                & when (@PlayerMonth = Late) {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1269px;
+                    height: 26px;
+                    width: 35px;
+                    &:focus, &:hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -27px;
+                        height: 26px;
+                        width: 35px;
+                    }
+                    .light-theme & {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1269px;
+                        height: 26px;
+                        width: 35px;
+                        &:focus, &:hover {
+                            background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -27px;
+                            height: 26px;
+                            width: 35px;
+                        }
+                    }
+                }
+            }
+            &[data-value=normal], &[data-value=quiet] {
+                & when (@PlayerMonth = Middle) {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -121px -259px;
+                    height: 26px;
+                    width: 30px;
+                    &:focus, &:hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -96px -205px;
+                        height: 26px;
+                        width: 30px;
+                    }
+                    .light-theme & {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -121px -259px;
+                        height: 26px;
+                        width: 30px;
+                        &:focus, &:hover {
+                            background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -96px -205px;
+                            height: 26px;
+                            width: 30px;
+                        }
+                    }
+                }
+                & when (@PlayerMonth = Late) {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1539px;
+                    height: 26px;
+                    width: 35px;
+                    &:focus, &:hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -2025px;
+                        height: 26px;
+                        width: 35px;
+                    }
+                    .light-theme & {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1539px;
+                        height: 26px;
+                        width: 35px;
+                        &:focus, &:hover {
+                            background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -2025px;
+                            height: 26px;
+                            width: 35px;
+                        }
+                    }
+                }
+            }
+            &[data-value=max], &[data-value=loud] {
+                & when (@PlayerMonth = Middle) {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -153px -259px;
+                    height: 26px;
+                    width: 30px;
+                    &:focus, &:hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -121px -124px;
+                        height: 26px;
+                        width: 30px;
+                    }
+                    .light-theme & {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -153px -259px;
+                        height: 26px;
+                        width: 30px;
+                        &:focus, &:hover {
+                            background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -121px -124px;
+                            height: 26px;
+                            width: 30px;
+                        }
+                    }
+                }
+                & when (@PlayerMonth = Late) {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1485px;
+                    height: 26px;
+                    width: 35px;
+                    &:focus, &:hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -378px;
+                        height: 26px;
+                        width: 35px;
+                    }
+                    .light-theme & {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1485px;
+                        height: 26px;
+                        width: 35px;
+                        &:focus, &:hover {
+                            background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -378px;
+                            height: 26px;
+                            width: 35px;
+                        }
+                    }
                 }
             }
         }
         &-fullscreen-enter {
             & when (@PlayerMonth = Middle) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -89px -124px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -96px -97px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
+                }
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -89px -124px;
+                    height: 26px;
+                    width: 30px;
+                    &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -96px -97px;
+                        height: 26px;
+                        width: 30px;
+                    }
                 }
             }
             & when (@PlayerMonth = Late) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1998px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1377px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
+                }
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1998px;
+                    height: 26px;
+                    width: 30px;
+                    &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1377px;
+                        height: 26px;
+                        width: 30px;
+                    }
                 }
             }
         }
         &-fullscreen-exit {
             & when (@PlayerMonth = Middle) {
                 background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) 0 -70px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                     background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -64px -151px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
+                }
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) 0 -70px;
+                    height: 26px;
+                    width: 30px;
+                    &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -64px -151px;
+                        height: 26px;
+                        width: 30px;
+                    }
                 }
             }
             & when (@PlayerMonth = Late) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -2187px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1647px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
+                }
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -2187px;
+                    height: 26px;
+                    width: 30px;
+                    &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1647px;
+                        height: 26px;
+                        width: 30px;
+                    }
                 }
             }
         }
@@ -1315,58 +1829,113 @@
             }
             & when (@PlayerMonth = Middle) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) 0 -156px;
-                height: 25px;
+                height: 26px;
                 width: 52px;
                 &:focus, &:hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) 0 -183px;
-                    height: 25px;
+                    height: 26px;
                     width: 52px;
+                }
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) 0 -156px;
+                    height: 26px;
+                    width: 52px;
+                    &:focus, &:hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) 0 -183px;
+                        height: 26px;
+                        width: 52px;
+                    }
                 }
             }
             & when (@PlayerMonth = Late) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1863px;
-                height: 25px;
+                height: 26px;
                 width: 52px;
                 &:focus, &:hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -945px;
-                    height: 25px;
+                    height: 26px;
                     width: 52px;
+                }
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1863px;
+                    height: 26px;
+                    width: 52px;
+                    &:focus, &:hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -945px;
+                        height: 26px;
+                        width: 52px;
+                    }
                 }
             }
         }
         &-playlist {
             & when (@PlayerMonth = Middle) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -64px -97px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
                 &:focus, &:hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -32px -259px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                 }
                 .playlist-loaded &, .playlist-loaded &:focus, .playlist-loaded &:hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) 0 -16px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
+                }
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -64px -97px;
+                    height: 26px;
+                    width: 30px;
+                    &:focus, &:hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -32px -259px;
+                        height: 26px;
+                        width: 30px;
+                    }
+                    .playlist-loaded&, .playlist-loaded&:focus, .playlist-loaded&:hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) 0 -16px;
+                        height: 26px;
+                        width: 30px;
+                    }
                 }
             }
             & when (@PlayerMonth = Late) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -216px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
                 &:focus, &:hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -324px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                 }
                 .playlist-loaded & {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1512px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                     &:focus, &:hover {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -837px;
-                        height: 25px;
+                        height: 26px;
                         width: 30px;
+                    }
+                }
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -216px;
+                    height: 26px;
+                    width: 30px;
+                    &:focus, &:hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -324px;
+                        height: 26px;
+                        width: 30px;
+                    }
+                    .playlist-loaded& {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1512px;
+                        height: 26px;
+                        width: 30px;
+                        &:focus, &:hover {
+                            background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -837px;
+                            height: 26px;
+                            width: 30px;
+                        }
                     }
                 }
             }
@@ -1374,22 +1943,42 @@
         &-watch-later {
             & when (@PlayerMonth = Middle) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) 0 -259px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
                 &:focus, &:hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -64px -232px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
+                }
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) 0 -259px;
+                    height: 26px;
+                    width: 30px;
+                    &:focus, &:hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -64px -232px;
+                        height: 26px;
+                        width: 30px;
+                    }
                 }
             }
             & when (@PlayerMonth = Late) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1971px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
                 &:focus, &:hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -189px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
+                }
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1971px;
+                    height: 26px;
+                    width: 30px;
+                    &:focus, &:hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -189px;
+                        height: 26px;
+                        width: 30px;
+                    }
                 }
             }
         }
@@ -1397,157 +1986,274 @@
     .ytp-size-toggle-large {
         & when (@PlayerMonth = Middle) {
             background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -89px -16px;
-            height: 25px;
+            height: 26px;
             width: 30px;
             &:focus, &:hover {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -32px -205px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
+            }
+            .light-theme & {
+                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -89px -16px;
+                height: 26px;
+                width: 30px;
+                &:focus, &:hover {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -32px -205px;
+                    height: 26px;
+                    width: 30px;
+                }
             }
         }
         & when (@PlayerMonth = Late) {
             background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1458px;
-            height: 25px;
+            height: 26px;
             width: 30px;
             &:focus, &:hover {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1620px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
+            }
+            .light-theme & {
+                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1458px;
+                height: 26px;
+                width: 30px;
+                &:focus, &:hover {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1620px;
+                    height: 26px;
+                    width: 30px;
+                }
             }
         }
     }
     .ytp-size-toggle-small {
         & when (@PlayerMonth = Middle) {
             background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -57px -124px;
-            height: 25px;
+            height: 26px;
             width: 30px;
             &:focus, &:hover {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -32px -232px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
+            }
+            .light-theme & {
+                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -57px -124px;
+                height: 26px;
+                width: 30px;
+                &:focus, &:hover {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -32px -232px;
+                    height: 26px;
+                    width: 30px;
+                }
             }
         }
         & when (@PlayerMonth = Late) {
             background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -918px;
-            height: 25px;
+            height: 26px;
             width: 30px;
             &:focus, &:hover {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1836px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
+            }
+            .light-theme & {
+                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -918px;
+                height: 26px;
+                width: 30px;
+                &:focus, &:hover {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1836px;
+                    height: 26px;
+                    width: 30px;
+                }
             }
         }
     }
     .ytp-settings-button, .ytp-settings-button-active {
         & when (@PlayerMonth = Middle) {
             background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -153px -124px;
-            height: 25px;
+            height: 26px;
             width: 30px;
             &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -128px -205px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
+            }
+            .light-theme & {
+                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -153px -124px;
+                height: 26px;
+                width: 30px;
+                &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -128px -205px;
+                    height: 26px;
+                    width: 30px;
+                }
             }
         }
         & when (@PlayerMonth = Late) {
             background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -810px;
-            height: 25px;
+            height: 26px;
             width: 30px;
             &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -675px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
+            }
+            .light-theme & {
+                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -810px;
+                height: 26px;
+                width: 30px;
+                &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -675px;
+                    height: 26px;
+                    width: 30px;
+                }
             }
         }
     }
     .ytp-settings-button-active {
-        & when (@PlayerMonth = Middle) {
-            background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -153px -124px #141414;
-        }
-        & when (@PlayerMonth = Late) {
-            background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -810px #141414;
-        }
-        &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
-            & when (@PlayerMonth = Middle) {
-                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -128px -205px #141414;
-            }
-            & when (@PlayerMonth = Late) {
-                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -675px #141414;
-            }
-        }
         &, &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
             -moz-box-shadow: inset 0 -5px 5px #000;
             -ms-box-shadow: inset 0 -5px 5px #000;
             -webkit-box-shadow: inset 0 -5px 5px #000;
             box-shadow: inset 0 -5px 5px #000;
+            .light-theme & {
+                filter: none;
+                background: #f1f1f1;
+                cursor: default;
+                -moz-box-shadow: inset 0 -5px 5px #fff;
+                -ms-box-shadow: inset 0 -5px 5px #fff;
+                -webkit-box-shadow: inset 0 -5px 5px #fff;
+                box-shadow: inset 0 -5px 5px #fff;
+            }
+        }
+        & when (@PlayerMonth = Middle) {
+            background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -153px -124px #141414;
+            height: 26px;
+            width: 30px;
+            &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -128px -205px #141414;
+                height: 26px;
+                width: 30px;
+            }
+            .light-theme & {
+                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -153px -124px #f1f1f1;
+                height: 26px;
+                width: 30px;
+                &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -128px -205px #f1f1f1;
+                    height: 26px;
+                width: 30px;
+                }
+            }
+        }
+        & when (@PlayerMonth = Late) {
+            background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -810px #141414;
+            &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -675px #141414;
+            }
+            .light-theme & {
+                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -810px #f1f1f1;
+                &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -675px #f1f1f1;
+                }
+            }
         }
     }
     .ytp-subtitles-button {
         & when (@PlayerMonth = Middle) {
             background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -64px -205px;
-            height: 25px;
+            height: 26px;
             width: 30px;
             &:focus, &:hover {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -64px -286px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
             }
             &-active, &-active:focus, &-active:hover {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -32px -151px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
             }
             .cc-international & {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -153px -286px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
                 &:focus, &:hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) 0 -286px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                 }
                 &-active, &-active:focus, &-active:hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -32px -286px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
+                }
+            }
+            .light-theme & {
+                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -64px -205px;
+                height: 26px;
+                width: 30px;
+                &:focus, &:hover {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -64px -286px;
+                    height: 26px;
+                    width: 30px;
+                }
+                &-active, &-active:focus, &-active:hover {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -32px -151px;
+                    height: 26px;
+                    width: 30px;
+                }
+                .cc-international& {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -153px -286px;
+                    height: 26px;
+                    width: 30px;
+                    &:focus, &:hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) 0 -286px;
+                        height: 26px;
+                        width: 30px;
+                    }
+                    &-active, &-active:focus, &-active:hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -32px -286px;
+                        height: 26px;
+                        width: 30px;
+                    }
                 }
             }
         }
         & when (@PlayerMonth = Late) {
             background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1593px;
-            height: 25px;
+            height: 26px;
             width: 30px;
             &:focus, &:hover {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -108px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
             }
             &-active {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -756px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
                 &:focus, &:hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1782px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                 }
             }
             .cc-international & {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -54px;
-                height: 25px;
+                height: 26px;
                 width: 30px;
                 &:focus, &:hover {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -243px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                 }
                 &-active {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -2079px;
-                    height: 25px;
+                    height: 26px;
                     width: 30px;
                     &:focus, &:hover {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -135px;
-                        height: 25px;
+                        height: 26px;
                         width: 30px;
                     }
                 }
@@ -1610,10 +2316,22 @@
         }
     }
     & when (@PlayerMonth = Middle) {
-        .ytp-volume-control, .ytp-settings-button, .ytp-settings-button-active {
+        .ytp-volume-control, .ytp-settings-button, .ytp-settings-button-active, .ytp-button-next {
             &, &:hover, &:focus {
                 border-right: 1px solid #222;
                 padding-right: 1px;
+                .light-theme & {
+                    border-color: #ccc;
+                }
+            }
+        }
+        .ytp-button-prev {
+            &, &:hover, &:focus {
+                border-left: 1px solid #222;
+                padding-left: 1px;
+                .light-theme & {
+                    border-color: #ccc;
+                }
             }
         }
     }
@@ -1657,128 +2375,32 @@
             -ms-transition: width 0.1s linear 0s;
         }
     }
-    .ytp-button-volume {
-        & when (@PlayerMonth = Middle) {
-            background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -153px -232px;
-            height: 25px;
-            width: 30px;
-        }
-        & when (@PlayerMonth = Late) {
-            height: 25px;
-            width: 35px;
-        }
-        &:focus, &:hover {
-            background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -32px -97px;
-            height: 25px;
-            width: 30px;
-        }
-        &[data-value=off] {
-            & when (@PlayerMonth = Middle) {
-                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -121px -16px;
-                height: 25px;
-                width: 30px;
-                &:focus, &:hover {
-                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) 0 -43px;
-                    height: 25px;
-                    width: 30px;
-                }
-            }
-            & when (@PlayerMonth = Late) {
-                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1107px;
-                height: 25px;
-                width: 35px;
-                &:focus, &:hover {
-                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -783px;
-                    height: 25px;
-                    width: 35px;
-                }
-            }
-        }
-        &[data-value=min] {
-            & when (@PlayerMonth = Middle) {
-                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -153px -232px;
-                height: 25px;
-                width: 30px;
-                &:focus, &:hover {
-                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -32px -97px;
-                    height: 25px;
-                    width: 30px;
-                }
-            }
-            & when (@PlayerMonth = Late) {
-                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1269px;
-                height: 25px;
-                width: 35px;
-                &:focus, &:hover {
-                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -27px;
-                    height: 25px;
-                    width: 35px;
-                }
-            }
-        }
-        &[data-value=normal], &[data-value=quiet] {
-            & when (@PlayerMonth = Middle) {
-                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -121px -259px;
-                height: 25px;
-                width: 30px;
-                &:focus, &:hover {
-                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -96px -205px;
-                    height: 25px;
-                    width: 30px;
-                }
-            }
-            & when (@PlayerMonth = Late) {
-                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1539px;
-                height: 25px;
-                width: 35px;
-                &:focus, &:hover {
-                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -2025px;
-                    height: 25px;
-                    width: 35px;
-                }
-            }
-        }
-        &[data-value=max], &[data-value=loud] {
-            & when (@PlayerMonth = Middle) {
-                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -153px -259px;
-                height: 25px;
-                width: 30px;
-                &:focus, &:hover {
-                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -121px -124px;
-                    height: 25px;
-                    width: 30px;
-                }
-            }
-            & when (@PlayerMonth = Late) {
-                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1485px;
-                height: 25px;
-                width: 35px;
-                &:focus, &:hover {
-                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -378px;
-                    height: 25px;
-                    width: 35px;
-                }
-            }
-        }
-    }
     .ytp-volume-slider {
         display: block;
         height: 13px;
         width: 51px;
         margin: 7px 6px 0 1px;
+        padding: 1px 3px 0 0;
         & when (@FlashVA = 1) {
             float: right;
             right: -4px;
         }
         &-foreground {
+            top: 0;
             bottom: unset;
             height: 14px;
             width: 5px;
             & when (@PlayerMonth = Middle) {
                 background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAAAOCAYAAADdeGlVAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAABIAAAASABGyWs+AAAACXZwQWcAAABmAAAADgBV/HzAAAABW0lEQVRYw+2YsWqDQBjH/3dcBZekWCFk71KcsnQSksU36Bt06wP0ITqXkjfofqsZkrUUnNwKHbJYUKdSiUquQ1sxTYfESzkv+IOD78S7+//9+JRPIoSAbhBCqlgIMQZwB+ASwBOAW0LIQkdfGx5lDHiet/O9i/n8YKKLsqziLMsSwzCsn3me56lpmmcnjG2sGU8me53h+/7B9DaByW/RjMfhsPHaq+WyiimlVllLFKXUarJn2yAXpql1zT/H8da1035ftSxp2P1goFqDFPVqOSbYx3qtWoMURVGolvAvsPcuMa2EvXWJaSXsdbVSrUGKo01MOBqp1iDFXx//fXuWNqKswbzu9RqfO03TKg7DcMuA4zikazB35PeDeZHZbDarwiiKYNt2NY+/+xrtq0YIod2o47puwjkXQRAIzrlwXTfR1Vd9SL3KVFH/iQnAA/AA4BxfhXgDwNfRV51Pa+CPkys0tRoAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAAElFTkSuQmCC) -48px 0;
+                .light-theme & {
+                    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAAAOCAYAAADdeGlVAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAABIAAAASABGyWs+AAAACXZwQWcAAABmAAAADgBV/HzAAAABy0lEQVRYw92Yv2obQRCHv/MdF4VYpLhKkBeQwFWqVBIBvUTyBDkJXKRzSpO4jgvFr2CSh9AbqFCVJiQWqgKGNIu0s7ebwnvCdppYK7ycPhh27ziG38zs7b/EOUfTKcvyEDgDXgFz4P1kMrmOrSuELLaAHXEmIuP1eo1z7mW73c6Bt7FFhXAQW8COGKZpSp7nGGMAXscWFErybjhs/FyW93oopbDWopSiKAoWi0VsWUFkb5bL2BqC+drtIiJYa6mqCoDZbBZbVhDZag8WfwARoaoqRATnHCISW1IQmfIjrMk459BaY4xBaw2waZtK9nvPClP/KavVKrasILKfDR9ZNVrrzXRWF6rJZKdXV+e+/xzIAQMkwDPgKdDylgIOeHHPxy/gCXAIWOB/DnYpN1v1xD9Pga0zOR6PT0QEEam3y2itP23hanBLmwF++Hgqb8bH+JCF+cBb5n2nPm7n/a2977uFAY63TciDox4M/nnXnc+39ndxfTMGRqPRiYigtd7sypIk+dDv9+98P51OHyvUYB715L/rxHzxbVmWc2vtUb2+OOeWTb9q2pcrmW9FURwppWi1WgCXsQWFsi+F+djpdP4APeA78Dm2oFD+ApXfy33JgKtbAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAABJRU5ErkJggg==) -49px 0;
+                }
             }
             & when (@PlayerMonth = Late) {
                 background: #ddd;
+                .light-theme & {
+                    background: #222;
+                }
             }
             background-repeat: no-repeat;
             &:before {
@@ -1789,6 +2411,10 @@
                     width: 49px;
                     top: 0;
                     left: -49px;
+                    .light-theme & {
+                        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAAAOCAYAAADdeGlVAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAABIAAAASABGyWs+AAAACXZwQWcAAABmAAAADgBV/HzAAAABy0lEQVRYw92Yv2obQRCHv/MdF4VYpLhKkBeQwFWqVBIBvUTyBDkJXKRzSpO4jgvFr2CSh9AbqFCVJiQWqgKGNIu0s7ebwnvCdppYK7ycPhh27ziG38zs7b/EOUfTKcvyEDgDXgFz4P1kMrmOrSuELLaAHXEmIuP1eo1z7mW73c6Bt7FFhXAQW8COGKZpSp7nGGMAXscWFErybjhs/FyW93oopbDWopSiKAoWi0VsWUFkb5bL2BqC+drtIiJYa6mqCoDZbBZbVhDZag8WfwARoaoqRATnHCISW1IQmfIjrMk459BaY4xBaw2waZtK9nvPClP/KavVKrasILKfDR9ZNVrrzXRWF6rJZKdXV+e+/xzIAQMkwDPgKdDylgIOeHHPxy/gCXAIWOB/DnYpN1v1xD9Pga0zOR6PT0QEEam3y2itP23hanBLmwF++Hgqb8bH+JCF+cBb5n2nPm7n/a2977uFAY63TciDox4M/nnXnc+39ndxfTMGRqPRiYigtd7sypIk+dDv9+98P51OHyvUYB715L/rxHzxbVmWc2vtUb2+OOeWTb9q2pcrmW9FURwppWi1WgCXsQWFsi+F+djpdP4APeA78Dm2oFD+ApXfy33JgKtbAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAABJRU5ErkJggg==);
+                        background-repeat: no-repeat;
+                    }
                 }
                 & when (@PlayerMonth = Late) {
                     position: absolute;
@@ -1809,6 +2435,11 @@
                     height: 13px;
                     width: 49px;
                     top: 0;
+                    .light-theme & {
+                        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAAOCAYAAAHiaRFqAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKTSURBVGhD7du/axNhGAfw51SiokVilnixQyhpaKhkaQKZ4tCkdChdBRehyyXNXyDi6OYgEo4YxQxSAkLAOOqQYIYMCiIkmEXQVHBoSqb8uCY53yc+BRHaNN47vMPzgS/3vu/BS+9y9957b1KQaWdn5zoVHdMeLC7aVHbscGsL8vk81RSRTqevUtExaWeru70NuVyOas5oH0IhaR+hLK/X12EymUC5XKYWdqJUKvVQ5DFV2WnEifpIRaUoeRvm19agUqlQTR1SHzuy1INBqFarVGOnSiaTyn2ASKMtm0GMo18tywq6XK5fpmneoGZ2Au3N8rKSV7xq3m9swP7+Pui6DsVikVoZc2h3d9eOxWK2eKPjG5HJIy6op4ZhvKQqm+EcbdkM4/E40+1271GVzaDkO7SKXkSj0Ov1oF6vUws7DU/ez+hVOMwX1hyUXMhS0afVVRgMBlCr1aiFMQni8bgdjUb5JjwjnryfkdvtBq/XSzU2C6+8M6lwWcayrMxwOATbtmFhYWHPNM27tJsxR7RUIsHTBiaNKxSavjzjD59w6/F4oN1u017GnNHerazwgMWkeZtIQKfTwe8pAGdZ+JV9qVSivYw5oz1fWuIBi0nzeXNzOqMajUZwdHQEgUAACoUC7WXMGc227SdUZuq4JuISGYngOuMVkcsilyjnRfBBc1Pkb99FLorgfwBNRA5FZsG+cJH8eD0Tfz1v/SnOL5PJ3G+1WtPBCgetcDgM2Wz2Ee2ex22R478Nz8M3ETyeMQXb8BjneeBiX5gLItg3Bo8b+8D+hiLYN1MUL7ozqQzD+NJoNG71+/1pPRKJ/DRN89+BlbH/gk8YxqTx+/3PRA51Xf/h8/n2Dg4O7jSbTV52YBIA/AZcYtXNSxiHHwAAAA5lWElmTU0AKgAAAAgAAAAAAAAA0lOTAAAAAElFTkSuQmCC);
+                        background-repeat: no-repeat;
+                        background-position: -153px 0;
+                    }
                 }
                 & when (@PlayerMonth = Late) {
                     position: absolute;
@@ -1827,6 +2458,20 @@
         -moz-border-radius: 2px;
         -webkit-border-radius: 2px;
         border-radius: 2px;
+        .light-theme & {
+            color: #333;
+            background: #ccc;
+            background-image: -moz-linear-gradient(top, #ccc 0, #bbb 100%);
+            background-image: -ms-linear-gradient(top, #ccc 0, #bbb 100%);
+            background-image: -o-linear-gradient(top, #ccc 0, #bbb 100%);
+            background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ccc), color-stop(100%, #bbb));
+            background-image: -webkit-linear-gradient(top, #ccc 0, #bbb 100%);
+            background-image: linear-gradient(to bottom, #ccc 0, #bbb 100%);
+            -moz-box-shadow: 0 -1px 0 0 #bbb;
+            -ms-box-shadow: 0 -1px 0 0 #bbb;
+            -webkit-box-shadow: 0 -1px 0 0 #bbb;
+            box-shadow: 0 -1px 0 0 #bbb;
+        }
         .ytp-time-live-dvr & {
             cursor: pointer;
             background: #797979;
@@ -1867,18 +2512,16 @@
         }
     }
     
-    .countdowntimer, .standard-caption-window {
-        z-index: 920;
+    .countdowntimer, .standard-caption-window, .caption-window {
+        z-index: 930;
     }
     
     .caption-window-transform {
         line-height: normal;
     }
-    
     .standard-caption-window {
         padding: 0
     }
-    
     html:not([data-player-size=fullscreen]) .html5-video-player:not(.ideal-aspect).autominimize-progress-bar-non-aspect .ytp-player-content.ytp-subtitles-player-content, .html5-video-player:not(.ad-interrupting):not(.hide-info-bar):not(.playing-mode) .ytp-player-content.ytp-subtitles-player-content, .ytp-block-autohide:not(.ad-interrupting):not(.hide-info-bar) .ytp-player-content.ytp-subtitles-player-content, .ended-mode.endscreen-loaded:not(.el-detailpage):not(.house-brand):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content, html[data-player-size=fullscreen] .html5-video-player:not(.house-brand):not(.ad-interrupting):not(.playing-mode) .ytp-player-content.ytp-subtitles-player-content, html[data-player-size=fullscreen] .ytp-block-autohide:not(.house-brand):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content {
         bottom: 43px;
         -moz-transition: bottom 0.05s ease-in;
@@ -1896,15 +2539,54 @@
         transition: padding-bottom 0.05s ease-in;
     }
     .disabled-control-seek .ytp-player-content.ytp-subtitles-player-content,.autominimize-progress-bar:not(.ytp-block-autohide) .ytp-player-content.ytp-subtitles-player-content, html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) .ytp-player-content.ytp-subtitles-player-content, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content, .ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content {
-        bottom: 38px;
+        & when (@Autohide = Off) {
+            bottom: 43px;
+        }
+        & when (@Autohide = On) {
+            bottom: 0;
+        }
+        & when (@Autohide = Fade) {
+            bottom: 38px;
+        }
+        & when (@Autohide = Auto) {
+            bottom: 11px;
+        }
         -moz-transition: bottom 0.5s ease-in;
         -ms-transition: bottom 0.5s ease-in;
         -o-transition: bottom 0.5s ease-in;
         -webkit-transition: bottom 0.5s ease-in;
         transition: bottom 0.5s ease-in;
     }
+    & when (@Autohide = On) or (@Autohide = Auto) {
+        html:not([data-player-size=fullscreen]) .html5-video-player:not(.ideal-aspect).autominimize-progress-bar-non-aspect .html5-video-content:has(.video-annotations), .html5-video-player:not(.ad-interrupting):not(.hide-info-bar):not(.playing-mode) .html5-video-content:has(.video-annotations), .ytp-block-autohide:not(.ad-interrupting):not(.hide-info-bar) .html5-video-content:has(.video-annotations), .ended-mode.endscreen-loaded:not(.el-detailpage):not(.house-brand):not(.ad-interrupting) .html5-video-content:has(.video-annotations), html[data-player-size=fullscreen] .html5-video-player:not(.house-brand):not(.ad-interrupting):not(.playing-mode) .html5-video-content:has(.video-annotations) {
+            -moz-transition: padding-bottom 0.05s ease-in;
+            -ms-transition: padding-bottom 0.05s ease-in;
+            -o-transition: padding-bottom 0.05s ease-in;
+            -webkit-transition: padding-bottom 0.05s ease-in;
+            transition: padding-bottom 0.05s ease-in;
+        }
+        .disabled-control-seek .html5-video-content:has(.video-annotations),.autominimize-progress-bar:not(.ytp-block-autohide) .html5-video-content:has(.video-annotations), html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) .html5-video-content:has(.video-annotations), .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) .html5-video-content:has(.video-annotations), .ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) .html5-video-content:has(.video-annotations) {
+            padding-bottom: 30px;
+            -moz-transition: padding-bottom 0.5s ease-in;
+            -ms-transition: padding-bottom 0.5s ease-in;
+            -o-transition: padding-bottom 0.5s ease-in;
+            -webkit-transition: padding-bottom 0.5s ease-in;
+            transition: padding-bottom 0.5s ease-in;
+        }
+    }
     .disabled-control-seek .html5-video-content .caption-window,.autominimize-progress-bar:not(.ytp-block-autohide) .html5-video-content .caption-window, html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) .html5-video-content .caption-window, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) .html5-video-content .caption-window, .ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) .html5-video-content .caption-window {
-        padding-bottom: 8px;
+        & when (@Autohide = Off) {
+            padding-bottom: 13px;
+        }
+        & when (@Autohide = On) {
+            padding-bottom: 0;
+        }
+        & when (@Autohide = Fade) {
+            padding-bottom: 8px;
+        }
+        & when (@Autohide = Auto) {
+            padding-bottom: 11px;
+        }
         -moz-transition: padding-bottom 0.5s ease-in;
         -ms-transition: padding-bottom 0.5s ease-in;
         -o-transition: padding-bottom 0.5s ease-in;
@@ -1936,7 +2618,7 @@
         transition: padding-bottom 0.5s ease-in;
     }
     
-    & not when (@PlayButtonStyle = 2014) {
+    & when not (@PlayButtonStyle = 2014) {
         .ytp-large-play-button {
             position: absolute;
             top: 50%;
@@ -1994,5 +2676,14 @@
     == Player Date Info ==
     2012M => June 14th 2012 ( https://web.archive.org/web/20120614223748if_/https://www.youtube.com/watch?v=jNQXAC9IVRw ),
     2012L => December 7th 2012 ( https://web.archive.org/web/20121207043038if_/https://www.youtube.com/watch?v=jNQXAC9IVRw )
+    
+    == TODO Features ==
+    Implement Early 2012 ( ! )
+    
+    == Legend ==
+    X => Not Started
+    ! => Deciding
+    % => Pending
+    * => Finished
     /*/
 }
