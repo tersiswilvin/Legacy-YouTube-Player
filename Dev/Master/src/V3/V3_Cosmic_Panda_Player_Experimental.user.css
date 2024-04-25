@@ -1688,6 +1688,16 @@
                     height: 25px;
                     width: 52px;
                 }
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) 0 -156px;
+                    height: 25px;
+                    width: 52px;
+                    &:focus, &:hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) 0 -183px;
+                        height: 25px;
+                        width: 52px;
+                    }
+                }
             }
             & when (@PlayerMonth = Late) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1863px;
@@ -1714,6 +1724,21 @@
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) 0 -16px;
                     height: 25px;
                     width: 30px;
+                }
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -64px -97px;
+                    height: 25px;
+                    width: 30px;
+                    &:focus, &:hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -32px -259px;
+                        height: 25px;
+                        width: 30px;
+                    }
+                    .playlist-loaded&, .playlist-loaded&:focus, .playlist-loaded&:hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) 0 -16px;
+                        height: 25px;
+                        width: 30px;
+                    }
                 }
             }
             & when (@PlayerMonth = Late) {
@@ -1746,6 +1771,16 @@
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -64px -232px;
                     height: 25px;
                     width: 30px;
+                }
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) 0 -259px;
+                    height: 25px;
+                    width: 30px;
+                    &:focus, &:hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -64px -232px;
+                        height: 25px;
+                        width: 30px;
+                    }
                 }
             }
             & when (@PlayerMonth = Late) {
@@ -1814,6 +1849,16 @@
                 height: 25px;
                 width: 30px;
             }
+            .light-theme & {
+                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -153px -124px;
+                height: 25px;
+                width: 30px;
+                &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -128px -205px;
+                    height: 25px;
+                    width: 30px;
+                }
+            }
         }
         & when (@PlayerMonth = Late) {
             background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -810px;
@@ -1827,20 +1872,6 @@
         }
     }
     .ytp-settings-button-active {
-        & when (@PlayerMonth = Middle) {
-            background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -153px -124px #141414;
-        }
-        & when (@PlayerMonth = Late) {
-            background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -810px #141414;
-        }
-        &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
-            & when (@PlayerMonth = Middle) {
-                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -128px -205px #141414;
-            }
-            & when (@PlayerMonth = Late) {
-                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -675px #141414;
-            }
-        }
         &, &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
             -moz-box-shadow: inset 0 -5px 5px #000;
             -ms-box-shadow: inset 0 -5px 5px #000;
@@ -1854,6 +1885,32 @@
                 -ms-box-shadow: inset 0 -5px 5px #fff;
                 -webkit-box-shadow: inset 0 -5px 5px #fff;
                 box-shadow: inset 0 -5px 5px #fff;
+            }
+        }
+        & when (@PlayerMonth = Middle) {
+            background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -153px -124px #141414;
+            height: 25px;
+            width: 30px;
+            &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -128px -205px #141414;
+                height: 25px;
+                width: 30px;
+            }
+            .light-theme & {
+                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -153px -124px #f1f1f1;
+                height: 25px;
+                width: 30px;
+                &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -128px -205px #f1f1f1;
+                    height: 25px;
+                width: 30px;
+                }
+            }
+        }
+        & when (@PlayerMonth = Late) {
+            background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -810px #141414;
+            &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -675px #141414;
             }
         }
     }
@@ -1885,6 +1942,36 @@
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -32px -286px;
                     height: 25px;
                     width: 30px;
+                }
+            }
+            .light-theme & {
+                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -64px -205px;
+                height: 25px;
+                width: 30px;
+                &:focus, &:hover {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -64px -286px;
+                    height: 25px;
+                    width: 30px;
+                }
+                &-active, &-active:focus, &-active:hover {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -32px -151px;
+                    height: 25px;
+                    width: 30px;
+                }
+                .cc-international& {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -153px -286px;
+                    height: 25px;
+                    width: 30px;
+                    &:focus, &:hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) 0 -286px;
+                        height: 25px;
+                        width: 30px;
+                    }
+                    &-active, &-active:focus, &-active:hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -32px -286px;
+                        height: 25px;
+                        width: 30px;
+                    }
                 }
             }
         }
@@ -2049,16 +2136,21 @@
         height: 13px;
         width: 51px;
         margin: 7px 6px 0 1px;
+        padding: 1px 3px 0 0;
         & when (@FlashVA = 1) {
             float: right;
             right: -4px;
         }
         &-foreground {
+            top: 0;
             bottom: unset;
             height: 14px;
             width: 5px;
             & when (@PlayerMonth = Middle) {
                 background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAAAOCAYAAADdeGlVAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAABIAAAASABGyWs+AAAACXZwQWcAAABmAAAADgBV/HzAAAABW0lEQVRYw+2YsWqDQBjH/3dcBZekWCFk71KcsnQSksU36Bt06wP0ITqXkjfofqsZkrUUnNwKHbJYUKdSiUquQ1sxTYfESzkv+IOD78S7+//9+JRPIoSAbhBCqlgIMQZwB+ASwBOAW0LIQkdfGx5lDHiet/O9i/n8YKKLsqziLMsSwzCsn3me56lpmmcnjG2sGU8me53h+/7B9DaByW/RjMfhsPHaq+WyiimlVllLFKXUarJn2yAXpql1zT/H8da1035ftSxp2P1goFqDFPVqOSbYx3qtWoMURVGolvAvsPcuMa2EvXWJaSXsdbVSrUGKo01MOBqp1iDFXx//fXuWNqKswbzu9RqfO03TKg7DcMuA4zikazB35PeDeZHZbDarwiiKYNt2NY+/+xrtq0YIod2o47puwjkXQRAIzrlwXTfR1Vd9SL3KVFH/iQnAA/AA4BxfhXgDwNfRV51Pa+CPkys0tRoAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAAElFTkSuQmCC) -48px 0;
+                .light-theme & {
+                    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAAAOCAYAAADdeGlVAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAABIAAAASABGyWs+AAAACXZwQWcAAABmAAAADgBV/HzAAAABy0lEQVRYw92Yv2obQRCHv/MdF4VYpLhKkBeQwFWqVBIBvUTyBDkJXKRzSpO4jgvFr2CSh9AbqFCVJiQWqgKGNIu0s7ebwnvCdppYK7ycPhh27ziG38zs7b/EOUfTKcvyEDgDXgFz4P1kMrmOrSuELLaAHXEmIuP1eo1z7mW73c6Bt7FFhXAQW8COGKZpSp7nGGMAXscWFErybjhs/FyW93oopbDWopSiKAoWi0VsWUFkb5bL2BqC+drtIiJYa6mqCoDZbBZbVhDZag8WfwARoaoqRATnHCISW1IQmfIjrMk459BaY4xBaw2waZtK9nvPClP/KavVKrasILKfDR9ZNVrrzXRWF6rJZKdXV+e+/xzIAQMkwDPgKdDylgIOeHHPxy/gCXAIWOB/DnYpN1v1xD9Pga0zOR6PT0QEEam3y2itP23hanBLmwF++Hgqb8bH+JCF+cBb5n2nPm7n/a2977uFAY63TciDox4M/nnXnc+39ndxfTMGRqPRiYigtd7sypIk+dDv9+98P51OHyvUYB715L/rxHzxbVmWc2vtUb2+OOeWTb9q2pcrmW9FURwppWi1WgCXsQWFsi+F+djpdP4APeA78Dm2oFD+ApXfy33JgKtbAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAABJRU5ErkJggg==) -49px 0;
+                }
             }
             & when (@PlayerMonth = Late) {
                 background: #ddd;
@@ -2072,6 +2164,10 @@
                     width: 49px;
                     top: 0;
                     left: -49px;
+                    .light-theme & {
+                        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAAAOCAYAAADdeGlVAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAABIAAAASABGyWs+AAAACXZwQWcAAABmAAAADgBV/HzAAAABy0lEQVRYw92Yv2obQRCHv/MdF4VYpLhKkBeQwFWqVBIBvUTyBDkJXKRzSpO4jgvFr2CSh9AbqFCVJiQWqgKGNIu0s7ebwnvCdppYK7ycPhh27ziG38zs7b/EOUfTKcvyEDgDXgFz4P1kMrmOrSuELLaAHXEmIuP1eo1z7mW73c6Bt7FFhXAQW8COGKZpSp7nGGMAXscWFErybjhs/FyW93oopbDWopSiKAoWi0VsWUFkb5bL2BqC+drtIiJYa6mqCoDZbBZbVhDZag8WfwARoaoqRATnHCISW1IQmfIjrMk459BaY4xBaw2waZtK9nvPClP/KavVKrasILKfDR9ZNVrrzXRWF6rJZKdXV+e+/xzIAQMkwDPgKdDylgIOeHHPxy/gCXAIWOB/DnYpN1v1xD9Pga0zOR6PT0QEEam3y2itP23hanBLmwF++Hgqb8bH+JCF+cBb5n2nPm7n/a2977uFAY63TciDox4M/nnXnc+39ndxfTMGRqPRiYigtd7sypIk+dDv9+98P51OHyvUYB715L/rxHzxbVmWc2vtUb2+OOeWTb9q2pcrmW9FURwppWi1WgCXsQWFsi+F+djpdP4APeA78Dm2oFD+ApXfy33JgKtbAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAABJRU5ErkJggg==);
+                        background-repeat: no-repeat;
+                    }
                 }
                 & when (@PlayerMonth = Late) {
                     position: absolute;
@@ -2092,6 +2188,11 @@
                     height: 13px;
                     width: 49px;
                     top: 0;
+                    .light-theme & {
+                        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAAOCAYAAAHiaRFqAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKTSURBVGhD7du/axNhGAfw51SiokVilnixQyhpaKhkaQKZ4tCkdChdBRehyyXNXyDi6OYgEo4YxQxSAkLAOOqQYIYMCiIkmEXQVHBoSqb8uCY53yc+BRHaNN47vMPzgS/3vu/BS+9y9957b1KQaWdn5zoVHdMeLC7aVHbscGsL8vk81RSRTqevUtExaWeru70NuVyOas5oH0IhaR+hLK/X12EymUC5XKYWdqJUKvVQ5DFV2WnEifpIRaUoeRvm19agUqlQTR1SHzuy1INBqFarVGOnSiaTyn2ASKMtm0GMo18tywq6XK5fpmneoGZ2Au3N8rKSV7xq3m9swP7+Pui6DsVikVoZc2h3d9eOxWK2eKPjG5HJIy6op4ZhvKQqm+EcbdkM4/E40+1271GVzaDkO7SKXkSj0Ov1oF6vUws7DU/ez+hVOMwX1hyUXMhS0afVVRgMBlCr1aiFMQni8bgdjUb5JjwjnryfkdvtBq/XSzU2C6+8M6lwWcayrMxwOATbtmFhYWHPNM27tJsxR7RUIsHTBiaNKxSavjzjD59w6/F4oN1u017GnNHerazwgMWkeZtIQKfTwe8pAGdZ+JV9qVSivYw5oz1fWuIBi0nzeXNzOqMajUZwdHQEgUAACoUC7WXMGc227SdUZuq4JuISGYngOuMVkcsilyjnRfBBc1Pkb99FLorgfwBNRA5FZsG+cJH8eD0Tfz1v/SnOL5PJ3G+1WtPBCgetcDgM2Wz2Ee2ex22R478Nz8M3ETyeMQXb8BjneeBiX5gLItg3Bo8b+8D+hiLYN1MUL7ozqQzD+NJoNG71+/1pPRKJ/DRN89+BlbH/gk8YxqTx+/3PRA51Xf/h8/n2Dg4O7jSbTV52YBIA/AZcYtXNSxiHHwAAAA5lWElmTU0AKgAAAAgAAAAAAAAA0lOTAAAAAElFTkSuQmCC);
+                        background-repeat: no-repeat;
+                        background-position: -153px 0;
+                    }
                 }
                 & when (@PlayerMonth = Late) {
                     position: absolute;
