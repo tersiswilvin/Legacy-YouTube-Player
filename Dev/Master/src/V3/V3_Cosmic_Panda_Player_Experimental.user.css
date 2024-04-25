@@ -1301,6 +1301,16 @@
                     height: 25px;
                     width: 55px;
                 }
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1323px;
+                    height: 25px;
+                    width: 55px;
+                    &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -459px;
+                        height: 25px;
+                        width: 55px;
+                    }
+                }
             }
         }
         &-pause {
@@ -1332,6 +1342,14 @@
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -513px;
                     height: 25px;
                     width: 55px;
+                }
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1134px;
+                    height: 25px;
+                    width: 55px;
+                    &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -513px;
+                    }
                 }
             }
         }
@@ -1365,6 +1383,16 @@
                     height: 25px;
                     width: 55px;
                 }
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -891px;
+                    height: 25px;
+                    width: 55px;
+                    &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1296px;
+                        height: 25px;
+                        width: 55px;
+                    }
+                }
             }
         }
         &-replay {
@@ -1396,6 +1424,16 @@
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1566px;
                     height: 25px;
                     width: 55px;
+                }
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1053px;
+                    height: 25px;
+                    width: 55px;
+                    &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1566px;
+                        height: 25px;
+                        width: 55px;
+                    }
                 }
             }
         }
@@ -1433,6 +1471,16 @@
                     height: 25px;
                     width: 30px;
                 }
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -2132px;
+                    height: 25px;
+                    width: 30px;
+                    &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0px -485px;
+                        height: 25px;
+                        width: 30px;
+                    }
+                }
             }
         }
         &-next {
@@ -1468,6 +1516,16 @@
                     height: 25px;
                     width: 30px;
                 }
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -2132px;
+                    height: 25px;
+                    width: 30px;
+                    &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0px -485px;
+                        height: 25px;
+                        width: 30px;
+                    }
+                }
             }
         }
         &-volume {
@@ -1499,6 +1557,16 @@
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -27px;
                     height: 25px;
                     width: 35px;
+                }
+                .light-theme & {
+                    background: no-repeat url(///s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1269px;
+                    height: 25px;
+                    width: 35px;
+                    &:focus, &:hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -27px;
+                        height: 25px;
+                        width: 35px;
+                    }
                 }
             }
 
@@ -1532,6 +1600,16 @@
                         height: 25px;
                         width: 35px;
                     }
+                    .light-theme & {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1107px;
+                        height: 25px;
+                        width: 35px;
+                        &:focus, &:hover {
+                            background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -783px;
+                            height: 25px;
+                            width: 35px;
+                        }
+                    }
                 }
             }
             &[data-value=min] {
@@ -1563,6 +1641,16 @@
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -27px;
                         height: 25px;
                         width: 35px;
+                    }
+                    .light-theme & {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1269px;
+                        height: 25px;
+                        width: 35px;
+                        &:focus, &:hover {
+                            background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -27px;
+                            height: 25px;
+                            width: 35px;
+                        }
                     }
                 }
             }
@@ -1596,6 +1684,16 @@
                         height: 25px;
                         width: 35px;
                     }
+                    .light-theme & {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1539px;
+                        height: 25px;
+                        width: 35px;
+                        &:focus, &:hover {
+                            background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -2025px;
+                            height: 25px;
+                            width: 35px;
+                        }
+                    }
                 }
             }
             &[data-value=max], &[data-value=loud] {
@@ -1627,6 +1725,16 @@
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -378px;
                         height: 25px;
                         width: 35px;
+                    }
+                    .light-theme & {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1485px;
+                        height: 25px;
+                        width: 35px;
+                        &:focus, &:hover {
+                            background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -378px;
+                            height: 25px;
+                            width: 35px;
+                        }
                     }
                 }
             }
@@ -1661,6 +1769,16 @@
                     height: 25px;
                     width: 30px;
                 }
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1998px;
+                    height: 25px;
+                    width: 30px;
+                    &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1377px;
+                        height: 25px;
+                        width: 30px;
+                    }
+                }
             }
         }
         &-fullscreen-exit {
@@ -1692,6 +1810,16 @@
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1647px;
                     height: 25px;
                     width: 30px;
+                }
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -2187px;
+                    height: 25px;
+                    width: 30px;
+                    &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1647px;
+                        height: 25px;
+                        width: 30px;
+                    }
                 }
             }
         }
@@ -1727,6 +1855,16 @@
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -945px;
                     height: 25px;
                     width: 52px;
+                }
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1863px;
+                    height: 25px;
+                    width: 52px;
+                    &:focus, &:hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -945px;
+                        height: 25px;
+                        width: 52px;
+                    }
                 }
             }
         }
@@ -1780,6 +1918,26 @@
                         width: 30px;
                     }
                 }
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -216px;
+                    height: 25px;
+                    width: 30px;
+                    &:focus, &:hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -324px;
+                        height: 25px;
+                        width: 30px;
+                    }
+                    .playlist-loaded& {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1512px;
+                        height: 25px;
+                        width: 30px;
+                        &:focus, &:hover {
+                            background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -837px;
+                            height: 25px;
+                            width: 30px;
+                        }
+                    }
+                }
             }
         }
         &-watch-later {
@@ -1811,6 +1969,16 @@
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -189px;
                     height: 25px;
                     width: 30px;
+                }
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1971px;
+                    height: 25px;
+                    width: 30px;
+                    &:focus, &:hover {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -189px;
+                        height: 25px;
+                        width: 30px;
+                    }
                 }
             }
         }
@@ -1845,6 +2013,16 @@
                 height: 25px;
                 width: 30px;
             }
+            .light-theme & {
+                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1458px;
+                height: 25px;
+                width: 30px;
+                &:focus, &:hover {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1620px;
+                    height: 25px;
+                    width: 30px;
+                }
+            }
         }
     }
     .ytp-size-toggle-small {
@@ -1877,6 +2055,16 @@
                 height: 25px;
                 width: 30px;
             }
+            .light-theme & {
+                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -918px;
+                height: 25px;
+                width: 30px;
+                &:focus, &:hover {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1836px;
+                    height: 25px;
+                    width: 30px;
+                }
+            }
         }
     }
     .ytp-settings-button, .ytp-settings-button-active {
@@ -1908,6 +2096,16 @@
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -675px;
                 height: 25px;
                 width: 30px;
+            }
+            .light-theme & {
+                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -810px;
+                height: 25px;
+                width: 30px;
+                &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -675px;
+                    height: 25px;
+                    width: 30px;
+                }
             }
         }
     }
@@ -1951,6 +2149,12 @@
             background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -810px #141414;
             &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -675px #141414;
+            }
+            .light-theme & {
+                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -810px #f1f1f1;
+                &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -675px #f1f1f1;
+                }
             }
         }
     }
@@ -2194,6 +2398,9 @@
             }
             & when (@PlayerMonth = Late) {
                 background: #ddd;
+                .light-theme & {
+                    background: #222;
+                }
             }
             background-repeat: no-repeat;
             &:before {
