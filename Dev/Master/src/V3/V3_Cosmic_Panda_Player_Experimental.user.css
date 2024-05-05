@@ -15,6 +15,7 @@
 @var            checkbox                                          ExtraSFNItems   "Extra Stats for nerds items"   0
 @var            checkbox                                          FlashVA         "Flash Volume Animation"        0
 @var            checkbox                                          ForceWOYTi      "Force Watch On Youtube icon"   0
+@var            checkbox                                          Forcewatermark  "Force Watermark"               0
 @var            checkbox                                          Forceinfobar    "Force infobar"                 0
 @var            checkbox                                          HESR            "Hide Extra Settings Rows"      1
 @var            checkbox                                          HPaNB           "Hide Prev & Next Buttons"      1
@@ -972,6 +973,9 @@
         -o-transition: opacity 0.05s ease-in, bottom 0.05s ease-in;
         -webkit-transition: opacity 0.05s ease-in, bottom 0.05s ease-in;
         transition: opacity 0.05s ease-in, bottom 0.05s ease-in;
+        & when (@Forcewatermark = 1) or (@DEVMode = 1) {
+            display: block !important;
+        }
         &[src*="base64,"], &[src*="/img/pixel"] {
             background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) -38px 0;
             opacity: 0.5;
@@ -996,7 +1000,7 @@
             & when (@AWA = 1) and ((@Autohide = On) or (@Autohide = Auto)) {
                 bottom: 1px;
             }
-            opacity: 0.5;
+            opacity: 0;
             -moz-transition: opacity 0.5s ease-in,bottom 0.5s ease-in;
             -ms-transition: opacity 0.5s ease-in,bottom 0.5s ease-in;
             -o-transition: opacity 0.5s ease-in,bottom 0.5s ease-in;
