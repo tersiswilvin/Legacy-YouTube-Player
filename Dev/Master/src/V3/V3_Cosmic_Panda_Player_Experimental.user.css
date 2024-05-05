@@ -998,7 +998,7 @@
                 }
             }
             & when (@AWA = 1) and ((@Autohide = On) or (@Autohide = Auto)) {
-                bottom: 1px;
+                bottom: 3px;
             }
             opacity: 0;
             -moz-transition: opacity 0.5s ease-in,bottom 0.5s ease-in;
