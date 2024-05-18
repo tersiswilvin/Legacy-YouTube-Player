@@ -6,24 +6,25 @@
 @author         TersisWilvin
 @license        CC-BY-SA-4.0
 @preprocessor   less
-@var            checkbox                                          AWA             "Accurate Watermark Animations" 0
-@var            select                                            Autohide        "Autohide Preset"               ["Off", "On", "Fade*", "Auto"]
-@var            checkbox                                          AhCursor        "Autohide Cursor"               0
-@var            checkbox                                          CMIcons         "Context Menu Icons"            0
-@var            checkbox                                          DEVMode         "Developer Mode"                0
-@var            checkbox                                          QualityBadges   "Display Quality Badges"        0
-@var            checkbox                                          ExtraSFNItems   "Extra Stats for nerds items"   0
-@var            checkbox                                          FlashVA         "Flash Volume Animation"        0
-@var            checkbox                                          ForceWOYTi      "Force Watch On Youtube icon"   0
-@var            checkbox                                          Forcewatermark  "Force Watermark"               0
-@var            checkbox                                          Forceinfobar    "Force infobar"                 0
-@var            checkbox                                          HESR            "Hide Extra Settings Rows"      1
-@var            checkbox                                          HPaNB           "Hide Prev & Next Buttons"      1
-@var            checkbox                                          IBIO            "Infobar Icons Only"            0
-@var            select                                            PlayButtonStyle "Play Button Style"             ["2012E*", "2013E", "2014"]
-@var            select                                            PlayerMonth     "Player Month"                  ["Middle*", "Late"]
-@var            checkbox                                          Flash7Warning   "Show Flash7 Warning"           1
-@var            checkbox                                          TooltipCrtFix   "Tooltip 2012L Caret Fix"       0
+@var            checkbox                                          AWA             "Accurate Watermark Animations"  0
+@var            select                                            Autohide        "Autohide Preset"                ["Off", "On", "Fade*", "Auto"]
+@var            checkbox                                          AhCursor        "Autohide Cursor"                0
+@var            checkbox                                          CMIcons         "Context Menu Icons"             0
+@var            checkbox                                          DEVMode         "Developer Mode"                 0
+@var            checkbox                                          DEVFsTbS        "(DEV) Fullscreen Taskbar Space" 0
+@var            checkbox                                          QualityBadges   "Display Quality Badges"         0
+@var            checkbox                                          ExtraSFNItems   "Extra Stats for nerds items"    0
+@var            checkbox                                          FlashVA         "Flash Volume Animation"         0
+@var            checkbox                                          ForceWOYTi      "Force Watch On Youtube icon"    0
+@var            checkbox                                          Forcewatermark  "Force Watermark"                0
+@var            checkbox                                          Forceinfobar    "Force infobar"                  0
+@var            checkbox                                          HESR            "Hide Extra Settings Rows"       1
+@var            checkbox                                          HPaNB           "Hide Prev & Next Buttons"       1
+@var            checkbox                                          IBIO            "Infobar Icons Only"             0
+@var            select                                            PlayButtonStyle "Play Button Style"              ["2012E*", "2013E", "2014"]
+@var            select                                            PlayerMonth     "Player Month"                   ["Middle*", "Late"]
+@var            checkbox                                          Flash7Warning   "Show Flash7 Warning"            1
+@var            checkbox                                          TooltipCrtFix   "Tooltip 2012L Caret Fix"        0
 ==/UserStyle== */
 
 @-moz-document domain("www.youtube.com") {
@@ -253,29 +254,35 @@
         color: #ddd;
     }
     
-    .yt-uix-button-menu {
-        padding: 6px 0;
-        -moz-border-radius: 3px;
-        -webkit-border-radius: 3px;
-        border-radius: 3px;
-        -moz-box-shadow: 0 1px 1px rgba(100, 100, 100, .2);
-        -ms-box-shadow: 0 1px 1px rgba(100, 100, 100, .2);
-        -webkit-box-shadow: 0 1px 1px rgba(100,100,100,.2);
-        box-shadow: 0 1px 1px rgba(100,100,100,.2);
-        .yt-uix-button-menu-item {
-            padding: 6px 20px;
-            color: #555;
-            line-height: normal;
-            &:after when (@CMIcons = 0) {
-                display: none
-            }
-        }
-    }
     .html5-context-menu {
         padding: 0;
-    }
-    .yt-uix-button-menu .yt-uix-button-menu-item.selected, .yt-uix-button-menu .yt-uix-button-menu-item-highlight .yt-uix-button-menu-item, .yt-uix-button-menu .yt-uix-button-menu-item:hover {
-        background-color: #555;
+        &.yt-uix-button-menu {
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+            border-radius: 3px;
+            -moz-box-shadow: 0 1px 1px rgba(100, 100, 100, .2);
+            -ms-box-shadow: 0 1px 1px rgba(100, 100, 100, .2);
+            -webkit-box-shadow: 0 1px 1px rgba(100,100,100,.2);
+            box-shadow: 0 1px 1px rgba(100,100,100,.2);
+            .yt-uix-button-menu-item {
+                padding: 6px 20px;
+                color: #555;
+                line-height: normal;
+                &:after when (@CMIcons = 0) {
+                    display: none
+                }
+                [class*="darkmode"] ~ & {
+                    color: var(--color-333)
+                }
+            }
+            .yt-uix-button-menu-item.selected, .yt-uix-button-menu-item-highlight .yt-uix-button-menu-item, .yt-uix-button-menu-item:hover {
+                background-color: #555;
+                [class*="darkmode"] ~ & {
+                    background-color: var(--color-333);
+                    color: var(--color-fff);
+                }
+            }
+        }
     }
     
     .html5-info-bar {
@@ -313,6 +320,8 @@
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+        }
+        .html5-title-text {
             float: left;
         }
         &-logo {
@@ -1037,7 +1046,7 @@
     .html5-video-controls {
         min-height: 26px;
         z-index: 930;
-        html[data-player-size=fullscreen] & when (@DEVMode = 1) {
+        html[data-player-size=fullscreen] & when (@DEVMode = 1) and (@DEVFsTbS = 1) {
             bottom: 39px;
         }
         -moz-transition: bottom 0.05s ease-in;
