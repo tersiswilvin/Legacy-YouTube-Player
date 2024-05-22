@@ -6,25 +6,26 @@
 @author         TersisWilvin
 @license        CC-BY-SA-4.0
 @preprocessor   less
-@var            checkbox                                          AWA             "Accurate Watermark Animations"  0
-@var            select                                            Autohide        "Autohide Preset (2012M+)"       ["Off", "On", "Fade*", "Auto"]
-@var            checkbox                                          AhCursor        "Autohide Cursor"                0
-@var            checkbox                                          CMIcons         "Context Menu Icons"             0
-@var            checkbox                                          DEVMode         "Developer Mode"                 0
-@var            checkbox                                          DEVFsTbS        "(DEV) Fullscreen Taskbar Space" 0
-@var            checkbox                                          QualityBadges   "Display Quality Badges"         0
-@var            checkbox                                          ExtraSFNItems   "Extra Stats for nerds items"    0
-@var            checkbox                                          FlashVA         "Flash Volume Animation"         0
-@var            checkbox                                          ForceWOYTi      "Force Watch On Youtube icon"    0
-@var            checkbox                                          Forcewatermark  "Force Watermark"                0
-@var            checkbox                                          Forceinfobar    "Force infobar"                  0
-@var            checkbox                                          HESR            "Hide Extra Settings Rows"       1
-@var            checkbox                                          HPaNB           "Hide Prev & Next Buttons"       1
-@var            checkbox                                          IBIO            "Infobar Icons Only"             0
-@var            select                                            PlayButtonStyle "Play Button Style"              ["2012E*", "2013E", "2014"]
-@var            select                                            PlayerMonth     "Player Month"                   ["Early", "Middle*", "Late"]
-@var            checkbox                                          Flash7Warning   "Show Flash7 Warning"            1
-@var            checkbox                                          TooltipCrtFix   "Tooltip 2012L Caret Fix"        0
+@var            checkbox                                          AWA                   "Accurate Watermark Animations"  0
+@var            select                                            Autohide              "Autohide Preset (2012M+)"       ["Off", "On", "Fade*", "Auto"]
+@var            checkbox                                          AhCursor              "Autohide Cursor"                0
+@var            checkbox                                          CMIcons               "Context Menu Icons"             0
+@var            checkbox                                          DEVMode               "Developer Mode"                 0
+@var            checkbox                                          DEVFsTbS              "(DEV) Fullscreen Taskbar Space" 0
+@var            checkbox                                          QualityBadges         "Display Quality Badges"         0
+@var            checkbox                                          EarlyReplayExperiment "Early Replay Icon Experiment"   0
+@var            checkbox                                          ExtraSFNItems         "Extra Stats for nerds items"    0
+@var            checkbox                                          FlashVA               "Flash Volume Animation"         0
+@var            checkbox                                          ForceWOYTi            "Force Watch On Youtube icon"    0
+@var            checkbox                                          Forcewatermark        "Force Watermark"                0
+@var            checkbox                                          Forceinfobar          "Force infobar"                  0
+@var            checkbox                                          HESR                  "Hide Extra Settings Rows"       1
+@var            checkbox                                          HPaNB                 "Hide Prev & Next Buttons"       1
+@var            checkbox                                          IBIO                  "Infobar Icons Only"             0
+@var            select                                            PlayButtonStyle       "Play Button Style"              ["2012E*", "2013E", "2014"]
+@var            select                                            PlayerMonth           "Player Month"                   ["Early", "Middle*", "Late"]
+@var            checkbox                                          Flash7Warning         "Show Flash7 Warning"            1
+@var            checkbox                                          TooltipCrtFix         "Tooltip 2012L Caret Fix"        0
 ==/UserStyle== */
 
 @-moz-document domain("www.youtube.com") {
@@ -149,17 +150,41 @@
     .html5-video-info-panel {
         z-index: 930;
         background: rgba(0, 0, 0, .85);
-        width: 80%;
+        & when (@PlayerMonth = Early) {
+            min-width: 430px;
+            min-height: 130px;
+            border-top: 1px solid #555;
+            padding: 3px 5px;
+        }
+        & when not (@PlayerMonth = Early) {
+            width: 80%;
+        }
         cursor: default;
-        -moz-border-radius: 3px;
-        -webkit-border-radius: 3px;
-        border-radius: 3px;
+        & when (@PlayerMonth = Early) {
+            -moz-border-radius: 2px;
+            -webkit-border-radius: 2px;
+            border-radius: 2px;
+            -moz-box-shadow: 0 1px 0 #000;
+            -ms-box-shadow: 0 1px 0 #000;
+            -webkit-box-shadow: 0 1px 0 #000;
+            box-shadow: 0 1px 0 #000;
+        }
+        & when not (@PlayerMonth = Early) {
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+            border-radius: 3px;
+        }
         color: unset;
         &-close {
             top: 2px;
             color: #999;
             cursor: pointer;
             font-size: 0px;
+            & when (@PlayerMonth = Early) {
+                background: transparent;
+                border: 0;
+                z-index: 1;
+            }
             &:before {
                 content: "Close";
                 font: 10px arial, sans-serif;
@@ -169,8 +194,18 @@
             }
         }
         &-content {
+            & when (@PlayerMonth = Early) {
+                display: block;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
             font-size: 12px;
             color: #aaa;
+            & when (@PlayerMonth = Early) {
+                text-align: left;
+                padding: 5px 8px;
+            }
         }
     }
     .html5-video-info-table {
@@ -206,34 +241,100 @@
         left: 0;
         right: 0;
         z-index: 930;
-    }
-    .ytp-dialog-holder:not(:has(.ytp-subtitles-settings-dialog)) .ytp-dialog {
-        position: absolute;
-        z-index: 930;
-        background: rgba(0, 0, 0, .85);
-        width: 80%;
-        cursor: default;
-        -moz-border-radius: 3px;
-        -webkit-border-radius: 3px;
-        border-radius: 3px;
-        display: block;
-        max-width: 100%;
-        margin: 30% 0 0 10% !important;
-        font: 12px arial, sans-serif;
-        &-body {
-            margin: 0;
-            padding: 30px;
-            input {
-                border: none;
-                width: 90%;
-                font-size: 18px;
-                padding: 10px;
+        &:not(:has(.ytp-subtitles-settings-dialog)) .ytp-dialog {
+            position: absolute;
+            z-index: 930;
+            background: rgba(0, 0, 0, .85);
+            & when (@PlayerMonth = Early) {
+                min-width: 430px;
+                min-height: 130px;
+                border-top: 1px solid #555;
+                padding: 3px 5px;
+            }
+            & when not (@PlayerMonth = Early) {
+                width: 80%;
+            }
+            cursor: default;
+            & when (@PlayerMonth = Early) {
+                -moz-border-radius: 2px;
+                -webkit-border-radius: 2px;
+                border-radius: 2px;
+                -moz-box-shadow: 0 1px 0 #000;
+                -ms-box-shadow: 0 1px 0 #000;
+                -webkit-box-shadow: 0 1px 0 #000;
+                box-shadow: 0 1px 0 #000;
+            }
+            & when not (@PlayerMonth = Early) {
                 -moz-border-radius: 3px;
                 -webkit-border-radius: 3px;
                 border-radius: 3px;
             }
+            display: block;
+            max-width: 100%;
+            & when (@PlayerMonth = Early) {
+                top: 50%;
+                left: 50%;
+                -moz-transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                -o-transform: translate(-50%, -50%);
+                -webkit-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+                margin: 0 !important;
+            }
+            & when not (@PlayerMonth = Early) {
+                margin: 30% 0 0 10% !important;
+            }
+            font: 12px arial, sans-serif;
+            &-body {
+                margin: 0;
+                & when (@PlayerMonth = Early) {
+                    display: block;
+                    top: 50%;
+                    left: 50%;
+                    position: absolute;
+                    width: 100%;
+                    text-align: center;
+                    -moz-transform: translate(-50%, -50%);
+                    -ms-transform: translate(-50%, -50%);
+                    -o-transform: translate(-50%, -50%);
+                    -webkit-transform: translate(-50%, -50%);
+                    transform: translate(-50%, -50%);
+                }
+                & when not (@PlayerMonth = Early) {
+                    padding: 30px;
+                }
+                input {
+                    & when (@PlayerMonth = Early) {
+                        border: none;
+                        height: 25px;
+                        width: 80%;
+                        font-size: 18px;
+                        padding: 10px;
+                        margin: 5px;
+                        -moz-border-radius: 4px;
+                        -webkit-border-radius: 4px;
+                        border-radius: 4px;
+                    }
+                    & when not (@PlayerMonth = Early) {
+                        border: none;
+                        width: 90%;
+                        font-size: 18px;
+                        padding: 10px;
+                        -moz-border-radius: 3px;
+                        -webkit-border-radius: 3px;
+                        border-radius: 3px;
+                    }
+                }
+            }
+            &-buttons {
+                background: transparent;
+                position: absolute;
+                top: 0;
+                right: 0;
+                left: 0;
+            }
         }
-        .ytp-button&-button {
+        &:not(:has(.ytp-subtitles-settings-dialog)) .ytp-button.ytp-dialog-button {
             position: absolute;
             top: 2px;
             right: 5px;
@@ -242,11 +343,9 @@
             font-size: 10px;
             margin: 0;
             padding: 0;
-        }
-        &-buttons {
-            background: transparent;
-            position: absolute;
-            top: 0
+            &:hover {
+                color: #fff;
+            }
         }
     }
     
@@ -277,6 +376,7 @@
             }
             .yt-uix-button-menu-item.selected, .yt-uix-button-menu-item-highlight .yt-uix-button-menu-item, .yt-uix-button-menu-item:hover {
                 background-color: #555;
+                color: #fff;
                 [class*="darkmode"] ~ & {
                     background-color: var(--color-333);
                     color: var(--color-fff);
@@ -1190,6 +1290,9 @@
             }
         }
     }
+    .ytp-volume-panel:focus, .ytp-time-display:focus {
+        outline: 1px dotted #999;
+    }
     .ytp-button {
         font-size: 11px;
         color: #999;
@@ -1220,6 +1323,31 @@
             }
         }
         &-play {
+            & when (@PlayerMonth = Early) {
+                background: none;
+                width: 58px;
+                height: 100%;
+                text-align: center;
+                line-height: 26px;
+                &:before {
+                    content: "";
+                    background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -46px -34px;
+                    height: 18px;
+                    width: 14px;
+                    vertical-align: middle;
+                    display: inline-block;
+                }
+                &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                    background: none;
+                    width: 58px;
+                    height: 100%;
+                    &:before {
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -148px 0;
+                        height: 18px;
+                        width: 14px;
+                    }
+                }
+            }
             & when (@PlayerMonth = Middle) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -96px -232px;
                 height: 26px;
@@ -1262,6 +1390,31 @@
             }
         }
         &-pause {
+            & when (@PlayerMonth = Early) {
+                background: none;
+                width: 58px;
+                height: 100%;
+                text-align: center;
+                line-height: 26px;
+                &:before {
+                    content: "";
+                    background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -164px 0;
+                    height: 16px;
+                    width: 11px;
+                    vertical-align: middle;
+                    display: inline-block;
+                }
+                &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                    background: none;
+                    width: 58px;
+                    height: 100%;
+                    &:before {
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -296px 0;
+                        height: 16px;
+                        width: 11px;
+                    }
+                }
+            }
             & when (@PlayerMonth = Middle) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -64px -178px;
                 height: 26px;
@@ -1344,6 +1497,69 @@
             }
         }
         &-replay {
+            & when (@PlayerMonth = Early) {
+                background: none;
+                & when (@EarlyReplayExperiment = 0) {
+                    width: 58px;
+                }
+                & when (@EarlyReplayExperiment = 1) {
+                    width: auto;
+                    padding: 0 5px;
+                }
+                height: 100%;
+                text-align: center;
+                line-height: 26px;
+                &:before {
+                    content: "";
+                    & when (@EarlyReplayExperiment = 0) {
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -46px -34px;
+                        height: 18px;
+                        width: 14px;
+                    }
+                    & when (@EarlyReplayExperiment = 1) {
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-common-vfl6Awq62.png) 0 -41px;
+                        width: 15px;
+                        height: 14px;
+                        opacity: 0.7;
+                        margin-right: 5px;
+                    }
+                    vertical-align: middle;
+                    display: inline-block;
+                }
+                &:after when (@EarlyReplayExperiment = 1) {
+                    content: "Replay";
+                    line-height: 28px;
+                    vertical-align: middle;
+                    display: inline-block;
+                }
+                &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                    background: none;
+                    & when (@EarlyReplayExperiment = 0) {
+                        width: 58px;
+                    }
+                    & when (@EarlyReplayExperiment = 1) {
+                        width: auto;
+                        padding: 0 5px;
+                    }
+                    height: 100%;
+                    &:before {
+                        & when (@EarlyReplayExperiment = 0) {
+                            background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -148px 0;
+                            height: 18px;
+                            width: 14px;
+                        }
+                        & when (@EarlyReplayExperiment = 1) {
+                            background: no-repeat url(//s.ytimg.com/yt/imgbin/player-common-vfl6Awq62.png) 0 -41px;
+                            width: 15px;
+                            height: 14px;
+                            opacity: 1;
+                        }
+                    }
+                    &:after when (@EarlyReplayExperiment = 1) {
+                        color: #fff;
+                    }
+                }
+            }
             & when (@PlayerMonth = Middle) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -96px -286px;
                 height: 26px;
