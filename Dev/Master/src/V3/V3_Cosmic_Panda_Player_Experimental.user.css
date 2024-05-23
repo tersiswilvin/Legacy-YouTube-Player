@@ -534,7 +534,7 @@
     
     .html5-endscreen {
         z-index: 920;
-        html:not([data-player-size=fullscreen]) & when (@Forceinfobar = 1) {
+        html:not([data-player-size=fullscreen]) & when (@Forceinfobar = 1) or (@DEVMode = 1) {
             top: 28px;
         }
     }
@@ -1699,6 +1699,35 @@
             }
         }
         &-volume {
+            & when (@PlayerMonth = Early) {
+                background: none;
+                display: inline-block;
+                width: 34px;
+                height: 100%;
+                text-align: center;
+                line-height: 26px;
+                padding-left: 2px;
+                -moz-box-shadow: none;
+                -ms-box-shadow: none;
+                -webkit-box-shadow: none;
+                box-shadow: none;
+                &:before {
+                    content: "";
+                    background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -18px 0;
+                    height: 14px;
+                    width: 18px;
+                    vertical-align: middle;
+                    display: inline-block;
+                }
+                &:focus, &:hover {
+                    background: none;
+                    width: 34px;
+                    height: 100%;
+                    &:before {
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -194px -40px;
+                    }
+                }
+            }
             & when (@PlayerMonth = Middle) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -153px -232px;
                 height: 26px;
@@ -1741,6 +1770,27 @@
             }
 
             &[data-value=off] {
+                & when (@PlayerMonth = Early) {
+                    background: none;
+                    width: 34px;
+                    height: 100%;
+                    &:before {
+                        content: "";
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -38px -18px;
+                        height: 14px;
+                        width: 18px;
+                        vertical-align: middle;
+                        display: inline-block;
+                    }
+                    &:focus, &:hover {
+                        background: none;
+                        width: 34px;
+                        height: 100%;
+                        &:before {
+                            background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -18px -18px;
+                        }
+                    }
+                }
                 & when (@PlayerMonth = Middle) {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -121px -16px;
                     height: 26px;
@@ -1783,6 +1833,27 @@
                 }
             }
             &[data-value=min] {
+                & when (@PlayerMonth = Early) {
+                    background: none;
+                    width: 34px;
+                    height: 100%;
+                    &:before {
+                        content: "";
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -18px 0;
+                        height: 14px;
+                        width: 18px;
+                        vertical-align: middle;
+                        display: inline-block;
+                    }
+                    &:focus, &:hover {
+                        background: none;
+                        width: 34px;
+                        height: 100%;
+                        &:before {
+                            background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -194px -40px;
+                        }
+                    }
+                }
                 & when (@PlayerMonth = Middle) {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -153px -232px;
                     height: 26px;
@@ -1825,6 +1896,27 @@
                 }
             }
             &[data-value=normal], &[data-value=quiet] {
+                & when (@PlayerMonth = Early) {
+                    background: none;
+                    width: 34px;
+                    height: 100%;
+                    &:before {
+                        content: "";
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -62px -22px;
+                        height: 14px;
+                        width: 18px;
+                        vertical-align: middle;
+                        display: inline-block;
+                    }
+                    &:focus, &:hover {
+                        background: none;
+                        width: 34px;
+                        height: 100%;
+                        &:before {
+                            background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -210px 0;
+                        }
+                    }
+                }
                 & when (@PlayerMonth = Middle) {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -121px -259px;
                     height: 26px;
@@ -1867,6 +1959,27 @@
                 }
             }
             &[data-value=max], &[data-value=loud] {
+                & when (@PlayerMonth = Early) {
+                    background: none;
+                    width: 34px;
+                    height: 100%;
+                    &:before {
+                        content: "";
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -62px -38px;
+                        height: 14px;
+                        width: 18px;
+                        vertical-align: middle;
+                        display: inline-block;
+                    }
+                    &:focus, &:hover {
+                        background: none;
+                        width: 34px;
+                        height: 100%;
+                        &:before {
+                            background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -250px -22px;
+                        }
+                    }
+                }
                 & when (@PlayerMonth = Middle) {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -153px -259px;
                     height: 26px;
@@ -2700,9 +2813,18 @@
             }
         }
     }
-    .ytp-volume-control {
-        &, &:hover, &:focus {
-            padding-right: 4px;
+    & when (@PlayerMonth = Early) {
+        .ytp-volume-control {
+            &, &:hover, &:focus {
+                padding-right: 0;
+            }
+        }
+    }
+    & when not (@PlayerMonth = Early) {
+        .ytp-volume-control {
+            &, &:hover, &:focus {
+                padding-right: 4px;
+            }
         }
     }
     
