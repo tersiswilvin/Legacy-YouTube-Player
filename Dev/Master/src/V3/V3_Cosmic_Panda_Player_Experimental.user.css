@@ -1025,12 +1025,12 @@
         height: 8px;
         width: 100%;
         & when (@PlayerMonth = Early) {
+            background: #1e1f1f;
+            background: -webkit-linear-gradient(bottom, rgba(30, 31, 31, .75) 89%, #2f2f2f 90%);
+            background: -moz-linear-gradient(bottom, rgba(30, 31, 31, .75) 89%, #2f2f2f 90%);
+            background: -o-linear-gradient(bottom, rgba(30, 31, 31, .75) 89%, #2f2f2f 90%);
+            background: -ms-linear-gradient(bottom, rgba(30, 31, 31, .75) 89%, #2f2f2f 90%);
             background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0%, rgba(30, 31, 31, .75)), color-stop(89%, rgba(30, 31, 31, .75)), color-stop(90%, #2f2f2f));
-            background-image: #1e1f1f;
-            background-image: -webkit-linear-gradient(bottom, rgba(30, 31, 31, .75) 89%, #2f2f2f 90%);
-            background-image: -moz-linear-gradient(bottom, rgba(30, 31, 31, .75) 89%, #2f2f2f 90%);
-            background-image: -o-linear-gradient(bottom, rgba(30, 31, 31, .75) 89%, #2f2f2f 90%);
-            background-image: -ms-linear-gradient(bottom, rgba(30, 31, 31, .75) 89%, #2f2f2f 90%);
         }
         & when (@PlayerMonth = Middle) {
             background: #1e1f1f;
@@ -1609,6 +1609,34 @@
             & when (@HPaNB = 1) {
                 display: none !important;
             }
+            & when (@PlayerMonth = Early) {
+                background: none;
+                width: 34px;
+                height: 100%;
+                text-align: center;
+                line-height: 26px;
+                &:before {
+                    content: "";
+                    background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -250px 0;
+                    height: 16px;
+                    width: 16px;
+                    vertical-align: middle;
+                    display: inline-block;
+                }
+                &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                    background: none;
+                    width: 34px;
+                    height: 100%;
+                    &:before {
+                        content: "";
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -111px 0;
+                        height: 16px;
+                        width: 16px;
+                        vertical-align: middle;
+                        display: inline-block;
+                    }
+                }
+            }
             & when (@PlayerMonth = Middle) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -32px -43px;
                 height: 26px;
@@ -1656,6 +1684,34 @@
             }
             & when (@HPaNB = 1) {
                 display: none !important;
+            }
+            & when (@PlayerMonth = Early) {
+                background: none;
+                width: 34px;
+                height: 100%;
+                text-align: center;
+                line-height: 26px;
+                &:before {
+                    content: "";
+                    background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -250px 0;
+                    height: 16px;
+                    width: 16px;
+                    vertical-align: middle;
+                    display: inline-block;
+                }
+                &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                    background: none;
+                    width: 34px;
+                    height: 100%;
+                    &:before {
+                        content: "";
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -111px 0;
+                        height: 16px;
+                        width: 16px;
+                        vertical-align: middle;
+                        display: inline-block;
+                    }
+                }
             }
             & when (@PlayerMonth = Middle) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -32px -43px;
@@ -2797,7 +2853,9 @@
         .ytp-volume-control, .ytp-settings-button, .ytp-settings-button-active, .ytp-button-next {
             &, &:hover, &:focus {
                 border-right: 1px solid #222;
-                padding-right: 1px;
+                & when (@PlayerMonth = Middle) {
+                    padding-right: 1px;
+                }
                 .light-theme & {
                     border-color: #ccc;
                 }
@@ -2806,7 +2864,9 @@
         .ytp-button-prev {
             &, &:hover, &:focus {
                 border-left: 1px solid #222;
-                padding-left: 1px;
+                & when (@PlayerMonth = Middle) {
+                    padding-right: 1px;
+                }
                 .light-theme & {
                     border-color: #ccc;
                 }
@@ -3174,6 +3234,8 @@
     == TODO Features ==
     Implement Early 2012 ( & )
     Impliment Flash Player options ( % )
+    Impliment Flash7 Styled Hover ( % )
+    Work on JWPlayer styled Bezels for york ( % )
     
     == Legend ==
     X => Not Started
