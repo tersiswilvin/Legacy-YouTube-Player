@@ -7,7 +7,7 @@
 @license        CC-BY-SA-4.0
 @preprocessor   less
 @var            checkbox                                          AWA                   "Accurate Watermark Animations"  0
-@var            select                                            Autohide              "Autohide Preset (2012M+)"       ["Off", "On", "Fade*", "Auto"]
+@var            select                                            Autohide              "Autohide Preset"                ["Off", "On", "Fade*", "Auto"]
 @var            checkbox                                          AhCursor              "Autohide Cursor"                0
 @var            checkbox                                          CMIcons               "Context Menu Icons"             0
 @var            checkbox                                          DEVMode               "Developer Mode"                 0
@@ -16,6 +16,7 @@
 @var            checkbox                                          EarlyReplayExperiment "Early Replay Icon Experiment"   0
 @var            checkbox                                          ExtraSFNItems         "Extra Stats for nerds items"    0
 @var            checkbox                                          FlashVA               "Flash Volume Animation"         0
+@var            checkbox                                          Flash7Hover           "Flash7 Style Hover ( X )"       0
 @var            checkbox                                          ForceWOYTi            "Force Watch On Youtube icon"    0
 @var            checkbox                                          Forcewatermark        "Force Watermark"                0
 @var            checkbox                                          Forceinfobar          "Force infobar"                  0
@@ -543,31 +544,30 @@
         background: #141414;
         border-radius: 3px 3px 0 0;
         padding: 0;
+        margin-bottom: 0;
         &-row {
-            & when (@HESR = 1) {
-                &:first-child {
-                    border-left: none;
-                    box-shadow: none
-                }
-            }
             display: inline-block;
             vertical-align: top;
             box-shadow: 1px 0 0 0 #2b2b2b inset;
             border-left: 1px solid #000;
-            & when (@HESR = 1) {
-                &:has([aria-label="Speed"]) {
-                    border-left: none;
-                    box-shadow: none
-                }
-            }
             padding: 0 3px;
             min-height: 135px;
             &:first-child {
                 border-left: transparent;
                 box-shadow: none
             }
-            &:has(.ytp-segmented-control) when (@HESR = 1) {
-                display: none
+            & when (@HESR = 1) {
+                &:has([aria-label="Speed"]) {
+                    border-left: none;
+                    box-shadow: none
+                }
+                &:first-child {
+                    border-left: none;
+                    box-shadow: none
+                }
+                &:has(.ytp-segmented-control) {
+                    display: none
+                }
             }
         }
         &-cell {
@@ -583,13 +583,15 @@
         }
         &-container {
             background: #141414;
+            border: 1px solid #141414;
             border-radius: 3px 3px 0 0;
+            padding: 0 0 3px 0;
             & when (@PlayerMonth = Late) {
                 bottom: 26px
             }
         }
         &-content {
-            border-spacing: 1px
+            border-spacing: 0
         }
         &-container .ytp-drop-down-menu-button.ytp-drop-down-menu-button-checked {
             list-style: disc inside none;
@@ -785,6 +787,14 @@
                 height: 12px;
                 line-height: 12px;
                 background: transparent;
+                position: unset;
+            }
+            .ytp-progress-tooltip-thumbnail-container {
+                display: block;
+                background-color: transparent;
+                .ytp-progress-tooltip-thumbnail[style*="width: 60px;"] {
+                    transform: scalex(1.3333);
+                }
             }
         }
         &-timestamp-container, &-timestamp {
@@ -887,6 +897,9 @@
         -o-transition: opacity 0.05s ease-in, bottom 0.05s ease-in;
         -webkit-transition: opacity 0.05s ease-in, bottom 0.05s ease-in;
         transition: opacity 0.05s ease-in, bottom 0.05s ease-in;
+        [data-player-size=fullscreen] & when (@DEVMode = 1) and (@DEVFsTbS = 1) {
+            bottom: 72px;
+        }
         & when (@Forcewatermark = 1) or (@DEVMode = 1) {
             display: block !important;
         }
@@ -913,6 +926,20 @@
             }
             & when (@AWA = 1) and ((@Autohide = On) or (@Autohide = Auto)) {
                 bottom: 3px;
+            }
+            opacity: 0;
+            -moz-transition: opacity 0.5s ease-in,bottom 0.5s ease-in;
+            -ms-transition: opacity 0.5s ease-in,bottom 0.5s ease-in;
+            -o-transition: opacity 0.5s ease-in,bottom 0.5s ease-in;
+            -webkit-transition: opacity 0.5s ease-in,bottom 0.5s ease-in;
+            transition: opacity 0.5s ease-in,bottom 0.5s ease-in
+        }
+        .html5-video-player:not(.ytp-block-autohide) & {
+            & when (@AWA = 0) {
+                bottom: 3px;
+            }
+            & when (@AWA = 1) {
+                bottom: -2px;
             }
             opacity: 0;
             -moz-transition: opacity 0.5s ease-in,bottom 0.5s ease-in;
@@ -1256,22 +1283,31 @@
         z-index: 750;
         background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAdCAYAAABrAQZpAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAABIAAAASABGyWs+AAAACXZwQWcAAAABAAAAHQAh4gKwAAAAMUlEQVQI12OQlJD4x2Sgr8/I9OTZs5dM//79Y2T6//8/IyqLAcLClEBjYahDKCHSKADN5VNQpdTxzgAAAABJRU5ErkJggg==);
         background-repeat: repeat-x;
-        & when (@PlayerMonth = Middle) {
+        & when not (@PlayerMonth = Late) {
+            &:has(.ytp-size-toggle-large):has(.ytp-size-toggle-small) .ytp-size-toggle-large {
+                border-left: none;
+            }
             .watch-small &:has(.ytp-size-toggle-large):has(.ytp-size-toggle-small) .ytp-size-toggle-small, .watch-medium &:has(.ytp-size-toggle-large):has(.ytp-size-toggle-small) .ytp-size-toggle-large {
-                background-color: #141414;
-                cursor: default;
-                -moz-box-shadow: inset 0 -5px 5px #000;
-                -ms-box-shadow: inset 0 -5px 5px #000;
-                -webkit-box-shadow: inset 0 -5px 5px #000;
-                box-shadow: inset 0 -5px 5px #000;
-                .light-theme & {
-                    filter: none;
-                    background: #f1f1f1;
+                & when (@PlayerMonth = Early) {
+                    background: rgba(0, 0, 0, 0.5);
                     cursor: default;
-                    -moz-box-shadow: inset 0 -5px 5px #fff;
-                    -ms-box-shadow: inset 0 -5px 5px #fff;
-                    -webkit-box-shadow: inset 0 -5px 5px #fff;
-                    box-shadow: inset 0 -5px 5px #fff;
+                }
+                & when (@PlayerMonth = Middle) {
+                    background-color: #141414;
+                    cursor: default;
+                    -moz-box-shadow: inset 0 -5px 5px #000;
+                    -ms-box-shadow: inset 0 -5px 5px #000;
+                    -webkit-box-shadow: inset 0 -5px 5px #000;
+                    box-shadow: inset 0 -5px 5px #000;
+                    .light-theme & {
+                        filter: none;
+                        background: #f1f1f1;
+                        cursor: default;
+                        -moz-box-shadow: inset 0 -5px 5px #fff;
+                        -ms-box-shadow: inset 0 -5px 5px #fff;
+                        -webkit-box-shadow: inset 0 -5px 5px #fff;
+                        box-shadow: inset 0 -5px 5px #fff;
+                    }
                 }
             }
         }
@@ -1311,11 +1347,24 @@
         .html5-player-chrome & when (@DEVMode = 1) {
             display: block !important;
         }
-        & when (@PlayerMonth = Early) or (@PlayerMonth = Middle) {
+        & when (@PlayerMonth = Early) {
+            &-play, &-pause, &-replay, &-stop, &-next {
+                border-right: 1px solid #222;
+                .light-theme & {
+                    border-color: #ccc;
+                }
+            }
+            &-prev, &-watch-on-youtube,  {
+                border-left: 1px solid #222;
+            }
+        }
+        & when (@PlayerMonth = Middle) {
             &-play, &-pause, &-replay, &-stop, &-watch-on-youtube {
                 &, &:hover, &:focus {
                     border-right: 1px solid #222;
-                    padding-right: 1px;
+                    & when (@PlayerMonth = Middle) {
+                        padding-right: 1px;
+                    }
                     .light-theme & {
                         border-color: #ccc;
                     }
@@ -2079,6 +2128,31 @@
             }
         }
         &-fullscreen-enter {
+            & when (@PlayerMonth = Early) {
+                background: none;
+                width: 32px;
+                height: 100%;
+                text-align: center;
+                line-height: 26px;
+                &:before {
+                    content: "";
+                    background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -62px 0;
+                    height: 20px;
+                    width: 26px;
+                    vertical-align: middle;
+                    display: inline-block;
+                }
+                &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                    background: none;
+                    width: 32px;
+                    height: 100%;
+                    &:before {
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -273px -22px;
+                        height: 20px;
+                        width: 26px;
+                    }
+                }
+            }
             & when (@PlayerMonth = Middle) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -89px -124px;
                 height: 26px;
@@ -2121,6 +2195,31 @@
             }
         }
         &-fullscreen-exit {
+            & when (@PlayerMonth = Early) {
+                background: none;
+                width: 32px;
+                height: 100%;
+                text-align: center;
+                line-height: 26px;
+                &:before {
+                    content: "";
+                    background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -268px 0;
+                    height: 20px;
+                    width: 26px;
+                    vertical-align: middle;
+                    display: inline-block;
+                }
+                &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                    background: none;
+                    width: 32px;
+                    height: 100%;
+                    &:before {
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -18px -34px;
+                        height: 20px;
+                        width: 26px;
+                    }
+                }
+            }
             & when (@PlayerMonth = Middle) {
                 background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) 0 -70px;
                 height: 26px;
@@ -2165,6 +2264,31 @@
         &-watch-on-youtube {
             & when (@ForceWOYTi = 1) {
                 display: block !important;
+            }
+            & when (@PlayerMonth = Early) {
+                background: none;
+                width: 49px;
+                height: 100%;
+                text-align: center;
+                line-height: 26px;
+                &:before {
+                    content: "";
+                    background: no-repeat url(//s.ytimg.com/yt/imgbin/player-common-vfl6Awq62.png) -28px -87px;
+                    height: 18px;
+                    width: 38px;
+                    vertical-align: middle;
+                    display: inline-block;
+                }
+                &:focus, &:hover {
+                    background: none;
+                    width: 49px;
+                    height: 100%;
+                    &:before {
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-common-vfl6Awq62.png) -28px -107px;
+                        height: 18px;
+                        width: 38px;
+                    }
+                }
             }
             & when (@PlayerMonth = Middle) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) 0 -156px;
@@ -2280,6 +2404,118 @@
             }
         }
         &-watch-later {
+            &.html5-async-progress {
+                &, &:focus, &:hover {
+                    background: none;
+                    width: 32px;
+                    height: 100%;
+                    text-align: center;
+                    line-height: 22px;
+                }
+                &:before {
+                    content: "";
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) -14px -118px;
+                    height: 17px;
+                    width: 17px;
+                    vertical-align: middle;
+                    display: inline-block;
+                }
+            }
+            &.html5-async-error {
+                &, &:focus, &:hover {
+                    background: none;
+                    width: 32px;
+                    height: 100%;
+                    text-align: center;
+                    line-height: 22px;
+                }
+                &:before {
+                    content: "";
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) -87px -187px;
+                    height: 14px;
+                    width: 12px;
+                    vertical-align: middle;
+                    display: inline-block;
+                }
+            }
+            &.html5-async-success {
+                &, &:focus, &:hover {
+                    background: none;
+                    width: 32px;
+                    height: 100%;
+                    text-align: center;
+                    line-height: 22px;
+                }
+                &:before {
+                    content: "";
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) 0 -210px;
+                    height: 14px;
+                    width: 12px;
+                    vertical-align: middle;
+                    display: inline-block;
+                }
+            }
+            & when (@PlayerMonth = Early) {
+                background: none;
+                width: 32px;
+                height: 100%;
+                text-align: center;
+                line-height: 26px;
+                &:before {
+                    content: "";
+                    background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -177px 0;
+                    height: 13px;
+                    width: 13px;
+                    vertical-align: middle;
+                    display: inline-block;
+                }
+                &:focus, &:hover {
+                    background: none;
+                    width: 32px;
+                    height: 100%;
+                    &:before {
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) 0 0;
+                        height: 13px;
+                        width: 13px;
+                    }
+                }
+                &.html5-async-progress {
+                    &, &:focus, &:hover {
+                        background: none;
+                        width: 32px;
+                        height: 100%;
+                    }
+                    &:before {
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-common-vfl6Awq62.png) 0 -92px;
+                        height: 17px;
+                        width: 17px
+                    }
+                }
+                &.html5-async-error {
+                    &, &:focus, &:hover {
+                        background: none;
+                        width: 32px;
+                        height: 100%;
+                    }
+                    &:before {
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-common-vfl6Awq62.png) -14px -111px;
+                        height: 14px;
+                        width: 12px;
+                    }
+                }
+                &.html5-async-success {
+                    &, &:focus, &:hover {
+                        background: none;
+                        width: 32px;
+                        height: 100%;
+                    }
+                    &:before {
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-common-vfl6Awq62.png) 0 -111px;
+                        height: 14px;
+                        width: 12px;
+                    }
+                }
+            }
             & when (@PlayerMonth = Middle) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) 0 -259px;
                 height: 26px;
@@ -2518,6 +2754,31 @@
         }
     }
     .ytp-size-toggle-large {
+        & when (@PlayerMonth = Early) {
+            background: none;
+            width: 32px;
+            height: 100%;
+            text-align: center;
+            line-height: 26px;
+            &:before {
+                content: "";
+                background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -250px -38px;
+                height: 14px;
+                width: 21px;
+                vertical-align: middle;
+                display: inline-block;
+            }
+            &:focus, &:hover {
+                background: none;
+                width: 32px;
+                height: 100%;
+                &:before {
+                    background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -148px -20px;
+                    height: 14px;
+                    width: 21px;
+                }
+            }
+        }
         & when (@PlayerMonth = Middle) {
             background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -89px -16px;
             height: 26px;
@@ -2560,6 +2821,31 @@
         }
     }
     .ytp-size-toggle-small {
+        & when (@PlayerMonth = Early) {
+            background: none;
+            width: 32px;
+            height: 100%;
+            text-align: center;
+            line-height: 26px;
+            &:before {
+                content: "";
+                background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -232px -39px;
+                height: 10px;
+                width: 16px;
+                vertical-align: middle;
+                display: inline-block;
+            }
+            &:focus, &:hover {
+                background: none;
+                width: 32px;
+                height: 100%;
+                &:before {
+                    background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -214px -40px;
+                    height: 10px;
+                    width: 16px;
+                }
+            }
+        }
         & when (@PlayerMonth = Middle) {
             background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -57px -124px;
             height: 26px;
@@ -2602,6 +2888,56 @@
         }
     }
     .ytp-settings-button, .ytp-settings-button-active {
+        & when (@PlayerMonth = Early) {
+            background: none;
+            width: auto;
+            height: 100%;
+            text-align: center;
+            line-height: 26px;
+            padding: 0 0 0 5px;
+            &:before {
+                content: "Quality";
+                font-weight: normal;
+                line-height: 28px;
+                height: auto;
+                width: auto;
+                vertical-align: middle;
+                display: inline-block;
+            }
+            div {
+                display: none;
+            }
+            &:after {
+                content: "";
+                font-size: 0;
+                width: 0;
+                height: 0;
+                border: 1px solid transparent;
+                border-width: 0 5px 5px;
+                border-top-color: transparent;
+                border-bottom-color: #767676;
+                margin-top: -3px;
+                margin-left: 5px;
+                vertical-align: middle;
+                display: inline-block
+            }
+            &:after {
+                border-width: 0;
+                background-repeat: no-repeat;
+            }
+            &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                background: none;
+                width: auto;
+                height: 100%;
+                &:before {
+                    color: #fff;
+                }
+                &:after {
+                    border-top-color: transparent;
+                    border-bottom-color: #333;
+                }
+            }
+        }
         & when (@PlayerMonth = Middle) {
             background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -153px -124px;
             height: 26px;
@@ -2644,19 +2980,21 @@
         }
     }
     .ytp-settings-button-active {
-        &, &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
-            -moz-box-shadow: inset 0 -5px 5px #000;
-            -ms-box-shadow: inset 0 -5px 5px #000;
-            -webkit-box-shadow: inset 0 -5px 5px #000;
-            box-shadow: inset 0 -5px 5px #000;
-            .light-theme & {
-                filter: none;
-                background: #f1f1f1;
-                cursor: default;
-                -moz-box-shadow: inset 0 -5px 5px #fff;
-                -ms-box-shadow: inset 0 -5px 5px #fff;
-                -webkit-box-shadow: inset 0 -5px 5px #fff;
-                box-shadow: inset 0 -5px 5px #fff;
+        & when not (@PlayerMonth = Early) {
+            &, &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+                -moz-box-shadow: inset 0 -5px 5px #000;
+                -ms-box-shadow: inset 0 -5px 5px #000;
+                -webkit-box-shadow: inset 0 -5px 5px #000;
+                box-shadow: inset 0 -5px 5px #000;
+                .light-theme & {
+                    filter: none;
+                    background: #f1f1f1;
+                    cursor: default;
+                    -moz-box-shadow: inset 0 -5px 5px #fff;
+                    -ms-box-shadow: inset 0 -5px 5px #fff;
+                    -webkit-box-shadow: inset 0 -5px 5px #fff;
+                    box-shadow: inset 0 -5px 5px #fff;
+                }
             }
         }
         & when (@PlayerMonth = Middle) {
@@ -2849,24 +3187,23 @@
             }
         }
     }
-    & when (@PlayerMonth = Early) or (@PlayerMonth = Middle) {
+    & when (@PlayerMonth = Early) {
+        .ytp-volume-control {
+            &, &:hover, &:focus {
+                border-right: 1px solid #222;
+            }
+        }
+        .ytp-button-fullscreen-enter, .ytp-button-fullscreen-exit, .ytp-size-toggle-small, .ytp-size-toggle-large {
+            &, &:hover, &:focus {
+                border-left: 1px solid #222;
+            }
+        }
+    }
+    & when (@PlayerMonth = Middle) {
         .ytp-volume-control, .ytp-settings-button, .ytp-settings-button-active, .ytp-button-next {
             &, &:hover, &:focus {
                 border-right: 1px solid #222;
-                & when (@PlayerMonth = Middle) {
-                    padding-right: 1px;
-                }
-                .light-theme & {
-                    border-color: #ccc;
-                }
-            }
-        }
-        .ytp-button-prev {
-            &, &:hover, &:focus {
-                border-left: 1px solid #222;
-                & when (@PlayerMonth = Middle) {
-                    padding-right: 1px;
-                }
+                padding-right: 1px;
                 .light-theme & {
                     border-color: #ccc;
                 }
