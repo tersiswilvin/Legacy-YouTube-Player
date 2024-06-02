@@ -13,6 +13,7 @@
 @var            checkbox                                          DEVMode               "Developer Mode"                 0
 @var            checkbox                                          DEVFsTbS              "(DEV) Fullscreen Taskbar Space" 0
 @var            checkbox                                          QualityBadges         "Display Quality Badges"         0
+@var            checkbox                                          ECMHSF                "Early Context Menu hover Fix"   0
 @var            checkbox                                          EarlyReplayExperiment "Early Replay Icon Experiment"   0
 @var            checkbox                                          ExtraSFNItems         "Extra Stats for nerds items"    0
 @var            checkbox                                          FlashVA               "Flash Volume Animation"         0
@@ -23,7 +24,7 @@
 @var            checkbox                                          HESR                  "Hide Extra Settings Rows"       1
 @var            checkbox                                          HPaNB                 "Hide Prev & Next Buttons"       1
 @var            checkbox                                          IBIO                  "Infobar Icons Only"             0
-@var            select                                            PlayButtonStyle       "Play Button Style"              ["2012E*", "2013E", "2014"]
+@var            select                                            PlayButtonStyle       "Play Button Style"              ["2010M", "2011M", "2012E*", "2013E", "2014"]
 @var            select                                            PlayerMonth           "Player Month"                   ["Early", "Middle*", "Late"]
 @var            checkbox                                          Flash7Warning         "Show Flash7 Warning"            1
 @var            checkbox                                          TooltipCrtFix         "Tooltip 2012L Caret Fix"        0
@@ -50,6 +51,9 @@
             html[data-player-size=fullscreen] &:not(.ytp-block-autohide) {
                 cursor: pointer;
             }
+        }
+        .captions-text when (@PlayerMonth = Early) {
+            opacity: 0.8
         }
         .captions-asr .caption-window-transform:before {
             content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAsCAQAAACnWtJ+AAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAAAEgAAABIAEbJaz4AAAAJdnBBZwAAACQAAAAsALDekYcAAARFSURBVEjH7ZZJbFQFGMd/b5l9hi50w9LNpp2SFimBggJVkqHSEkMiCSKoCBgTvUhU7MHAxbicNIFwMhhPEoyRKFGjFomBCoG0bCFpAamF0pTpRqedDjPzpu/zMG0p02k7NsaT3+19efm9/7c/+JdMSerVUFEwGUPmD1Kw4MSJikGQMGOpgdRpHisZFL+7+dJhysjBkeSNlMxCDqt273/wQKT3zpMbyEGfD0Yjk+V174TCIiLh0Pt7yMPyzzEKLsorXu3yi4iEwrsOUE062nzCWoTv2yYREZHtn7CWPGyoqONVTFlPGst8jXHMFz9QRwEOdJxkkE0mzlS1WVlMw+U2EZEuP1vx4saCh2JqfvqIGkrwpFJBBQ9PTOjZe5DVLMSCm1I2tpwTud2+soF8rHODdPLwnW0VEWm/zfOU4MBGPr6Tp+Pw5q8owT4zQJ0EucmurgT4uokehhnDQe6+el8twMnmdUeIzN3lCgtY/vZnIiL9AXZQjhMbBTx3vVNEpP0OW6nAg4qChpasgvq4Livu2iqA9g4GCTKGlcydK8uLAN74nE76CKNjwwJEiWAkAylYcJUUArS2M0wEwU7GKz6AM1d/v0IvoyikkfXBClX2X6Cf4UcDnVCk48jKAOjsIYSBgg3PkjKAUy30McIYTha9ueHAp9HQNy9fuUyY8PQlY6WYbfHqsJsKHNgo5oW4p/QtKnFhYzH19wdFRG62UIn70Uyp46Gpk1MeI4agoE6M660AUUw0nPXl6RnQP7LpCJKoZqL8yrRKPPSYSLwgVYsB+gM3A0QTt+fDpp++VCXhSRQBcNqTDbE6/pKJOalEHfdMVEVHR8EkcqIdoDBrZyk29GQ5AhNjYBjAl4cFDRgjOhgAeKkUOxomo9fvdNwC+Hjb9IZUxzExwgP3AZY+hh0dMBjt6gFYWYYHO0KQ7vc+jIb+bN3cyDCx5KHFCHV2A9RW4sYKRAicuQjQ8BTZLEAjjP/46cYtZbsuXmWQaLJkm0QZvdEJUFKIBzsQYejH8wDegr3PkIMLGKHn4Fk66SWUOMATigyC318CqCgiAzc6BkM/X2v6A2DfixSShQ2TMEFGZ7t2NorYfPeeiMiho6whCwtulnj3xC/KhfPUkjvbadKmaHMWZ69eCulph5sZIkQUc8CIBJ9dA/n56Vd/aSM02SQzggQFvSP2Wr1Fz0ob8p/vYIQIMYyz9x6PLqs5duj17xgkPDPooenksv74r48sfw0HeVTs3YiXXOypniQXFd7d/QERkS9PUEcBdjSsuPDgwjo7ZuqtEswBWaA/vQKqvTfuXvMTIoKBQRRjrn09FWRiIqf61paUFsKmVf6/Lt4llNh4qZmKBy9buntERCKj69azcL6/NRrpVFXu8HeJHD1EFWmpJjjxngsxIn1D535zt20/Rh/BxOGcyZJ9T8eGFZUYYYxUOmcmUHzNKkiqkP/tP7a/AWM8u6WDedEoAAAAAElFTkSuQmCC);
@@ -357,16 +361,39 @@
     .html5-context-menu {
         padding: 0;
         &.yt-uix-button-menu {
-            -moz-border-radius: 3px;
-            -webkit-border-radius: 3px;
-            border-radius: 3px;
-            -moz-box-shadow: 0 1px 1px rgba(100, 100, 100, .2);
-            -ms-box-shadow: 0 1px 1px rgba(100, 100, 100, .2);
-            -webkit-box-shadow: 0 1px 1px rgba(100,100,100,.2);
-            box-shadow: 0 1px 1px rgba(100,100,100,.2);
+            & when (@PlayerMonth = Early) {
+                background: #ebebeb;
+                    padding: 6px 0;
+                -webkit-border-radius: 3px;
+                border-radius: 3px;
+                border: 1px solid #999;
+                -moz-box-shadow: 0 0 3px #999;
+                -webkit-box-shadow: 0 0 3px #999;
+                box-shadow: 0 0 3px #999;
+                li {
+                    margin: 1px 0;
+                    list-style: none;
+                }
+            }
+            & when not (@PlayerMonth = Early) {
+                -moz-border-radius: 3px;
+                -webkit-border-radius: 3px;
+                border-radius: 3px;
+                -moz-box-shadow: 0 1px 1px rgba(100, 100, 100, .2);
+                -ms-box-shadow: 0 1px 1px rgba(100, 100, 100, .2);
+                -webkit-box-shadow: 0 1px 1px rgba(100,100,100,.2);
+                box-shadow: 0 1px 1px rgba(100,100,100,.2);
+            }
             .yt-uix-button-menu-item {
-                padding: 6px 20px;
-                color: #555;
+                & when (@PlayerMonth = Early) {
+                    padding: .4166em .6666em;
+                    color: #000;
+                    background: #fff;
+                }
+                & when not (@PlayerMonth = Early) {
+                    padding: 6px 20px;
+                    color: #555;
+                }
                 line-height: normal;
                 &:after when (@CMIcons = 0) {
                     display: none
@@ -376,8 +403,19 @@
                 }
             }
             .yt-uix-button-menu-item.selected, .yt-uix-button-menu-item-highlight .yt-uix-button-menu-item, .yt-uix-button-menu-item:hover {
-                background-color: #555;
-                color: #fff;
+                & when (@PlayerMonth = Early) {
+                    background: #eaeaea;
+                    & when (@ECMHSF = 0) {
+                        color: #fff;
+                    }
+                    & when (@ECMHSF = 1) {
+                        color: #000;
+                    }
+                }
+                & when not (@PlayerMonth = Early) {
+                    background-color: #555;
+                    color: #fff;
+                }
                 [class*="darkmode"] ~ & {
                     background-color: var(--color-333);
                     color: var(--color-fff);
@@ -2332,7 +2370,7 @@
             }
         }
         &-playlist {
-            & when (@PlayerMonth = Middle) {
+            & when (@PlayerMonth = Early) or (@PlayerMonth = Middle) {
                 background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -64px -97px;
                 height: 26px;
                 width: 30px;
@@ -2896,7 +2934,7 @@
             line-height: 26px;
             padding: 0 0 0 5px;
             &:before {
-                content: "Quality";
+                content: attr(aria-label);
                 font-weight: normal;
                 line-height: 28px;
                 height: auto;
@@ -2979,22 +3017,20 @@
             }
         }
     }
-    .ytp-settings-button-active {
-        & when not (@PlayerMonth = Early) {
-            &, &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
-                -moz-box-shadow: inset 0 -5px 5px #000;
-                -ms-box-shadow: inset 0 -5px 5px #000;
-                -webkit-box-shadow: inset 0 -5px 5px #000;
-                box-shadow: inset 0 -5px 5px #000;
-                .light-theme & {
-                    filter: none;
-                    background: #f1f1f1;
-                    cursor: default;
-                    -moz-box-shadow: inset 0 -5px 5px #fff;
-                    -ms-box-shadow: inset 0 -5px 5px #fff;
-                    -webkit-box-shadow: inset 0 -5px 5px #fff;
-                    box-shadow: inset 0 -5px 5px #fff;
-                }
+    .ytp-settings-button-active when not (@PlayerMonth = Early) {
+        &, &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
+            -moz-box-shadow: inset 0 -5px 5px #000;
+            -ms-box-shadow: inset 0 -5px 5px #000;
+            -webkit-box-shadow: inset 0 -5px 5px #000;
+            box-shadow: inset 0 -5px 5px #000;
+            .light-theme & {
+                filter: none;
+                background: #f1f1f1;
+                cursor: default;
+                -moz-box-shadow: inset 0 -5px 5px #fff;
+                -ms-box-shadow: inset 0 -5px 5px #fff;
+                -webkit-box-shadow: inset 0 -5px 5px #fff;
+                box-shadow: inset 0 -5px 5px #fff;
             }
         }
         & when (@PlayerMonth = Middle) {
@@ -3031,6 +3067,86 @@
         }
     }
     .ytp-subtitles-button {
+        & when (@PlayerMonth = Early) {
+            background: none;
+            width: 36px;
+            height: 100%;
+            text-align: center;
+            line-height: 26px;
+            &:before {
+                content: "";
+                background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -129px 0;
+                height: 12px;
+                width: 17px;
+                vertical-align: middle;
+                display: inline-block;
+            }
+            &:focus, &:hover {
+                background: none;
+                width: 36px;
+                height: 100%;
+                &:before {
+                    background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -195px -16px;
+                    height: 12px;
+                    width: 17px;
+                }
+            }
+            &-active, &-active:focus, &-active:hover {
+                background: none;
+                width: 36px;
+                height: 100%;
+                text-align: center;
+                line-height: 26px;
+                &:before {
+                    content: "";
+                    background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -191px 0;
+                    height: 12px;
+                    width: 17px;
+                    vertical-align: middle;
+                    display: inline-block;
+                }
+            }
+            .cc-international & {
+                background: none;
+                width: 36px;
+                height: 100%;
+                text-align: center;
+                line-height: 26px;
+                &:before {
+                    content: "";
+                    background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -129px 0;
+                    height: 12px;
+                    width: 17px;
+                    vertical-align: middle;
+                    display: inline-block;
+                }
+                &:focus, &:hover {
+                    background: none;
+                    width: 36px;
+                    height: 100%;
+                    &:before {
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -195px -16px;
+                        height: 12px;
+                        width: 17px;
+                    }
+                }
+                &-active, &-active:focus, &-active:hover {
+                    background: none;
+                    width: 36px;
+                    height: 100%;
+                    text-align: center;
+                    line-height: 26px;
+                    &:before {
+                        content: "";
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -191px 0;
+                        height: 12px;
+                        width: 17px;
+                        vertical-align: middle;
+                        display: inline-block;
+                    }
+                }
+            }
+        }
         & when (@PlayerMonth = Middle) {
             background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -64px -205px;
             height: 26px;
@@ -3254,8 +3370,13 @@
             }
         }
         &:focus, .ytp-volume-control:hover & {
-            & when (@FlashVA = 0) {
-                width: 56px;
+            & when (@PlayerMonth = Early) {
+                width: 66px;
+            }
+            & when (@PlayerMonth = Middle) {
+                & when (@FlashVA = 0) {
+                    width: 56px;
+                }
             }
             & when (@FlashVA = 1) {
                 width: 62px;
@@ -3281,6 +3402,9 @@
             bottom: unset;
             height: 14px;
             width: 5px;
+            & when (@PlayerMonth = Early) {
+                background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAAAOCAYAAADdeGlVAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAABIAAAASABGyWs+AAAACXZwQWcAAABmAAAADgBV/HzAAAABWklEQVRYw+2Yv2rCUBSHvyu3QhYtNiDuXYqTS6eALnmDvkG3PkAfonMpfYPuWeOgayk4ZSt0cLEQnUqDiXg71EhJOtSblGvED+6Qw/3z++VwbjgRSimqhhACAKVUH7gDLoFn4FYIMa6ip5zHIiZc1/3z3PFoVJroZLUCIIqieb1eb6XxOI4XlmWdnUiZW9MfDHY6w/f90vTqIItvocdTp6O99mo6BaBWq7VWmySlz6b8lI24sKzK1v1LGOZip82maVmlIO/bbdMatPlZLYeG/FyvTWvQJkkS0xL+DflxTMxeIt+PidlL5NtyaVqDNgedmKDXM61Bm98+/rv2K/uKsQbzutHQPvdxsQAgCIKc+G63K44N5g5kX8xrkc2GQwBmsxm2bW/D4aavOYiqUUpVbqQ4jjP3PE9NJhPleZ5yHGdeVU/ZUegqM0X6ExNwgQfgnO8ivAH8KnrK8gWUVJKQEjVwyAAAAABJRU5ErkJggg==) -47px 0;
+            }
             & when (@PlayerMonth = Middle) {
                 background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAAAOCAYAAADdeGlVAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAABIAAAASABGyWs+AAAACXZwQWcAAABmAAAADgBV/HzAAAABW0lEQVRYw+2YsWqDQBjH/3dcBZekWCFk71KcsnQSksU36Bt06wP0ITqXkjfofqsZkrUUnNwKHbJYUKdSiUquQ1sxTYfESzkv+IOD78S7+//9+JRPIoSAbhBCqlgIMQZwB+ASwBOAW0LIQkdfGx5lDHiet/O9i/n8YKKLsqziLMsSwzCsn3me56lpmmcnjG2sGU8me53h+/7B9DaByW/RjMfhsPHaq+WyiimlVllLFKXUarJn2yAXpql1zT/H8da1035ftSxp2P1goFqDFPVqOSbYx3qtWoMURVGolvAvsPcuMa2EvXWJaSXsdbVSrUGKo01MOBqp1iDFXx//fXuWNqKswbzu9RqfO03TKg7DcMuA4zikazB35PeDeZHZbDarwiiKYNt2NY+/+xrtq0YIod2o47puwjkXQRAIzrlwXTfR1Vd9SL3KVFH/iQnAA/AA4BxfhXgDwNfRV51Pa+CPkys0tRoAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAAElFTkSuQmCC) -48px 0;
                 .light-theme & {
@@ -3295,6 +3419,14 @@
             }
             background-repeat: no-repeat;
             &:before {
+                & when (@PlayerMonth = Early) {
+                    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAAOCAYAAACVbiH8AAABnklEQVR4Xu2asWrCUBSGvYuSyWIyWDFBbMEW11IoBFrQvkAfo4F2y0Nk6mJfoQ/QsWQoOIgWwcGtm6u6ii7p7WBoeqEg92z9Lpwt+QIfP38IOarEwYCAgSzLrjUm0XOpZ6wnVkq9C6BBYCA3oHCBAQkDm81mVS6Xa3vWbrdbO47jSrBhYGBvgMIiCyIGtttt9htUqVTIl4hdIHlhnTuOETT0YOBQAx/LpXHLUbV6KIbrMfCnAZW2WhQWIbE2cDGbGQzP5YvQWiyAggH1GgQUFqGwNnA1nRqM43rdmgsAAz8NqJdmk8IiE9YGbiYTgxH4vjUXAAYKhfXUaFBYZMLawN1oZDBO2m1rLgAMFArr0XUpLDJhbeBh/L16VTxnnY41FwAGCoXV7/cpLDJhbWAwGBiMKIqsuQAwUCgsdGBAwsB8PjdefN1ulz0sCbkwcgMEijCIGEjTNPM8L2ct9V5Wr9cjXyJ2gewNECiyIGIgDMNVHMc1X/8ZXCwWpSRJ1sPhkEUsEbtAKCwyIG3gVgOf9Zzq+dRzr+dN+iHw/reBL2+ySCKiWvjwAAAAAElFTkSuQmCC);
+                    background-repeat: no-repeat;
+                    height: 13px;
+                    width: 49px;
+                    top: 0;
+                    left: -49px;
+                }
                 & when (@PlayerMonth = Middle) {
                     background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAAOCAYAAAHiaRFqAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF9SURBVGhD7dkxa8JAFAfwu0mcLCSDFRWxgy1ZuxQEC7FfoF9DaL9Kl/QrdE/n7FaL4pCpXyEOTpIhXHPyQpz0yj3Ktfx/8Lj3ku1iLu9O4Sr57HmKcmuvux1lDlFKfVBqjW22nhYLcT0aUWVHJoMB2yPkcrvZCN/zqIKT4jh27gE6i/N95oTX8AdYPztcOBflfw9r1h+X57nSQSWcId+6XUyWgfvl8jD2e73DCMAiTVOlg0oAe+V2YlKGNqFLcIakEU447q0ajQbmzICTe2jX6D19BUdsZtC8G6gadw3NuxknD7Jcow/WKjhgM4N+wcDxbjAIAswZ8BiPx9v1eq30SJcA4Lfs9/ttURSqCl3TLQAW8qbZRO8OLD6zjLLaRatFGYA9+d7vY8ECFnerFWW1y3abMgB78qXTwYIFLB7nc8pqV8MhZQD25HQ6xYIFLKIooqw2m80oA7CHv7yATZIkyvd9qoTIskyEYYjfGAA46aGMrzJ0165HXQMwEeIbL1mI2ftk/oMAAAAOZVhJZk1NACoAAAAIAAAAAAAAANJTkwAAAABJRU5ErkJggg==);
                     background-repeat: no-repeat;
@@ -3319,6 +3451,14 @@
                 }
             }
             &:after {
+                & when (@PlayerMonth = Early) {
+                    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAAOCAYAAACVbiH8AAABnklEQVR4Xu2asWrCUBSGvYuSyWIyWDFBbMEW11IoBFrQvkAfo4F2y0Nk6mJfoQ/QsWQoOIgWwcGtm6u6ii7p7WBoeqEg92z9Lpwt+QIfP38IOarEwYCAgSzLrjUm0XOpZ6wnVkq9C6BBYCA3oHCBAQkDm81mVS6Xa3vWbrdbO47jSrBhYGBvgMIiCyIGtttt9htUqVTIl4hdIHlhnTuOETT0YOBQAx/LpXHLUbV6KIbrMfCnAZW2WhQWIbE2cDGbGQzP5YvQWiyAggH1GgQUFqGwNnA1nRqM43rdmgsAAz8NqJdmk8IiE9YGbiYTgxH4vjUXAAYKhfXUaFBYZMLawN1oZDBO2m1rLgAMFArr0XUpLDJhbeBh/L16VTxnnY41FwAGCoXV7/cpLDJhbWAwGBiMKIqsuQAwUCgsdGBAwsB8PjdefN1ulz0sCbkwcgMEijCIGEjTNPM8L2ct9V5Wr9cjXyJ2gewNECiyIGIgDMNVHMc1X/8ZXCwWpSRJ1sPhkEUsEbtAKCwyIG3gVgOf9Zzq+dRzr+dN+iHw/reBL2+ySCKiWvjwAAAAAElFTkSuQmCC);
+                    background-repeat: no-repeat;
+                    background-position: -151px 0;
+                    height: 13px;
+                    width: 49px;
+                    top: 0;
+                }
                 & when (@PlayerMonth = Middle) {
                     background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAAOCAYAAAHiaRFqAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF9SURBVGhD7dkxa8JAFAfwu0mcLCSDFRWxgy1ZuxQEC7FfoF9DaL9Kl/QrdE/n7FaL4pCpXyEOTpIhXHPyQpz0yj3Ktfx/8Lj3ku1iLu9O4Sr57HmKcmuvux1lDlFKfVBqjW22nhYLcT0aUWVHJoMB2yPkcrvZCN/zqIKT4jh27gE6i/N95oTX8AdYPztcOBflfw9r1h+X57nSQSWcId+6XUyWgfvl8jD2e73DCMAiTVOlg0oAe+V2YlKGNqFLcIakEU447q0ajQbmzICTe2jX6D19BUdsZtC8G6gadw3NuxknD7Jcow/WKjhgM4N+wcDxbjAIAswZ8BiPx9v1eq30SJcA4Lfs9/ttURSqCl3TLQAW8qbZRO8OLD6zjLLaRatFGYA9+d7vY8ECFnerFWW1y3abMgB78qXTwYIFLB7nc8pqV8MhZQD25HQ6xYIFLKIooqw2m80oA7CHv7yATZIkyvd9qoTIskyEYYjfGAA46aGMrzJ0165HXQMwEeIbL1mI2ftk/oMAAAAOZVhJZk1NACoAAAAIAAAAAAAAANJTkwAAAABJRU5ErkJggg==);
                     background-repeat: no-repeat;
@@ -3514,6 +3654,45 @@
             position: absolute;
             top: 50%;
             left: 50%;
+            & when (@PlayButtonStyle = 2010M) or (@PlayButtonStyle = 2011M) {
+                width: 96px;
+                height: 68px;
+                margin-left: -48px;
+                margin-top: -36px;
+            }
+            & when (@PlayButtonStyle = 2010M) {
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='html5-big-play-button html5-center-overlay' style='&%2310;'%3E%3Cg opacity='0.4'%3E%3Cpath fill='none' stroke='%23FFFFFF' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' d='M88.34,9.698 c-1.09-1.04-2.43-1.62-3.92-1.8c-23.061-1.44-46.08-1.44-69.14,0c-1.48,0.18-2.72,0.76-3.84,1.8c-1.09,1.04-1.81,2.27-2.14,3.78 c-1.05,7.07-1.56,14.17-1.56,21.26c0,7.21,0.51,14.27,1.56,21.34c0.33,1.51,1.05,2.74,2.14,3.779c1.12,1.051,2.36,1.621,3.84,1.801 c23.06,1.439,46.08,1.439,69.14,0c1.49-0.18,2.83-0.75,3.92-1.801c1.12-1.039,1.77-2.34,2.1-3.819 C91.46,48.938,92,41.878,92,34.738c0-7.09-0.54-14.16-1.561-21.22C90.109,12.038,89.46,10.818,88.34,9.698z'/%3E%3C/g%3E%3C/svg%3E");
+                display: flex;
+                &:before {
+                    content: '';
+                    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='html5-big-play-button html5-center-overlay'%3E%3Cg class='html5-overlay-button-background'%3E%3Cpath d='M88.34,9.698c-1.09-1.04-2.43-1.62-3.92-1.8c-23.061-1.44-46.08-1.44-69.14,0c-1.48,0.18-2.72,0.76-3.84,1.8 c-1.09,1.04-1.81,2.27-2.14,3.78c-1.05,7.07-1.56,14.17-1.56,21.26c0,7.21,0.51,14.27,1.56,21.34c0.33,1.51,1.05,2.74,2.14,3.779 c1.12,1.051,2.36,1.621,3.84,1.801c23.06,1.439,46.08,1.439,69.14,0c1.49-0.18,2.83-0.75,3.92-1.801 c1.12-1.039,1.77-2.34,2.1-3.819C91.46,48.938,92,41.878,92,34.738c0-7.09-0.54-14.16-1.561-21.22 C90.109,12.038,89.46,10.818,88.34,9.698z'%3E%3C/path%3E%3C/g%3E%3Cg class='html5-overlay-button-background'%3E%3Cpolygon fill='%23FFFFFF' points='39.32,16.729 39.32,52.798 68.18,34.168'%3E%3C/polygon%3E%3C/g%3E%3C/svg%3E");
+                    width: 300px;
+                    height: 150px;
+                    display: inline-block;
+                    opacity: .8;
+                    position: absolute;
+                    -moz-transition: opacity .25s linear;
+                    -webkit-transition: opacity .25s linear;
+                    -o-transition: opacity .25s linear;
+                    z-index: 0
+                }
+                &:after {
+                    content: '';
+                    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='html5-big-play-button html5-center-overlay' style='&%2310;'%3E%3Cpath opacity='0.19' fill='%23FFFFFF' enable-background='new' d='M88.34,9.698c-1.09-1.04-2.43-1.62-3.92-1.8 c-23.061-1.44-46.08-1.44-69.14,0c-1.48,0.18-2.72,0.76-3.84,1.8c-1.09,1.04-1.81,2.27-2.14,3.78c-1.05,7.07-1.56,14.17-1.56,21.26 c0,7.21,1.49,21.949,1.56,21.34c30.89-29.62,44.3-5.48,81.14-42.56C91.51,12.438,89.46,10.818,88.34,9.698z'/%3E%3C/svg%3E");
+                    width: 300px;
+                    height: 150px;
+                    display: inline-block;
+                    opacity: 1;
+                    position: absolute;
+                    z-index: 1
+                }
+                .html5-video-player:hover &:before {
+                    opacity: 1
+                }
+            }
+            & when (@PlayButtonStyle = 2011M) {
+                background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='html5-big-play-button html5-center-overlay html5-scalable-icon'%3E%3Cg opacity='0.4'%3E%3Cpath fill='none' stroke='%23FFFFFF' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' d='M88.34,9.698 c-1.09-1.04-2.43-1.62-3.92-1.8c-23.061-1.44-46.08-1.44-69.14,0c-1.48,0.18-2.72,0.76-3.84,1.8c-1.09,1.04-1.81,2.27-2.14,3.78 c-1.05,7.07-1.56,14.17-1.56,21.26c0,7.21,0.51,14.27,1.56,21.34c0.33,1.51,1.05,2.74,2.14,3.779c1.12,1.051,2.36,1.621,3.84,1.801 c23.06,1.439,46.08,1.439,69.14,0c1.49-0.18,2.83-0.75,3.92-1.801c1.12-1.039,1.77-2.34,2.1-3.819 C91.46,48.938,92,41.878,92,34.738c0-7.09-0.54-14.16-1.561-21.22C90.109,12.038,89.46,10.818,88.34,9.698z'%3E%3C/path%3E%3C/g%3E%3Cg class='html5-overlay-button-background' opacity='0.8'%3E%3Cpath d='M88.34,9.698c-1.09-1.04-2.43-1.62-3.92-1.8c-23.061-1.44-46.08-1.44-69.14,0c-1.48,0.18-2.72,0.76-3.84,1.8 c-1.09,1.04-1.81,2.27-2.14,3.78c-1.05,7.07-1.56,14.17-1.56,21.26c0,7.21,0.51,14.27,1.56,21.34c0.33,1.51,1.05,2.74,2.14,3.779 c1.12,1.051,2.36,1.621,3.84,1.801c23.06,1.439,46.08,1.439,69.14,0c1.49-0.18,2.83-0.75,3.92-1.801 c1.12-1.039,1.77-2.34,2.1-3.819C91.46,48.938,92,41.878,92,34.738c0-7.09-0.54-14.16-1.561-21.22 C90.109,12.038,89.46,10.818,88.34,9.698z'%3E%3C/path%3E%3C/g%3E%3Cpath opacity='0.19' fill='%23FFFFFF' enable-background='new' d='M88.34,9.698c-1.09-1.04-2.43-1.62-3.92-1.8 c-23.061-1.44-46.08-1.44-69.14,0c-1.48,0.18-2.72,0.76-3.84,1.8c-1.09,1.04-1.81,2.27-2.14,3.78c-1.05,7.07-1.56,14.17-1.56,21.26 c0,7.21,1.49,21.949,1.56,21.34c30.89-29.62,44.3-5.48,81.14-42.56C91.51,12.438,89.46,10.818,88.34,9.698z'%3E%3C/path%3E%3Cg class='html5-overlay-button-background' opacity='0.66'%3E%3Cpolygon fill='%23FFFFFF' points='39.32,16.729 39.32,52.798 68.18,34.168'%3E%3C/polygon%3E%3C/g%3E%3C/svg%3E");
+            }
             & when (@PlayButtonStyle = 2012E) {
                 width: 90px;
                 height: 64px;
