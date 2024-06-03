@@ -246,7 +246,7 @@
         left: 0;
         right: 0;
         z-index: 930;
-        &:not(:has(.ytp-subtitles-settings-dialog)) .ytp-dialog {
+        &:not(:has(.ytp-subtitles-settings-dialog)):not(:has(.html5-stop-propagation)) .ytp-dialog {
             position: absolute;
             z-index: 930;
             background: rgba(0, 0, 0, .85);
@@ -339,7 +339,7 @@
                 left: 0;
             }
         }
-        &:not(:has(.ytp-subtitles-settings-dialog)) .ytp-button.ytp-dialog-button {
+        &:not(:has(.ytp-subtitles-settings-dialog)):not(:has(.html5-stop-propagation)) .ytp-button.ytp-dialog-button {
             position: absolute;
             top: 2px;
             right: 5px;
@@ -643,53 +643,53 @@
             -webkit-box-shadow: 0 1px #292929, 0 -1px #000;
             box-shadow: 0 1px #292929, 0 -1px #000;
         }
-    }
-    .ytp-drop-down-menu {
-        display: inline-block !important;
-        position: relative;
-        background: none;
-        border: none;
-        bottom: 0 !important;
-        &-content {
-            max-height: unset;
-            overflow-y: unset;
+        .ytp-drop-down-menu {
+            display: inline-block !important;
+            position: relative;
+            background: none;
+            border: none;
+            bottom: 0 !important;
+            &-content {
+                max-height: unset;
+                overflow-y: unset;
+            }
+            &-button {
+                color: #aaa;
+                padding: 4px 7px;
+                &-selected {
+                    color: #fff;
+                }
+                &:hover:not(.ytp-disabled):not(&-checked) {
+                    background: #601212;
+                }
+                &-checked &-check, &-checked:hover:not(.ytp-disabled) &-check {
+                    background: none #fff;
+                    border-radius: 50%;
+                    height: 3px;
+                    width: 3px;
+                    margin: 0 11px 1px -1px
+                }
+                &-check {
+                    height: 3px;
+                    width: 3px;
+                    margin: 0 11px 1px -1px
+                }
+                &-separated-above {
+                    border: none;
+                }
+            }
         }
-        &-button {
-            color: #aaa;
-            padding: 4px 7px;
-            &-selected {
-                color: #fff;
-            }
-            &:hover:not(.ytp-disabled):not(&-checked) {
-                background: #601212;
-            }
-            &-checked &-check, &-checked:hover:not(.ytp-disabled) &-check {
-                background: none #fff;
-                border-radius: 50%;
-                height: 3px;
-                width: 3px;
-                margin: 0 11px 1px -1px
-            }
-            &-check {
-                height: 3px;
-                width: 3px;
-                margin: 0 11px 1px -1px
-            }
-            &-separated-above {
-                border: none;
-            }
+        .ytp-drop-down-label {
+            display: none
         }
-    }
-    .ytp-drop-down-label {
-        display: none
-    }
-    .ytp-drop-down, .ytp-drop-down[style="min-width: 100px;"] {
-        min-width: 0 !important
-    }
-    .ytp-menu-more-options {
-        vertical-align: middle;
-        float: none;
-        display: inline-block;
+        .ytp-drop-down, .ytp-drop-down[style="min-width: 100px;"] {
+            min-width: 0 !important
+        }
+        .ytp-menu-more-options {
+            vertical-align: middle;
+            float: none;
+            display: inline-block;
+        }
     }
     
     @-webkit-keyframes ytp-fade {
