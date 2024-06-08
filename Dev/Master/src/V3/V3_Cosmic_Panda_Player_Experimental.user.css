@@ -1019,16 +1019,80 @@
         html[data-player-size=fullscreen] & when (@DEVMode = 1) and (@DEVFsTbS = 1) {
             bottom: 39px;
         }
-        -moz-transition: bottom 0.05s ease-in;
-        -ms-transition: bottom 0.05s ease-in;
-        -o-transition: bottom 0.05s ease-in;
-        -webkit-transition: bottom 0.05s ease-in;
-        transition: bottom 0.05s ease-in;
+        & when (@PlayerMonth = Early) {
+            -moz-transition: unset;
+            -ms-transition: unset;
+            -o-transition: unset;
+            -webkit-transition: unset;
+            transition: unset;
+        }
+        & when not (@PlayerMonth = Early) {
+            -moz-transition: bottom 0.05s ease-in;
+            -ms-transition: bottom 0.05s ease-in;
+            -o-transition: bottom 0.05s ease-in;
+            -webkit-transition: bottom 0.05s ease-in;
+            transition: bottom 0.05s ease-in;
+        }
         .cued-mode & when (@Autohide = On) or (@Autohide = Auto) {
             bottom: -35px;
         }
         .disabled-control-seek &,.autominimize-progress-bar:not(.ytp-block-autohide) &,html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) &, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &,.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) & {
-            & when (@Autohide = On) {
+            & when (@PlayerMonth = Early) {
+                & when (@Autohide = Auto) {
+                    bottom: -31px;
+                    -webkit-transition: bottom 0.25s ease-in;
+                    -moz-transition: bottom 0.25s ease-in;
+                    -o-transition: bottom 0.25s ease-in;
+                    -ms-transition: bottom 0.25s ease-in;
+                    transition-delay: 3s;
+                }
+                & when not (@Autohide = Auto) {
+                    bottom: 0;
+                    -webkit-transition: unset;
+                    -moz-transition: unset;
+                    -o-transition: unset;
+                    -ms-transition: unset;
+                }
+            }
+            & when not (@PlayerMonth = Early) {
+                & when (@Autohide = On) {
+                    bottom: -35px;
+                    -moz-transition: bottom 0.5s ease-in;
+                    -ms-transition: bottom 0.5s ease-in;
+                    -o-transition: bottom 0.5s ease-in;
+                    -webkit-transition: bottom 0.5s ease-in;
+                    transition: bottom 0.5s ease-in;
+                }
+                & when (@Autohide = Auto) {
+                    bottom: -27px;
+                    -moz-transition: bottom 0.5s ease-in;
+                    -ms-transition: bottom 0.5s ease-in;
+                    -o-transition: bottom 0.5s ease-in;
+                    -webkit-transition: bottom 0.5s ease-in;
+                    transition: bottom 0.5s ease-in;
+                }
+            }
+        }
+        .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &,.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &,html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) & {
+            & when (@PlayerMonth = Early) {
+                & when (@Autohide = Auto) {
+                    bottom: -31px;
+                    -webkit-transition: bottom 0.25s ease-in;
+                    -moz-transition: bottom 0.25s ease-in;
+                    -o-transition: bottom 0.25s ease-in;
+                    -ms-transition: bottom 0.25s ease-in;
+                    transition-delay: 3s;
+                }
+                & when not (@Autohide = Auto) {
+                    bottom: 0;
+                    -webkit-transition: unset;
+                    -moz-transition: unset;
+                    -o-transition: unset;
+                    -ms-transition: unset;
+                    transition-delay: 3s;
+                }
+            }
+            & when not (@PlayerMonth = Early) {
                 bottom: -35px;
                 -moz-transition: bottom 0.5s ease-in;
                 -ms-transition: bottom 0.5s ease-in;
@@ -1036,22 +1100,6 @@
                 -webkit-transition: bottom 0.5s ease-in;
                 transition: bottom 0.5s ease-in;
             }
-            & when (@Autohide = Auto) {
-                bottom: -27px;
-                -moz-transition: bottom 0.5s ease-in;
-                -ms-transition: bottom 0.5s ease-in;
-                -o-transition: bottom 0.5s ease-in;
-                -webkit-transition: bottom 0.5s ease-in;
-                transition: bottom 0.5s ease-in;
-            }
-        }
-        .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &,.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &,html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) & {
-            bottom: -35px;
-            -moz-transition: bottom 0.5s ease-in;
-            -ms-transition: bottom 0.5s ease-in;
-            -o-transition: bottom 0.5s ease-in;
-            -webkit-transition: bottom 0.5s ease-in;
-            transition: bottom 0.5s ease-in;
             opacity: 1;
         }
     }
@@ -1068,10 +1116,10 @@
         -webkit-transition: height 0.05s ease-in;
         transition: height 0.05s ease-in;
         .disabled-control-seek &,.autominimize-progress-bar:not(.ytp-block-autohide) &,html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) &, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &,.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &,html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) & {
-            & when (@Autohide = Off) or (@Autohide = On) {
+            & when not (@PlayerMonth = Early) and ((@Autohide = Off) or (@Autohide = On)) {
                 height: 8px !important;
             }
-            & when (@Autohide = Fade) or (@Autohide = Auto) {
+            & when (@Autohide = Fade) or (@Autohide = Auto) or (@PlayerMonth = Early) {
                 height: 3px !important;
             }
             -moz-transition: height 0.5s ease-in;
@@ -1121,10 +1169,10 @@
         bottom: unset;
         z-index: -2;
         .disabled-control-seek &,.autominimize-progress-bar:not(.ytp-block-autohide) &,html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) &, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &,.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &,html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) & {
-            & when (@Autohide = Off) or (@Autohide = On) {
+            & when not (@PlayerMonth = Early) and ((@Autohide = Off) or (@Autohide = On)) {
                 height: 8px;
             }
-            & when (@Autohide = Fade) or (@Autohide = Auto) {
+            & when (@Autohide = Fade) or (@Autohide = Auto) or (@PlayerMonth = Early) {
                 height: 3px;
             }
             -moz-transition: height 0.5s ease-in;
@@ -1242,7 +1290,7 @@
         -webkit-transition: height 0.5s, top 0.5s, -webkit-transform 0.5s;
         -webkit-transform-origin: unset !important;
         transform-origin: unset !important;
-        & when not (@Autohide = Off) {
+        & when not (@Autohide = Off) or (@PlayerMonth = Early) {
             .disabled-control-seek &,.autominimize-progress-bar:not(.ytp-block-autohide) &,html:not([data-player-size=fullscreen]) :not(.ideal-aspect).autominimize-progress-bar-non-aspect:not(.ytp-block-autohide) &, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &,.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &,html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) & {
                 top: -8px;
                 -moz-transform: scale(0);
@@ -1257,7 +1305,7 @@
                 -webkit-transition: height 0.5s, top 0.5s, -webkit-transform 0.5s;
             }
         }
-        & when (@Autohide = Off) {
+        & when (@Autohide = Off) and not (@PlayerMonth = Early) {
             .disabled-control-seek &,.autominimize-progress-bar:not(.ytp-block-autohide) &,html:not([data-player-size=fullscreen]) :not(.ideal-aspect).autominimize-progress-bar-non-aspect:not(.ytp-block-autohide) &, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &,.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &,html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) & {
                 top: -5px;
                 -moz-transform: none;
@@ -1319,6 +1367,7 @@
         overflow: hidden;
         height: 26px;
         z-index: 750;
+        background: transparent;
         background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAdCAYAAABrAQZpAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAABIAAAASABGyWs+AAAACXZwQWcAAAABAAAAHQAh4gKwAAAAMUlEQVQI12OQlJD4x2Sgr8/I9OTZs5dM//79Y2T6//8/IyqLAcLClEBjYahDKCHSKADN5VNQpdTxzgAAAABJRU5ErkJggg==);
         background-repeat: repeat-x;
         & when not (@PlayerMonth = Late) {
@@ -3555,49 +3604,136 @@
     }
     html:not([data-player-size=fullscreen]) .html5-video-player:not(.ideal-aspect).autominimize-progress-bar-non-aspect .ytp-player-content.ytp-subtitles-player-content, .html5-video-player:not(.ad-interrupting):not(.hide-info-bar):not(.playing-mode) .ytp-player-content.ytp-subtitles-player-content, .ytp-block-autohide:not(.ad-interrupting):not(.hide-info-bar) .ytp-player-content.ytp-subtitles-player-content, .ended-mode.endscreen-loaded:not(.el-detailpage):not(.house-brand):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content, html[data-player-size=fullscreen] .html5-video-player:not(.house-brand):not(.ad-interrupting):not(.playing-mode) .ytp-player-content.ytp-subtitles-player-content, html[data-player-size=fullscreen] .ytp-block-autohide:not(.house-brand):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content {
         bottom: 43px;
-        -moz-transition: bottom 0.05s ease-in;
-        -ms-transition: bottom 0.05s ease-in;
-        -o-transition: bottom 0.05s ease-in;
-        -webkit-transition: bottom 0.05s ease-in;
-        transition: bottom 0.05s ease-in;
+        & when (@PlayerMonth = Early) {
+            -moz-transition: unset;
+            -ms-transition: unset;
+            -o-transition: unset;
+            -webkit-transition: unset;
+            transition: unset;
+        }
+        & when not (@PlayerMonth = Early) {
+            -moz-transition: bottom 0.05s ease-in;
+            -ms-transition: bottom 0.05s ease-in;
+            -o-transition: bottom 0.05s ease-in;
+            -webkit-transition: bottom 0.05s ease-in;
+            transition: bottom 0.05s ease-in;
+        }
     }
     html:not([data-player-size=fullscreen]) .html5-video-player:not(.ideal-aspect).autominimize-progress-bar-non-aspect .html5-video-content .caption-window, .html5-video-player:not(.ad-interrupting):not(.hide-info-bar):not(.playing-mode) .html5-video-content .caption-window, .ytp-block-autohide:not(.ad-interrupting):not(.hide-info-bar) .html5-video-content .caption-window, .ended-mode.endscreen-loaded:not(.el-detailpage):not(.house-brand):not(.ad-interrupting) .html5-video-content .caption-window, html[data-player-size=fullscreen] .html5-video-player:not(.house-brand):not(.ad-interrupting):not(.playing-mode) .html5-video-content .caption-window {
         padding-bottom: 13px;
-        -moz-transition: padding-bottom 0.05s ease-in;
-        -ms-transition: padding-bottom 0.05s ease-in;
-        -o-transition: padding-bottom 0.05s ease-in;
-        -webkit-transition: padding-bottom 0.05s ease-in;
-        transition: padding-bottom 0.05s ease-in;
-    }
-    .disabled-control-seek .ytp-player-content.ytp-subtitles-player-content,.autominimize-progress-bar:not(.ytp-block-autohide) .ytp-player-content.ytp-subtitles-player-content, html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) .ytp-player-content.ytp-subtitles-player-content, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content, .ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content {
-        & when (@Autohide = Off) {
-            bottom: 43px;
+        & when (@PlayerMonth = Early) {
+            -moz-transition: unset;
+            -ms-transition: unset;
+            -o-transition: unset;
+            -webkit-transition: unset;
+            transition: unset;
         }
-        & when (@Autohide = On) {
-            bottom: 0;
-        }
-        & when (@Autohide = Fade) {
-            bottom: 38px;
-        }
-        & when (@Autohide = Auto) {
-            bottom: 11px;
-        }
-        -moz-transition: bottom 0.5s ease-in;
-        -ms-transition: bottom 0.5s ease-in;
-        -o-transition: bottom 0.5s ease-in;
-        -webkit-transition: bottom 0.5s ease-in;
-        transition: bottom 0.5s ease-in;
-    }
-    & when (@Autohide = On) or (@Autohide = Auto) {
-        html:not([data-player-size=fullscreen]) .html5-video-player:not(.ideal-aspect).autominimize-progress-bar-non-aspect .html5-video-content:has(.video-annotations), .html5-video-player:not(.ad-interrupting):not(.hide-info-bar):not(.playing-mode) .html5-video-content:has(.video-annotations), .ytp-block-autohide:not(.ad-interrupting):not(.hide-info-bar) .html5-video-content:has(.video-annotations), .ended-mode.endscreen-loaded:not(.el-detailpage):not(.house-brand):not(.ad-interrupting) .html5-video-content:has(.video-annotations), html[data-player-size=fullscreen] .html5-video-player:not(.house-brand):not(.ad-interrupting):not(.playing-mode) .html5-video-content:has(.video-annotations) {
+        & when not (@PlayerMonth = Early) {
             -moz-transition: padding-bottom 0.05s ease-in;
             -ms-transition: padding-bottom 0.05s ease-in;
             -o-transition: padding-bottom 0.05s ease-in;
             -webkit-transition: padding-bottom 0.05s ease-in;
             transition: padding-bottom 0.05s ease-in;
         }
+    }
+    .disabled-control-seek .ytp-player-content.ytp-subtitles-player-content,.autominimize-progress-bar:not(.ytp-block-autohide) .ytp-player-content.ytp-subtitles-player-content, html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) .ytp-player-content.ytp-subtitles-player-content, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content, .ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content {
+        & when not (@PlayerMonth = Early) {
+            & when (@Autohide = Off) {
+                bottom: 43px;
+            }
+            & when (@Autohide = On) {
+                bottom: 0;
+            }
+            & when (@Autohide = Fade) {
+                bottom: 38px;
+            }
+        }
+        & when (@Autohide = Auto) {
+            & when (@PlayerMonth = Early) {
+                bottom: 7px;
+            }
+            & when not (@PlayerMonth = Early) {
+                bottom: 11px;
+            }
+        }
+        & when (@PlayerMonth = Early) {
+            -webkit-transition: bottom 0.25s ease-in;
+            -moz-transition: bottom 0.25s ease-in;
+            -o-transition: bottom 0.25s ease-in;
+            -ms-transition: bottom 0.25s ease-in;
+            transition-delay: 3s;
+        }
+        & when not (@PlayerMonth = Early) {
+            -moz-transition: bottom 0.5s ease-in;
+            -ms-transition: bottom 0.5s ease-in;
+            -o-transition: bottom 0.5s ease-in;
+            -webkit-transition: bottom 0.5s ease-in;
+            transition: bottom 0.5s ease-in;
+        }
+    }
+    & when (@Autohide = On) or (@Autohide = Auto) {
+        html:not([data-player-size=fullscreen]) .html5-video-player:not(.ideal-aspect).autominimize-progress-bar-non-aspect .html5-video-content:has(.video-annotations), .html5-video-player:not(.ad-interrupting):not(.hide-info-bar):not(.playing-mode) .html5-video-content:has(.video-annotations), .ytp-block-autohide:not(.ad-interrupting):not(.hide-info-bar) .html5-video-content:has(.video-annotations), .ended-mode.endscreen-loaded:not(.el-detailpage):not(.house-brand):not(.ad-interrupting) .html5-video-content:has(.video-annotations), html[data-player-size=fullscreen] .html5-video-player:not(.house-brand):not(.ad-interrupting):not(.playing-mode) .html5-video-content:has(.video-annotations) {
+            & when (@PlayerMonth = Early) {
+                -moz-transition: unset;
+                -ms-transition: unset;
+                -o-transition: unset;
+                -webkit-transition: unset;
+                transition: unset;
+            }
+            & when not (@PlayerMonth = Early) {
+                -moz-transition: padding-bottom 0.05s ease-in;
+                -ms-transition: padding-bottom 0.05s ease-in;
+                -o-transition: padding-bottom 0.05s ease-in;
+                -webkit-transition: padding-bottom 0.05s ease-in;
+                transition: padding-bottom 0.05s ease-in;
+            }
+        }
         .disabled-control-seek .html5-video-content:has(.video-annotations),.autominimize-progress-bar:not(.ytp-block-autohide) .html5-video-content:has(.video-annotations), html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) .html5-video-content:has(.video-annotations), .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) .html5-video-content:has(.video-annotations), .ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) .html5-video-content:has(.video-annotations) {
             padding-bottom: 27px;
+            & when (@PlayerMonth = Early) {
+                -webkit-transition: padding-bottom 0.25s ease-in;
+                -moz-transition: padding-bottom 0.25s ease-in;
+                -o-transition: padding-bottom 0.25s ease-in;
+                -ms-transition: padding-bottom 0.25s ease-in;
+                transition-delay: 3s;
+            }
+            & when not (@PlayerMonth = Early) {
+                -moz-transition: padding-bottom 0.5s ease-in;
+                -ms-transition: padding-bottom 0.5s ease-in;
+                -o-transition: padding-bottom 0.5s ease-in;
+                -webkit-transition: padding-bottom 0.5s ease-in;
+                transition: padding-bottom 0.5s ease-in;
+            }
+        }
+    }
+    .disabled-control-seek .html5-video-content .caption-window,.autominimize-progress-bar:not(.ytp-block-autohide) .html5-video-content .caption-window, html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) .html5-video-content .caption-window, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) .html5-video-content .caption-window, .ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) .html5-video-content .caption-window {
+        & when not (@PlayerMonth = Early) {
+            & when (@Autohide = Off) {
+                padding-bottom: 13px;
+            }
+            & when (@Autohide = On) {
+                padding-bottom: 0;
+            }
+            & when (@Autohide = Fade) {
+                padding-bottom: 8px;
+            }
+        }
+        & when (@Autohide = Auto) {
+            & when (@PlayerMonth = Early) {
+                padding-bottom: 13px;
+            }
+            & when not (@PlayerMonth = Early) {
+                padding-bottom: 11px;
+            }
+        }
+        & when (@PlayerMonth = Early) {
+            -moz-transition: unset;
+            -ms-transition: unset;
+            -o-transition: unset;
+            -webkit-transition: punset;
+            transition: unset;
+        }
+        & when not (@PlayerMonth = Early) {
             -moz-transition: padding-bottom 0.5s ease-in;
             -ms-transition: padding-bottom 0.5s ease-in;
             -o-transition: padding-bottom 0.5s ease-in;
@@ -3605,48 +3741,83 @@
             transition: padding-bottom 0.5s ease-in;
         }
     }
-    .disabled-control-seek .html5-video-content .caption-window,.autominimize-progress-bar:not(.ytp-block-autohide) .html5-video-content .caption-window, html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) .html5-video-content .caption-window, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) .html5-video-content .caption-window, .ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) .html5-video-content .caption-window {
-        & when (@Autohide = Off) {
-            padding-bottom: 13px;
-        }
-        & when (@Autohide = On) {
-            padding-bottom: 0;
-        }
-        & when (@Autohide = Fade) {
-            padding-bottom: 8px;
-        }
-        & when (@Autohide = Auto) {
-            padding-bottom: 11px;
-        }
-        -moz-transition: padding-bottom 0.5s ease-in;
-        -ms-transition: padding-bottom 0.5s ease-in;
-        -o-transition: padding-bottom 0.5s ease-in;
-        -webkit-transition: padding-bottom 0.5s ease-in;
-        transition: padding-bottom 0.5s ease-in;
-    }
     html[data-player-size=fullscreen] .ytp-block-autohide:not(.house-brand):not(.ad-interrupting) .html5-video-content .caption-window {
-        padding-bottom: 43px;
-        -moz-transition: padding-bottom 0.05s ease-in;
-        -ms-transition: padding-bottom 0.05s ease-in;
-        -o-transition: padding-bottom 0.05s ease-in;
-        -webkit-transition: padding-bottom 0.05s ease-in;
-        transition: padding-bottom 0.05s ease-in;
+        & when (@PlayerMonth = Early) and not (@Autohide = Auto) {
+            padding-bottom: 43px;
+            -moz-transition: unset;
+            -ms-transition: unset;
+            -o-transition: unset;
+            -webkit-transition: unset;
+            transition: unset;
+        }
+        & when (@PlayerMonth = Early) and (@Autohide = Auto) {
+            padding-bottom: 0;
+            -moz-transition: unset;
+            -ms-transition: unset;
+            -o-transition: unset;
+            -webkit-transition: unset;
+            transition: unset;
+        }
+        & when not (@PlayerMonth = Early) {
+            padding-bottom: 43px;
+            -moz-transition: padding-bottom 0.05s ease-in;
+            -ms-transition: padding-bottom 0.05s ease-in;
+            -o-transition: padding-bottom 0.05s ease-in;
+            -webkit-transition: padding-bottom 0.05s ease-in;
+            transition: padding-bottom 0.05s ease-in;
+        }
     }
     html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide) .ytp-player-content.ytp-subtitles-player-content, html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content {
-        bottom: 0;
-        -moz-transition: bottom 0.5s ease-in;
-        -ms-transition: bottom 0.5s ease-in;
-        -o-transition: bottom 0.5s ease-in;
-        -webkit-transition: bottom 0.5s ease-in;
-        transition: bottom 0.5s ease-in;
+        & when (@PlayerMonth = Early) and not (@Autohide = Auto) {
+            bottom: 43px;
+            -moz-transition: unset;
+            -ms-transition: unset;
+            -o-transition: unset;
+            -webkit-transition: unset;
+            transition: unset;
+        }
+        & when (@PlayerMonth = Early) and (@Autohide = Auto) {
+            bottom: 0;
+            -webkit-transition: bottom 0.25s ease-in;
+            -moz-transition: bottom 0.25s ease-in;
+            -o-transition: bottom 0.25s ease-in;
+            -ms-transition: bottom 0.25s ease-in;
+            transition-delay: 3s;
+        }
+        & when not (@PlayerMonth = Early) {
+            bottom: 0;
+            -moz-transition: bottom 0.5s ease-in;
+            -ms-transition: bottom 0.5s ease-in;
+            -o-transition: bottom 0.5s ease-in;
+            -webkit-transition: bottom 0.5s ease-in;
+            transition: bottom 0.5s ease-in;
+        }
     }
     html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide) .html5-video-content .caption-window, html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) .html5-video-content .caption-window {
-        padding-bottom: 0;
-        -moz-transition: padding-bottom 0.5s ease-in;
-        -ms-transition: padding-bottom 0.5s ease-in;
-        -o-transition: padding-bottom 0.5s ease-in;
-        -webkit-transition: padding-bottom 0.5s ease-in;
-        transition: padding-bottom 0.5s ease-in;
+        & when (@PlayerMonth = Early) and not (@Autohide = Auto) {
+            padding-bottom: 43px;
+            -moz-transition: unset;
+            -ms-transition: unset;
+            -o-transition: unset;
+            -webkit-transition: unset;
+            transition: unset;
+        }
+        & when (@PlayerMonth = Early) and (@Autohide = Auto) {
+            padding-bottom: 0;
+            -webkit-transition: padding-bottom 0.25s ease-in;
+            -moz-transition: padding-bottom 0.25s ease-in;
+            -o-transition: padding-bottom 0.25s ease-in;
+            -ms-transition: padding-bottom 0.25s ease-in;
+            transition-delay: 3s;
+        }
+        & when not (@PlayerMonth = Early) {
+            padding-bottom: 0;
+            -moz-transition: padding-bottom 0.5s ease-in;
+            -ms-transition: padding-bottom 0.5s ease-in;
+            -o-transition: padding-bottom 0.5s ease-in;
+            -webkit-transition: padding-bottom 0.5s ease-in;
+            transition: padding-bottom 0.5s ease-in;
+        }
     }
     
     & when not (@PlayButtonStyle = 2014) {
