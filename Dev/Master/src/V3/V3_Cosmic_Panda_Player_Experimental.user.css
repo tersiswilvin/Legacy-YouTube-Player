@@ -10,6 +10,7 @@
 @var            select                                            Autohide              "Autohide Preset"                ["Off", "On", "Fade*", "Auto"]
 @var            checkbox                                          AhCursor              "Autohide Cursor"                0
 @var            checkbox                                          CMIcons               "Context Menu Icons"             0
+@var            checkbox                                          DefaultMenuStyle      "Default Menu Style"             0
 @var            checkbox                                          DEVMode               "Developer Mode"                 0
 @var            checkbox                                          DEVFsTbS              "(DEV) Fullscreen Taskbar Space" 0
 @var            checkbox                                          QualityBadges         "Display Quality Badges"         0
@@ -578,7 +579,7 @@
         }
     }
 
-    .ytp-menu {
+    .ytp-menu when (@DefaultMenuStyle = 0) {
         background: #141414;
         border-radius: 3px 3px 0 0;
         padding: 0;
@@ -690,6 +691,9 @@
             float: none;
             display: inline-block;
         }
+    }
+    .ytp-menu-row:has(.ytp-segmented-control) when (@DefaultMenuStyle = 1) and (@HESR = 1) {
+        display: none
     }
     
     @-webkit-keyframes ytp-fade {
