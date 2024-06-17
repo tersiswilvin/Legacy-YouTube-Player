@@ -12,7 +12,6 @@
 @var            checkbox                                          CMIcons               "Context Menu Icons"             0
 @var            checkbox                                          DefaultMenuStyle      "Default Menu Style"             0
 @var            checkbox                                          DEVMode               "Developer Mode"                 0
-@var            checkbox                                          DEVFsTbS              "(DEV) Fullscreen Taskbar Space" 0
 @var            checkbox                                          QualityBadges         "Display Quality Badges"         0
 @var            checkbox                                          ECMHSF                "Early Context Menu hover Fix"   0
 @var            checkbox                                          EarlyReplayExperiment "Early Replay Icon Experiment"   0
@@ -22,6 +21,7 @@
 @var            checkbox                                          ForceWOYTi            "Force Watch On Youtube icon"    0
 @var            checkbox                                          Forcewatermark        "Force Watermark"                0
 @var            checkbox                                          Forceinfobar          "Force infobar"                  0
+@var            checkbox                                          FsTbS                 "Fullscreen Taskbar Space"       0
 @var            checkbox                                          HESR                  "Hide Extra Settings Rows"       1
 @var            checkbox                                          HPaNB                 "Hide Prev & Next Buttons"       1
 @var            checkbox                                          IBIO                  "Infobar Icons Only"             0
@@ -939,7 +939,7 @@
         -o-transition: opacity 0.05s ease-in, bottom 0.05s ease-in;
         -webkit-transition: opacity 0.05s ease-in, bottom 0.05s ease-in;
         transition: opacity 0.05s ease-in, bottom 0.05s ease-in;
-        [data-player-size=fullscreen] & when (@DEVMode = 1) and (@DEVFsTbS = 1) {
+        [data-player-size=fullscreen] & when (@FsTbS = 1) {
             bottom: 72px;
         }
         & when (@Forcewatermark = 1) or (@DEVMode = 1) {
@@ -1020,7 +1020,7 @@
     .html5-video-controls {
         min-height: 26px;
         z-index: 930;
-        html[data-player-size=fullscreen] & when (@DEVMode = 1) and (@DEVFsTbS = 1) {
+        html[data-player-size=fullscreen] & when (@FsTbS = 1) {
             bottom: 39px;
         }
         & when (@PlayerMonth = Early) {
@@ -1743,9 +1743,6 @@
         }
         &-prev {
             transform: scalex(-1);
-            & when (@HPaNB = 0) {
-                display: block !important;
-            }
             & when (@HPaNB = 1) {
                 display: none !important;
             }
@@ -1819,9 +1816,6 @@
             }
         }
         &-next {
-            & when (@HPaNB = 0) {
-                display: block !important;
-            }
             & when (@HPaNB = 1) {
                 display: none !important;
             }
@@ -3426,7 +3420,7 @@
             & when (@PlayerMonth = Early) {
                 width: 66px;
             }
-            & when (@PlayerMonth = Middle) {
+            & when (@PlayerMonth = Middle) or (@PlayerMonth = Late) {
                 & when (@FlashVA = 0) {
                     width: 56px;
                 }
