@@ -1,15 +1,15 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player
 @namespace      userstyles.world/user/tersiswilvin
-@version        20240617.1.1.11
+@version        20240620.1.1.11
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
 @license        CC-BY-SA-4.0
 @preprocessor   less
 @var            checkbox                                          AWA                   "Accurate Watermark Animations"  0
 @var            select                                            Autohide              "Autohide Preset"                ["Off", "On", "Fade*", "Auto"]
-@var            checkbox                                          AhCursor              "Autohide Cursor"                0
 @var            checkbox                                          CMIcons               "Context Menu Icons"             0
+@var            select                                            AhCursor              "Cursor Preset"                  ["Default*", "Hidden", "Off"]
 @var            checkbox                                          DefaultMenuStyle      "Default Menu Style"             0
 @var            checkbox                                          DEVMode               "Developer Mode"                 0
 @var            checkbox                                          QualityBadges         "Display Quality Badges"         0
@@ -39,16 +39,16 @@
     .html5-video-player {
         position: unset;
         color: unset;
-        & when (@AhCursor = 0) {
+        & when (@AhCursor = Default) {
             cursor: pointer;
         }
-        &.ytp-block-autohide when (@AhCursor = 1) {
+        &.ytp-block-autohide when (@AhCursor = Hidden) {
             cursor: pointer;
         }
-        &:not(.ytp-block-autohide) when (@AhCursor = 1) {
+        &:not(.ytp-block-autohide) when (@AhCursor = Hidden) {
             cursor: none
         }
-        & when (@AhCursor = 0) {
+        & when (@AhCursor = Default) {
             html[data-player-size=fullscreen] &:not(.ytp-block-autohide) {
                 cursor: pointer;
             }
@@ -3920,6 +3920,9 @@
     Implement Early 2012 ( & )
     Impliment Flash Player options ( % )
     Impliment Flash7 Styled Hover ( % )
+    Impliment more cursor options ( % )
+    
+    == TODO non Player Theme Reminders ==
     Work on JWPlayer styled Bezels for york ( % )
     
     == Legend ==
