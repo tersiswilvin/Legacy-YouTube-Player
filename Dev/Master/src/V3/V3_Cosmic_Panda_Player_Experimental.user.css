@@ -1,9 +1,10 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player
 @namespace      userstyles.world/user/tersiswilvin
-@version        20240620.1.1.11
+@version        20240622.1.1.11
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
+@updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_Experimental.user.css
 @license        CC-BY-SA-4.0
 @preprocessor   less
 @var            checkbox                                          AWA                   "Accurate Watermark Animations"  0
@@ -27,7 +28,7 @@
 @var            checkbox                                          IBIO                  "Infobar Icons Only"             0
 @var            select                                            PlayButtonStyle       "Play Button Style"              ["2010M", "2011M", "2012E*", "2013E", "2014"]
 @var            select                                            PlayerMonth           "Player Month"                   ["Early", "Middle*", "Late"]
-@var            checkbox                                          Flash7Warning         "Show Flash7 Warning"            1
+@var            checkbox                                          SupportWarning        "Show Support Warning"           1
 @var            checkbox                                          TooltipCrtFix         "Tooltip 2012L Caret Fix"        0
 ==/UserStyle== */
 
@@ -92,9 +93,8 @@
             transform: translate(0, -50%);
             margin: 0
         }
-        & when (@Flash7Warning = 1) {
-            [class*="flash7"] ~ * &:before {
-                content: "V3 Cosmic Panda Player does not support Flash7 Player.\APlease disable either Flash7 Player or V3 Cosmic Panda Player.";
+        & when (@SupportWarning = 1) {
+            &:before {
                 text-align: center;
                 color: #fff;
                 font-size: 13px;
@@ -126,7 +126,13 @@
                 -webkit-transition: top 0.05s ease-in;
                 transition: top 0.05s ease-in;
             }
-            [class*="flash7"] ~ * &.autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting):before, [class*="flash7"] ~ * &.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting):before, html[data-player-size=fullscreen] [class*="flash7"] ~ * &.autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting):before {
+            [class*="flash7"] ~ * &:before {
+                content: "V3 Cosmic Panda Player does not support Flash7 Player.\APlease disable either Flash7 Player or V3 Cosmic Panda Player.";
+            }
+            [exp-modern-player] &:before {
+                content: "V3 Cosmic Panda Player does not support StarTubes Modern Player.\APlease disable either StarTubes Modern Player or V3 Cosmic Panda Player.";
+            }
+            &.disabled-control-seek:before, &.autominimize-progress-bar:not(.ytp-block-autohide):before, html:not([data-player-size=fullscreen]) &.autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide):before, &.autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting):before, &.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting):before, html[data-player-size=fullscreen] &.autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting):before {
                 top: -100px;
                 -moz-transition: top 0.5s ease-in;
                 -ms-transition: top 0.5s ease-in;
@@ -1273,6 +1279,8 @@
         top: -5px;
         left: 0;
         & when (@PlayerMonth = Early) {
+            position: absolute;
+        cursor: pointer;
             z-index: 935;
         }
         & when (@PlayerMonth = Middle) {
@@ -1282,31 +1290,81 @@
             z-index: auto;
         }
         border-radius: 0;
-        -moz-transform: none;
-        -ms-transform: none;
-        -o-transform: none;
-        -webkit-transform: none;
-        transform: none;
-        transition: height 0.5s, top 0.5s, transform 0.5s;
-        -moz-transition: height 0.5s, top 0.5s, -moz-transform 0.5s;
-        -ms-transition: height 0.5s, top 0.5s, -ms-transform 0.5s;
-        -o-transition: height 0.5s, top 0.5s, -o-transform 0.5s;
-        -webkit-transition: height 0.5s, top 0.5s, -webkit-transform 0.5s;
-        -webkit-transform-origin: unset !important;
-        transform-origin: unset !important;
+        & when (@PlayerMonth = Early) {
+            -moz-transition: all 0s linear 0s;
+            -ms-transition: all 0s linear 0s;
+            -o-transition: all 0s linear 0s;
+            -webkit-transition: all 0s linear 0s;
+            transition: all 0s linear 0s;
+            -moz-transform-origin: 50% 50% !important;
+            -moz-transition-property: -moz-transform, bottom;
+            -o-transform-origin: 50% 50% !important;
+            -o-transition-property: -o-transform, bottom;
+            -webkit-transform-origin: 50% 50% !important;
+            -webkit-transition-property: -webkit-transform, bottom;
+            -ms-transform-origin: 50% 50% !important;
+            -ms-transition-property: -ms-transform, bottom;
+            -moz-transform: scale(1);
+            -ms-transform: scale(1);
+            -o-transform: scale(1);
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+        & when not (@PlayerMonth = Early) {
+            -moz-transform: none;
+            -ms-transform: none;
+            -o-transform: none;
+            -webkit-transform: none;
+            transform: none;
+            transition: height 0.5s, top 0.5s, transform 0.5s;
+            -moz-transition: height 0.5s, top 0.5s, -moz-transform 0.5s;
+            -ms-transition: height 0.5s, top 0.5s, -ms-transform 0.5s;
+            -o-transition: height 0.5s, top 0.5s, -o-transform 0.5s;
+            -webkit-transition: height 0.5s, top 0.5s, -webkit-transform 0.5s;
+            -webkit-transform-origin: unset !important;
+            transform-origin: unset !important;
+        }
         & when not (@Autohide = Off) or (@PlayerMonth = Early) {
             .disabled-control-seek &,.autominimize-progress-bar:not(.ytp-block-autohide) &,html:not([data-player-size=fullscreen]) :not(.ideal-aspect).autominimize-progress-bar-non-aspect:not(.ytp-block-autohide) &, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &,.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &,html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) & {
-                top: -8px;
-                -moz-transform: scale(0);
-                -ms-transform: scale(0);
-                -o-transform: scale(0);
-                -webkit-transform: scale(0);
-                transform: scale(0);
-                transition: height 0.5s, top 0.5s, transform 0.5s;
-                -moz-transition: height 0.5s, top 0.5s, -moz-transform 0.5s;
-                -ms-transition: height 0.5s, top 0.5s, -ms-transform 0.5s;
-                -o-transition: height 0.5s, top 0.5s, -o-transform 0.5s;
-                -webkit-transition: height 0.5s, top 0.5s, -webkit-transform 0.5s;
+                & when (@PlayerMonth = Early) {
+                    -moz-transition: unset;
+                    -ms-transition: unset;
+                    -o-transition: unset;
+                    -webkit-transition: unset;
+                    transition: unset;
+                    -moz-transform-origin: 50% 50%;
+                    -moz-transition-property: -moz-transform, bottom;
+                    -o-transform-origin: 50% 50%;
+                    -o-transition-property: -o-transform, bottom;
+                    -webkit-transform-origin: 50% 50%;
+                    -webkit-transition-property: -webkit-transform, bottom;
+                    -ms-transform-origin: 50% 50%;
+                    -ms-transition-property: -ms-transform, bottom;
+                    -moz-transform: scale(0);
+                    -ms-transform: scale(0);
+                    -o-transform: scale(0);
+                    -webkit-transform: scale(0);
+                    transform: scale(0);
+                    bottom: 0;
+                    -webkit-transition-duration: 0.5s;
+                    -moz-transition-duration: 0.5s;
+                    -o-transition-duration: 0.5s;
+                    -ms-transition-duration: 0.5s;
+                    transition-duration: 0.5s;
+                }
+                & when not (@PlayerMonth = Early) {
+                    top: -8px;
+                    -moz-transform: scale(0);
+                    -ms-transform: scale(0);
+                    -o-transform: scale(0);
+                    -webkit-transform: scale(0);
+                    transform: scale(0);
+                    transition: height 0.5s, top 0.5s, transform 0.5s;
+                    -moz-transition: height 0.5s, top 0.5s, -moz-transform 0.5s;
+                    -ms-transition: height 0.5s, top 0.5s, -ms-transform 0.5s;
+                    -o-transition: height 0.5s, top 0.5s, -o-transform 0.5s;
+                    -webkit-transition: height 0.5s, top 0.5s, -webkit-transform 0.5s;
+                }
             }
         }
         & when (@Autohide = Off) and not (@PlayerMonth = Early) {
