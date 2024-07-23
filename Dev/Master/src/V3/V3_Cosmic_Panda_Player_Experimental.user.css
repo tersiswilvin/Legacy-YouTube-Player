@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player
 @namespace      userstyles.world/user/tersiswilvin
-@version        20240622.1.1.11
+@version        20240722.1.1.11
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
 @updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_Experimental.user.css
@@ -25,6 +25,7 @@
 @var            checkbox                                          FsTbS                 "Fullscreen Taskbar Space"       0
 @var            checkbox                                          HESR                  "Hide Extra Settings Rows"       1
 @var            checkbox                                          HPaNB                 "Hide Prev & Next Buttons"       1
+@var            checkbox                                          HideAdSkipButton      "Hide Ad Skip Container"         1
 @var            checkbox                                          IBIO                  "Infobar Icons Only"             0
 @var            select                                            PlayButtonStyle       "Play Button Style"              ["2010M", "2011M", "2012E*", "2013E", "2014"]
 @var            select                                            PlayerMonth           "Player Month"                   ["Early", "Middle*", "Late"]
@@ -838,7 +839,6 @@
                 position: unset;
             }
             .ytp-progress-tooltip-thumbnail-container {
-                display: block;
                 background-color: transparent;
                 .ytp-progress-tooltip-thumbnail[style*="width: 60px;"] {
                     transform: scalex(1.3333);
@@ -920,7 +920,7 @@
         transform: none !important;
         animation: 1s steps(8, end) infinite loaderRotation;
         animation-play-state: paused;
-        .buffering-mode & {
+        .buffering-mode &, &:not([style*="display: none"]) {
             animation-play-state: running;
         }
     }
@@ -1420,6 +1420,73 @@
         }
     }
     
+    .videoAdUi {
+        overflow: visible;
+        &BottomBar {
+            display: block;
+            position: absolute;
+            bottom: 0;
+            padding-bottom: 3px;
+            z-index: 850;
+            width: 100%;
+            font-size: 12px;
+            background-color: #000;
+            opacity: 0.7;
+            text-align: left;
+            &:before {
+                content: "Advertisement";
+                color: #fff;
+                font: 12px arial, sans-serif;
+                margin-bottom: 5px;
+                display: block;
+            }
+        }
+        &Attribution {
+            font: 12px arial, sans-serif;
+            display: block;
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 0;
+        }
+        &Progress {
+            background-image: -moz-linear-gradient(top, #fc0 0, #666 100%);
+            background-image: -ms-linear-gradient(top, #fc0 0, #666 100%);
+            background-image: -o-linear-gradient(top, #fc0 0, #666 100%);
+            background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fc0), color-stop(100%, #666));
+            background-image: -webkit-linear-gradient(top, #fc0 0, #666 100%);
+            background-image: linear-gradient(to bottom, #fc0 0, #666 100%);
+            border-right: none;
+            &Bar {
+                margin-top: 8px;
+                background: rgba(0, 0, 0, 0);
+            }
+        }
+        & when (@HideAdSkipButton = 1) {
+            &PreSkipContainer, &SkipContainer {
+                display: none;
+            }
+        }
+    }
+    
+    .ytp-chapter-marker {
+        -moz-transition: height 0.05s ease-in, width 0.05s ease-in, margin-left 0.05s ease-in;
+        -ms-transition: height 0.05s ease-in, width 0.05s ease-in, margin-left 0.05s ease-in;
+        -o-transition: height 0.05s ease-in, width 0.05s ease-in, margin-left 0.05s ease-in;
+        -webkit-transition: height 0.05s ease-in, width 0.05s ease-in, margin-left 0.05s ease-in;
+        transition: height 0.05s ease-in, width 0.05s ease-in, margin-left 0.05s ease-in;
+        .disabled-control-seek &, .autominimize-progress-bar:not(.ytp-block-autohide) &, html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) &, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &, .ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &, html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) & {
+            height: 3px;
+            width: 3px !important;
+            margin-left: 2px;
+            -moz-transition: height 0.5s ease-in, width 0.5s ease-in, margin-left 0.5s ease-in;
+            -ms-transition: height 0.5s ease-in, width 0.5s ease-in, margin-left 0.5s ease-in;
+            -o-transition: height 0.5s ease-in, width 0.5s ease-in, margin-left 0.5s ease-in;
+            -webkit-transition: height 0.5s ease-in, width 0.5s ease-in, margin-left 0.5s ease-in;
+            transition: height 0.5s ease-in, width 0.5s ease-in, margin-left 0.5s ease-in;
+        }
+    }
+    
     /*/ Chrome Controls /*/
     .html5-player-chrome {
         position: unset;
@@ -1462,6 +1529,7 @@
         }
         .light-theme & {
             color: #000;
+            background: transparent;
             background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAdCAAAAABOalm1AAAACXBIWXMAAABIAAAASABGyWs+AAAACXZwQWcAAAABAAAAHQAh4gKwAAAAKUlEQVQI1x3CiQkAIAwEwfTfpW9M1BIEl2PGnl052EgEljgmBro0VJQPA6waTMFaRdkAAAAASUVORK5CYII=);
             background-repeat: repeat-x;
         }
