@@ -23,9 +23,10 @@
 @var            checkbox                                          Forcewatermark        "Force Watermark"                0
 @var            checkbox                                          Forceinfobar          "Force infobar"                  0
 @var            checkbox                                          FsTbS                 "Fullscreen Taskbar Space"       0
+@var            checkbox                                          HideAdProgress        "Hide Ad progress"               1
+@var            checkbox                                          HideAdSkipButton      "Hide Ad Skip Container"         1
 @var            checkbox                                          HESR                  "Hide Extra Settings Rows"       1
 @var            checkbox                                          HPaNB                 "Hide Prev & Next Buttons"       1
-@var            checkbox                                          HideAdSkipButton      "Hide Ad Skip Container"         1
 @var            checkbox                                          IBIO                  "Infobar Icons Only"             0
 @var            select                                            PlayButtonStyle       "Play Button Style"              ["2010M", "2011M", "2012E*", "2013E", "2014"]
 @var            select                                            PlayerMonth           "Player Month"                   ["Early", "Middle*", "Late"]
@@ -1196,8 +1197,23 @@
             transform: none;
         }
     }
-    .ytp-ad-progress, .ytp-load-progress, .ytp-play-progress {
+    .ytp-load-progress, .ytp-play-progress {
         background-color: transparent;
+    }
+    & when (@HideAdProgress = 0) {
+        .ytp-ad-progress {
+            background-image: -moz-linear-gradient(top, #fc0 0, #666 100%);
+            background-image: -ms-linear-gradient(top, #fc0 0, #666 100%);
+            background-image: -o-linear-gradient(top, #fc0 0, #666 100%);
+            background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fc0), color-stop(100%, #666));
+            background-image: -webkit-linear-gradient(top, #fc0 0, #666 100%);
+            background-image: linear-gradient(to bottom, #fc0 0, #666 100%);
+        }
+    }
+    & when (@HideAdProgress = 1) {
+        .ytp-ad-progress {
+            background-color: transparent;
+        }
     }
     .ytp-unloaded-progress {
         display: none
