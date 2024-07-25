@@ -1,7 +1,7 @@
 /* ==UserStyle==
-@name           V3 Cosmic Panda Player
+@name           V3 Cosmic Panda Player Experimental
 @namespace      userstyles.world/user/tersiswilvin
-@version        20240724.1.1.11
+@version        20240725.1.1.11
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
 @updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_Experimental.user.css
@@ -27,6 +27,7 @@
 @var            checkbox                                          HideAdProgress        "Hide Ad progress"               1
 @var            checkbox                                          HideAdSkipButton      "Hide Ad Skip Container"         1
 @var            checkbox                                          HESR                  "Hide Extra Settings Rows"       1
+@var            checkbox                                          HidePlrChptrs         "Hide Player Chapters"           1
 @var            checkbox                                          HPaNB                 "Hide Prev & Next Buttons"       1
 @var            checkbox                                          IBIO                  "Infobar Icons Only"             0
 @var            select                                            PlayButtonStyle       "Play Button Style"              ["2010M", "2011M", "2012E*", "2013E", "2014"]
@@ -948,7 +949,12 @@
         -webkit-transition: opacity 0.05s ease-in, bottom 0.05s ease-in;
         transition: opacity 0.05s ease-in, bottom 0.05s ease-in;
         [data-player-size=fullscreen] & when (@FsTbS = 1) {
-            bottom: 72px;
+            & when (@TbSPre = Right) {
+                Right: 39px;
+            }
+            & when (@TbSPre = Bottom) {
+                bottom: 72px;
+            }
         }
         & when (@Forcewatermark = 1) or (@DEVMode = 1) {
             display: block !important;
@@ -1509,6 +1515,9 @@
     }
     
     .ytp-chapter-marker {
+        & when (@HidePlrChptrs = 1) {
+            display: none !important;
+        }
         -moz-transition: height 0.05s ease-in, width 0.05s ease-in, margin-left 0.05s ease-in;
         -ms-transition: height 0.05s ease-in, width 0.05s ease-in, margin-left 0.05s ease-in;
         -o-transition: height 0.05s ease-in, width 0.05s ease-in, margin-left 0.05s ease-in;
