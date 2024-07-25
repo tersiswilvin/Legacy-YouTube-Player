@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player
 @namespace      userstyles.world/user/tersiswilvin
-@version        20240722.1.1.11
+@version        20240724.1.1.11
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
 @updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_Experimental.user.css
@@ -23,6 +23,7 @@
 @var            checkbox                                          Forcewatermark        "Force Watermark"                0
 @var            checkbox                                          Forceinfobar          "Force infobar"                  0
 @var            checkbox                                          FsTbS                 "Fullscreen Taskbar Space"       0
+@var            select                                            TbSPre                "   Preset"                      ["Left", "Right", "Top", "Bottom"]
 @var            checkbox                                          HideAdProgress        "Hide Ad progress"               1
 @var            checkbox                                          HideAdSkipButton      "Hide Ad Skip Container"         1
 @var            checkbox                                          HESR                  "Hide Extra Settings Rows"       1
@@ -1028,7 +1029,18 @@
         min-height: 26px;
         z-index: 930;
         html[data-player-size=fullscreen] & when (@FsTbS = 1) {
-            bottom: 39px;
+            & when (@TbSPre = Left) {
+                Left: 39px;
+            }
+            & when (@TbSPre = Right) {
+                Right: 39px;
+            }
+            & when (@TbSPre = Top) {
+                Top: 39px;
+            }
+            & when (@TbSPre = Bottom) {
+                bottom: 39px;
+            }
         }
         & when (@PlayerMonth = Early) {
             -moz-transition: unset;
@@ -1202,12 +1214,23 @@
     }
     & when (@HideAdProgress = 0) {
         .ytp-ad-progress {
-            background-image: -moz-linear-gradient(top, #fc0 0, #666 100%);
-            background-image: -ms-linear-gradient(top, #fc0 0, #666 100%);
-            background-image: -o-linear-gradient(top, #fc0 0, #666 100%);
-            background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fc0), color-stop(100%, #666));
-            background-image: -webkit-linear-gradient(top, #fc0 0, #666 100%);
-            background-image: linear-gradient(to bottom, #fc0 0, #666 100%);
+            & when (@PlayerMonth = Early) {
+                background: -webkit-linear-gradient(top,#fc0,#666);
+                background: -moz-linear-gradient(top,#fc0,#666);
+                background: -o-linear-gradient(top,#fc0,#666);
+                background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#fc0),color-stop(100%,#666));
+            }
+            & when (@PlayerMonth = Middle) {
+                background-image: -moz-linear-gradient(top, #fc0 0, #666 100%);
+                background-image: -ms-linear-gradient(top, #fc0 0, #666 100%);
+                background-image: -o-linear-gradient(top, #fc0 0, #666 100%);
+                background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fc0), color-stop(100%, #666));
+                background-image: -webkit-linear-gradient(top, #fc0 0, #666 100%);
+                background-image: linear-gradient(to bottom, #fc0 0, #666 100%);
+            }
+            & when (@PlayerMonth = Late) {
+                background: #fc0;
+            }
         }
     }
     & when (@HideAdProgress = 1) {
