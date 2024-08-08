@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player Experimental
 @namespace      userstyles.world/user/tersiswilvin
-@version        20240725.1.1.11
+@version        20240808.1.1.11
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
 @updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_Experimental.user.css
@@ -134,6 +134,9 @@
                 content: "V3 Cosmic Panda Player does not support Flash7 Player.\APlease disable either Flash7 Player or V3 Cosmic Panda Player.";
             }
             [exp-modern-player] &:before {
+                content: "V3 Cosmic Panda Player does not support StarTubes Modern Player.\APlease disable either StarTubes Modern Player or V3 Cosmic Panda Player.";
+            }
+            &[data-version*="/base.js"]:before {
                 content: "V3 Cosmic Panda Player does not support StarTubes Modern Player.\APlease disable either StarTubes Modern Player or V3 Cosmic Panda Player.";
             }
             &.disabled-control-seek:before, &.autominimize-progress-bar:not(.ytp-block-autohide):before, html:not([data-player-size=fullscreen]) &.autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide):before, &.autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting):before, &.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting):before, html[data-player-size=fullscreen] &.autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting):before {
@@ -568,14 +571,6 @@
         margin: 0;
         margin-top: 19px;
         margin-left: 32px;
-    }
-    
-    & when (@PlayerMonth = Middle) {
-        .ytp-button-info, .ytp-button-share, .ytp-button-like {
-            &, &:hover, &:focus {
-                border-left: 1px solid #222;
-            }
-        }
     }
     
     .show-share .ytp-button-like, .show-share .ytp-button-dislike, .show-share .ytp-button-info, .show-more-info .ytp-button-like, .show-more-info .ytp-button-dislike, .show-more-info .ytp-button-share, .sentiment-dislike .ytp-button-like, .sentiment-like .ytp-button-dislike {
@@ -1062,6 +1057,9 @@
             -webkit-transition: bottom 0.05s ease-in;
             transition: bottom 0.05s ease-in;
         }
+        .el-embedded & {
+            opacity: 1;
+        }
         .cued-mode & when (@Autohide = On) or (@Autohide = Auto) {
             bottom: -35px;
         }
@@ -1139,11 +1137,29 @@
         background: rgba(0, 0, 0, 0);
         overflow: visible;
         z-index: 760;
-        -moz-transition: height 0.05s ease-in;
-        -ms-transition: height 0.05s ease-in;
-        -o-transition: height 0.05s ease-in;
-        -webkit-transition: height 0.05s ease-in;
-        transition: height 0.05s ease-in;
+        & when (@PlayerMonth = Early) {
+            -moz-transition: unset;
+            -ms-transition: unset;
+            -o-transition: unset;
+            -webkit-transition: unset;
+            transition: unset;
+            -moz-transition-property: height;
+            -webkit-transition-property: height;
+            -o-transition-property: height;
+            -ms-transition-property: height;
+            transition-property: height;
+            -webkit-transition-duration: 0.5s;
+            -moz-transition-duration: 0.5s;
+            -o-transition-duration: 0.5s;
+            -ms-transition-duration: 0.5s;
+        }
+        & when not (@PlayerMonth = Early) {
+            -moz-transition: height 0.05s ease-in;
+            -ms-transition: height 0.05s ease-in;
+            -o-transition: height 0.05s ease-in;
+            -webkit-transition: height 0.05s ease-in;
+            transition: height 0.05s ease-in;
+        }
         .disabled-control-seek &,.autominimize-progress-bar:not(.ytp-block-autohide) &,html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) &, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &,.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &,html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) & {
             & when not (@PlayerMonth = Early) and ((@Autohide = Off) or (@Autohide = On)) {
                 height: 8px !important;
@@ -1151,11 +1167,38 @@
             & when (@Autohide = Fade) or (@Autohide = Auto) or (@PlayerMonth = Early) {
                 height: 3px !important;
             }
-            -moz-transition: height 0.5s ease-in;
-            -ms-transition: height 0.5s ease-in;
-            -o-transition: height 0.5s ease-in;
-            -webkit-transition: height 0.5s ease-in;
-            transition: height 0.5s ease-in;
+            & when (@PlayerMonth = Early) {
+                -moz-transition: unset;
+                -ms-transition: unset;
+                -o-transition: unset;
+                -webkit-transition: unset;
+                transition: unset;
+                -moz-transition-property: height;
+                -webkit-transition-property: height;
+                -o-transition-property: height;
+                -ms-transition-property: height;
+                transition-property: height;
+                -webkit-transition-duration: 0.5s;
+                -moz-transition-duration: 0.5s;
+                -o-transition-duration: 0.5s;
+                -ms-transition-duration: 0.5s;
+                transition-duration: 0.5s;
+                transition-delay: 3s;
+            }
+            & when not (@PlayerMonth = Early) {
+                -moz-transition: height 0.5s ease-in;
+                -ms-transition: height 0.5s ease-in;
+                -o-transition: height 0.5s ease-in;
+                -webkit-transition: height 0.5s ease-in;
+                transition: height 0.5s ease-in;
+            }
+        }
+        .html5-video-player:focus &, .html5-video-player:hover & {
+            -moz-transition: all 0s linear 0s;
+            -ms-transition: all 0s linear 0s;
+            -o-transition: all 0s linear 0s;
+            -webkit-transition: all 0s linear 0s;
+            transition: all 0s linear 0s;
         }
     }
     .html5-progress-bar {
@@ -1186,11 +1229,29 @@
         & when (@PlayerMonth = Late) {
             background: #2a2a2a;
         }
-        -moz-transition: height 0.05s ease-in;
-        -ms-transition: height 0.05s ease-in;
-        -o-transition: height 0.05s ease-in;
-        -webkit-transition: height 0.05s ease-in;
-        transition: height 0.05s ease-in;
+        & when (@PlayerMonth = Early) {
+            -moz-transition: unset;
+            -ms-transition: unset;
+            -o-transition: unset;
+            -webkit-transition: unset;
+            transition: unset;
+            -moz-transition-property: height;
+            -webkit-transition-property: height;
+            -o-transition-property: height;
+            -ms-transition-property: height;
+            transition-property: height;
+            -webkit-transition-duration: 0.5s;
+            -moz-transition-duration: 0.5s;
+            -o-transition-duration: 0.5s;
+            -ms-transition-duration: 0.5s;
+        }
+        & when not (@PlayerMonth = Early) {
+            -moz-transition: height 0.05s ease-in;
+            -ms-transition: height 0.05s ease-in;
+            -o-transition: height 0.05s ease-in;
+            -webkit-transition: height 0.05s ease-in;
+            transition: height 0.05s ease-in;
+        }
         -moz-transform: none;
         -ms-transform: none;
         -webkit-transform: none;
@@ -1204,15 +1265,42 @@
             & when (@Autohide = Fade) or (@Autohide = Auto) or (@PlayerMonth = Early) {
                 height: 3px;
             }
-            -moz-transition: height 0.5s ease-in;
-            -ms-transition: height 0.5s ease-in;
-            -o-transition: height 0.5s ease-in;
-            -webkit-transition: height 0.5s ease-in;
-            transition: height 0.5s ease-in;
+            & when (@PlayerMonth = Early) {
+                -moz-transition: unset;
+                -ms-transition: unset;
+                -o-transition: unset;
+                -webkit-transition: unset;
+                transition: unset;
+                -moz-transition-property: height;
+                -webkit-transition-property: height;
+                -o-transition-property: height;
+                -ms-transition-property: height;
+                transition-property: height;
+                -webkit-transition-duration: 0.5s;
+                -moz-transition-duration: 0.5s;
+                -o-transition-duration: 0.5s;
+                -ms-transition-duration: 0.5s;
+                transition-duration: 0.5s;
+                transition-delay: 3s;
+            }
+            & when not (@PlayerMonth = Early) {
+                -moz-transition: height 0.5s ease-in;
+                -ms-transition: height 0.5s ease-in;
+                -o-transition: height 0.5s ease-in;
+                -webkit-transition: height 0.5s ease-in;
+                transition: height 0.5s ease-in;
+            }
             -moz-transform: none;
             -ms-transform: none;
             -webkit-transform: none;
             transform: none;
+        }
+        .html5-video-player:focus &, .html5-video-player:hover & {
+            -moz-transition: all 0s linear 0s;
+            -ms-transition: all 0s linear 0s;
+            -o-transition: all 0s linear 0s;
+            -webkit-transition: all 0s linear 0s;
+            transition: all 0s linear 0s;
         }
     }
     .ytp-load-progress, .ytp-play-progress {
@@ -1336,11 +1424,11 @@
         }
         border-radius: 0;
         & when (@PlayerMonth = Early) {
-            -moz-transition: all 0s linear 0s;
-            -ms-transition: all 0s linear 0s;
-            -o-transition: all 0s linear 0s;
-            -webkit-transition: all 0s linear 0s;
-            transition: all 0s linear 0s;
+            -webkit-transition-duration: 0.5s;
+            -moz-transition-duration: 0.5s;
+            -o-transition-duration: 0.5s;
+            -ms-transition-duration: 0.5s;
+            transition-duration: 0.5s;
             -moz-transform-origin: 50% 50% !important;
             -moz-transition-property: -moz-transform, bottom;
             -o-transform-origin: 50% 50% !important;
@@ -1356,11 +1444,11 @@
             transform: scale(1);
         }
         & when not (@PlayerMonth = Early) {
-            -moz-transform: none;
-            -ms-transform: none;
-            -o-transform: none;
-            -webkit-transform: none;
-            transform: none;
+            -moz-transform: unset;
+            -ms-transform: unset;
+            -o-transform: unset;
+            -webkit-transform: unset;
+            transform: unset;
             transition: height 0.5s, top 0.5s, transform 0.5s;
             -moz-transition: height 0.5s, top 0.5s, -moz-transform 0.5s;
             -ms-transition: height 0.5s, top 0.5s, -ms-transform 0.5s;
@@ -1396,6 +1484,7 @@
                     -o-transition-duration: 0.5s;
                     -ms-transition-duration: 0.5s;
                     transition-duration: 0.5s;
+                    transition-delay: 3s;
                 }
                 & when not (@PlayerMonth = Early) {
                     top: -8px;
@@ -1411,6 +1500,13 @@
                     -webkit-transition: height 0.5s, top 0.5s, -webkit-transform 0.5s;
                 }
             }
+        }
+        .html5-video-player:focus &, .html5-video-player:hover & {
+            -moz-transition: all 0s linear 0s;
+            -ms-transition: all 0s linear 0s;
+            -o-transition: all 0s linear 0s;
+            -webkit-transition: all 0s linear 0s;
+            transition: all 0s linear 0s;
         }
         & when (@Autohide = Off) and not (@PlayerMonth = Early) {
             .disabled-control-seek &,.autominimize-progress-bar:not(.ytp-block-autohide) &,html:not([data-player-size=fullscreen]) :not(.ideal-aspect).autominimize-progress-bar-non-aspect:not(.ytp-block-autohide) &, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &,.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &,html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) & {
@@ -1621,6 +1717,9 @@
             }
             &-prev, &-watch-on-youtube,  {
                 border-left: 1px solid #222;
+                .light-theme & {
+                    border-color: #ccc;
+                }
             }
         }
         & when (@PlayerMonth = Middle) {
@@ -1643,6 +1742,11 @@
                 height: 100%;
                 text-align: center;
                 line-height: 26px;
+                .light-theme & {
+                    background: none;
+                    width: 58px;
+                    height: 100%;
+                }
                 &:before {
                     content: "";
                     background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -46px -34px;
@@ -1650,6 +1754,9 @@
                     width: 14px;
                     vertical-align: middle;
                     display: inline-block;
+                    .light-theme & {
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -46px -34px;
+                    }
                 }
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
                     background: none;
@@ -1659,6 +1766,9 @@
                         background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -148px 0;
                         height: 18px;
                         width: 14px;
+                        .light-theme & {
+                            background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -148px 0;
+                        }
                     }
                 }
             }
@@ -3008,6 +3118,14 @@
                     background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-common-vfloYYly0.png) -28px -93px;
                     width: 22px;
                     height: 23px;
+                }
+            }
+        }
+        /*/== TODO: Remove Early when early infobar is implimented ==/*/
+        & when (@PlayerMonth = Early) or (@PlayerMonth = Middle) {
+            &-info, &-share, &-like {
+                &, &:hover, &:focus {
+                    border-left: 1px solid #222;
                 }
             }
         }
