@@ -1211,12 +1211,14 @@
                 transition: height 0.5s ease-in;
             }
         }
-        .html5-video-player:focus &, .html5-video-player:hover & {
-            -moz-transition: all 0s linear 0s;
-            -ms-transition: all 0s linear 0s;
-            -o-transition: all 0s linear 0s;
-            -webkit-transition: all 0s linear 0s;
-            transition: all 0s linear 0s;
+        & when (@PlayerMonth = Early) {
+            .html5-video-player:focus &, .html5-video-player:hover & {
+                -moz-transition: all 0s linear 0s;
+                -ms-transition: all 0s linear 0s;
+                -o-transition: all 0s linear 0s;
+                -webkit-transition: all 0s linear 0s;
+                transition: all 0s linear 0s;
+            }
         }
     }
     .html5-progress-bar {
@@ -1313,12 +1315,14 @@
             -webkit-transform: none;
             transform: none;
         }
-        .html5-video-player:focus &, .html5-video-player:hover & {
-            -moz-transition: all 0s linear 0s;
-            -ms-transition: all 0s linear 0s;
-            -o-transition: all 0s linear 0s;
-            -webkit-transition: all 0s linear 0s;
-            transition: all 0s linear 0s;
+        & when (@PlayerMonth = Early) {
+            .html5-video-player:focus &, .html5-video-player:hover & {
+                -moz-transition: all 0s linear 0s;
+                -ms-transition: all 0s linear 0s;
+                -o-transition: all 0s linear 0s;
+                -webkit-transition: all 0s linear 0s;
+                transition: all 0s linear 0s;
+            }
         }
     }
     .ytp-load-progress, .ytp-play-progress {
@@ -1442,7 +1446,7 @@
         left: 0;
         & when (@PlayerMonth = Early) {
             position: absolute;
-        cursor: pointer;
+            cursor: pointer;
             z-index: 935;
         }
         & when (@PlayerMonth = Middle) {
@@ -1530,12 +1534,14 @@
                 }
             }
         }
-        .html5-video-player:focus &, .html5-video-player:hover & {
-            -moz-transition: all 0s linear 0s;
-            -ms-transition: all 0s linear 0s;
-            -o-transition: all 0s linear 0s;
-            -webkit-transition: all 0s linear 0s;
-            transition: all 0s linear 0s;
+        & when (@PlayerMonth = Early) {
+            .html5-video-player:focus &, .html5-video-player:hover & {
+                -moz-transition: all 0s linear 0s;
+                -ms-transition: all 0s linear 0s;
+                -o-transition: all 0s linear 0s;
+                -webkit-transition: all 0s linear 0s;
+                transition: all 0s linear 0s;
+            }
         }
         & when (@Autohide = Off) and not (@PlayerMonth = Early) {
             .disabled-control-seek &,.autominimize-progress-bar:not(.ytp-block-autohide) &,html:not([data-player-size=fullscreen]) :not(.ideal-aspect).autominimize-progress-bar-non-aspect:not(.ytp-block-autohide) &, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &,.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &,html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) & {
