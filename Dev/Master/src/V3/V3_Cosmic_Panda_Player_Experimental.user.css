@@ -16,6 +16,7 @@
 @var            checkbox                                          QualityBadges         "Display Quality Badges"         0
 @var            checkbox                                          ECMHSF                "Early Context Menu hover Fix"   0
 @var            checkbox                                          EarlyReplayExperiment "Early Replay Icon Experiment"   0
+@var            checkbox                                          EarlyClipsEnabled     "Early Clips Enabled"            0
 @var            checkbox                                          ExtraSFNItems         "Extra Stats for nerds items"    0
 @var            checkbox                                          FlashVA               "Flash Volume Animation"         0
 @var            checkbox                                          Flash7Hover           "Flash7 Style Hover ( X )"       0
@@ -1663,6 +1664,89 @@
             -o-transition: height 0.5s ease-in, width 0.5s ease-in, margin-left 0.5s ease-in;
             -webkit-transition: height 0.5s ease-in, width 0.5s ease-in, margin-left 0.5s ease-in;
             transition: height 0.5s ease-in, width 0.5s ease-in, margin-left 0.5s ease-in;
+        }
+    }
+    
+    .ytp-clip-start-exclude, .ytp-clip-end-exclude {
+        background: url(http://s.ytimg.com/yts/img/carbon_fiber-vflwTe_5Q.png);
+        background-color: transparent;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        display: none;
+        z-index: 935;
+        -moz-transition: unset;
+        -webkit-transition: unset;
+        transition: unset;
+        -moz-transform-origin: unset;
+        -ms-transform-origin: unset;
+        -webkit-transform-origin: unset;
+        transform-origin: unset;
+        .ytp-clip-hover & {
+            background: url(http://s.ytimg.com/yts/img/carbon_fiber_light-vflnxuCYh.png)
+        }
+        .ytp-clip-start-enabled & when (@PlayerMonth = Early) and (@EarlyClipsEnabled = 0) {
+            display: none
+        }
+    }
+    .ytp-clip-start-enabled .ytp-clip-start {
+        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) -114px -118px;
+        width: 9px;
+        height: 16px;
+        margin-left: -1px;
+        & when (@PlayerMonth = Early) and (@EarlyClipsEnabled = 0) {
+            display: none
+        }
+    }
+    .ytp-clip-end-enabled .ytp-clip-end {
+        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) -87px -169px;
+        width: 9px;
+        height: 16px;
+        margin-left: -9px;
+        & when (@PlayerMonth = Early) and (@EarlyClipsEnabled = 0) {
+            display: none
+        }
+    }
+    .ytp-clip-hover .ytp-clip-start, .ytp-clip-hover .ytp-clip-end {
+        background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-common-vfloYYly0.png) -54px -11px;
+        width: 17px;
+        height: 17px;
+    }
+    .ytp-clip-hover .ytp-clip-end {
+        margin-left: -17px
+    }
+    .html5-clip-marker {
+        border: none;
+        display: none;
+        position: absolute;
+        top: -4px;
+        bottom: unset;
+        z-index: 936;
+        -moz-transform: unset;
+        -ms-transform: unset;
+        -webkit-transform: unset;
+        transform: unset;
+        -moz-transform-origin: unset;
+        -ms-transform-origin: unset;
+        -webkit-transform-origin: unset;
+        transform-origin: unset;
+        transition: height 0.5s, top 0.5s, transform 0.5s;
+        -moz-transition: height 0.5s, top 0.5s, -moz-transform 0.5s;
+        -ms-transition: height 0.5s, top 0.5s, -ms-transform 0.5s;
+        -o-transition: height 0.5s, top 0.5s, -o-transform 0.5s;
+        -webkit-transition: height 0.5s, top 0.5s, -webkit-transform 0.5s;
+        .disabled-control-seek &, .autominimize-progress-bar:not(.ytp-block-autohide) &, html:not([data-player-size=fullscreen]) :not(.ideal-aspect).autominimize-progress-bar-non-aspect:not(.ytp-block-autohide) & {
+            -moz-transform: scaleY(.4) translateY(-6px);
+            -ms-transform: scaleY(.4) translateY(-6px);
+            -o-transform: scaleY(.4) translateY(-6px);
+            -webkit-transform: scaleY(.4) translateY(-6px);
+            transform: scaleY(.4) translateY(-6px);
+            transition: height 0.5s, top 0.5s, transform 0.5s;
+            -moz-transition: height 0.5s, top 0.5s, -moz-transform 0.5s;
+            -ms-transition: height 0.5s, top 0.5s, -ms-transform 0.5s;
+            -o-transition: height 0.5s, top 0.5s, -o-transform 0.5s;
+            -webkit-transition: height 0.5s, top 0.5s, -webkit-transform 0.5s;
         }
     }
     
