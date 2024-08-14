@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player Experimental
 @namespace      userstyles.world/user/tersiswilvin
-@version        20240810.1.1.11
+@version        20240813.1.1.11
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
 @updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_Experimental.user.css
@@ -35,6 +35,7 @@
 @var            select                                            PlayerMonth           "Player Month"                   ["Early", "Middle*", "Late"]
 @var            checkbox                                          PlayerSizeTransition  "Player Size Transition"         1
 @var            checkbox                                          SupportWarning        "Show Support Warning"           1
+@var            checkbox                                          CardsEnabled          "Show Cards"                     0
 @var            checkbox                                          TooltipCrtFix         "Tooltip 2012L Caret Fix"        0
 ==/UserStyle== */
 
@@ -156,7 +157,7 @@
                 content: "V3 Cosmic Panda Player does not support StarTubes Modern Player.\APlease disable either StarTubes Modern Player or V3 Cosmic Panda Player.";
             }
             &[data-version*="/base.js"]:before {
-                content: "V3 Cosmic Panda Player does not support StarTubes Modern Player.\APlease disable either StarTubes Modern Player or V3 Cosmic Panda Player.";
+                content: "V3 Cosmic Panda Player does not support the modern youtube player.\APlease disable either it or V3 Cosmic Panda Player.";
             }
             &.disabled-control-seek:before, &.autominimize-progress-bar:not(.ytp-block-autohide):before, html:not([data-player-size=fullscreen]) &.autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide):before, &.autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting):before, &.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting):before, html[data-player-size=fullscreen] &.autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting):before {
                 top: -100px;
@@ -387,10 +388,6 @@
         }
     }
     
-    .ytp-subtitles-settings-dialog-list-option:hover .ytp-button {
-        color: #ddd;
-    }
-    
     .html5-context-menu {
         padding: 0;
         &.yt-uix-button-menu {
@@ -455,6 +452,10 @@
                 }
             }
         }
+    }
+    
+    .iv-cards-notif when (@CardsEnabled = 0) {
+        display: none;
     }
     
     .html5-info-bar {
@@ -1022,14 +1023,14 @@
     
     /*/== Video Container Items ==/*/
     .html5-video-container {
-        & when (@Autohide = Off) or (@Autohide = Fade) {
+        & when (@Autohide = Off) or (@Autohide = Fade) or (@PlayerMonth = Early) and (@Autohide = On) {
             bottom: 30px;
         }
-        & when (@Autohide = On) or (@Autohide = Auto) {
+        & when not (@PlayerMonth = Early) and (@Autohide = On) or (@Autohide = Auto) {
             bottom: 3px;
         }
         z-index: 920;
-        & when (@Autohide = On) or (@Autohide = Auto) {
+        & when not (@PlayerMonth = Early) and (@Autohide = On) or (@Autohide = Auto) {
             .disabled-control-seek:not(.ytp-no-controls) &, .ad-interrupting:not(.ytp-no-controls):not(.html5-native-controls) &, .autominimize-progress-bar:not(.cued-mode) &, html:not([data-player-size=fullscreen]) :not(.ideal-aspect).autominimize-progress-bar-non-aspect:not(.cued-mode) & {
                 bottom: 3px;
             }
@@ -1770,6 +1771,10 @@
                 & when (@PlayerMonth = Early) {
                     background: rgba(0, 0, 0, 0.5);
                     cursor: default;
+                    .light-theme & {
+                        background: rgba(0, 0, 0, 0.1);
+                        cursor: default;
+                    }
                 }
                 & when (@PlayerMonth = Middle) {
                     background-color: #141414;
@@ -1826,6 +1831,9 @@
         box-sizing: content-box;
         .html5-player-chrome & when (@DEVMode = 1) {
             display: block !important;
+        }
+        .ytp-subtitles-settings-dialog-list-option:hover & {
+            color: #ddd;
         }
         & when (@PlayerMonth = Early) {
             &-play, &-pause, &-replay, &-stop, &-next {
@@ -4474,7 +4482,9 @@
             }
         }
         .disabled-control-seek .html5-video-content:has(.video-annotations),.autominimize-progress-bar:not(.ytp-block-autohide) .html5-video-content:has(.video-annotations), html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) .html5-video-content:has(.video-annotations), .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) .html5-video-content:has(.video-annotations), .ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) .html5-video-content:has(.video-annotations) {
-            padding-bottom: 27px;
+            & when (@PlayerMonth = Early) and (@Autohide = Auto) or not (@PlayerMonth = Early) {
+                padding-bottom: 27px;
+            }
             & when (@PlayerMonth = Early) {
                 -webkit-transition: padding-bottom 0.25s ease-in;
                 -moz-transition: padding-bottom 0.25s ease-in;
