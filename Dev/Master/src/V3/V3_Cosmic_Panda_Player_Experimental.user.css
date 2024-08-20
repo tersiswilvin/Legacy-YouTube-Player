@@ -396,13 +396,20 @@
         &.yt-uix-button-menu {
             & when (@PlayerMonth = Early) {
                 background: #ebebeb;
-                    padding: 6px 0;
+                padding: 6px 0;
                 -webkit-border-radius: 3px;
                 border-radius: 3px;
                 border: 1px solid #999;
                 -moz-box-shadow: 0 0 3px #999;
                 -webkit-box-shadow: 0 0 3px #999;
                 box-shadow: 0 0 3px #999;
+                [class*="darkmode"] ~ & {
+                    background: #141414;
+                    border-color: var(--color-999);
+                    -moz-box-shadow: 0 0 3px var(--color-999);;
+                    -webkit-box-shadow: 0 0 3px var(--color-999);;
+                    box-shadow: 0 0 3px var(--color-999);;
+                }
                 li {
                     margin: 1px 0;
                     list-style: none;
@@ -422,17 +429,21 @@
                     padding: .4166em .6666em;
                     color: #000;
                     background: #fff;
+                    [class*="darkmode"] ~ & {
+                        color: var(--color-black-text);
+                        background: #000;
+                    }
                 }
                 & when not (@PlayerMonth = Early) {
                     padding: 6px 20px;
                     color: #555;
+                    [class*="darkmode"] ~ & {
+                        color: var(--color-555)
+                    }
                 }
                 line-height: normal;
                 &:after when (@CMIcons = 0) {
                     display: none
-                }
-                [class*="darkmode"] ~ & {
-                    color: var(--color-333)
                 }
             }
             .yt-uix-button-menu-item.selected, .yt-uix-button-menu-item-highlight .yt-uix-button-menu-item, .yt-uix-button-menu-item:hover {
@@ -444,14 +455,23 @@
                     & when (@ECMHSF = 1) {
                         color: #000;
                     }
+                    [class*="darkmode"] ~ & {
+                        background: #151515;
+                        & when (@ECMHSF = 0) {
+                            color: #000;
+                        }
+                        & when (@ECMHSF = 1) {
+                            color: var(--color-black-text);
+                        }
+                    }
                 }
                 & when not (@PlayerMonth = Early) {
                     background-color: #555;
                     color: #fff;
-                }
-                [class*="darkmode"] ~ & {
-                    background-color: var(--color-333);
-                    color: var(--color-fff);
+                    [class*="darkmode"] ~ & {
+                        background-color: var(--color-555);
+                        color: var(--color-fff);
+                    }
                 }
             }
         }
