@@ -1,42 +1,45 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player Experimental
 @namespace      userstyles.world/user/tersiswilvin
-@version        20240819.1.1.11
+@version        20240820.1.1.11
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
 @updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_Experimental.user.css
 @license        CC-BY-SA-4.0
 @preprocessor   less
-@var            checkbox                                          AWA                   "Accurate Watermark Animations"  0
-@var            select                                            Autohide              "Autohide Preset"                ["Off", "On", "Fade*", "Auto"]
-@var            checkbox                                          CMIcons               "Context Menu Icons"             0
-@var            select                                            AhCursor              "Cursor Preset"                  ["Default*", "Hidden", "Off"]
-@var            checkbox                                          DefaultMenuStyle      "Default Menu Style"             0
-@var            checkbox                                          DEVMode               "Developer Mode"                 0
-@var            checkbox                                          QualityBadges         "Display Quality Badges"         0
-@var            checkbox                                          ECMHSF                "Early Context Menu hover Fix"   0
-@var            checkbox                                          EarlyReplayExperiment "Early Replay Icon Experiment"   0
-@var            checkbox                                          EarlyClipsEnabled     "Early Clips Enabled"            0
-@var            checkbox                                          ExtraSFNItems         "Extra Stats for nerds items"    0
-@var            checkbox                                          FlashVA               "Flash Volume Animation"         0
-@var            checkbox                                          Flash7Hover           "Flash7 Style Hover ( X )"       0
-@var            checkbox                                          ForceWOYTi            "Force Watch On Youtube icon"    0
-@var            checkbox                                          Forcewatermark        "Force Watermark"                0
-@var            checkbox                                          Forceinfobar          "Force infobar"                  0
-@var            checkbox                                          FsTbS                 "Fullscreen Taskbar Space"       0
-@var            select                                            TbSPre                "   Preset"                      ["Left", "Right", "Top", "Bottom*"]
-@var            checkbox                                          HideAdProgress        "Hide Ad progress"               1
-@var            checkbox                                          HideAdSkipButton      "Hide Ad Skip Container"         1
-@var            checkbox                                          HESR                  "Hide Extra Settings Rows"       1
-@var            checkbox                                          HidePlrChptrs         "Hide Player Chapters"           1
-@var            checkbox                                          HPaNB                 "Hide Prev & Next Buttons"       1
-@var            checkbox                                          IBIO                  "Infobar Icons Only"             0
-@var            select                                            PlayButtonStyle       "Play Button Style"              ["2010M", "2011M", "2012E*", "2013E", "2014"]
-@var            select                                            PlayerMonth           "Player Month"                   ["Early", "Middle*", "Late"]
-@var            checkbox                                          PlayerSizeTransition  "Player Size Transition"         1
-@var            checkbox                                          SupportWarning        "Show Support Warning"           1
-@var            checkbox                                          CardsEnabled          "Show Cards"                     0
-@var            checkbox                                          TooltipCrtFix         "Tooltip 2012L Caret Fix"        0
+@var            checkbox                                          AWA                   "Accurate Watermark Animations" 0
+@var            select                                            Autohide              "Autohide Preset"               ["Off", "On", "Fade*", "Auto"]
+@var            checkbox                                          CMIcons               "Context Menu Icons"            0
+@var            select                                            AhCursor              "Cursor Preset"                 ["Default*", "Hidden", "Off"]
+@var            checkbox                                          DefaultMenuStyle      "Default Menu Style"            0
+@var            checkbox                                          DEVMode               "Developer Mode"                0
+@var            checkbox                                          QualityBadges         "Display Quality Badges"        0
+@var            checkbox                                          EarlySizeExperiment   "Early Size icons Experiment"   0
+@var            checkbox                                          EarlyFsExperiment     "Early Fullscreen Experiment"   0
+@var            checkbox                                          ECMHSF                "Early Context Menu hover Fix"  0
+@var            checkbox                                          EarlyReplayExperiment "Early Replay Icon Experiment"  0
+@var            checkbox                                          EarlyClipsEnabled     "Early Clips Enabled"           0
+@var            checkbox                                          ExtraSFNItems         "Extra Stats for nerds items"   0
+@var            checkbox                                          FlashVA               "Flash Volume Animation"        0
+@var            checkbox                                          Flash7Hover           "Flash7 Style Hover ( X )"      0
+@var            checkbox                                          ForceWOYTi            "Force Watch On Youtube icon"   0
+@var            checkbox                                          Forcewatermark        "Force Watermark"               0
+@var            checkbox                                          Forceinfobar          "Force infobar"                 0
+@var            checkbox                                          FsTbS                 "Fullscreen Taskbar Space"      0
+@var            select                                            TbSPre                "   Preset"                     ["Left", "Right", "Top", "Bottom*"]
+@var            checkbox                                          HideAdProgress        "Hide Ad progress"              1
+@var            checkbox                                          HideAdSkipButton      "Hide Ad Skip Container"        1
+@var            checkbox                                          HESR                  "Hide Extra Settings Rows"      1
+@var            checkbox                                          HidePlrChptrs         "Hide Player Chapters"          1
+@var            checkbox                                          HPaNB                 "Hide Prev & Next Buttons"      1
+@var            checkbox                                          IBIO                  "Infobar Icons Only"            0
+@var            select                                            PlayButtonStyle       "Play Button Style"             ["2010M", "2011M", "2012E*", "2013E", "2014"]
+@var            select                                            PlayerMonth           "Player Month"                  ["Early", "Middle*", "Late"]
+@var            checkbox                                          PlayerSizeTransition  "Player Size Transition"        1
+@var            checkbox                                          ReplayIconExperiment  "Replay Icon Experiment"        0
+@var            checkbox                                          SupportWarning        "Show Support Warning"          1
+@var            checkbox                                          CardsEnabled          "Show Cards"                    0
+@var            checkbox                                          TooltipCrtFix         "Tooltip 2012L Caret Fix"       0
 ==/UserStyle== */
 
 @-moz-document domain("www.youtube.com") {
@@ -2198,41 +2201,81 @@
                 }
             }
             & when (@PlayerMonth = Middle) {
-                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -96px -286px;
+                & when (@ReplayIconExperiment = 0) {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -96px -286px;
+                }
+                & when (@ReplayIconExperiment = 1) {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -19px -178px;
+                }
                 height: 26px;
                 width: 55px;
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
-                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -32px -16px;
+                    & when (@ReplayIconExperiment = 0) {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -32px -16px;
+                    }
+                    & when (@ReplayIconExperiment = 1) {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -108px -178px;
+                    }
                     height: 26px;
                     width: 55px;
                     .light-theme & {
-                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -32px -16px;
+                        & when (@ReplayIconExperiment = 0) {
+                            background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -32px -16px;
+                        }
+                        & when (@ReplayIconExperiment = 1) {
+                            background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -108px -178px;
+                        }
                         height: 26px;
                         width: 55px;
                     }
                 }
                 .light-theme & {
-                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -96px -286px;
+                    & when (@ReplayIconExperiment = 0) {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -96px -286px;
+                    }
+                    & when (@ReplayIconExperiment = 1) {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -19px -178px;
+                    }
                     height: 26px;
                     width: 55px;
                 }
             }
             & when (@PlayerMonth = Late) {
-                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1053px;
+                & when (@ReplayIconExperiment = 0) {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1053px;
+                }
+                & when (@ReplayIconExperiment = 1) {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 12px -1674px;
+                }
                 height: 26px;
                 width: 55px;
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
-                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1566px;
+                    & when (@ReplayIconExperiment = 0) {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1566px;
+                    }
+                    & when (@ReplayIconExperiment = 1) {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 12px -702px;
+                    }
                     height: 26px;
                     width: 55px;
                     .light-theme & {
-                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1566px;
+                        & when (@ReplayIconExperiment = 0) {
+                            background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1566px;
+                        }
+                        & when (@ReplayIconExperiment = 1) {
+                            background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 12px -702px;
+                        }
                         height: 26px;
                         width: 55px;
                     }
                 }
                 .light-theme & {
-                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1053px;
+                    & when (@ReplayIconExperiment = 0) {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1053px;
+                    }
+                    & when (@ReplayIconExperiment = 1) {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 12px -1674px;
+                    }
                     height: 26px;
                     width: 55px;
                 }
@@ -2820,13 +2863,25 @@
                 line-height: 26px;
                 &:before {
                     content: "";
-                    background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -62px 0;
-                    height: 20px;
-                    width: 26px;
+                    & when (@EarlyFsExperiment = 0) {
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -62px 0;
+                        height: 20px;
+                        width: 26px;
+                    }
+                    & when (@EarlyFsExperiment = 1) {
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -214px -16px;
+                        height: 16px;
+                        width: 16px;
+                    }
                     vertical-align: middle;
                     display: inline-block;
                     .light-theme & {
-                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -62px 0;
+                        & when (@EarlyFsExperiment = 0) {
+                            background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -62px 0;
+                        }
+                        & when (@EarlyFsExperiment = 1) {
+                            background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -214px -16px;
+                        }
                     }
                 }
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
@@ -2834,11 +2889,19 @@
                     width: 32px;
                     height: 100%;
                     &:before {
-                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -273px -22px;
-                        height: 20px;
-                        width: 26px;
+                        & when (@EarlyFsExperiment = 0) {
+                            background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -273px -22px;
+                        }
+                        & when (@EarlyFsExperiment = 1) {
+                            background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -111px -20px;
+                        }
                         .light-theme & {
-                            background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -273px -22px;
+                            & when (@EarlyFsExperiment = 0) {
+                                background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -273px -22px;
+                            }
+                            & when (@EarlyFsExperiment = 1) {
+                                background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -111px -20px;
+                            }
                         }
                     }
                     .light-theme & {
@@ -2903,13 +2966,25 @@
                 line-height: 26px;
                 &:before {
                     content: "";
-                    background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -268px 0;
-                    height: 20px;
-                    width: 26px;
+                    & when (@EarlyFsExperiment = 0) {
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -268px 0;
+                        height: 20px;
+                        width: 26px;
+                    }
+                    & when (@EarlyFsExperiment = 1) {
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -177px -16px;
+                        height: 16px;
+                        width: 16px;
+                    }
                     vertical-align: middle;
                     display: inline-block;
                     .light-theme & {
-                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -268px 0;
+                        & when (@EarlyFsExperiment = 0) {
+                            background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -268px 0;
+                        }
+                        & when (@EarlyFsExperiment = 1) {
+                            background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -177px -16px;
+                        }
                     }
                 }
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
@@ -2917,11 +2992,19 @@
                     width: 32px;
                     height: 100%;
                     &:before {
-                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -18px -34px;
-                        height: 20px;
-                        width: 26px;
+                        & when (@EarlyFsExperiment = 0) {
+                            background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -18px -34px;
+                        }
+                        & when (@EarlyFsExperiment = 1) {
+                            background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -93px -20px;
+                        }
                         .light-theme & {
-                            background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -18px -34px;
+                            & when (@EarlyFsExperiment = 0) {
+                                background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -18px -34px;
+                            }
+                            & when (@EarlyFsExperiment = 1) {
+                                background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -93px -20px;
+                            }
                         }
                     }
                     .light-theme & {
@@ -3521,13 +3604,25 @@
             line-height: 26px;
             &:before {
                 content: "";
-                background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -250px -38px;
-                height: 14px;
-                width: 21px;
+                & when (@EarlySizeExperiment = 0) {
+                    background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -250px -38px;
+                    height: 14px;
+                    width: 21px;
+                }
+                & when (@EarlySizeExperiment = 1) {
+                    background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -232px -20px;
+                    height: 17px;
+                    width: 16px;
+                }
                 vertical-align: middle;
                 display: inline-block;
                 .light-theme & {
-                    background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -250px -38px;
+                    & when (@EarlySizeExperiment = 0) {
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -250px -38px;
+                    }
+                    & when (@EarlySizeExperiment = 1) {
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -232px -20px;
+                    }
                 }
             }
             &:focus, &:hover {
@@ -3535,11 +3630,19 @@
                 width: 32px;
                 height: 100%;
                 &:before {
-                    background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -148px -20px;
-                    height: 14px;
-                    width: 21px;
+                    & when (@EarlySizeExperiment = 0) {
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -148px -20px;
+                    }
+                    & when (@EarlySizeExperiment = 1) {
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -129px -14px;
+                    }
                     .light-theme & {
-                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -148px -20px;
+                        & when (@EarlySizeExperiment = 0) {
+                            background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -148px -20px;
+                        }
+                        & when (@EarlySizeExperiment = 1) {
+                            background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -129px -14px;
+                        }
                     }
                 }
                 .light-theme & {
@@ -3604,13 +3707,25 @@
             line-height: 26px;
             &:before {
                 content: "";
-                background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -232px -39px;
-                height: 10px;
-                width: 16px;
+                & when (@EarlySizeExperiment = 0) {
+                    background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -232px -39px;
+                    height: 10px;
+                    width: 16px;
+                }
+                & when (@EarlySizeExperiment = 1) {
+                    background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) 0 -35px;
+                    height: 17px;
+                    width: 16px;
+                }
                 vertical-align: middle;
                 display: inline-block;
                 .light-theme & {
-                    background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -232px -39px;
+                    & when (@EarlySizeExperiment = 0) {
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -232px -39px;
+                    }
+                    & when (@EarlySizeExperiment = 1) {
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) 0 -35px;
+                    }
                 }
             }
             &:focus, &:hover {
@@ -3618,11 +3733,19 @@
                 width: 32px;
                 height: 100%;
                 &:before {
-                    background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -214px -40px;
-                    height: 10px;
-                    width: 16px;
+                    & when (@EarlySizeExperiment = 0) {
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -214px -40px;
+                    }
+                    & when (@EarlySizeExperiment = 1) {
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -38px 0;
+                    }
                     .light-theme & {
-                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -214px -40px
+                        & when (@EarlySizeExperiment = 0) {
+                            background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -214px -40px;
+                        }
+                        & when (@EarlySizeExperiment = 1) {
+                            background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -38px 0;
+                        }
                     }
                 }
                 .light-theme & {
