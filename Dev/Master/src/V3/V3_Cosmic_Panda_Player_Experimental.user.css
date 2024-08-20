@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player Experimental
 @namespace      userstyles.world/user/tersiswilvin
-@version        20240813.1.1.11
+@version        20240819.1.1.11
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
 @updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_Experimental.user.css
@@ -675,6 +675,8 @@
             background: none;
             border: none;
             bottom: 0 !important;
+            max-height: 190px;
+            overflow: auto;
             &-content {
                 max-height: unset;
                 overflow-y: unset;
@@ -4502,6 +4504,25 @@
         }
     }
     .disabled-control-seek .html5-video-content .caption-window,.autominimize-progress-bar:not(.ytp-block-autohide) .html5-video-content .caption-window, html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) .html5-video-content .caption-window, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) .html5-video-content .caption-window, .ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) .html5-video-content .caption-window {
+        & when (@PlayerMonth = Early) {
+            padding-bottom: 8px;
+            -moz-transition: unset;
+            -ms-transition: unset;
+            -o-transition: unset;
+            -webkit-transition: unset;
+            transition: unset;
+            -moz-transition-property: padding-bottom;
+            -webkit-transition-property: padding-bottom;
+            -o-transition-property: padding-bottom;
+            -ms-transition-property: padding-bottom;
+            transition-property: padding-bottom;
+            -webkit-transition-duration: 0.5s;
+            -moz-transition-duration: 0.5s;
+            -o-transition-duration: 0.5s;
+            -ms-transition-duration: 0.5s;
+            transition-duration: 0.5s;
+            transition-delay: 3s;
+        }
         & when not (@PlayerMonth = Early) {
             & when (@Autohide = Off) {
                 padding-bottom: 13px;
@@ -4512,23 +4533,9 @@
             & when (@Autohide = Fade) {
                 padding-bottom: 8px;
             }
-        }
-        & when (@Autohide = Auto) {
-            & when (@PlayerMonth = Early) {
-                padding-bottom: 13px;
-            }
-            & when not (@PlayerMonth = Early) {
+            & when (@Autohide = Auto) {
                 padding-bottom: 11px;
             }
-        }
-        & when (@PlayerMonth = Early) {
-            -moz-transition: unset;
-            -ms-transition: unset;
-            -o-transition: unset;
-            -webkit-transition: punset;
-            transition: unset;
-        }
-        & when not (@PlayerMonth = Early) {
             -moz-transition: padding-bottom 0.5s ease-in;
             -ms-transition: padding-bottom 0.5s ease-in;
             -o-transition: padding-bottom 0.5s ease-in;
@@ -4537,21 +4544,23 @@
         }
     }
     html[data-player-size=fullscreen] .ytp-block-autohide:not(.house-brand):not(.ad-interrupting) .html5-video-content .caption-window {
-        & when (@PlayerMonth = Early) and not (@Autohide = Auto) {
-            padding-bottom: 43px;
-            -moz-transition: unset;
-            -ms-transition: unset;
-            -o-transition: unset;
-            -webkit-transition: unset;
-            transition: unset;
-        }
-        & when (@PlayerMonth = Early) and (@Autohide = Auto) {
-            padding-bottom: 0;
-            -moz-transition: unset;
-            -ms-transition: unset;
-            -o-transition: unset;
-            -webkit-transition: unset;
-            transition: unset;
+        & when (@PlayerMonth = Early) {
+            & when (@Autohide = Auto) {
+                padding-bottom: 0;
+                -moz-transition: unset;
+                -ms-transition: unset;
+                -o-transition: unset;
+                -webkit-transition: unset;
+                transition: unset;
+            }
+            & when not (@Autohide = Auto) {
+                padding-bottom: 48px;
+                -moz-transition: unset;
+                -ms-transition: unset;
+                -o-transition: unset;
+                -webkit-transition: unset;
+                transition: unset;
+            }
         }
         & when not (@PlayerMonth = Early) {
             padding-bottom: 43px;
@@ -4563,21 +4572,23 @@
         }
     }
     html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide) .ytp-player-content.ytp-subtitles-player-content, html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content {
-        & when (@PlayerMonth = Early) and not (@Autohide = Auto) {
-            bottom: 43px;
-            -moz-transition: unset;
-            -ms-transition: unset;
-            -o-transition: unset;
-            -webkit-transition: unset;
-            transition: unset;
-        }
-        & when (@PlayerMonth = Early) and (@Autohide = Auto) {
-            bottom: 0;
-            -webkit-transition: bottom 0.25s ease-in;
-            -moz-transition: bottom 0.25s ease-in;
-            -o-transition: bottom 0.25s ease-in;
-            -ms-transition: bottom 0.25s ease-in;
-            transition-delay: 3s;
+        & when (@PlayerMonth = Early) {
+            & when (@Autohide = Auto) {
+                bottom: 0;
+                -webkit-transition: bottom 0.25s ease-in;
+                -moz-transition: bottom 0.25s ease-in;
+                -o-transition: bottom 0.25s ease-in;
+                -ms-transition: bottom 0.25s ease-in;
+                transition-delay: 3s;
+            }
+            & when not (@Autohide = Auto) {
+                bottom: 43px;
+                -moz-transition: unset;
+                -ms-transition: unset;
+                -o-transition: unset;
+                -webkit-transition: unset;
+                transition: unset;
+            }
         }
         & when not (@PlayerMonth = Early) {
             bottom: 0;
@@ -4589,21 +4600,34 @@
         }
     }
     html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide) .html5-video-content .caption-window, html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) .html5-video-content .caption-window {
-        & when (@PlayerMonth = Early) and not (@Autohide = Auto) {
-            padding-bottom: 43px;
-            -moz-transition: unset;
-            -ms-transition: unset;
-            -o-transition: unset;
-            -webkit-transition: unset;
-            transition: unset;
-        }
-        & when (@PlayerMonth = Early) and (@Autohide = Auto) {
-            padding-bottom: 0;
-            -webkit-transition: padding-bottom 0.25s ease-in;
-            -moz-transition: padding-bottom 0.25s ease-in;
-            -o-transition: padding-bottom 0.25s ease-in;
-            -ms-transition: padding-bottom 0.25s ease-in;
+        & when (@PlayerMonth = Early) {
+            & when (@Autohide = Auto) {
+                padding-bottom: 0;
+                -webkit-transition: padding-bottom 0.25s ease-in;
+                -moz-transition: padding-bottom 0.25s ease-in;
+                -o-transition: padding-bottom 0.25s ease-in;
+                -ms-transition: padding-bottom 0.25s ease-in;
+                transition-delay: 3s;
+            }
+            & when not (@Autohide = Auto) {
+                padding-bottom: 43px;
+                -moz-transition: unset;
+                -ms-transition: unset;
+                -o-transition: unset;
+                -webkit-transition: unset;
+                transition: unset;
+                            -moz-transition-property: padding-bottom;
+            -webkit-transition-property: padding-bottom;
+            -o-transition-property: padding-bottom;
+            -ms-transition-property: padding-bottom;
+            transition-property: padding-bottom;
+            -webkit-transition-duration: 0.5s;
+            -moz-transition-duration: 0.5s;
+            -o-transition-duration: 0.5s;
+            -ms-transition-duration: 0.5s;
+            transition-duration: 0.5s;
             transition-delay: 3s;
+            }
         }
         & when not (@PlayerMonth = Early) {
             padding-bottom: 0;
