@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player Experimental
 @namespace      userstyles.world/user/tersiswilvin
-@version        20240820.1.1.11
+@version        20240823.1.1.11
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
 @updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_Experimental.user.css
@@ -29,6 +29,7 @@
 @var            select                                            TbSPre                "   Preset"                     ["Left", "Right", "Top", "Bottom*"]
 @var            checkbox                                          HideAdProgress        "Hide Ad progress"              1
 @var            checkbox                                          HideAdSkipButton      "Hide Ad Skip Container"        1
+@var            checkbox                                          HideASRIcons          "Hide ASR Icons"                0
 @var            checkbox                                          HESR                  "Hide Extra Settings Rows"      1
 @var            checkbox                                          HidePlrChptrs         "Hide Player Chapters"          1
 @var            checkbox                                          HPaNB                 "Hide Prev & Next Buttons"      1
@@ -90,7 +91,12 @@
             background-size: unset;
             width: unset;
             height: unset;
-            display: block;
+            & when (@HideASRIcons = 0) {
+                display: block;
+            }
+            & when (@HideASRIcons = 1) {
+                display: none;
+            }
             left: -36px;
             opacity: 0.5;
             position: absolute;
@@ -108,7 +114,12 @@
             background-size: unset;
             width: unset;
             height: unset;
-            display: block;
+            & when (@HideASRIcons = 0) {
+                display: block;
+            }
+            & when (@HideASRIcons = 1) {
+                display: none;
+            }
             opacity: 0.5;
             position: absolute;
             right: -36px;
@@ -4882,15 +4893,17 @@
     2012L => December 7th 2012 ( https://web.archive.org/web/20121207043038if_/https://www.youtube.com/watch?v=jNQXAC9IVRw )
     
     == TODO Features ==
-    Implement Early 2012 ( & )
-    Impliment Flash Player options ( % )
-    Impliment Flash7 Styled Hover ( % )
+    Implement Early 2012 ( # )
+    Impliment Tablet Player ( X | % )
+    Impliment Flash Player options ( X | % )
+    Impliment Flash7 Styled Hover ( X | % )
     
     == Legend ==
     X => Not Started
     ! => Deciding
     % => Pending
     & => Started
+    # => Almost Finished
     * => Finished
     /*/
 }
