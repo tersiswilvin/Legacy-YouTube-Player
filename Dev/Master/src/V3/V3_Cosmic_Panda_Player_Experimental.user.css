@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player Experimental
 @namespace      userstyles.world/user/tersiswilvin
-@version        20240903.1.1.11
+@version        20240904.1.1.11
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
 @updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_Experimental.user.css
@@ -4973,6 +4973,53 @@
             }
             &-cancel {
                 font-size: 13px;
+            }
+        }
+    }
+
+    .player-unavailable {
+        background: #000;
+        text-shadow: 1px 1px 0 #000;
+        font-weight: normal;
+        font-size: 24px;
+        color: #fff;
+        background-image: -moz-linear-gradient(top, #111, #383838);
+        background-image: -webkit-gradient(linear, left top, left bottom, from(#111), to(#383838));
+        filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr="#111111",endColorStr="#383838");
+        .icon {
+            width: 170px;
+            height: 81px;
+            object-position: 170px;
+            background-image: url(http://s.ytimg.com/yt/img/meh-vflQF1ybI.png);
+            background-repeat: no-repeat;
+            background-size: 107px 75px;
+            background-position: center top;
+            left: unset;
+            top: unset;
+            bottom: 80px;
+            margin: 0;
+        }
+        .content {
+            position: absolute;
+            bottom: 80px;
+            top: unset;
+            left: unset;
+            right: unset;
+            margin-left: 170px;
+            width: 440px;
+            .message {
+                margin: 0;
+                padding: 0;
+                border-bottom: none;
+                font-size: 24px;
+                font-weight: normal;
+                text-shadow: 1px 1px 0 #000;
+            }
+            .submessage {
+                font-size: 16px;
+                color: #999;
+                text-shadow: 1px 1px 0 #000;
+                padding-top: 5px;
             }
         }
     }
