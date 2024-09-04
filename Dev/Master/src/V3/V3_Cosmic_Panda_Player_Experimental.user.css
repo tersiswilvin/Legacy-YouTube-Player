@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player Experimental
 @namespace      userstyles.world/user/tersiswilvin
-@version        20240901.1.1.11
+@version        20240903.1.1.11
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
 @updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_Experimental.user.css
@@ -4911,6 +4911,72 @@
         height: 21px
     }
     
+    .ytp-endscreen-content {
+        max-width: 1000px;
+    }
+    .videowall-still-info {
+        &-bg {
+            background: #000;
+            opacity: 0;
+            -moz-transition: opacity 0.3s ease;
+            -ms-transition: opacity 0.3s ease;
+            -o-transition: opacity 0.3s ease;
+            -webkit-transition: opacity 0.3s ease;
+            transition: opacity 0.3s ease;
+            .videowall-still-autoplay & {
+                background: #000;
+                -moz-transition: opacity 0.3s ease;
+                -ms-transition: opacity 0.3s ease;
+                -o-transition: opacity 0.3s ease;
+                -webkit-transition: opacity 0.3s ease;
+                transition: opacity 0.3s ease;
+                .videowall-still:hover&, .videowall-still:focus& {
+                    background: #000;
+                }
+            }
+            .videowall-still:hover &, .videowall-still:focus & {
+                opacity: 0.86;
+            }
+        }
+        &-title {
+            padding: 10px 10px 0;
+            font-size: 13px;
+            line-height: 15px;
+            color: #fff;
+            height: 30px;
+            max-height: unset;
+            .videowall-still-autoplay & {
+                height: unset;
+                padding: 10px 10px 2px;
+            }
+        }
+        &-author {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            height: 11px;
+            font-size: 11px;
+            padding: 0;
+            .videowall-still-autoplay & {
+                position: unset;
+                padding: 0 10px 10px;
+            }
+        }
+    }
+    .videowall-still {
+        transition-delay: 0s !important;
+        &-listlabel-autoplay {
+            background-color: #000;
+            opacity: 0.86;
+            .videowall-still:hover &, .videowall-still:focus & {
+                background-color: #000;
+            }
+            &-cancel {
+                font-size: 13px;
+            }
+        }
+    }
+    
     /*/
     == Info ==
     V3 Cosmic Panda Player
@@ -4923,7 +4989,6 @@
     
     == TODO Features ==
     Implement Early 2012 ( # )
-    Implement Video Wall ( X | % )
     Impliment Tablet Player ( X | % )
     Impliment Flash Player options ( X | % )
     Impliment Flash7 Styled Hover ( X | % )
