@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player Experimental
 @namespace      userstyles.world/user/tersiswilvin
-@version        20240904.1.1.11
+@version        20240907.1.1.11
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
 @updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_Experimental.user.css
@@ -33,6 +33,7 @@
 @var            checkbox                                          HESR                    "Hide Extra Settings Rows"      1
 @var            checkbox                                          HidePlrChptrs           "Hide Player Chapters"          1
 @var            checkbox                                          HPaNB                   "Hide Prev & Next Buttons"      1
+@var            checkbox                                          HUnB                    "Hide Unavailable Buttons"      1
 @var            checkbox                                          IBIO                    "Infobar Icons Only"            0
 @var            select                                            PlayButtonStyle         "Play Button Style"             ["2010M", "2011M", "2012E*", "2013E", "2014"]
 @var            select                                            PlayerMonth             "Player Month"                  ["Early", "Middle*", "Late"]
@@ -4989,11 +4990,20 @@
         .icon {
             width: 170px;
             height: 81px;
-            object-position: 170px;
-            background-image: url(http://s.ytimg.com/yt/img/meh-vflQF1ybI.png);
-            background-repeat: no-repeat;
-            background-size: 107px 75px;
-            background-position: center top;
+            &[src*="meh7"], &[src*="timedelay"] {
+                object-position: 170px;
+                background-repeat: no-repeat;
+                background-size: 107px 75px;
+                background-position: center top;
+            }
+            &[src*="meh7"] {
+                background-image: url(http://s.ytimg.com/yt/img/meh-vflQF1ybI.png);
+            }
+            &[src*="timedelay7"] {
+                background-image: url(https://s.ytimg.com/yt/img/timedelay.png);
+            }
+            object-fit: contain;
+            object-position: center -2px;
             left: unset;
             top: unset;
             bottom: 80px;
@@ -5021,6 +5031,23 @@
                 text-shadow: 1px 1px 0 #000;
                 padding-top: 5px;
             }
+        }
+    }
+    #watch7-player-age-gate-content {
+        button, .date-selector {
+            margin-top: 8px;
+            & when (@HUnB = 1) {
+                display: none;
+            }
+        }
+        ~ .ypc-watch-trailer {
+            margin-top: 8px
+        }
+    }
+    .ypc-watch-trailer {
+        bottom: unset;
+        & when (@HUnB = 1) {
+            display: none;
         }
     }
     
