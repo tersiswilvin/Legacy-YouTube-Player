@@ -4990,7 +4990,7 @@
         .icon {
             width: 170px;
             height: 81px;
-            &[src*="meh7"], &[src*="timedelay"] {
+            &[src*="meh7"], &[src*="timedelay7"] {
                 object-position: 170px;
                 background-repeat: no-repeat;
                 background-size: 107px 75px;
