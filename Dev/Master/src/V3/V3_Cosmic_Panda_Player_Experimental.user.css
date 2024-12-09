@@ -28,6 +28,7 @@
 @var            select                                            TbSPre                  " ↳ Preset"                     ["Left", "Right", "Top", "Bottom*"]
 @var            checkbox                                          HideAdProgress          "Hide Ad progress"              1
 @var            checkbox                                          HideAdSkipButton        "Hide Ad Skip Container"        1
+@var            checkbox                                          HideBranding            "Hide Annotation Branding"      1
 @var            checkbox                                          HideASRIcons            "Hide ASR Icons"                0
 @var            checkbox                                          HESR                    "Hide Extra Settings Rows"      1
 @var            checkbox                                          HidePlrChptrs           "Hide Player Chapters"          1
@@ -4917,6 +4918,13 @@
         right: 5px;
         width: 21px;
         height: 21px
+    }
+    
+    .annotation.iv-branding {
+        z-index: 920;
+        & when (@HideBranding = 1) {
+            display: none;
+        }
     }
     
     .ytp-endscreen-content {
