@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player Experimental
 @namespace      userstyles.world/user/tersiswilvin
-@version        20241208.1.1.11
+@version        20241209.1.1.11
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
 @updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_Experimental.user.css
@@ -21,12 +21,11 @@
 @var            checkbox                                          EarlySizeExperiment     "Early Size Icons Experiment"   0
 @var            checkbox                                          ExtraSFNItems           "Extra Stats for nerds items"   0
 @var            checkbox                                          FlashVA                 "Flash Volume Animation"        0
-@var            checkbox                                          Flash7Hover             "Flash7 Style Hover ( X )"      0
 @var            checkbox                                          ForceWOYTi              "Force Watch On Youtube icon"   0
 @var            checkbox                                          Forcewatermark          "Force Watermark"               0
 @var            checkbox                                          Forceinfobar            "Force infobar"                 0
 @var            checkbox                                          FsTbS                   "Fullscreen Taskbar Space"      0
-@var            select                                            TbSPre                  "   Preset"                     ["Left", "Right", "Top", "Bottom*"]
+@var            select                                            TbSPre                  " ↳ Preset"                     ["Left", "Right", "Top", "Bottom*"]
 @var            checkbox                                          HideAdProgress          "Hide Ad progress"              1
 @var            checkbox                                          HideAdSkipButton        "Hide Ad Skip Container"        1
 @var            checkbox                                          HideASRIcons            "Hide ASR Icons"                0
@@ -89,11 +88,19 @@
             }
         }
     }
-    .appbar-mini-cinema #player.watch-medium:before when (@PlayerTheaterGradient = 1) {
-        background-color: #444;
-        background-image: -moz-linear-gradient(top, #555, #333);
-        background-image: -webkit-gradient(linear, left top, left bottom, from(#555), to(#333));
-        filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr="#555555",endColorStr="#333333");
+    & when (@PlayerTheaterGradient = 1) {
+        #guide-container {
+            background-image: none;
+        }
+        .exp-not-top-guide-fixed #guide-main {
+            background: transparent;
+        }
+        .appbar-mini-cinema #player.watch-medium:before {
+            background-color: #444;
+            background-image: -moz-linear-gradient(top, #555, #333);
+            background-image: -webkit-gradient(linear, left top, left bottom, from(#555), to(#333));
+            filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr="#555555",endColorStr="#333333");
+        }
     }
     .html5-video-player {
         position: unset;
@@ -5065,7 +5072,6 @@
     Implement Early 2012 ( # )
     Impliment Tablet Player ( X | % )
     Impliment Flash Player options ( X | % )
-    Impliment Flash7 Styled Hover ( X | % )
     
     == Legend ==
     X => Not Started
