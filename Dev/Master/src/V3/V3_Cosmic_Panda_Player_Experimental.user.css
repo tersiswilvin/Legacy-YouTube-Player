@@ -5005,20 +5005,13 @@
         .icon {
             width: 170px;
             height: 81px;
-            &[src*="meh7"], &[src*="timedelay7"] {
-                object-position: 170px;
-                background-repeat: no-repeat;
-                background-size: 107px 75px;
-                background-position: center top;
-            }
             &[src*="meh7"] {
-                background-image: url(http://s.ytimg.com/yt/img/meh-vflQF1ybI.png);
+                content: url(http://s.ytimg.com/yt/img/meh-vflQF1ybI.png);
             }
             &[src*="timedelay7"] {
-                background-image: url(https://s.ytimg.com/yt/img/timedelay.png);
+                content: url(https://s.ytimg.com/yt/img/timedelay.png);
             }
-            object-fit: contain;
-            object-position: center -2px;
+            object-fit: none;
             left: unset;
             top: unset;
             bottom: 80px;
