@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player Experimental
 @namespace      userstyles.world/user/tersiswilvin
-@version        20241211.1.1.11
+@version        20241215.1.1.11
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
 @updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_Experimental.user.css
@@ -951,6 +951,12 @@
         }
         &-arrow {
             border-top: 5px solid rgba(22, 22, 22, 0.8);
+        }
+        &.with-thumbnail &-arrow[style*="left: 98px"], &.with-thumbnail &-arrow[style*="left: 99px"], &.with-thumbnail &-arrow[style^="left: 10"]:not([style*="left: 10px"]) {
+            left: 97px !important;
+        }
+        &.with-thumbnail &-arrow[style^="left: -"], &.with-thumbnail &-arrow[style*="left: 0"], &.with-thumbnail &-arrow[style*="left: 1px"], &.with-thumbnail &-arrow[style*="left: 2px"] {
+            left: 3px !important;
         }
     }
     
