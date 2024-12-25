@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player Experimental
 @namespace      userstyles.world/user/tersiswilvin
-@version        20241224.1.1.11
+@version        20241225.1.1.11
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
 @updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_Experimental.user.css
@@ -47,6 +47,7 @@
 @var            checkbox                                          ReplayIconExperiment    "Replay Icon Experiment"        0
 @var            checkbox                                          SupportWarning          "Show Support Warning"          1
 @var            checkbox                                          CardsEnabled            "Show Cards"                    0
+@var            checkbox                                          SponsorPreviewFix       "SponsorBlock Preview Fix"      0
 @var            checkbox                                          TooltipCrtFix           "Tooltip 2012L Caret Fix"       0
 ==/UserStyle== */
 
@@ -961,6 +962,17 @@
         &.with-thumbnail &-arrow[style^="left: -"], &.with-thumbnail &-arrow[style*="left: 0"], &.with-thumbnail &-arrow[style*="left: 1px"], &.with-thumbnail &-arrow[style*="left: 2px"] {
             left: 3px !important;
         }
+        .sponsorCategoryTooltipVisible&[style*="width: 108px;"] when (@SponsorPreviewFix = 1) {
+            width: 108px !important;
+            height: 86px;
+            &.with-text .ytp-progress-tooltip-text-container {
+                display: block;
+                height: 12px;
+                .ytp-progress-tooltip-text {
+                    display: none;
+                }
+            }
+        }
     }
     
     .html5-bezel {
@@ -1049,7 +1061,7 @@
         transition: opacity 0.05s ease-in, bottom 0.05s ease-in;
         [data-player-size=fullscreen] & when (@FsTbS = 1) {
             & when (@TbSPre = Right) {
-                Right: @FsTbW;
+                Right: @FsTbW + 5;
             }
             & when (@TbSPre = Bottom) {
                 bottom: @FsTbW + 33;
