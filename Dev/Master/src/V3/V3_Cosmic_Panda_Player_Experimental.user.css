@@ -1,55 +1,56 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player Experimental
 @namespace      userstyles.world/user/tersiswilvin
-@version        20241226.1.1.11
+@version        20250113.1.1.11
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
 @updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_Experimental.user.css
 @license        CC-BY-SA-4.0
 @preprocessor   less
-@var            checkbox                                          AWA                     "Accurate Watermark Animations" 1
-@var            select                                            Autohide                "Autohide Preset"               ["Off", "On", "Fade*", "Auto"]
-@var            checkbox                                          CMIcons                 "Context Menu Icons"            0
-@var            select                                            AhCursor                "Cursor Preset"                 ["Default*", "Hidden", "Off"]
-@var            checkbox                                          DefaultMenuStyle        "Default Menu Style"            0
-@var            checkbox                                          DefaultUnavailableStyle "Default Unavailable Style"     0
-@var            checkbox                                          DEVMode                 "Developer Mode"                0
-@var            checkbox                                          QualityBadges           "Display Quality Badges"        0
-@var            checkbox                                          EarlyClipsEnabled       "Early Clips Enabled"           0
-@var            checkbox                                          ECMHSF                  "Early Context Menu hover Fix"  0
-@var            checkbox                                          EarlyFsExperiment       "Early Fullscreen Experiment"   0
-@var            checkbox                                          EarlyReplayExperiment   "Early Replay Icon Experiment"  0
-@var            checkbox                                          EarlySizeExperiment     "Early Size Icons Experiment"   0
-@var            checkbox                                          ExtraSFNItems           "Extra Stats for nerds items"   0
-@var            select                                            FallbackTVStaticPreset  "Fallback TV Static Preset"     ["None*", "Animated", "Canvas", "Static"]
-@var            checkbox                                          FlashVA                 "Flash Volume Animation"        0
-@var            checkbox                                          ForceWOYTi              "Force Watch On Youtube icon"   0
-@var            checkbox                                          Forcewatermark          "Force Watermark"               0
-@var            checkbox                                          Forceinfobar            "Force infobar"                 0
-@var            checkbox                                          FsTbS                   "Fullscreen Taskbar Space"      0
-@var            number                                            FsTbW                   " ↳ Taskbar Width"              [39, 0, null, 1, "px"]
-@var            select                                            TbSPre                  " ↳ Preset"                     ["Left", "Right", "Bottom*"]
-@var            checkbox                                          HideAdProgress          "Hide Ad progress"              1
-@var            checkbox                                          HideAdSkipButton        "Hide Ad Skip Container"        1
-@var            checkbox                                          HideBranding            "Hide Annotation Branding"      1
-@var            checkbox                                          HideASRIcons            "Hide ASR Icons"                0
-@var            checkbox                                          HESR                    "Hide Extra Settings Rows"      1
-@var            checkbox                                          HidePlrChptrs           "Hide Player Chapters"          1
-@var            checkbox                                          HPaNB                   "Hide Prev & Next Buttons"      1
-@var            checkbox                                          HideSponsorBlock        "Hide SponsorBlock"             1
-@var            checkbox                                          HUnB                    "Hide Unavailable Buttons"      1
-@var            checkbox                                          IBIO                    "Infobar Icons Only"            0
-@var            select                                            PlayButtonStyle         "Play Button Style"             ["2010M", "2011M", "2012E*", "2013E", "2014"]
-@var            select                                            PlayerMonth             "Player Month"                  ["Early", "Middle*", "Late"]
-@var            checkbox                                          PlayerSizeTransition    "Player Size Transition"        1
-@var            checkbox                                          PlayerTheaterTransition "Player Theater Transition"     1
-@var            checkbox                                          PlayerTheaterGradient   "Player Theater Gradient"       1
-@var            checkbox                                          PreciseTailPos          "Precise Preview Tail Position" 1
-@var            checkbox                                          ReplayIconExperiment    "Replay Icon Experiment"        0
-@var            checkbox                                          SupportWarning          "Show Support Warning"          1
-@var            checkbox                                          CardsEnabled            "Show Cards"                    0
-@var            checkbox                                          SponsorPreviewFix       "SponsorBlock Preview Fix"      0
-@var            checkbox                                          TooltipCrtFix           "Tooltip 2012L Caret Fix"       0
+@var            checkbox                                          AccPrevTailPos          "Accurate Preview Tail Position" 1
+@var            checkbox                                          AccWtmAnim              "Accurate Watermark Animations"  1
+@var            select                                            Autohide                "Autohide Preset"                ["Off", "On", "Fade*", "Auto"]
+@var            checkbox                                          CMIcons                 "Context Menu Icons"             0
+@var            select                                            AhCursor                "Cursor Preset"                  ["Default*", "Hidden", "Off"]
+@var            checkbox                                          DefaultMenuStyle        "Default Menu Style"             0
+@var            checkbox                                          DefaultUnavailableStyle "Default Unavailable Style"      0
+@var            checkbox                                          DEVMode                 "Developer Mode"                 0
+@var            checkbox                                          QualityBadges           "Display Quality Badges"         0
+@var            checkbox                                          EarlyClipsEnabled       "Early Clips Enabled"            0
+@var            checkbox                                          ECMHSF                  "Early Context Menu hover Fix"   0
+@var            checkbox                                          EarlyFsExperiment       "Early Fullscreen Experiment"    0
+@var            checkbox                                          EarlyReplayExperiment   "Early Replay Icon Experiment"   0
+@var            checkbox                                          EarlySizeExperiment     "Early Size Icons Experiment"    0
+@var            checkbox                                          ExtraSFNItems           "Extra Stats for nerds items"    0
+@var            select                                            FallbackTVStaticPreset  "Fallback TV Static Preset"      ["None*", "Animated", "Canvas", "Static"]
+@var            checkbox                                          FlashVA                 "Flash Volume Animation"         0
+@var            checkbox                                          ForceWOYTi              "Force Watch On Youtube icon"    0
+@var            checkbox                                          Forcewatermark          "Force Watermark"                0
+@var            checkbox                                          Forceinfobar            "Force infobar"                  0
+@var            checkbox                                          FsTbS                   "Fullscreen Taskbar Space"       0
+@var            number                                            FsTbW                   " ↳ Taskbar Width"               [39, 0, null, 1, "px"]
+@var            select                                            TbSPre                  " ↳ Preset"                      ["Left", "Right", "Bottom*"]
+@var            checkbox                                          HideAdProgress          "Hide Ad progress"               1
+@var            checkbox                                          HideAdSkipButton        "Hide Ad Skip Container"         1
+@var            checkbox                                          HideBranding            "Hide Annotation Branding"       1
+@var            checkbox                                          HideASRIcons            "Hide ASR Icons"                 0
+@var            checkbox                                          HESR                    "Hide Extra Settings Rows"       1
+@var            checkbox                                          HidePlrChptrs           "Hide Player Chapters"           1
+@var            checkbox                                          HPaNB                   "Hide Prev & Next Buttons"       1
+@var            checkbox                                          HideSponsorBlock        "Hide SponsorBlock"              1
+@var            checkbox                                          HUnB                    "Hide Unavailable Buttons"       1
+@var            checkbox                                          IBIO                    "Infobar Icons Only"             0
+@var            select                                            PlayButtonStyle         "Play Button Style"              ["2010M", "2011M", "2012E*", "2013E", "2014"]
+@var            select                                            PlayerMonth             "Player Month"                   ["Early", "Middle*", "Late"]
+@var            checkbox                                          PlayerSizeTransition    "Player Size Transition"         1
+@var            checkbox                                          PlayerTheaterTransition "Player Theater Transition"      1
+@var            checkbox                                          PlayerTheaterGradient   "Player Theater Gradient"        1
+@var            checkbox                                          RemovePlayFocusState    "Remove Fullscreen Play Focus"   0
+@var            checkbox                                          ReplayIconExperiment    "Replay Icon Experiment"         0
+@var            checkbox                                          SupportWarning          "Show Support Warning"           1
+@var            checkbox                                          CardsEnabled            "Show Cards"                     0
+@var            checkbox                                          SponsorPreviewFix       "SponsorBlock Preview Fix"       0
+@var            checkbox                                          TooltipCrtFix           "Tooltip 2012L Caret Fix"        0
 ==/UserStyle== */
 
 @-moz-document domain("www.youtube.com") {
@@ -956,19 +957,22 @@
         }
         &-arrow {
             border-top: 5px solid rgba(22, 22, 22, 0.8);
+            & when (@AccPrevTailPos = 0)  {
+                &[style^="left: -"], &[style*="left: 0"], &[style*="left: 0.5px"], &[style*="left: 1px"], &[style*="left: 1.5px"], &[style*="left: 2px"], &[style*="left: 2.5px"], &[style*="left: 3px"], &[style*="left: 3.5px"], &[style*="left: 4px"], &[style*="left: 4.5px"], &[style*="left: 5px"], &[style*="left: 5.5px"] {
+                    left: 6px !important;
+                }
+            }
+            & when (@AccPrevTailPos = 1)  {
+                &[style^="left: -"], &[style*="left: 0"], &[style*="left: 0.5px"] {
+                    left: 1px !important;
+                }
+            }
         }
-        &.with-thumbnail &-arrow[style*="left: 98px"], &.with-thumbnail &-arrow[style*="left: 99px"], &.with-thumbnail &-arrow[style^="left: 10"]:not([style*="left: 10px"]) {
+        &:not(.with-thumbnail) &-arrow[style^="left: 4"]:not([style*="left: 4px"]):not([style*="left: 4.5px"]) {
+            left: 39px !important;
+        }
+        &.with-thumbnail &-arrow[style*="left: 98px"], &.with-thumbnail &-arrow[style*="left: 98.5px"], &.with-thumbnail &-arrow[style*="left: 99px"], &.with-thumbnail &-arrow[style*="left: 99.5px"], &.with-thumbnail &-arrow[style^="left: 10"]:not([style*="left: 10px"]):not([style*="left: 10.5px"]) {
             left: 97px !important;
-        }
-        & when (@PreciseTailPos = 0)  {
-            &.with-thumbnail &-arrow[style^="left: -"], &.with-thumbnail &-arrow[style*="left: 0"], &.with-thumbnail &-arrow[style*="left: 1px"], &.with-thumbnail &-arrow[style*="left: 2px"], &.with-thumbnail &-arrow[style*="left: 3px"], &.with-thumbnail &-arrow[style*="left: 4px"], &.with-thumbnail &-arrow[style*="left: 5px"] {
-                left: 6px !important;
-            }
-        }
-        & when (@PreciseTailPos = 1)  {
-            &.with-thumbnail &-arrow[style^="left: -"], &.with-thumbnail &-arrow[style*="left: 0"] {
-                left: 1px !important;
-            }
         }
         .sponsorCategoryTooltipVisible&[style*="width: 108px;"] when (@SponsorPreviewFix = 1) {
             width: 108px !important;
@@ -1091,7 +1095,7 @@
             & when (@Autohide = Off) or (@Autohide = Fade) {
                 bottom: 33px;
             }
-            & when (@AWA = 0) {
+            & when (@AccWtmAnim = 0) {
                 & when (@Autohide = On) {
                     bottom: -2px;
                 }
@@ -1099,7 +1103,7 @@
                     bottom: 1px;
                 }
             }
-            & when (@AWA = 1) and ((@Autohide = On) or (@Autohide = Auto)) {
+            & when (@AccWtmAnim = 1) and ((@Autohide = On) or (@Autohide = Auto)) {
                 bottom: 3px;
             }
             opacity: 0;
@@ -1110,10 +1114,10 @@
             transition: opacity 0.5s ease-in,bottom 0.5s ease-in
         }
         .html5-video-player:not(.ytp-block-autohide) & {
-            & when (@AWA = 0) {
+            & when (@AccWtmAnim = 0) {
                 bottom: 3px;
             }
-            & when (@AWA = 1) {
+            & when (@AccWtmAnim = 1) {
                 bottom: -2px;
             }
             opacity: 0;
@@ -2012,6 +2016,14 @@
                         }
                     }
                 }
+                & when (@RemovePlayFocusState = 1) {
+                    [data-player-size="fullscreen"] &:not(.ytp-disabled):before {
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -46px -34px;
+                    }
+                    [data-player-size="fullscreen"] .light-theme &:not(.ytp-disabled):focus:before {
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -46px -34px;
+                    }
+                }
                 .light-theme & {
                     background: none;
                     width: 58px;
@@ -2032,6 +2044,14 @@
                         width: 55px;
                     }
                 }
+                & when (@RemovePlayFocusState = 1) {
+                    [data-player-size="fullscreen"] &:not(.ytp-disabled):focus {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -96px -232px;
+                    }
+                    [data-player-size="fullscreen"] .light-theme &:not(.ytp-disabled):focus {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -96px -232px;
+                    }
+                }
                 .light-theme & {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -96px -232px;
                     height: 26px;
@@ -2050,6 +2070,14 @@
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -459px;
                         height: 26px;
                         width: 55px;
+                    }
+                }
+                & when (@RemovePlayFocusState = 1) {
+                    [data-player-size="fullscreen"] &:not(.ytp-disabled):focus {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1323px;
+                    }
+                    [data-player-size="fullscreen"] .light-theme &:not(.ytp-disabled):focus {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1323px;
                     }
                 }
                 .light-theme & {
@@ -2074,7 +2102,7 @@
                     vertical-align: middle;
                     display: inline-block;
                     .light-theme & {
-                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -164px 0
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -164px 0;
                     }
                 }
                 &:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
@@ -2088,6 +2116,14 @@
                         .light-theme & {
                             background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -296px 0
                         }
+                    }
+                }
+                & when (@RemovePlayFocusState = 1) {
+                    [data-player-size="fullscreen"] &:not(.ytp-disabled):focus:before {
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -164px 0;
+                    }
+                    [data-player-size="fullscreen"] .light-theme &:not(.ytp-disabled):focus:before {
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -164px 0;
                     }
                 }
                 .light-theme & {
@@ -2110,6 +2146,14 @@
                         width: 55px;
                     }
                 }
+                & when (@RemovePlayFocusState = 1) {
+                    [data-player-size="fullscreen"] &:not(.ytp-disabled):focus {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -64px -178px;
+                    }
+                    [data-player-size="fullscreen"] .light-theme &:not(.ytp-disabled):focus {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -64px -178px;
+                    }
+                }
                 .light-theme & {
                     background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -64px -178px;
                     height: 26px;
@@ -2126,6 +2170,14 @@
                     width: 55px;
                     .light-theme & {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -513px;
+                    }
+                }
+                & when (@RemovePlayFocusState = 1) {
+                    [data-player-size="fullscreen"] &:not(.ytp-disabled):focus {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1134px;
+                    }
+                    [data-player-size="fullscreen"] .light-theme &:not(.ytp-disabled):focus {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1134px;
                     }
                 }
                 .light-theme & {
@@ -2166,6 +2218,14 @@
                         }
                     }
                 }
+                & when (@RemovePlayFocusState = 1) {
+                    [data-player-size="fullscreen"] &:not(.ytp-disabled):focus:before {
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -164px 0;
+                    }
+                    [data-player-size="fullscreen"] .light-theme &:not(.ytp-disabled):focus:before {
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -164px 0;
+                    }
+                }
                 .light-theme & {
                     background: none;
                     width: 58px;
@@ -2181,13 +2241,21 @@
                     height: 26px;
                     width: 55px;
                     .light-theme & {
-                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) 0 -124px;
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -96px -151px;
                         height: 26px;
                         width: 55px;
                     }
                 }
+                & when (@RemovePlayFocusState = 1) {
+                    [data-player-size="fullscreen"] &:not(.ytp-disabled):focus {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) 0 -124px;
+                    }
+                    [data-player-size="fullscreen"] .light-theme &:not(.ytp-disabled):focus {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) 0 -124px;
+                    }
+                }
                 .light-theme & {
-                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -96px -151px;
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) 0 -124px;
                     height: 26px;
                     width: 55px;
                 }
@@ -2204,6 +2272,14 @@
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1296px;
                         height: 26px;
                         width: 55px;
+                    }
+                }
+                & when (@RemovePlayFocusState = 1) {
+                    [data-player-size="fullscreen"] &:not(.ytp-disabled):focus:before {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -891px;
+                    }
+                    [data-player-size="fullscreen"] .light-theme &:not(.ytp-disabled):focus:before {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -891px;
                     }
                 }
                 .light-theme & {
