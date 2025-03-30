@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player Experimental
 @namespace      userstyles.world/user/tersiswilvin
-@version        20250302.1.1.11
+@version        20250329.1.1.11
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
 @updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_Experimental.user.css
@@ -340,7 +340,7 @@
         left: 0;
         right: 0;
         z-index: 930;
-        &:not(:has(.ytp-subtitles-settings-dialog)):not(:has(.html5-stop-propagation)) .ytp-dialog {
+        &:not(:has(.ytp-subtitles-settings-dialog)):not(:has(.ytp-dialog-buttons:nth-child(3))) .ytp-dialog {
             position: absolute;
             z-index: 930;
             background: rgba(0, 0, 0, .85);
@@ -433,7 +433,7 @@
                 left: 0;
             }
         }
-        &:not(:has(.ytp-subtitles-settings-dialog)):not(:has(.html5-stop-propagation)) .ytp-button.ytp-dialog-button {
+        &:not(:has(.ytp-subtitles-settings-dialog)):not(:has(.ytp-dialog-buttons:nth-child(3))) .ytp-button.ytp-dialog-button {
             position: absolute;
             top: 2px;
             right: 5px;
@@ -444,6 +444,113 @@
             padding: 0;
             &:hover {
                 color: #fff;
+            }
+        }
+        &:has(.ytp-dialog-buttons:nth-child(3)) {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            right: unset;
+            bottom: unset;
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            width: 100%;
+            text-align: center;
+            .ytp-dialog {
+                display: inline-block;
+                background-color: black;
+                opacity: 1.0;
+                vertical-align: middle;
+                padding: 5px;
+                border: 1px solid #555;
+                text-align: left;
+                max-width: 90%;
+                min-width: 280px;
+                color: #ccc;
+                z-index: 890;
+                -moz-border-radius: 2px;
+                -webkit-border-radius: 2px;
+                border-radius: 2px;
+                background-image: -moz-linear-gradient(bottom, rgba(11, 11, 11, 1) 70%, rgba(41, 41, 41, .85) 100%);
+                background-image: -ms-linear-gradient(bottom, rgba(11, 11, 11, 1) 70%, rgba(41, 41, 41, .85) 100%);
+                background-image: -o-linear-gradient(bottom, rgba(11, 11, 11, 1) 70%, rgba(41, 41, 41, .85) 100%);
+                background-image: -webkit-gradient(linear, left bottom, left top, color-stop(70%, rgba(11, 11, 11, 1)), color-stop(100%, rgba(41, 41, 41, .85)));
+                background-image: -webkit-linear-gradient(bottom, rgba(11, 11, 11, 1) 70%, rgba(41, 41, 41, .85) 100%);
+                background-image: linear-gradient(to top, rgba(11, 11, 11, 1) 70%, rgba(41, 41, 41, .85) 100%);
+                margin: 0 !important;
+                &-title {
+                    padding-bottom: 4px;
+                    border-bottom: 1px solid #555;
+                    color: #ccc;
+                    font-weight: bold;
+                    display: inline-block;
+                    font-size: 12px;
+                    vertical-align: top;
+                    margin: 0;
+                    &:before {
+                        content: "\00a0";
+                        margin-top: 6px;
+                        margin-bottom: 3px;
+                        display: inline-block;
+                        width: 0;
+                    }
+                    &:after {
+                        content: "BETA";
+                        display: inline-block;
+                        vertical-align: top;
+                        font-size: 8px;
+                        color: #c80000;
+                        font-weight: bold;
+                    }
+                }
+                &-body {
+                    margin: 0;
+                }
+                &-buttons {
+                    background-color: transparent;
+                    text-align: right;
+                    padding-top: 10px;
+                }
+                &-button {
+                    font-size: 10px;
+                    background: #333;
+                    text-shadow: 0 1px 0 #000;
+                    color: #ccc;
+                    border: 1px solid #555;
+                    height: 2.95em;
+                    line-height: 2.95em;
+                    padding: 0 .91em;
+                    outline: 0;
+                    font-weight: bold;
+                    white-space: nowrap;
+                    word-wrap: normal;
+                    vertical-align: middle;
+                    cursor: pointer;
+                    -moz-border-radius: 2px;
+                    -webkit-border-radius: 2px;
+                    border-radius: 2px;
+                    box-shadow: inset 0 0 1px #fff;
+                    margin: 0;
+                    margin-left: 5px;
+                    &:hover {
+                        color: #fff;
+                        border-color: #aaa #aaa #999;
+                        -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), inset 0 0 3px #fff;
+                        -ms-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), inset 0 0 3px #fff;
+                        -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), inset 0 0 3px #fff;
+                        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), inset 0 0 3px #fff;
+                        filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr=#fff0f0f0,EndColorStr=#ffe6e6e6);
+                        background-image: -moz-linear-gradient(top, #f0f0f0 0, #e6e6e6 100%);
+                        background-image: -ms-linear-gradient(top, #f0f0f0 0, #e6e6e6 100%);
+                        background-image: -o-linear-gradient(top, #f0f0f0 0, #e6e6e6 100%);
+                        background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f0f0f0), color-stop(100%, #e6e6e6));
+                        background-image: -webkit-linear-gradient(top, #f0f0f0 0, #e6e6e6 100%);
+                        background-image: linear-gradient(to bottom, #f0f0f0 0, #e6e6e6 100%);
+                    }
+                }
             }
         }
     }
@@ -1143,7 +1250,7 @@
             .disabled-control-seek:not(.ytp-no-controls) &, .ad-interrupting:not(.ytp-no-controls):not(.html5-native-controls) &, .autominimize-progress-bar:not(.cued-mode) &, html:not([data-player-size=fullscreen]) :not(.ideal-aspect).autominimize-progress-bar-non-aspect:not(.cued-mode) & {
                 bottom: 3px;
             }
-            .video-stream {
+            .html5-main-video, .html5-video-content {
                 height: 100% !important;
             }
         }
@@ -1260,6 +1367,13 @@
             }
             opacity: 1;
         }
+        #movie_player.html5-video-player:hover & when (@PlayerMonth = Early) {
+            -moz-transition: all 0s linear 0s;
+            -ms-transition: all 0s linear 0s;
+            -o-transition: all 0s linear 0s;
+            -webkit-transition: all 0s linear 0s;
+            transition: all 0s linear 0s;
+        }
     }
     /*/ Progress Bar /*/
     .ytp-progress-bar-container {
@@ -1324,14 +1438,12 @@
                 transition: height 0.5s ease-in;
             }
         }
-        & when (@PlayerMonth = Early) {
-            .html5-video-player:focus &, .html5-video-player:hover & {
-                -moz-transition: all 0s linear 0s;
-                -ms-transition: all 0s linear 0s;
-                -o-transition: all 0s linear 0s;
-                -webkit-transition: all 0s linear 0s;
-                transition: all 0s linear 0s;
-            }
+        #movie_player.html5-video-player:hover & when (@PlayerMonth = Early) {
+            -moz-transition: all 0s linear 0s;
+            -ms-transition: all 0s linear 0s;
+            -o-transition: all 0s linear 0s;
+            -webkit-transition: all 0s linear 0s;
+            transition: all 0s linear 0s;
         }
     }
     .html5-progress-bar {
@@ -1428,14 +1540,12 @@
             -webkit-transform: none;
             transform: none;
         }
-        & when (@PlayerMonth = Early) {
-            .html5-video-player:focus &, .html5-video-player:hover & {
-                -moz-transition: all 0s linear 0s;
-                -ms-transition: all 0s linear 0s;
-                -o-transition: all 0s linear 0s;
-                -webkit-transition: all 0s linear 0s;
-                transition: all 0s linear 0s;
-            }
+        #movie_player.html5-video-player:hover & when (@PlayerMonth = Early) {
+            -moz-transition: all 0s linear 0s;
+            -ms-transition: all 0s linear 0s;
+            -o-transition: all 0s linear 0s;
+            -webkit-transition: all 0s linear 0s;
+            transition: all 0s linear 0s;
         }
     }
     .ytp-load-progress, .ytp-play-progress {
@@ -1660,15 +1770,6 @@
                 }
             }
         }
-        & when (@PlayerMonth = Early) {
-            .html5-video-player:focus &, .html5-video-player:hover & {
-                -moz-transition: all 0s linear 0s;
-                -ms-transition: all 0s linear 0s;
-                -o-transition: all 0s linear 0s;
-                -webkit-transition: all 0s linear 0s;
-                transition: all 0s linear 0s;
-            }
-        }
         & when (@Autohide = Off) and not (@PlayerMonth = Early) {
             .disabled-control-seek &,.autominimize-progress-bar:not(.ytp-block-autohide) &,html:not([data-player-size=fullscreen]) :not(.ideal-aspect).autominimize-progress-bar-non-aspect:not(.ytp-block-autohide) &, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &,.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &,html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) & {
                 top: -5px;
@@ -1683,6 +1784,13 @@
                 -o-transition: height 0.5s, top 0.5s, -o-transform 0.5s;
                 -webkit-transition: height 0.5s, top 0.5s, -webkit-transform 0.5s;
             }
+        }
+        #movie_player.html5-video-player:hover & when (@PlayerMonth = Early) {
+            -moz-transition: all 0s linear 0s;
+            -ms-transition: all 0s linear 0s;
+            -o-transition: all 0s linear 0s;
+            -webkit-transition: all 0s linear 0s;
+            transition: all 0s linear 0s;
         }
         .html5-progress-bar:focus &, &:active, &:hover, .seeking-mode & {
             & when (@PlayerMonth = Early) {
@@ -1887,6 +1995,68 @@
         background: transparent;
         background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAdCAYAAABrAQZpAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAABIAAAASABGyWs+AAAACXZwQWcAAAABAAAAHQAh4gKwAAAAMUlEQVQI12OQlJD4x2Sgr8/I9OTZs5dM//79Y2T6//8/IyqLAcLClEBjYahDKCHSKADN5VNQpdTxzgAAAABJRU5ErkJggg==);
         background-repeat: repeat-x;
+        &:after {
+            & when (@PlayerMonth = Early) {
+                background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) 0 -15px;
+                height: 18px;
+                width: 16px;
+                padding: 4px 7px;
+                background-clip: content-box;
+                background-origin: content-box;
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) 0 -15px;
+                    background-clip: content-box;
+                    background-origin: content-box;
+                }
+            }
+            & when (@PlayerMonth = Middle) {
+                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) 0 -151px;
+                height: 26px;
+                width: 30px;
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) 0 -151px;
+                }
+            }
+            & when (@PlayerMonth = Late) {
+                background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -2052px;
+                height: 25px;
+                width: 30px;
+                .light-theme & {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -2052px;
+                    height: 25px;
+                    width: 30px;
+                }
+            }
+            float: right;
+            cursor: pointer;
+            .iv-module-created & {
+                content: "";
+            }
+            .iv-module-loaded & {
+                & when (@PlayerMonth = Early) {
+                    background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -232px 0;
+                    background-clip: content-box;
+                    background-origin: content-box;
+                    .light-theme& {
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -232px 0;
+                        background-clip: content-box;
+                        background-origin: content-box;
+                    }
+                }
+                & when (@PlayerMonth = Middle) {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) 0 -97px;
+                    .light-theme& {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) 0 -97px;
+                    }
+                }
+                & when (@PlayerMonth = Late) {
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 0;
+                    .light-theme& {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 0;
+                    }
+                }
+            }
+        }
         & when not (@PlayerMonth = Late) {
             &:has(.ytp-size-toggle-large):has(.ytp-size-toggle-small) .ytp-size-toggle-large {
                 border-left: none;
@@ -2021,8 +2191,14 @@
                     [data-player-size="fullscreen"] &:not(.ytp-disabled):before {
                         background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -46px -34px;
                     }
+                    [data-player-size="fullscreen"] &:not(.ytp-disabled):before {
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -148px 0;
+                    }
                     [data-player-size="fullscreen"] .light-theme &:not(.ytp-disabled):focus:before {
                         background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -46px -34px;
+                    }
+                    [data-player-size="fullscreen"] .light-theme &:not(.ytp-disabled):focus:before {
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -148px 0;
                     }
                 }
                 .light-theme & {
@@ -2049,8 +2225,14 @@
                     [data-player-size="fullscreen"] &:not(.ytp-disabled):focus {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -96px -232px;
                     }
+                    [data-player-size="fullscreen"] &:not(.ytp-disabled):hover:focus {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -121px -43px;
+                    }
                     [data-player-size="fullscreen"] .light-theme &:not(.ytp-disabled):focus {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -96px -232px;
+                    }
+                    [data-player-size="fullscreen"] .light-theme &:not(.ytp-disabled):hover:focus {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -121px -43px;
                     }
                 }
                 .light-theme & {
@@ -2077,8 +2259,14 @@
                     [data-player-size="fullscreen"] &:not(.ytp-disabled):focus {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1323px;
                     }
+                    [data-player-size="fullscreen"] &:not(.ytp-disabled):hover:focus {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -459px;
+                    }
                     [data-player-size="fullscreen"] .light-theme &:not(.ytp-disabled):focus {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1323px;
+                    }
+                    [data-player-size="fullscreen"] .light-theme &:not(.ytp-disabled):focus {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -459px;
                     }
                 }
                 .light-theme & {
@@ -2123,8 +2311,14 @@
                     [data-player-size="fullscreen"] &:not(.ytp-disabled):focus:before {
                         background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -164px 0;
                     }
+                    [data-player-size="fullscreen"] &:not(.ytp-disabled):hover:focus:before {
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -296px 0;
+                    }
                     [data-player-size="fullscreen"] .light-theme &:not(.ytp-disabled):focus:before {
                         background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -164px 0;
+                    }
+                    [data-player-size="fullscreen"] .light-theme &:not(.ytp-disabled):hover:focus:before {
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -296px 0;
                     }
                 }
                 .light-theme & {
@@ -2151,8 +2345,14 @@
                     [data-player-size="fullscreen"] &:not(.ytp-disabled):focus {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -64px -178px;
                     }
+                    [data-player-size="fullscreen"] &:not(.ytp-disabled):hover:focus {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -64px -259px;
+                    }
                     [data-player-size="fullscreen"] .light-theme &:not(.ytp-disabled):focus {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -64px -178px;
+                    }
+                    [data-player-size="fullscreen"] .light-theme &:not(.ytp-disabled):focus {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -64px -259px;
                     }
                 }
                 .light-theme & {
@@ -2177,8 +2377,14 @@
                     [data-player-size="fullscreen"] &:not(.ytp-disabled):focus {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1134px;
                     }
+                    [data-player-size="fullscreen"] &:not(.ytp-disabled):hover:focus {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -513px;
+                    }
                     [data-player-size="fullscreen"] .light-theme &:not(.ytp-disabled):focus {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1134px;
+                    }
+                    [data-player-size="fullscreen"] .light-theme &:not(.ytp-disabled):hover:focus {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -513px;
                     }
                 }
                 .light-theme & {
@@ -2223,8 +2429,14 @@
                     [data-player-size="fullscreen"] &:not(.ytp-disabled):focus:before {
                         background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -164px 0;
                     }
+                    [data-player-size="fullscreen"] &:not(.ytp-disabled):hover:focus:before {
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -296px 0;
+                    }
                     [data-player-size="fullscreen"] .light-theme &:not(.ytp-disabled):focus:before {
                         background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -164px 0;
+                    }
+                    [data-player-size="fullscreen"] .light-theme &:not(.ytp-disabled):focus:before {
+                        background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -296px 0;
                     }
                 }
                 .light-theme & {
@@ -2251,8 +2463,14 @@
                     [data-player-size="fullscreen"] &:not(.ytp-disabled):focus {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) 0 -124px;
                     }
+                    [data-player-size="fullscreen"] &:not(.ytp-disabled):hover:focus {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -96px -151px;
+                    }
                     [data-player-size="fullscreen"] .light-theme &:not(.ytp-disabled):focus {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) 0 -124px;
+                    }
+                    [data-player-size="fullscreen"] .light-theme &:not(.ytp-disabled):hover:focus {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -96px -151px;
                     }
                 }
                 .light-theme & {
@@ -2279,8 +2497,14 @@
                     [data-player-size="fullscreen"] &:not(.ytp-disabled):focus:before {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -891px;
                     }
+                    [data-player-size="fullscreen"] &:not(.ytp-disabled):hover:focus:before {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1296px;
+                    }
                     [data-player-size="fullscreen"] .light-theme &:not(.ytp-disabled):focus:before {
                         background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -891px;
+                    }
+                    [data-player-size="fullscreen"] .light-theme &:not(.ytp-disabled):hover:focus:before {
+                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -1296px;
                     }
                 }
                 .light-theme & {
@@ -4087,7 +4311,6 @@
                 background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -250px -38px;
                 height: 14px;
                 width: 21px;
-                cursor: default;
                 margin-left: 16px;
                 vertical-align: middle;
                 display: inline-block;
@@ -5022,26 +5245,91 @@
         }
     }
     
-    .countdowntimer, .standard-caption-window, .caption-window {
+    .countdowntimer {
         z-index: 930;
     }
     
-    .caption-window-transform {
-        line-height: normal;
+    .anchor-point-1 {
+        -moz-transform: translate(-50%,0);
+        -ms-transform: translate(-50%,0);
+        -o-transform: translate(-50%,0);
+        -webkit-transform: translate(-50%,0);
+        transform: translate(-50%,0)
     }
-    .standard-caption-window {
-        padding: 0
+    .anchor-point-2 {
+        -moz-transform: translate(-100%,0);
+        -ms-transform: translate(-100%,0);
+        -o-transform: translate(-100%,0);
+        -webkit-transform: translate(-100%,0);
+        transform: translate(-100%,0)
     }
-    html:not([data-player-size=fullscreen]) .html5-video-player:not(.ideal-aspect).autominimize-progress-bar-non-aspect .ytp-player-content.ytp-subtitles-player-content, .html5-video-player:not(.ad-interrupting):not(.hide-info-bar):not(.playing-mode) .ytp-player-content.ytp-subtitles-player-content, .ytp-block-autohide:not(.ad-interrupting):not(.hide-info-bar) .ytp-player-content.ytp-subtitles-player-content, .ended-mode.endscreen-loaded:not(.el-detailpage):not(.house-brand):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content, html[data-player-size=fullscreen] .html5-video-player:not(.house-brand):not(.ad-interrupting):not(.playing-mode) .ytp-player-content.ytp-subtitles-player-content, html[data-player-size=fullscreen] .ytp-block-autohide:not(.house-brand):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content {
-        bottom: 43px;
+    .anchor-point-3 {
+        -moz-transform: translate(0,-50%);
+        -ms-transform: translate(0,-50%);
+        -o-transform: translate(0,-50%);
+        -webkit-transform: translate(0,-50%);
+        transform: translate(0,-50%)
+    }
+    .anchor-point-4 {
+        -moz-transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+        -o-transform: translate(-50%,-50%);
+        -webkit-transform: translate(-50%,-50%);
+        transform: translate(-50%,-50%)
+    }
+    .anchor-point-5 {
+        -moz-transform: translate(-100%,-50%);
+        -ms-transform: translate(-100%,-50%);
+        -o-transform: translate(-100%,-50%);
+        -webkit-transform: translate(-100%,-50%);
+        transform: translate(-100%,-50%)
+    }
+    .anchor-point-6 {
+        -moz-transform: translate(0,-100%);
+        -ms-transform: translate(0,-100%);
+        -o-transform: translate(0,-100%);
+        -webkit-transform: translate(0,-100%);
+        transform: translate(0,-100%)
+    }
+    .anchor-point-7 {
+        -moz-transform: translate(-50%,-100%);
+        -ms-transform: translate(-50%,-100%);
+        -o-transform: translate(-50%,-100%);
+        -webkit-transform: translate(-50%,-100%);
+        transform: translate(-50%,-100%)
+    }
+    .anchor-point-8 {
+        -moz-transform: translate(-100%,-100%);
+        -ms-transform: translate(-100%,-100%);
+        -o-transform: translate(-100%,-100%);
+        -webkit-transform: translate(-100%,-100%);
+        transform: translate(-100%,-100%)
+    }
+    .disabled-control-seek:not(.ytp-no-controls) .ytp-player-content.ytp-subtitles-player-content, .ad-interrupting:not(.ytp-no-controls):not(.html5-native-controls) .ytp-player-content.ytp-subtitles-player-content, .autominimize-progress-bar .ytp-player-content.ytp-subtitles-player-content, html:not([data-player-size=fullscreen]) .html5-video-player:not(.ideal-aspect).autominimize-progress-bar-non-aspect .ytp-player-content.ytp-subtitles-player-content, .disabled-control-seek:not(.ytp-no-controls) .ytp-player-content.ytp-subtitles-player-content, .ad-interrupting:not(.ytp-no-controls):not(.html5-native-controls) .ytp-player-content.ytp-subtitles-player-content, .autominimize-progress-bar .ytp-player-content.ytp-subtitles-player-content, html:not([data-player-size=fullscreen]) .html5-video-player:not(.ideal-aspect).autominimize-progress-bar-non-aspect .ytp-player-content.ytp-subtitles-player-content, .html5-video-player:not(.el-detailpage):not(.house-brand):not(.ad-interrupting) .html5-endscreen, .html5-video-player:not(.ad-interrupting):not(.hide-info-bar):not(.playing-mode) .ytp-player-content.ytp-subtitles-player-content, .ytp-block-autohide:not(.ad-interrupting):not(.hide-info-bar) .ytp-player-content.ytp-subtitles-player-content, .ended-mode.endscreen-loaded:not(.el-detailpage):not(.house-brand):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content, html[data-player-size=fullscreen] .html5-video-player:not(.house-brand):not(.ad-interrupting):not(.playing-mode) .ytp-player-content.ytp-subtitles-player-content, html[data-player-size=fullscreen] .ytp-block-autohide:not(.house-brand):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content {
         & when (@PlayerMonth = Early) {
-            -moz-transition: unset;
-            -ms-transition: unset;
-            -o-transition: unset;
-            -webkit-transition: unset;
-            transition: unset;
+            bottom: 43px;
+            & when (@Autohide = Off) or (@Autohide = On) or (@Autohide = Fade) {
+                -webkit-transition-duration: 0.5s;
+                -moz-transition-duration: 0.5s;
+                -o-transition-duration: 0.5s;
+                -ms-transition-duration: 0.5s;
+                transition-duration: 0.5s;
+                -moz-transition-property: bottom;
+                -webkit-transition-property: bottom;
+                -o-transition-property: bottom;
+                -ms-transition-property: bottom;
+                transition-property: bottom;
+            }
+            & when (@Autohide = Auto) {
+                -moz-transition: unset;
+                -ms-transition: unset;
+                -o-transition: unset;
+                -webkit-transition: unset;
+                transition: unset;
+            }
         }
-        & when not (@PlayerMonth = Early) {
+        & when (@PlayerMonth = Middle) or (@PlayerMonth = Late) {
+            bottom: 43px;
             -moz-transition: bottom 0.05s ease-in;
             -ms-transition: bottom 0.05s ease-in;
             -o-transition: bottom 0.05s ease-in;
@@ -5049,229 +5337,59 @@
             transition: bottom 0.05s ease-in;
         }
     }
-    html:not([data-player-size=fullscreen]) .html5-video-player:not(.ideal-aspect).autominimize-progress-bar-non-aspect .html5-video-content .caption-window, .html5-video-player:not(.ad-interrupting):not(.hide-info-bar):not(.playing-mode) .html5-video-content .caption-window, .ytp-block-autohide:not(.ad-interrupting):not(.hide-info-bar) .html5-video-content .caption-window, .ended-mode.endscreen-loaded:not(.el-detailpage):not(.house-brand):not(.ad-interrupting) .html5-video-content .caption-window, html[data-player-size=fullscreen] .html5-video-player:not(.house-brand):not(.ad-interrupting):not(.playing-mode) .html5-video-content .caption-window {
-        padding-bottom: 13px;
+    .disabled-control-seek .ytp-player-content.ytp-subtitles-player-content, .autominimize-progress-bar:not(.ytp-block-autohide) .ytp-player-content.ytp-subtitles-player-content, html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) .ytp-player-content.ytp-subtitles-player-content, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content, .ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content, html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content {
         & when (@PlayerMonth = Early) {
-            -moz-transition: unset;
-            -ms-transition: unset;
-            -o-transition: unset;
-            -webkit-transition: unset;
-            transition: unset;
-        }
-        & when not (@PlayerMonth = Early) {
-            -moz-transition: padding-bottom 0.05s ease-in;
-            -ms-transition: padding-bottom 0.05s ease-in;
-            -o-transition: padding-bottom 0.05s ease-in;
-            -webkit-transition: padding-bottom 0.05s ease-in;
-            transition: padding-bottom 0.05s ease-in;
-        }
-    }
-    .disabled-control-seek .ytp-player-content.ytp-subtitles-player-content,.autominimize-progress-bar:not(.ytp-block-autohide) .ytp-player-content.ytp-subtitles-player-content, html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) .ytp-player-content.ytp-subtitles-player-content, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content, .ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content {
-        & when not (@PlayerMonth = Early) {
-            & when (@Autohide = Off) {
-                bottom: 43px;
-            }
-            & when (@Autohide = On) {
-                bottom: 0;
-            }
-            & when (@Autohide = Fade) {
+            & when (@Autohide = Off) or (@Autohide = On) or (@Autohide = Fade) {
                 bottom: 38px;
             }
-        }
-        & when (@Autohide = Auto) {
-            & when (@PlayerMonth = Early) {
+            & when (@Autohide = Auto) {
                 bottom: 7px;
-            }
-            & when not (@PlayerMonth = Early) {
-                bottom: 11px;
-            }
-        }
-        & when (@PlayerMonth = Early) {
-            -webkit-transition: bottom 0.25s ease-in;
-            -moz-transition: bottom 0.25s ease-in;
-            -o-transition: bottom 0.25s ease-in;
-            -ms-transition: bottom 0.25s ease-in;
-            transition-delay: 3s;
-        }
-        & when not (@PlayerMonth = Early) {
-            -moz-transition: bottom 0.5s ease-in;
-            -ms-transition: bottom 0.5s ease-in;
-            -o-transition: bottom 0.5s ease-in;
-            -webkit-transition: bottom 0.5s ease-in;
-            transition: bottom 0.5s ease-in;
-        }
-    }
-    & when (@Autohide = On) or (@Autohide = Auto) {
-        html:not([data-player-size=fullscreen]) .html5-video-player:not(.ideal-aspect).autominimize-progress-bar-non-aspect .html5-video-content:has(.video-annotations), .html5-video-player:not(.ad-interrupting):not(.hide-info-bar):not(.playing-mode) .html5-video-content:has(.video-annotations), .ytp-block-autohide:not(.ad-interrupting):not(.hide-info-bar) .html5-video-content:has(.video-annotations), .ended-mode.endscreen-loaded:not(.el-detailpage):not(.house-brand):not(.ad-interrupting) .html5-video-content:has(.video-annotations), html[data-player-size=fullscreen] .html5-video-player:not(.house-brand):not(.ad-interrupting):not(.playing-mode) .html5-video-content:has(.video-annotations) {
-            & when (@PlayerMonth = Early) {
-                -moz-transition: unset;
-                -ms-transition: unset;
-                -o-transition: unset;
-                -webkit-transition: unset;
-                transition: unset;
-            }
-            & when not (@PlayerMonth = Early) {
-                -moz-transition: padding-bottom 0.05s ease-in;
-                -ms-transition: padding-bottom 0.05s ease-in;
-                -o-transition: padding-bottom 0.05s ease-in;
-                -webkit-transition: padding-bottom 0.05s ease-in;
-                transition: padding-bottom 0.05s ease-in;
-            }
-        }
-        .disabled-control-seek .html5-video-content:has(.video-annotations),.autominimize-progress-bar:not(.ytp-block-autohide) .html5-video-content:has(.video-annotations), html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) .html5-video-content:has(.video-annotations), .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) .html5-video-content:has(.video-annotations), .ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) .html5-video-content:has(.video-annotations) {
-            & when (@PlayerMonth = Early) and (@Autohide = Auto) or not (@PlayerMonth = Early) {
-                padding-bottom: 27px;
-            }
-            & when (@PlayerMonth = Early) {
-                -webkit-transition: padding-bottom 0.25s ease-in;
-                -moz-transition: padding-bottom 0.25s ease-in;
-                -o-transition: padding-bottom 0.25s ease-in;
-                -ms-transition: padding-bottom 0.25s ease-in;
-                transition-delay: 3s;
-            }
-            & when not (@PlayerMonth = Early) {
-                -moz-transition: padding-bottom 0.5s ease-in;
-                -ms-transition: padding-bottom 0.5s ease-in;
-                -o-transition: padding-bottom 0.5s ease-in;
-                -webkit-transition: padding-bottom 0.5s ease-in;
-                transition: padding-bottom 0.5s ease-in;
-            }
-        }
-    }
-    .disabled-control-seek .html5-video-content .caption-window,.autominimize-progress-bar:not(.ytp-block-autohide) .html5-video-content .caption-window, html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) .html5-video-content .caption-window, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) .html5-video-content .caption-window, .ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) .html5-video-content .caption-window {
-        & when (@PlayerMonth = Early) {
-            padding-bottom: 8px;
-            -moz-transition: unset;
-            -ms-transition: unset;
-            -o-transition: unset;
-            -webkit-transition: unset;
-            transition: unset;
-            -moz-transition-property: padding-bottom;
-            -webkit-transition-property: padding-bottom;
-            -o-transition-property: padding-bottom;
-            -ms-transition-property: padding-bottom;
-            transition-property: padding-bottom;
-            -webkit-transition-duration: 0.5s;
-            -moz-transition-duration: 0.5s;
-            -o-transition-duration: 0.5s;
-            -ms-transition-duration: 0.5s;
-            transition-duration: 0.5s;
-            transition-delay: 3s;
-        }
-        & when not (@PlayerMonth = Early) {
-            & when (@Autohide = Off) {
-                padding-bottom: 13px;
-            }
-            & when (@Autohide = On) {
-                padding-bottom: 0;
-            }
-            & when (@Autohide = Fade) {
-                padding-bottom: 8px;
-            }
-            & when (@Autohide = Auto) {
-                padding-bottom: 11px;
-            }
-            -moz-transition: padding-bottom 0.5s ease-in;
-            -ms-transition: padding-bottom 0.5s ease-in;
-            -o-transition: padding-bottom 0.5s ease-in;
-            -webkit-transition: padding-bottom 0.5s ease-in;
-            transition: padding-bottom 0.5s ease-in;
-        }
-    }
-    html[data-player-size=fullscreen] .ytp-block-autohide:not(.house-brand):not(.ad-interrupting) .html5-video-content .caption-window {
-        & when (@PlayerMonth = Early) {
-            & when (@Autohide = Auto) {
-                padding-bottom: 0;
-                -moz-transition: unset;
-                -ms-transition: unset;
-                -o-transition: unset;
-                -webkit-transition: unset;
-                transition: unset;
-            }
-            & when not (@Autohide = Auto) {
-                padding-bottom: 48px;
-                -moz-transition: unset;
-                -ms-transition: unset;
-                -o-transition: unset;
-                -webkit-transition: unset;
-                transition: unset;
-            }
-        }
-        & when not (@PlayerMonth = Early) {
-            padding-bottom: 43px;
-            -moz-transition: padding-bottom 0.05s ease-in;
-            -ms-transition: padding-bottom 0.05s ease-in;
-            -o-transition: padding-bottom 0.05s ease-in;
-            -webkit-transition: padding-bottom 0.05s ease-in;
-            transition: padding-bottom 0.05s ease-in;
-        }
-    }
-    html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide) .ytp-player-content.ytp-subtitles-player-content, html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content {
-        & when (@PlayerMonth = Early) {
-            & when (@Autohide = Auto) {
-                bottom: 0;
                 -webkit-transition: bottom 0.25s ease-in;
                 -moz-transition: bottom 0.25s ease-in;
                 -o-transition: bottom 0.25s ease-in;
                 -ms-transition: bottom 0.25s ease-in;
-                transition-delay: 3s;
             }
-            & when not (@Autohide = Auto) {
-                bottom: 43px;
-                -moz-transition: unset;
-                -ms-transition: unset;
-                -o-transition: unset;
-                -webkit-transition: unset;
-                transition: unset;
-            }
+            transition-delay: 3s;
         }
-        & when not (@PlayerMonth = Early) {
-            bottom: 0;
-            -moz-transition: bottom 0.5s ease-in;
-            -ms-transition: bottom 0.5s ease-in;
-            -o-transition: bottom 0.5s ease-in;
-            -webkit-transition: bottom 0.5s ease-in;
-            transition: bottom 0.5s ease-in;
+        & when (@PlayerMonth = Middle) or (@PlayerMonth = Late) {
+            & when (@Autohide = Off) {
+                bottom: 43px;
+            }
+            & when (@Autohide = On) {
+                bottom: 8px;
+            }
+            & when (@Autohide = Fade) {
+                bottom: 38px;
+            }
+            & when (@Autohide = Auto) {
+                bottom: 11px;
+            }
+            & when (@Autohide = On) and (@Autohide = Fade) and (@Autohide = Auto) {
+                -moz-transition: bottom 0.5s ease-in;
+                -ms-transition: bottom 0.5s ease-in;
+                -o-transition: bottom 0.5s ease-in;
+                -webkit-transition: bottom 0.5s ease-in;
+                transition: bottom 0.5s ease-in;
+            }
         }
     }
-    html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide) .html5-video-content .caption-window, html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) .html5-video-content .caption-window {
-        & when (@PlayerMonth = Early) {
-            & when (@Autohide = Auto) {
-                padding-bottom: 0;
-                -webkit-transition: padding-bottom 0.25s ease-in;
-                -moz-transition: padding-bottom 0.25s ease-in;
-                -o-transition: padding-bottom 0.25s ease-in;
-                -ms-transition: padding-bottom 0.25s ease-in;
-                transition-delay: 3s;
-            }
-            & when not (@Autohide = Auto) {
-                padding-bottom: 43px;
-                -moz-transition: unset;
-                -ms-transition: unset;
-                -o-transition: unset;
-                -webkit-transition: unset;
-                transition: unset;
-                            -moz-transition-property: padding-bottom;
-            -webkit-transition-property: padding-bottom;
-            -o-transition-property: padding-bottom;
-            -ms-transition-property: padding-bottom;
-            transition-property: padding-bottom;
-            -webkit-transition-duration: 0.5s;
-            -moz-transition-duration: 0.5s;
-            -o-transition-duration: 0.5s;
-            -ms-transition-duration: 0.5s;
-            transition-duration: 0.5s;
-            transition-delay: 3s;
-            }
-        }
-        & when not (@PlayerMonth = Early) {
-            padding-bottom: 0;
-            -moz-transition: padding-bottom 0.5s ease-in;
-            -ms-transition: padding-bottom 0.5s ease-in;
-            -o-transition: padding-bottom 0.5s ease-in;
-            -webkit-transition: padding-bottom 0.5s ease-in;
-            transition: padding-bottom 0.5s ease-in;
-        }
+    #movie_player.html5-video-player:hover .ytp-player-content.ytp-subtitles-player-content when (@PlayerMonth = Early) {
+        -moz-transition: all 0s linear 0s;
+        -ms-transition: all 0s linear 0s;
+        -o-transition: all 0s linear 0s;
+        -webkit-transition: all 0s linear 0s;
+        transition: all 0s linear 0s;
+    }
+    .html5-video-player .standard-caption-window {
+        position: absolute;
+        top: auto;
+        white-space: normal;
+        width: 80%;
+        padding-bottom: 0;
+        z-index: 930;
+    }
+    .caption-window-transform {
+        line-height: normal;
     }
     
     & when not (@PlayButtonStyle = 2014) {
