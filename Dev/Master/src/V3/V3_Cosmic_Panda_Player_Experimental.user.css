@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player Experimental
 @namespace      userstyles.world/user/tersiswilvin
-@version        20250330.1.1.11
+@version        20250709-00.1.1.11
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
 @updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_Experimental.user.css
@@ -12,10 +12,11 @@
 @var            select                                            Autohide                "Autohide Preset"                ["Off", "On", "Fade*", "Auto"]
 @var            checkbox                                          CMIcons                 "Context Menu Icons"             0
 @var            select                                            AhCursor                "Cursor Preset"                  ["Default*", "Hidden", "Off"]
+@var            checkbox                                          DefaultProgTooltipStyle "Default Progress Tooltip Style" 0
+@var            checkbox                                          DefaultTooltipStyle     "Default Tooltip Style"          0
 @var            checkbox                                          DefaultMenuStyle        "Default Menu Style"             0
 @var            checkbox                                          DefaultUnavailableStyle "Default Unavailable Style"      0
 @var            checkbox                                          DEVMode                 "Developer Mode"                 0
-@var            checkbox                                          QualityBadges           "Display Quality Badges"         0
 @var            checkbox                                          EarlyClipsEnabled       "Early Clips Enabled"            0
 @var            checkbox                                          ECMHSF                  "Early Context Menu hover Fix"   0
 @var            checkbox                                          EarlyFsExperiment       "Early Fullscreen Experiment"    0
@@ -23,22 +24,27 @@
 @var            checkbox                                          EarlySizeExperiment     "Early Size Icons Experiment"    0
 @var            checkbox                                          ExtraSFNItems           "Extra Stats for nerds items"    0
 @var            select                                            FallbackTVStaticPreset  "Fallback TV Static Preset"      ["None*", "Animated", "Canvas", "Static"]
-@var            checkbox                                          FlashVA                 "Flash Volume Animation"         0
+@var            checkbox                                          FlashPlayerMode         "Flash Player Mode ( WIP )"      0
+@var            checkbox                                          FocusOutline            "Focus Outline"                  1
+@var            checkbox                                          ForceProgressTooltip    "Force Progress Tooltip"         0
 @var            checkbox                                          ForceWOYTi              "Force Watch On Youtube icon"    0
 @var            checkbox                                          Forcewatermark          "Force Watermark"                0
 @var            checkbox                                          Forceinfobar            "Force infobar"                  0
-@var            checkbox                                          FsTbS                   "Fullscreen Taskbar Space"       0
-@var            number                                            FsTbW                   " ↳ Taskbar Width"               [39, 0, null, 1, "px"]
+@var            number                                            FsTbW                   "Fullscreen Taskbar Width"       [0, 0, null, 1, "px"]
 @var            select                                            TbSPre                  " ↳ Preset"                      ["Left", "Right", "Bottom*"]
 @var            checkbox                                          HideAdProgress          "Hide Ad progress"               1
 @var            checkbox                                          HideAdSkipButton        "Hide Ad Skip Container"         1
+@var            checkbox                                          HideAnnotation          "Hide Annotation Button"         0
 @var            checkbox                                          HideBranding            "Hide Annotation Branding"       1
 @var            checkbox                                          HideASRIcons            "Hide ASR Icons"                 0
+@var            checkbox                                          HideCards               "Hide Cards"                     1
 @var            checkbox                                          HESR                    "Hide Extra Settings Rows"       1
 @var            checkbox                                          HidePlrChptrs           "Hide Player Chapters"           1
 @var            checkbox                                          HPaNB                   "Hide Prev & Next Buttons"       1
 @var            checkbox                                          HideSponsorBlock        "Hide SponsorBlock"              1
+@var            checkbox                                          SupportWarning          "Hide Support Warning"           0
 @var            checkbox                                          HUnB                    "Hide Unavailable Buttons"       1
+@var            checkbox                                          QualityBadges           "Hide Quality Badges"            1
 @var            checkbox                                          IBIO                    "Infobar Icons Only"             0
 @var            select                                            PlayButtonStyle         "Play Button Style"              ["2010M", "2011M", "2012E*", "2013E", "2014"]
 @var            select                                            PlayerMonth             "Player Month"                   ["Early", "Middle*", "Late"]
@@ -47,8 +53,6 @@
 @var            checkbox                                          PlayerTheaterGradient   "Player Theater Gradient"        1
 @var            checkbox                                          RemovePlayFocusState    "Remove Fullscreen Play Focus"   0
 @var            checkbox                                          ReplayIconExperiment    "Replay Icon Experiment"         0
-@var            checkbox                                          SupportWarning          "Show Support Warning"           1
-@var            checkbox                                          CardsEnabled            "Show Cards"                     0
 @var            checkbox                                          SoloSizeButton          "Solo Size Button"               0
 @var            checkbox                                          SponsorPreviewFix       "SponsorBlock Preview Fix"       0
 @var            checkbox                                          TooltipCrtFix           "Tooltip 2012L Caret Fix"        0
@@ -123,10 +127,13 @@
         &:not(.ytp-block-autohide) when (@AhCursor = Hidden) {
             cursor: none
         }
-        & when (@AhCursor = Default) {
-            html[data-player-size=fullscreen] &:not(.ytp-block-autohide) {
-                cursor: pointer;
-            }
+		html[data-player-size=fullscreen] &:not(.ytp-block-autohide) when (@AhCursor = Default) {
+			cursor: pointer;
+		}
+        &.html5-tablet {
+            -webkit-tap-highlight-color: transparent;
+            background-color: #000;
+            color: #fff;
         }
         .captions-text when (@PlayerMonth = Early) {
             opacity: 0.8
@@ -177,7 +184,7 @@
             transform: translate(0, -50%);
             margin: 0
         }
-        & when (@SupportWarning = 1) {
+        & when (@SupportWarning = 0) {
             &:before {
                 text-align: center;
                 color: #fff;
@@ -213,11 +220,11 @@
             [class*="flash7"] ~ * &:before {
                 content: "V3 Cosmic Panda Player does not support Flash7 Player.\APlease disable either Flash7 Player or V3 Cosmic Panda Player.";
             }
-            [exp-modern-player] &:before {
+            [exp-modern-player] &:before, [pl-ver] &:before {
                 content: "V3 Cosmic Panda Player does not support StarTubes Modern Player.\APlease disable either StarTubes Modern Player or V3 Cosmic Panda Player.";
             }
             &[data-version*="/base.js"]:before {
-                content: "V3 Cosmic Panda Player does not support the modern youtube player.\APlease disable either it or V3 Cosmic Panda Player.";
+                content: "V3 Cosmic Panda Player does not support the modern YouTube Player.\APlease disable either the modern YouTube Player or V3 Cosmic Panda Player.";
             }
             &.disabled-control-seek:before, &.autominimize-progress-bar:not(.ytp-block-autohide):before, html:not([data-player-size=fullscreen]) &.autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide):before, &.autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting):before, &.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting):before, html[data-player-size=fullscreen] &.autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting):before {
                 top: -100px;
@@ -641,7 +648,7 @@
         }
     }
     
-    .iv-cards-notif when (@CardsEnabled = 0) {
+    .iv-cards-notif when (@HideCards = 1) {
         display: none;
     }
     
@@ -863,7 +870,7 @@
             border: none;
             bottom: 0 !important;
             max-height: 190px;
-            overflow: auto;
+            overflow: unset;
             &-content {
                 max-height: unset;
                 overflow-y: unset;
@@ -877,17 +884,18 @@
                 &:hover:not(.ytp-disabled):not(&-checked) {
                     background: #601212;
                 }
-                &-checked &-check, &-checked:hover:not(.ytp-disabled) &-check {
+                &-checked .ytp-drop-down-menu-button-check, &-checked:hover:not(.ytp-disabled) .ytp-drop-down-menu-button-check {
                     background: none #fff;
                     border-radius: 50%;
                     height: 3px;
                     width: 3px;
-                    margin: 0 11px 1px -1px
+                    margin: 0 11px 1px 0;
+                    opacity: 1;
                 }
                 &-check {
                     height: 3px;
                     width: 3px;
-                    margin: 0 11px 1px -1px
+                    margin: 0 11px 1px 0;
                 }
                 &-separated-above {
                     border: none;
@@ -930,7 +938,7 @@
         }
     }
     
-    .ytp-tooltip {
+    .ytp-tooltip when (@DefaultTooltipStyle = 0) {
         animation: ytp-fade 0.2s ease-in-out;
         &-body {
             .ytp-tooltip-below & {
@@ -1019,7 +1027,7 @@
         padding: 0;
     }
     
-    .ytp-progress-tooltip {
+    .ytp-progress-tooltip when (@DefaultProgTooltipStyle = 0) {
         position: absolute;
         left: 0;
         bottom: 18px;
@@ -1033,6 +1041,9 @@
         margin: 0;
         padding: 2px;
         overflow: visible;
+        & when (@ForceProgressTooltip = 1) or (@DEVMode = 1) {
+		    display: block !important;
+        }
         &.with-thumbnail {
             width: 108px;
             height: 72px;
@@ -1044,13 +1055,24 @@
                 line-height: 12px;
                 background: transparent;
                 position: unset;
+				.exp-player-bigger-storyboard & {
+                    width: 142px;
+                }
             }
             .ytp-progress-tooltip-thumbnail-container {
                 background-color: transparent;
-                .ytp-progress-tooltip-thumbnail[style*="width: 60px;"] {
-                    transform: scalex(1.3333);
+                .exp-player-bigger-storyboard & {
+                    height: 80px !important;
+                }
+				.ytp-progress-tooltip-thumbnail {
+					&[style*="width: 60px"] {
+                    	transform: scalex(1.3333);
+					}
                 }
             }
+			.exp-player-bigger-storyboard & {
+				height: 92px !important;
+			}
         }
         &-timestamp-container, &-timestamp {
             display: block;
@@ -1179,7 +1201,7 @@
         -o-transition: opacity 0.05s ease-in, bottom 0.05s ease-in;
         -webkit-transition: opacity 0.05s ease-in, bottom 0.05s ease-in;
         transition: opacity 0.05s ease-in, bottom 0.05s ease-in;
-        [data-player-size=fullscreen] & when (@FsTbS = 1) {
+        [data-player-size=fullscreen] & {
             & when (@TbSPre = Right) {
                 Right: @FsTbW + 5;
             }
@@ -1261,11 +1283,60 @@
     .html5-main-video {
         z-index: unset;
     }
+    
+    .videoAdUi {
+        overflow: visible;
+        &BottomBar {
+            display: block;
+            position: absolute;
+            bottom: 0;
+            padding-bottom: 3px;
+            z-index: 850;
+            width: 100%;
+            font-size: 12px;
+            background-color: #000;
+            opacity: 0.7;
+            text-align: left;
+            &:before {
+                content: "Advertisement";
+                color: #fff;
+                font: 12px arial, sans-serif;
+                margin-bottom: 5px;
+                display: block;
+            }
+        }
+        &Attribution {
+            font: 12px arial, sans-serif;
+            display: block;
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 0;
+        }
+        &Progress {
+            background-image: -moz-linear-gradient(top, #fc0 0, #666 100%);
+            background-image: -ms-linear-gradient(top, #fc0 0, #666 100%);
+            background-image: -o-linear-gradient(top, #fc0 0, #666 100%);
+            background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fc0), color-stop(100%, #666));
+            background-image: -webkit-linear-gradient(top, #fc0 0, #666 100%);
+            background-image: linear-gradient(to bottom, #fc0 0, #666 100%);
+            border-right: none;
+            &Bar {
+                margin-top: 8px;
+                background: rgba(0, 0, 0, 0);
+            }
+        }
+        & when (@HideAdSkipButton = 1) {
+            &PreSkipContainer, &SkipContainer {
+                display: none;
+            }
+        }
+    }
     /*/== Video Controls items ==/*/
     .html5-video-controls {
         min-height: 26px;
         z-index: 930;
-        html[data-player-size=fullscreen] & when (@FsTbS = 1) {
+        html[data-player-size=fullscreen] & {
             & when (@TbSPre = Left) {
                 left: @FsTbW;
                 right: 0;
@@ -1358,12 +1429,14 @@
                 }
             }
             & when not (@PlayerMonth = Early) {
-                bottom: -35px;
-                -moz-transition: bottom 0.5s ease-in;
-                -ms-transition: bottom 0.5s ease-in;
-                -o-transition: bottom 0.5s ease-in;
-                -webkit-transition: bottom 0.5s ease-in;
-                transition: bottom 0.5s ease-in;
+                & when not (@Autohide = Off) {
+                    bottom: -35px;
+                    -moz-transition: bottom 0.5s ease-in;
+                    -ms-transition: bottom 0.5s ease-in;
+                    -o-transition: bottom 0.5s ease-in;
+                    -webkit-transition: bottom 0.5s ease-in;
+                    transition: bottom 0.5s ease-in;
+                }
             }
             opacity: 1;
         }
@@ -1830,55 +1903,6 @@
         }
     }
     
-    .videoAdUi {
-        overflow: visible;
-        &BottomBar {
-            display: block;
-            position: absolute;
-            bottom: 0;
-            padding-bottom: 3px;
-            z-index: 850;
-            width: 100%;
-            font-size: 12px;
-            background-color: #000;
-            opacity: 0.7;
-            text-align: left;
-            &:before {
-                content: "Advertisement";
-                color: #fff;
-                font: 12px arial, sans-serif;
-                margin-bottom: 5px;
-                display: block;
-            }
-        }
-        &Attribution {
-            font: 12px arial, sans-serif;
-            display: block;
-            position: absolute;
-            right: 0;
-            top: 0;
-            padding: 0;
-        }
-        &Progress {
-            background-image: -moz-linear-gradient(top, #fc0 0, #666 100%);
-            background-image: -ms-linear-gradient(top, #fc0 0, #666 100%);
-            background-image: -o-linear-gradient(top, #fc0 0, #666 100%);
-            background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fc0), color-stop(100%, #666));
-            background-image: -webkit-linear-gradient(top, #fc0 0, #666 100%);
-            background-image: linear-gradient(to bottom, #fc0 0, #666 100%);
-            border-right: none;
-            &Bar {
-                margin-top: 8px;
-                background: rgba(0, 0, 0, 0);
-            }
-        }
-        & when (@HideAdSkipButton = 1) {
-            &PreSkipContainer, &SkipContainer {
-                display: none;
-            }
-        }
-    }
-    
     .ytp-chapter-marker {
         & when (@HidePlrChptrs = 1) {
             display: none !important;
@@ -1995,7 +2019,7 @@
         background: transparent;
         background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAdCAYAAABrAQZpAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAABIAAAASABGyWs+AAAACXZwQWcAAAABAAAAHQAh4gKwAAAAMUlEQVQI12OQlJD4x2Sgr8/I9OTZs5dM//79Y2T6//8/IyqLAcLClEBjYahDKCHSKADN5VNQpdTxzgAAAABJRU5ErkJggg==);
         background-repeat: repeat-x;
-        &:after {
+        &:after when (@HideAnnotation = 0) {
             & when (@PlayerMonth = Early) {
                 background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) 0 -15px;
                 height: 18px;
@@ -2057,38 +2081,6 @@
                 }
             }
         }
-        & when not (@PlayerMonth = Late) {
-            &:has(.ytp-size-toggle-large):has(.ytp-size-toggle-small) .ytp-size-toggle-large {
-                border-left: none;
-            }
-            .watch-small &:has(.ytp-size-toggle-large):has(.ytp-size-toggle-small) .ytp-size-toggle-small, .watch-medium &:has(.ytp-size-toggle-large):has(.ytp-size-toggle-small) .ytp-size-toggle-large {
-                & when (@PlayerMonth = Early) {
-                    background: rgba(0, 0, 0, 0.5);
-                    cursor: default;
-                    .light-theme & {
-                        background: rgba(0, 0, 0, 0.1);
-                        cursor: default;
-                    }
-                }
-                & when (@PlayerMonth = Middle) {
-                    background-color: #141414;
-                    cursor: default;
-                    -moz-box-shadow: inset 0 -5px 5px #000;
-                    -ms-box-shadow: inset 0 -5px 5px #000;
-                    -webkit-box-shadow: inset 0 -5px 5px #000;
-                    box-shadow: inset 0 -5px 5px #000;
-                    .light-theme & {
-                        filter: none;
-                        background: #f1f1f1;
-                        cursor: default;
-                        -moz-box-shadow: inset 0 -5px 5px #fff;
-                        -ms-box-shadow: inset 0 -5px 5px #fff;
-                        -webkit-box-shadow: inset 0 -5px 5px #fff;
-                        box-shadow: inset 0 -5px 5px #fff;
-                    }
-                }
-            }
-        }
         .light-theme & {
             color: #000;
             background: transparent;
@@ -2105,8 +2097,10 @@
             }
         }
     }
-    .ytp-volume-panel:focus, .ytp-time-display:focus {
-        outline: 1px dotted #999;
+    & when (@FocusOutline = 1) {
+        .ytp-button:focus, .ytp-volume-panel:focus, .ytp-time-display:focus {
+            outline: 1px dotted #999;
+        }
     }
     .ytp-button {
         font-size: 11px;
@@ -3629,9 +3623,14 @@
         }
         &-watch-later {
             &.html5-async-progress {
-                &, &:focus, &:hover {
+                background: none;
+                width: 30px;
+                height: 100%;
+                text-align: center;
+                line-height: 22px;
+                &:focus, &:hover {
                     background: none;
-                    width: 32px;
+                    width: 30px;
                     height: 100%;
                     text-align: center;
                     line-height: 22px;
@@ -3646,9 +3645,14 @@
                 }
             }
             &.html5-async-error {
+                background: none;
+                width: 30px;
+                height: 100%;
+                text-align: center;
+                line-height: 22px;
                 &, &:focus, &:hover {
                     background: none;
-                    width: 32px;
+                    width: 30px;
                     height: 100%;
                     text-align: center;
                     line-height: 22px;
@@ -3663,16 +3667,21 @@
                 }
             }
             &.html5-async-success {
+                background: none;
+                width: 30px;
+                height: 100%;
+                text-align: center;
+                line-height: 22px;
                 &, &:focus, &:hover {
                     background: none;
-                    width: 32px;
+                    width: 30px;
                     height: 100%;
                     text-align: center;
                     line-height: 22px;
                 }
                 &:before {
                     content: "";
-                        background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) 0 -210px;
+                    background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) 0 -210px;
                     height: 14px;
                     width: 12px;
                     vertical-align: middle;
@@ -3715,7 +3724,10 @@
                     }
                 }
                 &.html5-async-progress {
-                    &, &:focus, &:hover {
+                    background: none;
+                    width: 32px;
+                    height: 100%;
+                    &:focus, &:hover {
                         background: none;
                         width: 32px;
                         height: 100%;
@@ -4926,18 +4938,19 @@
             }
         }
     }
-    & when (@QualityBadges = 0) {
+    & when (@QualityBadges = 1) and (@FlashPlayerMode = 0) {
         .ytp-settings-hd-quality-badge, .ytp-settings-2k-quality-badge, .ytp-settings-4k-quality-badge {
             display: none;
         }
     }
-    & when (@QualityBadges = 1) {
+    & when (@FlashPlayerMode = 1) {
+        @QualityBadge: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAeCAYAAAFF3D5OAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAFBhaW50Lk5FVCA1LjEuOBtp6qgAAAC2ZVhJZklJKgAIAAAABQAaAQUAAQAAAEoAAAAbAQUAAQAAAFIAAAAoAQMAAQAAAAMAAAAxAQIAEAAAAFoAAABphwQAAQAAAGoAAAAAAAAAo5MAAOgDAACjkwAA6AMAAFBhaW50Lk5FVCA1LjEuOAADAACQBwAEAAAAMDIzMAGgAwABAAAAAQAAAAWgBAABAAAAlAAAAAAAAAACAAEAAgAEAAAAUjk4AAIABwAEAAAAMDEwMAAAAAC6HzhD+YwuiQAAAmJJREFUOE/dlLFq40AQhn8JLk2KayxcxCA/wIK5Jl3AqQTqAtf4CdLcA+QRzKEyHLgXiMDBFQkCN0nqFIEgFvwAViFQEeMH2CvOM5ldr6zjOC5wPxhWY83O7j/fKLhLkgcDTI9WKwBA+FrX2NQ1SCGAKQCMypIDmBQFvpyeAgCC2yQxAfD4YbWahpu6xivlV1VlcqWM1tqEvCWAIFfKTIoCL7MZAODTzQ0AYJ2mvyp0KaATAwBVpT/59NYpKPM2SQw90H0BIBxnGTZ1jXGWAeKqQa4UZ0Tb7VsGLSZFwUEACN0Ab9Vb/OvzMwdHZdldfM87uaYXqS4OebpoGjdkyfLa+sPx3VKulDmLIkPNr6rKnEWRyZUyyzg2yzg258fHRmtttNZmGccmyJV6INIcPUbbrS/+hqY0fbe2EqQZIXouPm9bzNvWilndk5KddBUSiOMs4x+NljzS3vHkfaixJHp5nab2SMoXXQrXaQrsknlsJV9SkjVXf26EnDEyhuQzg+9EvZJ3kv2Rd2L3vt3fA44p109PvF6nKT//YyMkFb9thARWGuEmWEZAJEoj6CX8NSPkHfr08eTkoEldCqmIZ9oxKQosmgaLpuFYn7GjsuRh3xtBEm0qdTkc4nI4tGJSvi/I1WCAq8HAirHfi6bhDWkti8pi1It52/KGtJZFZbEAwAWAzxzp13cAP9xgn94HBrfxPkBcGNzG+wCBhOFlNvN+VXyAkORw0ScYHYBYMEgRDC4gcGCQIhhcQPB/w4Bdw30AyLV7qFFZdgLghcG3KXpg6Nr0IAykLgB8MJC6AHgXGH4CVvvyvvctpwUAAAAASUVORK5CYII=";
         .ytp-settings-hd-quality-badge {
             & when (@PlayerMonth = Middle) {
-                background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAeCAYAAAGArqTfAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFLSURBVDhPxZIxbgIxEEVnEX0qREGTAyDlBEjbbY2UhhPkMtSR0keioSM1cAW0Z6CgS06w8R/2O9+LlxBR5EmWx/bs/JkPxUdV7Rqzcvh5PBoYhFUysKfVyopNVTWF2X74xRxcB0rPAcX7dNrg9rBY+EV8IVHJD6hGReI6bWxW13WDoti9env/Uxly7MTJF5iNRmmBi16v9g3eTiffkxkUzGMU085xRgzNXUi8+DKwh6Y/6DBtfLaYDXRJJxbiT6UlMaOX614Cf+ABMCnxTukVH0D8cbk03bGiBudJNHJd/V08Tg5QMhlQjaSePwA+3iauOr/xMJmcXQE6J2PskMfiXXSMMEF5GY99KbFvJPORsRbQD8Nf2OZhPfvpNtb3G8GZ1AiSNQI/zut2G2PCQkpihEIjuuaAfzACYNjc8CBrRF/yVSNI3/B3GmHrb5nWE0SWAMk9AAAAAElFTkSuQmCC) 0 0;
+                background: url(@QualityBadge) 0 0;
             }
             & when (@PlayerMonth = Late) {
-                background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAeCAYAAAGArqTfAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD0SURBVDhPpZHdDcIwDIQDYoQ+InWfTsQIDMAslVihc/DYHaBncZadxKE0n9TGjX/Odk/PcXynjTNewBvXeU6VGFyLIe8NicHta5rkQj1Eq5B2hEq4DoDmwaNhoF7gvq7eIx/wsldrF10BlACuTI5kIpLCOPdnAmYC2lq2Rlj28j1dScwo5fJLIA5+AAaFGtp2jtOwWqrBeZxGrauD4qQQt4ukUzPo/CkeOlqojG2KNk7I4ymaJgyw3IZBHou2h2A6adsCeeLf9C+CM9lFkOoi8HMey6I2YSGLW4SFi8iXc5i+RQAMGw1fXUQU0FwEiYbvXERKHwB4vXWVkM9cAAAAAElFTkSuQmCC) 0 0;
+                background: url(@QualityBadge) 13px 0;
             }
             width: 13px;
             & when (@PlayerMonth = Middle) {
@@ -4950,10 +4963,10 @@
         }
         .ytp-settings-2k-quality-badge {
             & when (@PlayerMonth = Middle) {
-                background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAeCAYAAAGArqTfAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFLSURBVDhPxZIxbgIxEEVnEX0qREGTAyDlBEjbbY2UhhPkMtSR0keioSM1cAW0Z6CgS06w8R/2O9+LlxBR5EmWx/bs/JkPxUdV7Rqzcvh5PBoYhFUysKfVyopNVTWF2X74xRxcB0rPAcX7dNrg9rBY+EV8IVHJD6hGReI6bWxW13WDoti9env/Uxly7MTJF5iNRmmBi16v9g3eTiffkxkUzGMU085xRgzNXUi8+DKwh6Y/6DBtfLaYDXRJJxbiT6UlMaOX614Cf+ABMCnxTukVH0D8cbk03bGiBudJNHJd/V08Tg5QMhlQjaSePwA+3iauOr/xMJmcXQE6J2PskMfiXXSMMEF5GY99KbFvJPORsRbQD8Nf2OZhPfvpNtb3G8GZ1AiSNQI/zut2G2PCQkpihEIjuuaAfzACYNjc8CBrRF/yVSNI3/B3GmHrb5nWE0SWAMk9AAAAAElFTkSuQmCC) 0 -10px;
+                background: url(@QualityBadge) 0 -10px;
             }
             & when (@PlayerMonth = Late) {
-                background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAeCAYAAAGArqTfAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD0SURBVDhPpZHdDcIwDIQDYoQ+InWfTsQIDMAslVihc/DYHaBncZadxKE0n9TGjX/Odk/PcXynjTNewBvXeU6VGFyLIe8NicHta5rkQj1Eq5B2hEq4DoDmwaNhoF7gvq7eIx/wsldrF10BlACuTI5kIpLCOPdnAmYC2lq2Rlj28j1dScwo5fJLIA5+AAaFGtp2jtOwWqrBeZxGrauD4qQQt4ukUzPo/CkeOlqojG2KNk7I4ymaJgyw3IZBHou2h2A6adsCeeLf9C+CM9lFkOoi8HMey6I2YSGLW4SFi8iXc5i+RQAMGw1fXUQU0FwEiYbvXERKHwB4vXWVkM9cAAAAAElFTkSuQmCC) 0 -10px;
+                background: url(@QualityBadge) 13px -10px;
             }
             width: 13px;
             & when (@PlayerMonth = Middle) {
@@ -4966,10 +4979,10 @@
         }
         .ytp-settings-4k-quality-badge {
             & when (@PlayerMonth = Middle) {
-                background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAeCAYAAAGArqTfAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFLSURBVDhPxZIxbgIxEEVnEX0qREGTAyDlBEjbbY2UhhPkMtSR0keioSM1cAW0Z6CgS06w8R/2O9+LlxBR5EmWx/bs/JkPxUdV7Rqzcvh5PBoYhFUysKfVyopNVTWF2X74xRxcB0rPAcX7dNrg9rBY+EV8IVHJD6hGReI6bWxW13WDoti9env/Uxly7MTJF5iNRmmBi16v9g3eTiffkxkUzGMU085xRgzNXUi8+DKwh6Y/6DBtfLaYDXRJJxbiT6UlMaOX614Cf+ABMCnxTukVH0D8cbk03bGiBudJNHJd/V08Tg5QMhlQjaSePwA+3iauOr/xMJmcXQE6J2PskMfiXXSMMEF5GY99KbFvJPORsRbQD8Nf2OZhPfvpNtb3G8GZ1AiSNQI/zut2G2PCQkpihEIjuuaAfzACYNjc8CBrRF/yVSNI3/B3GmHrb5nWE0SWAMk9AAAAAElFTkSuQmCC) 0 -20px;
+                background: url(@QualityBadge) 0 -20px;
             }
             & when (@PlayerMonth = Late) {
-                background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAeCAYAAAGArqTfAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD0SURBVDhPpZHdDcIwDIQDYoQ+InWfTsQIDMAslVihc/DYHaBncZadxKE0n9TGjX/Odk/PcXynjTNewBvXeU6VGFyLIe8NicHta5rkQj1Eq5B2hEq4DoDmwaNhoF7gvq7eIx/wsldrF10BlACuTI5kIpLCOPdnAmYC2lq2Rlj28j1dScwo5fJLIA5+AAaFGtp2jtOwWqrBeZxGrauD4qQQt4ukUzPo/CkeOlqojG2KNk7I4ymaJgyw3IZBHou2h2A6adsCeeLf9C+CM9lFkOoi8HMey6I2YSGLW4SFi8iXc5i+RQAMGw1fXUQU0FwEiYbvXERKHwB4vXWVkM9cAAAAAElFTkSuQmCC) 0 -20px
+                background: url(@QualityBadge) 13px -20px
             }
             width: 13px;
             & when (@PlayerMonth = Middle) {
@@ -4983,7 +4996,11 @@
     }
     & when (@PlayerMonth = Early) {
         .ytp-volume-control {
-            &, &:hover, &:focus {
+            border-right: 1px solid #222;
+            .light-theme & {
+                border-color: #ccc;
+            }
+            &:hover, &:focus {
                 border-right: 1px solid #222;
                 .light-theme & {
                     border-color: #ccc;
@@ -4991,7 +5008,11 @@
             }
         }
         .ytp-button-fullscreen-enter, .ytp-button-fullscreen-exit, .ytp-size-toggle-small, .ytp-size-toggle-large {
-            &, &:hover, &:focus {
+            border-left: 1px solid #222;
+            .light-theme & {
+                border-color: #ccc;
+            }
+            &:hover, &:focus {
                 border-left: 1px solid #222;
                 .light-theme & {
                     border-color: #ccc;
@@ -5001,7 +5022,12 @@
     }
     & when (@PlayerMonth = Middle) {
         .ytp-volume-control, .ytp-settings-button, .ytp-settings-button-active, .ytp-button-next {
-            &, &:hover, &:focus {
+            border-right: 1px solid #222;
+            padding-right: 1px;
+            .light-theme & {
+                border-color: #ccc;
+            }
+            &:hover, &:focus {
                 border-right: 1px solid #222;
                 padding-right: 1px;
                 .light-theme & {
@@ -5012,27 +5038,29 @@
     }
     & when (@PlayerMonth = Early) {
         .ytp-volume-control {
-            &, &:hover, &:focus {
+            padding-right: 0;
+            &:hover, &:focus {
                 padding-right: 0;
             }
         }
     }
     & when not (@PlayerMonth = Early) {
         .ytp-volume-control {
-            &, &:hover, &:focus {
+            padding-right: 4px;
+            &:hover, &:focus {
                 padding-right: 4px;
             }
         }
     }
     
     .ytp-volume-panel {
-        & when (@FlashVA = 0) {
+        & when (@FlashPlayerMode = 0) {
             -webkit-transition: width 0.5s ease-in 0.5s;
             -moz-transition: width 0.5s ease-in 0.5s;
             -o-transition: width 0.5s ease-in 0.5s;
             -ms-transition: width 0.5s ease-in 0.5s;
         }
-        & when (@FlashVA = 1) {
+        & when (@FlashPlayerMode = 1) {
             -webkit-transition: width 0.5s ease-in 0s;
             -moz-transition: width 0.5s ease-in 0s;
             -o-transition: width 0.5s ease-in 0s;
@@ -5040,13 +5068,13 @@
         }
         .ytp-volume-control-hover & , .ytp-volume-slider-active & {
             width: 1px;
-            & when (@FlashVA = 0) {
+            & when (@FlashPlayerMode = 0) {
                 -webkit-transition: width 0.5s ease-in 0.5s;
                 -moz-transition: width 0.5s ease-in 0.5s;
                 -o-transition: width 0.5s ease-in 0.5s;
                 -ms-transition: width 0.5s ease-in 0.5s;
             }
-            & when (@FlashVA = 1) {
+            & when (@FlashPlayerMode = 1) {
                 -webkit-transition: width 0.5s ease-in 0s;
                 -moz-transition: width 0.5s ease-in 0s;
                 -o-transition: width 0.5s ease-in 0s;
@@ -5054,21 +5082,25 @@
             }
         }
         &:focus, .ytp-volume-control:hover & {
-            & when (@PlayerMonth = Early) {
-                width: 66px;
-            }
-            & when (@PlayerMonth = Middle) or (@PlayerMonth = Late) {
-                & when (@FlashVA = 0) {
+            & when (@FlashPlayerMode = 0) {
+                & when (@PlayerMonth = Early) {
+                    width: 66px;
+                }
+                & when (@PlayerMonth = Middle) or (@PlayerMonth = Late) {
                     width: 56px;
                 }
+                -webkit-transition: width 0.1s linear 0s;
+                -moz-transition: width 0.1s linear 0s;
+                -o-transition: width 0.1s linear 0s;
+                -ms-transition: width 0.1s linear 0s;
             }
-            & when (@FlashVA = 1) {
+            & when (@FlashPlayerMode = 1) {
                 width: 62px;
+                -webkit-transition: width 0.1s linear 0s;
+                -moz-transition: width 0.1s linear 0s;
+                -o-transition: width 0.1s linear 0s;
+                -ms-transition: width 0.1s linear 0s;
             }
-            -webkit-transition: width 0.1s linear 0s;
-            -moz-transition: width 0.1s linear 0s;
-            -o-transition: width 0.1s linear 0s;
-            -ms-transition: width 0.1s linear 0s;
         }
     }
     .ytp-volume-slider {
@@ -5077,7 +5109,7 @@
         width: 51px;
         margin: 7px 6px 0 1px;
         padding: 1px 3px 0 0;
-        & when (@FlashVA = 1) {
+        & when (@FlashPlayerMode = 1) {
             float: right;
             right: -4px;
         }
@@ -5245,6 +5277,56 @@
         }
     }
     
+    .html5-storyboard {
+        display: none;
+        position: absolute;
+        left: 0;
+        bottom: 30px;
+        width: 100%;
+        height: 400px;
+        overflow-x: hidden;
+        background-image: -moz-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.75) 25%);
+        background-image: -ms-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.75) 25%);
+        background-image: -o-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.75) 25%);
+        background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(0, 0, 0, 0)), color-stop(25%, rgba(0, 0, 0, 0.75)));
+        background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0.75) 25%);
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0.75) 25%);
+        &-filmstrip {
+            position: absolute;
+            bottom: 35px;
+            background-color: #000
+        }
+        &-lens {
+            position: absolute;
+            bottom: 14px;
+            overflow: hidden;
+            background-color: rgba(22,22,22,0.8);
+            padding: 2px;
+            -moz-border-radius: 4px;
+            -webkit-border-radius: 4px;
+            border-radius: 4px;
+            &-thumbnail {
+                display: block
+            }
+            &-timestamp {
+                display: block;
+                height: 12px;
+                margin: 0;
+                padding: 0;
+                font-size: 11px;
+                color: #e3e3e3;
+                text-align: center
+            }
+        }
+        &-thumbnail {
+            display: block;
+            float: left
+        }
+        .seeking-mode &.enabled {
+            display: block
+        }
+    }
+    
     .countdowntimer {
         z-index: 930;
     }
@@ -5337,7 +5419,7 @@
             transition: bottom 0.05s ease-in;
         }
     }
-    .disabled-control-seek .ytp-player-content.ytp-subtitles-player-content, .autominimize-progress-bar:not(.ytp-block-autohide) .ytp-player-content.ytp-subtitles-player-content, html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) .ytp-player-content.ytp-subtitles-player-content, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content, .ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content, html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content {
+    .disabled-control-seek .ytp-player-content.ytp-subtitles-player-content, .autominimize-progress-bar:not(.ytp-block-autohide) .ytp-player-content.ytp-subtitles-player-content, .ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content {
         & when (@PlayerMonth = Early) {
             & when (@Autohide = Off) or (@Autohide = On) or (@Autohide = Fade) {
                 bottom: 38px;
@@ -5365,6 +5447,29 @@
                 bottom: 11px;
             }
             & when (@Autohide = On) or (@Autohide = Fade) or (@Autohide = Auto) {
+                -moz-transition: bottom 0.5s ease-in;
+                -ms-transition: bottom 0.5s ease-in;
+                -o-transition: bottom 0.5s ease-in;
+                -webkit-transition: bottom 0.5s ease-in;
+                transition: bottom 0.5s ease-in;
+            }
+        }
+    }
+    html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) .ytp-player-content.ytp-subtitles-player-content, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content, html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content {
+        & when (@PlayerMonth = Middle) or (@PlayerMonth = Late) {
+            & when (@Autohide = Off) {
+                bottom: 43px;
+            }
+            & when (@Autohide = On) {
+                bottom: 8px;
+                -moz-transition: bottom 0.5s ease-in;
+                -ms-transition: bottom 0.5s ease-in;
+                -o-transition: bottom 0.5s ease-in;
+                -webkit-transition: bottom 0.5s ease-in;
+                transition: bottom 0.5s ease-in;
+            }
+            & when (@Autohide = Fade) or (@Autohide = Auto) {
+                bottom: 3px;
                 -moz-transition: bottom 0.5s ease-in;
                 -ms-transition: bottom 0.5s ease-in;
                 -o-transition: bottom 0.5s ease-in;
@@ -5695,7 +5800,7 @@
     /*/
     == Info ==
     V3 Cosmic Panda Player
-    By TersisWilvin ( 9T2K )
+    By TersisWilvin ( aka: Tersis, or 9T2K )
     
     == Player Date Info ==
     2012E => January 25 2012 ( https://web.archive.org/web/20120125183121if_/https://www.youtube.com/watch?v=jNQXAC9IVRw ),
@@ -5703,7 +5808,6 @@
     2012L => December 7th 2012 ( https://web.archive.org/web/20121207043038if_/https://www.youtube.com/watch?v=jNQXAC9IVRw )
     
     == TODO Features ==
-    Implement Early 2012 ( # )
     Impliment Flash Player options ( X | % )
     Impliment Tablet Player ( X | % )
     
