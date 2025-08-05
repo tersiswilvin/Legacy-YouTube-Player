@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player Experimental
 @namespace      userstyles.world/user/tersiswilvin
-@version        20250805-00.1.1.11
+@version        20250804-02.1.1.11
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
 @updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_Experimental.user.css
@@ -33,7 +33,7 @@
 @var            checkbox                                          Forcewatermark          "Force Watermark"                0
 @var            checkbox                                          Forceinfobar            "Force infobar"                  0
 @var            number                                            FsTbW                   "Fullscreen Taskbar Width"       [0, 0, null, 1, "px"]
-@var            select                                            FsPre                   " ↳ Preset"                      ["Left", "Right", "Bottom*"]
+@var            select                                            TbSPre                  " ↳ Preset"                      ["Left", "Right", "Bottom*"]
 @var            checkbox                                          HideAdProgress          "Hide Ad progress"               1
 @var            checkbox                                          HideAdSkipButton        "Hide Ad Skip Container"         1
 @var            checkbox                                          HideAnnotation          "Hide Annotation Button"         0
@@ -1212,10 +1212,10 @@
         -webkit-transition: opacity 0.05s ease-in, bottom 0.05s ease-in;
         transition: opacity 0.05s ease-in, bottom 0.05s ease-in;
         [data-player-size=fullscreen] & {
-            & when (@FsPre = Right) {
+            & when (@TbSPre = Right) {
                 Right: @FsTbW + 5;
             }
-            & when (@FsPre = Bottom) {
+            & when (@TbSPre = Bottom) {
                 bottom: @FsTbW + 33;
             }
         }
@@ -1420,18 +1420,18 @@
         min-height: 26px;
         z-index: 930;
         html[data-player-size=fullscreen] & {
-            & when (@FsPre = Left) {
+            & when (@TbSPre = Left) {
                 left: @FsTbW;
                 right: 0;
             }
-            & when (@FsPre = Right) {
+            & when (@TbSPre = Right) {
                 left: 0;
                 right: @FsTbW;
             }
-            & when (@FsPre = Bottom) {
+            & when (@TbSPre = Bottom) {
                 bottom: @FsTbW;
             }
-            & when not (@FsPre = Bottom) {
+            & when not (@TbSPre = Bottom) {
                 width: unset;
             }
         }
@@ -2206,10 +2206,6 @@
         .ytp-subtitles-settings-dialog-list-option:hover & {
             color: #ddd;
         }
-		.ytp-drop-down & when (@DefaultMenuStyle = 1) {
-			color: #101010;
-			border-radius: 2px;
-		}
         & when (@PlayerMonth = Early) {
             &-play, &-pause, &-replay, &-stop, &-next {
                 border-right: 1px solid #222;
