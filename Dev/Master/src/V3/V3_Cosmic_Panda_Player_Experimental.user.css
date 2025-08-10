@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player Experimental
 @namespace      userstyles.world/user/tersiswilvin
-@version        20250805-00.1.1.11
+@version        20250809-00.1.1.11
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
 @updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_Experimental.user.css
@@ -13,8 +13,9 @@
 @var            checkbox                                          CMIcons                 "Context Menu Icons"             0
 @var            select                                            AhCursor                "Cursor Preset"                  ["Default*", "Hidden", "Off"]
 @var            checkbox                                          DefaultProgTooltipStyle "Default Progress Tooltip Style" 0
+@var            checkbox                                          DefaultSettingStyle     "Default Setting Style"          0
+@var            checkbox                                          JFKTrsprntBkg           " ↳ Transparent JFK Background"  0
 @var            checkbox                                          DefaultTooltipStyle     "Default Tooltip Style"          0
-@var            checkbox                                          DefaultMenuStyle        "Default Menu Style"             0
 @var            checkbox                                          DefaultUnavailableStyle "Default Unavailable Style"      0
 @var            checkbox                                          DefaultVideoLoader      "Default Video Loader"           0
 @var            checkbox                                          DEVMode                 "Developer Mode"                 0
@@ -26,8 +27,10 @@
 @var            checkbox                                          ExtraSFNItems           "Extra Stats for nerds items"    0
 @var            select                                            FallbackTVStaticPreset  "Fallback TV Static Preset"      ["None*", "Animated", "Canvas", "Static"]
 @var            checkbox                                          FlashPlayerMode         "Flash Player Mode ( WIP )"      0
+@var            checkbox                                          FlatterSettings         "Flatter Menu Styling"           0
 @var            checkbox                                          FocusOutline            "Focus Outline"                  1
 @var            checkbox                                          ForceProgressTooltip    "Force Progress Tooltip"         0
+@var            checkbox                                          ForceSettingsMenu       "Force Settings Menu"            0
 @var            checkbox                                          ForceThumbnail          "Force Thumbnail"                0
 @var            checkbox                                          ForceWOYTi              "Force Watch On Youtube icon"    0
 @var            checkbox                                          Forcewatermark          "Force Watermark"                0
@@ -120,6 +123,11 @@
             background-image: -webkit-gradient(linear, left top, left bottom, from(#555), to(#333));
             filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr="#555555",endColorStr="#333333");
         }
+		.appbar-mini-cinema [class*="darkmode"] ~ * #player.watch-medium:before {
+			background-color: #222;
+            background-image: -moz-linear-gradient(top, #333, #111);
+            background-image: -webkit-gradient(linear, left top, left bottom, from(#333), to(#111));
+		}
     }
     .html5-video-player {
         position: unset;
@@ -806,18 +814,28 @@
         }
     }
 
-    .ytp-menu when (@DefaultMenuStyle = 0) {
-        background: #141414;
-        border-radius: 3px 3px 0 0;
+    .ytp-menu when (@DefaultSettingStyle = 0) {
+		& when (@FlatterSettings = 0) {
+			background: #141414;
+			border-radius: 3px 3px 0 0;
+		}
+		& when (@FlatterSettings = 1) {
+			background: transparent;
+		}
         padding: 0;
         margin-bottom: 0;
         &-row {
             display: inline-block;
-            vertical-align: top;
+			vertical-align: top;
+			-moz-box-shadow: 1px 0 0 0 #2b2b2b inset;
+			-ms-box-shadow: 1px 0 0 0 #2b2b2b inset;
+			-webkit-box-shadow: 1px 0 0 0 #2b2b2b inset;
             box-shadow: 1px 0 0 0 #2b2b2b inset;
             border-left: 1px solid #000;
-            padding: 0 3px;
-            min-height: 135px;
+			& when (@FlatterSettings = 0) {
+				padding: 0 3px;
+				min-height: 135px;
+			}
             &:first-child {
                 border-left: transparent;
                 box-shadow: none
@@ -848,62 +866,168 @@
             padding: 4px 7px 4px 16px
         }
         &-container {
-            background: #141414;
-            border: 1px solid #141414;
-            border-radius: 3px 3px 0 0;
-            padding: 0 0 3px 0;
+			& when (@FlatterSettings = 0) {
+				background: #141414;
+				border: 1px solid #141414;
+				border-radius: 3px 3px 0 0;
+				padding: 0 0 3px 0;
+			}
+			& when (@FlatterSettings = 1) {
+				background: transparent;
+				background-color: rgba(27, 27, 27, 0.75);
+				padding: 2px 0;
+			}
+			z-index: 2147483647;
             & when (@PlayerMonth = Late) {
                 bottom: 26px
             }
         }
         &-content {
             border-spacing: 0
-        }
-        &-container .ytp-drop-down-menu-button.ytp-drop-down-menu-button-checked {
-            list-style: disc inside none;
-            color: #fff;
-            background-color: #0f0f0f;
-            -moz-border-radius: 12px;
-            -webkit-border-radius: 12px;
-            border-radius: 12px;
-            -moz-box-shadow: 0 1px #292929, 0 -1px #000;
-            -ms-box-shadow: 0 1px #292929, 0 -1px #000;
-            -webkit-box-shadow: 0 1px #292929, 0 -1px #000;
-            box-shadow: 0 1px #292929, 0 -1px #000;
-        }
+		}
         .ytp-drop-down-menu {
             display: inline-block !important;
             position: relative;
             background: none;
             border: none;
             bottom: 0 !important;
-            max-height: 190px;
             overflow: unset;
             &-content {
                 max-height: unset;
                 overflow-y: unset;
             }
             &-button {
-                color: #aaa;
-                padding: 4px 7px;
+				color: #aaa;
+				padding: 4px 7px;
+				position: relative;
+				& when (@FlatterSettings = 1) {
+					margin: 5px;
+				}
+				&.ytp-drop-down-menu-button-checked {
+					list-style: disc inside none;
+					color: #fff;
+					& when (@FlatterSettings = 0) {
+						background-color: #0f0f0f;
+						-moz-border-radius: 12px;
+						-webkit-border-radius: 12px;
+						border-radius: 12px;
+						-moz-box-shadow: 0 1px #292929, 0 -1px #000;
+						-ms-box-shadow: 0 1px #292929, 0 -1px #000;
+						-webkit-box-shadow: 0 1px #292929, 0 -1px #000;
+						box-shadow: 0 1px #292929, 0 -1px #000;
+					}
+					& when (@FlatterSettings = 1) {
+						background-color: #cc181e;
+						-moz-border-radius: 20px;
+						-webkit-border-radius: 20px;
+						border-radius: 20px;
+						&:hover:after {
+							content: "";
+							background-color: #cc181e;
+							left: -5px;
+							top: -2px;
+							right: -5px;
+							bottom: -2px;
+							position: absolute;
+							z-index: -1;
+						}
+					}
+				}
                 &-selected {
-                    color: #fff;
+                    list-style: disc inside none;
+					& when (@FlatterSettings = 0) {
+						color: #fff;
+					}
+					& when (@FlatterSettings = 0) {
+						background-color: #0f0f0f;
+						-moz-border-radius: 12px;
+						-webkit-border-radius: 12px;
+						border-radius: 12px;
+						-moz-box-shadow: 0 1px #292929, 0 -1px #000;
+						-ms-box-shadow: 0 1px #292929, 0 -1px #000;
+						-webkit-box-shadow: 0 1px #292929, 0 -1px #000;
+						box-shadow: 0 1px #292929, 0 -1px #000;
+						&:hover {
+							background-color: #0f0f0f;
+						}
+					}
+					& when (@FlatterSettings = 1) {
+						position: relative;
+						&:hover {
+							background-color: transparent;
+							&:after {
+								content: "";
+								background-color: #cc181e;
+								left: -5px;
+								top: -2px;
+								right: -5px;
+								bottom: -2px;
+								position: absolute;
+								z-index: -1;
+							}
+						}
+					}
+					.ytp-drop-down-menu-button-check, &-checked:hover:not(.ytp-disabled) .ytp-drop-down-menu-button-check {
+						& when (@FlatterSettings = 0) {
+							background: none #fff;
+							border-radius: 50%;
+							height: 3px;
+							width: 3px;
+							margin: 0 11px 1px 0;
+						}
+						& when (@FlatterSettings = 1) {
+							margin: 0 11px 1px 0;
+							width: 6px;
+							height: 6px;
+							background: #aaa;
+						}
+						opacity: 1;
+					}
                 }
-                &:hover:not(.ytp-disabled):not(&-checked) {
-                    background: #601212;
+                &:hover:not(.ytp-disabled):not(&-selected):not(&-checked) {
+					& when (@FlatterSettings = 0) {
+						background: #601212;
+					}
+					& when (@FlatterSettings = 1) {
+						background-color: #cc181e;
+						&:after {
+							content: "";
+							background-color: #cc181e;
+							left: -5px;
+							top: -2px;
+							right: -5px;
+							bottom: -2px;
+							position: absolute;
+							z-index: -1;
+						}
+					}
                 }
                 &-checked .ytp-drop-down-menu-button-check, &-checked:hover:not(.ytp-disabled) .ytp-drop-down-menu-button-check {
-                    background: none #fff;
-                    border-radius: 50%;
-                    height: 3px;
-                    width: 3px;
-                    margin: 0 11px 1px 0;
-                    opacity: 1;
+					& when (@FlatterSettings = 0) {
+						background: none #fff;
+					}
+					& when (@FlatterSettings = 1) {
+						background: #fff;
+					}
                 }
                 &-check {
-                    height: 3px;
-                    width: 3px;
-                    margin: 0 11px 1px 0;
+					& when (@FlatterSettings = 0) {
+						border-radius: 50%;
+						height: 3px;
+						width: 3px;
+						margin: 0 11px 1px 0;
+					}
+					& when (@FlatterSettings = 1) {
+						margin: 0 5px 0 7px;
+						margin: 0 11px 1px 0;
+						width: 6px;
+						height: 6px;
+						vertical-align: middle;
+						-moz-border-radius: 6px;
+						-webkit-border-radius: 6px;
+						border-radius: 6px;
+					}
+					opacity: 1;
                 }
                 &-separated-above {
                     border: none;
@@ -922,7 +1046,18 @@
             display: inline-block;
         }
     }
-    .ytp-menu-row:has(.ytp-segmented-control) when (@DefaultMenuStyle = 1) and (@HESR = 1) {
+	.ytp-menu-container {
+		& when (@DEVMode = 1) or (@ForceSettingsMenu = 1) {
+			display: block !important;
+		}
+		& when (@DefaultSettingStyle = 1) {
+			z-index: 720;
+			& when (@JFKTrsprntBkg = 1) {
+				background-color: rgba(0,0,0,0)
+			}
+		}
+	}
+    .ytp-menu-row:has(.ytp-segmented-control) when (@DefaultSettingStyle = 1) and (@HESR = 1) {
         display: none
     }
     
@@ -1990,20 +2125,19 @@
         & when (@HidePlrChptrs = 1) {
             display: none !important;
         }
-        -moz-transition: height 0.05s ease-in, width 0.05s ease-in, margin-left 0.05s ease-in;
-        -ms-transition: height 0.05s ease-in, width 0.05s ease-in, margin-left 0.05s ease-in;
-        -o-transition: height 0.05s ease-in, width 0.05s ease-in, margin-left 0.05s ease-in;
-        -webkit-transition: height 0.05s ease-in, width 0.05s ease-in, margin-left 0.05s ease-in;
-        transition: height 0.05s ease-in, width 0.05s ease-in, margin-left 0.05s ease-in;
+		top: 0;
+        -moz-transition: transform 0.05s ease-in;
+        -ms-transition: transform 0.05s ease-in;
+        -o-transition: transform 0.05s ease-in;
+        -webkit-transition: transform 0.05s ease-in;
+        transition: transform 0.05s ease-in;
         .disabled-control-seek &, .autominimize-progress-bar:not(.ytp-block-autohide) &, html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) &, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &, .ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &, html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) & {
-            height: 3px;
-            width: 3px !important;
-            margin-left: 2px;
-            -moz-transition: height 0.5s ease-in, width 0.5s ease-in, margin-left 0.5s ease-in;
-            -ms-transition: height 0.5s ease-in, width 0.5s ease-in, margin-left 0.5s ease-in;
-            -o-transition: height 0.5s ease-in, width 0.5s ease-in, margin-left 0.5s ease-in;
-            -webkit-transition: height 0.5s ease-in, width 0.5s ease-in, margin-left 0.5s ease-in;
-            transition: height 0.5s ease-in, width 0.5s ease-in, margin-left 0.5s ease-in;
+            transform: scale(.3) translate(50%, 0);
+            -moz-transition: transform 0.5s ease-in;
+            -ms-transition: transform 0.5s ease-in;
+            -o-transition: transform 0.5s ease-in;
+            -webkit-transition: transform 0.5s ease-in;
+            transition: transform 0.5s ease-in;
         }
     }
     
@@ -2206,7 +2340,7 @@
         .ytp-subtitles-settings-dialog-list-option:hover & {
             color: #ddd;
         }
-		.ytp-drop-down & when (@DefaultMenuStyle = 1) {
+		.ytp-drop-down & when (@DefaultSettingStyle = 1) {
 			color: #101010;
 			border-radius: 2px;
 		}
@@ -5418,6 +5552,10 @@
         z-index: 930;
     }
     
+	.caption-window {
+		z-index: 920;
+	}
+	
     .anchor-point-1 {
         -moz-transform: translate(-50%,0);
         -ms-transform: translate(-50%,0);
@@ -5582,6 +5720,10 @@
     }
     .caption-window-transform {
         line-height: normal;
+		#caption-window-99 & {
+			max-height: 1.1em;
+			overflow: hidden;
+		}
     }
     
     & when not (@PlayButtonStyle = 2014) {
@@ -5895,8 +6037,10 @@
     2012L => December 7th 2012 ( https://web.archive.org/web/20121207043038if_/https://www.youtube.com/watch?v=jNQXAC9IVRw )
     
     == TODO Features ==
-    Impliment Flash Player options ( X | % )
-    Impliment Tablet Player ( X | % )
+	Fix and redo captions CSS on all periods ( X | % )
+    Impliment Flash Player sub options ( X | % )
+    Impliment Tablet Player support ( X | % )
+	Redo Theater buttons to rely on data-player-size instead ( X | % )
     
     == Legend ==
     | => Separator
