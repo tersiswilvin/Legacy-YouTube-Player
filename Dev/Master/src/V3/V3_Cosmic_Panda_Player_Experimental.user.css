@@ -42,6 +42,7 @@
 @var            checkbox                                          HideAnnotation          "Hide Annotation Button"         0
 @var            checkbox                                          HideBranding            "Hide Annotation Branding"       1
 @var            checkbox                                          HideASRIcons            "Hide ASR Icons"                 0
+@var            checkbox                                          HideCaptionSettingsRow  "Hide Caption Settings Row"      1
 @var            checkbox                                          HideCards               "Hide Cards"                     1
 @var            checkbox                                          HESR                    "Hide Extra Settings Rows"       1
 @var            checkbox                                          HidePlrChptrs           "Hide Player Chapters"           1
@@ -954,7 +955,7 @@
 					& when (@FlatterSettings = 1) {
 						position: relative;
 						&:hover {
-							background-color: transparent;
+							background-color: #cc181e;
 							&:after {
 								content: "";
 								background-color: #cc181e;
@@ -1018,7 +1019,6 @@
 						margin: 0 11px 1px 0;
 					}
 					& when (@FlatterSettings = 1) {
-						margin: 0 5px 0 7px;
 						margin: 0 11px 1px 0;
 						width: 6px;
 						height: 6px;
@@ -5720,7 +5720,7 @@
     }
     .caption-window-transform {
         line-height: normal;
-		#caption-window-99 & {
+		#caption-window-99 & when (@HideCaptionSettingsRow = 1) {
 			max-height: 1.1em;
 			overflow: hidden;
 		}
