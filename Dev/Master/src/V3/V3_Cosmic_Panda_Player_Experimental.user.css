@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player Experimental
 @namespace      userstyles.world/user/tersiswilvin
-@version        20250810-00.1.1.11
+@version        20250810-01.1.1.11
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
 @updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_Experimental.user.css
@@ -47,7 +47,7 @@
 @var            checkbox                                          HESR                    "Hide Extra Settings Rows"       1
 @var            checkbox                                          HidePlrChptrs           "Hide Player Chapters"           1
 @var            checkbox                                          HPaNB                   "Hide Prev & Next Buttons"       1
-@var            checkbox                                          HideSettingBoxShadow    "Hide Settings Box Shadow"       1
+@var            checkbox                                          HideSettingBoxShadow    "Hide Settings Box Shadow"       0
 @var            checkbox                                          HideSponsorBlock        "Hide SponsorBlock"              1
 @var            checkbox                                          SupportWarning          "Hide Support Warning"           0
 @var            checkbox                                          HUnB                    "Hide Unavailable Buttons"       1
