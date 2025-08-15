@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player Experimental
 @namespace      userstyles.world/user/tersiswilvin
-@version        20250810-01.1.1.11
+@version        20250815-00.1.1.11
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
 @updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_Experimental.user.css
@@ -11,7 +11,7 @@
 @var            checkbox                                          AccWtmAnim              "Accurate Watermark Animations"  1
 @var            select                                            Autohide                "Autohide Preset"                ["Off", "On", "Fade*", "Auto"]
 @var            checkbox                                          CMIcons                 "Context Menu Icons"             0
-@var            select                                            AhCursor                "Cursor Preset"                  ["Default*", "Hidden", "Off"]
+@var            select                                            AhCursor                "Cursor Preset"                  ["Default*", "Default_Autohide", "Off", "Off_Autohide"]
 @var            checkbox                                          DefaultProgTooltipStyle "Default Progress Tooltip Style" 0
 @var            checkbox                                          DefaultSettingStyle     "Default Setting Style"          0
 @var            checkbox                                          JFKTrsprntBkg           " ↳ Transparent JFK Background"  0
@@ -28,6 +28,7 @@
 @var            select                                            FallbackTVStaticPreset  "Fallback TV Static Preset"      ["None*", "Animated", "Canvas", "Static"]
 @var            checkbox                                          FlashPlayerMode         "Flash Player Mode ( WIP )"      0
 @var            checkbox                                          FlatterSettings         "Flatter Menu Styling"           0
+@var            checkbox                                          FSFloating              " ↳ Floating"                    1
 @var            checkbox                                          FocusOutline            "Focus Outline"                  1
 @var            checkbox                                          ForceProgressTooltip    "Force Progress Tooltip"         0
 @var            checkbox                                          ForceSettingsMenu       "Force Settings Menu"            0
@@ -137,10 +138,10 @@
 		& when (@AhCursor = Default) {
 			cursor: pointer;
 		}
-		&.ytp-block-autohide when (@AhCursor = Hidden) {
+		&.ytp-block-autohide when (@AhCursor = Default_Autohide) {
 			cursor: pointer;
 		}
-		&:not(.ytp-block-autohide) when (@AhCursor = Hidden) {
+		&:not(.ytp-block-autohide) when (@AhCursor = Default_Autohide) or (@AhCursor = Off_Autohide) {
 			cursor: none
 		}
 		html[data-player-size=fullscreen] &:not(.ytp-block-autohide) when (@AhCursor = Default) {
@@ -875,12 +876,15 @@
 				padding: 0 0 3px 0;
 			}
 			& when (@FlatterSettings = 1) {
+				& when (@FSFloating = 1) {
+					bottom: 41px;
+				}
+				padding: 2px 0;
 				background: transparent;
 				background-color: rgba(27, 27, 27, 0.75);
-				padding: 2px 0;
 			}
 			z-index: 2147483647;
-			& when (@PlayerMonth = Late) {
+			& when (@PlayerMonth = Late) and (@FlatterSettings = 0) {
 				bottom: 26px
 			}
 		}
@@ -903,7 +907,7 @@
 				padding: 4px 7px;
 				position: relative;
 				& when (@FlatterSettings = 1) {
-					margin: 5px;
+					margin: 6px 5px;
 				}
 				&.ytp-drop-down-menu-button-checked {
 					list-style: disc inside none;
@@ -5945,6 +5949,14 @@
 		}
 	}
 
+	/* 
+		TODO: Style the 2014 playlists to look like ones used in 2012
+		For now, apply a left text alignment fix till then.
+	*/
+	.ytp-playlist-tray-container {
+		text-align: left;
+	}
+	
 	.player-unavailable when (@DefaultUnavailableStyle = 0) {
 		background: #000;
 		text-shadow: 1px 1px 0 #000;
