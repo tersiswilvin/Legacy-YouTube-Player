@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player Experimental
 @namespace      userstyles.world/user/tersiswilvin
-@version        20250815-00.1.1.11
+@version        20250815-01.1.1.11
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
 @updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_Experimental.user.css
@@ -73,7 +73,6 @@
 		overflow: hidden;
 		background: #000;
 		color: #fff;
-		text-align: center;
 		& when (@PlayerSizeTransition = 1) {
 			-moz-transition: width, height 0.2s ease-in-out;
 			-o-transition: width, height 0.2s ease-in-out;
@@ -364,7 +363,6 @@
 		left: 0;
 		right: 0;
 		z-index: 930;
-		text-align: left;
 		&:not(:has(.ytp-subtitles-settings-dialog)):not(:has(.ytp-dialog-buttons:nth-child(3))) .ytp-dialog {
 			position: absolute;
 			z-index: 930;
@@ -5947,14 +5945,6 @@
 				font-size: 13px;
 			}
 		}
-	}
-
-	/* 
-		TODO: Style the 2014 playlists to look like ones used in 2012
-		For now, apply a left text alignment fix till then.
-	*/
-	.ytp-playlist-tray-container {
-		text-align: left;
 	}
 	
 	.player-unavailable when (@DefaultUnavailableStyle = 0) {
