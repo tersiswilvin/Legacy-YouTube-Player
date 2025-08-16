@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player Experimental
 @namespace      userstyles.world/user/tersiswilvin
-@version        20250815-01.1.1.11
+@version        20250816-00.1.1.11
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
 @updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_Experimental.user.css
@@ -236,7 +236,10 @@
 			[class*="flash7"] ~ * &:before {
 				content: "V3 Cosmic Panda Player does not support Flash7 Player.\APlease disable either Flash7 Player or V3 Cosmic Panda Player.";
 			}
-			[exp-modern-player] &:before, [pl-ver] &:before {
+			[pl-ver^="c"] &:before {
+				content: "V3 Cosmic Panda Player does not support StarTubes 2012 Player.\APlease disable either StarTubes 2012 Player or V3 Cosmic Panda Player.";
+			}
+			[exp-modern-player] &:before, [pl-ver^="m"] &:before {
 				content: "V3 Cosmic Panda Player does not support StarTubes Modern Player.\APlease disable either StarTubes Modern Player or V3 Cosmic Panda Player.";
 			}
 			&[data-version*="/base.js"]:before {
@@ -6096,6 +6099,7 @@
 	2012L => December 7th 2012 ( https://web.archive.org/web/20121207043038if_/https://www.youtube.com/watch?v=jNQXAC9IVRw )
 
 	== TODO Features ==
+	Add setting button glow on active as an option ( X | % )
 	Fix and redo captions CSS on all periods ( X | % )
 	Impliment Flash Player sub options ( X | % )
 	Impliment Tablet Player support ( X | % )
