@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player Experimental
 @namespace      userstyles.world/user/tersiswilvin
-@version        20250816-00.1.1.11
+@version        20250901-00.1.2
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
 @updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_Experimental.user.css
@@ -1445,6 +1445,7 @@
 		background: transparent no-repeat center center;
 		background-size: contain;
 		z-index: 890;
+		text-align: center;
 		.fresca-loaded & {
 			display: block
 		}
@@ -1559,7 +1560,7 @@
 	/*/== Video Controls items ==/*/
 	.html5-video-controls {
 		min-height: 26px;
-		z-index: 930;
+		z-index: 931;
 		html[data-player-size=fullscreen] & {
 			& when (@FsPre = Left) {
 				left: @FsTbW;
