@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player Experimental
 @namespace      userstyles.world/user/tersiswilvin
-@version        20251021-00.1.2
+@version        20251021-01.1.2
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
 @updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_Experimental.user.css
@@ -694,6 +694,9 @@
 			-webkit-transition: top 0.5s ease-in;
 			transition: top 0.5s ease-in;
 			opacity: 1;
+		}
+		.queue-miniplayer #player:not(:hover) .html5-video-player:not(.paused-mode) & {
+			opacity: 1
 		}
 	}
 	.html5-title {
@@ -1769,6 +1772,9 @@
 			-webkit-transition: all 0s linear 0s;
 			transition: all 0s linear 0s;
 		}
+		.queue-miniplayer #player:not(:hover) .html5-video-player:not(.paused-mode) & {
+			height: 8px !important;
+		}
 	}
 	.html5-progress-bar {
 		position: relative;
@@ -2152,6 +2158,9 @@
 				}
 			}
 		}
+		.queue-miniplayer #player:not(:hover) .html5-video-player:not(.paused-mode) & {
+			display: block
+		}
 	}
 
 	.ytp-chapter-marker {
@@ -2330,6 +2339,9 @@
 					}
 				}
 			}
+		}
+		.queue-miniplayer #player:not(:hover) .html5-video-player:not(.paused-mode) & {
+			height: 26px
 		}
 		.light-theme & {
 			color: #000;
@@ -5701,103 +5713,106 @@
 		-webkit-transform: translate(-100%,-100%);
 		transform: translate(-100%,-100%)
 	}
-	.disabled-control-seek:not(.ytp-no-controls) .ytp-player-content.ytp-subtitles-player-content, .ad-interrupting:not(.ytp-no-controls):not(.html5-native-controls) .ytp-player-content.ytp-subtitles-player-content, .autominimize-progress-bar .ytp-player-content.ytp-subtitles-player-content, html:not([data-player-size=fullscreen]) .html5-video-player:not(.ideal-aspect).autominimize-progress-bar-non-aspect .ytp-player-content.ytp-subtitles-player-content, .disabled-control-seek:not(.ytp-no-controls) .ytp-player-content.ytp-subtitles-player-content, .ad-interrupting:not(.ytp-no-controls):not(.html5-native-controls) .ytp-player-content.ytp-subtitles-player-content, .autominimize-progress-bar .ytp-player-content.ytp-subtitles-player-content, html:not([data-player-size=fullscreen]) .html5-video-player:not(.ideal-aspect).autominimize-progress-bar-non-aspect .ytp-player-content.ytp-subtitles-player-content, .html5-video-player:not(.el-detailpage):not(.house-brand):not(.ad-interrupting) .html5-endscreen, .html5-video-player:not(.ad-interrupting):not(.hide-info-bar):not(.playing-mode) .ytp-player-content.ytp-subtitles-player-content, .ytp-block-autohide:not(.ad-interrupting):not(.hide-info-bar) .ytp-player-content.ytp-subtitles-player-content, .ended-mode.endscreen-loaded:not(.el-detailpage):not(.house-brand):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content, html[data-player-size=fullscreen] .html5-video-player:not(.house-brand):not(.ad-interrupting):not(.playing-mode) .ytp-player-content.ytp-subtitles-player-content, html[data-player-size=fullscreen] .ytp-block-autohide:not(.house-brand):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content {
-		& when (@PlayerMonth = Early) {
-			bottom: 43px;
-			& when (@Autohide = Off) or (@Autohide = On) or (@Autohide = Fade) {
-				-webkit-transition-duration: 0.5s;
-				-moz-transition-duration: 0.5s;
-				-o-transition-duration: 0.5s;
-				-ms-transition-duration: 0.5s;
-				transition-duration: 0.5s;
-				-moz-transition-property: bottom;
-				-webkit-transition-property: bottom;
-				-o-transition-property: bottom;
-				-ms-transition-property: bottom;
-				transition-property: bottom;
-			}
-			& when (@Autohide = Auto) {
-				-moz-transition: unset;
-				-ms-transition: unset;
-				-o-transition: unset;
-				-webkit-transition: unset;
-				transition: unset;
-			}
-		}
-		& when (@PlayerMonth = Middle) or (@PlayerMonth = Late) {
-			bottom: 43px;
-			-moz-transition: bottom 0.05s ease-in;
-			-ms-transition: bottom 0.05s ease-in;
-			-o-transition: bottom 0.05s ease-in;
-			-webkit-transition: bottom 0.05s ease-in;
-			transition: bottom 0.05s ease-in;
-		}
-	}
-	.disabled-control-seek .ytp-player-content.ytp-subtitles-player-content, .autominimize-progress-bar:not(.ytp-block-autohide) .ytp-player-content.ytp-subtitles-player-content, html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) .ytp-player-content.ytp-subtitles-player-content, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content, .ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content, html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content {
-		& when (@PlayerMonth = Early) {
-			& when (@Autohide = Off) or (@Autohide = On) or (@Autohide = Fade) {
-				bottom: 38px;
-			}
-			& when (@Autohide = Auto) {
-				bottom: 7px;
-				-webkit-transition: bottom 0.25s ease-in;
-				-moz-transition: bottom 0.25s ease-in;
-				-o-transition: bottom 0.25s ease-in;
-				-ms-transition: bottom 0.25s ease-in;
-			}
-			transition-delay: 3s;
-		}
-		& when (@PlayerMonth = Middle) or (@PlayerMonth = Late) {
-			& when (@Autohide = Off) {
+	.ytp-player-content {
+		bottom: 43px;
+		.disabled-control-seek:not(.ytp-no-controls) &.ytp-subtitles-player-content, .ad-interrupting:not(.ytp-no-controls):not(.html5-native-controls) &.ytp-subtitles-player-content, .autominimize-progress-bar &.ytp-subtitles-player-content, html:not([data-player-size=fullscreen]) .html5-video-player:not(.ideal-aspect).autominimize-progress-bar-non-aspect &.ytp-subtitles-player-content, .disabled-control-seek:not(.ytp-no-controls) &.ytp-subtitles-player-content, .ad-interrupting:not(.ytp-no-controls):not(.html5-native-controls) &.ytp-subtitles-player-content, .autominimize-progress-bar &.ytp-subtitles-player-content, html:not([data-player-size=fullscreen]) .html5-video-player:not(.ideal-aspect).autominimize-progress-bar-non-aspect &.ytp-subtitles-player-content, .html5-video-player:not(.el-detailpage):not(.house-brand):not(.ad-interrupting) .html5-endscreen, .html5-video-player:not(.ad-interrupting):not(.hide-info-bar):not(.playing-mode) &.ytp-subtitles-player-content, .ytp-block-autohide:not(.ad-interrupting):not(.hide-info-bar) &.ytp-subtitles-player-content, .ended-mode.endscreen-loaded:not(.el-detailpage):not(.house-brand):not(.ad-interrupting) &.ytp-subtitles-player-content, html[data-player-size=fullscreen] .html5-video-player:not(.house-brand):not(.ad-interrupting):not(.playing-mode) &.ytp-subtitles-player-content, html[data-player-size=fullscreen] .ytp-block-autohide:not(.house-brand):not(.ad-interrupting) &.ytp-subtitles-player-content {
+			& when (@PlayerMonth = Early) {
 				bottom: 43px;
+				& when (@Autohide = Off) or (@Autohide = On) or (@Autohide = Fade) {
+					-webkit-transition-duration: 0.5s;
+					-moz-transition-duration: 0.5s;
+					-o-transition-duration: 0.5s;
+					-ms-transition-duration: 0.5s;
+					transition-duration: 0.5s;
+					-moz-transition-property: bottom;
+					-webkit-transition-property: bottom;
+					-o-transition-property: bottom;
+					-ms-transition-property: bottom;
+					transition-property: bottom;
+				}
+				& when (@Autohide = Auto) {
+					-moz-transition: unset;
+					-ms-transition: unset;
+					-o-transition: unset;
+					-webkit-transition: unset;
+					transition: unset;
+				}
 			}
-			& when (@Autohide = On) {
-				bottom: 8px;
-			}
-			& when (@Autohide = Fade) {
-				bottom: 38px;
-			}
-			& when (@Autohide = Auto) {
-				bottom: 11px;
-			}
-			& when (@Autohide = On) or (@Autohide = Fade) or (@Autohide = Auto) {
-				-moz-transition: bottom 0.5s ease-in;
-				-ms-transition: bottom 0.5s ease-in;
-				-o-transition: bottom 0.5s ease-in;
-				-webkit-transition: bottom 0.5s ease-in;
-				transition: bottom 0.5s ease-in;
-			}
-		}
-	}
-	.autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content, html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content, html:not([data-player-size=fullscreen]) .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) .ytp-player-content.ytp-subtitles-player-content {
-		& when (@PlayerMonth = Middle) or (@PlayerMonth = Late) {
-			& when (@Autohide = Off) {
+			& when (@PlayerMonth = Middle) or (@PlayerMonth = Late) {
 				bottom: 43px;
-			}
-			& when (@Autohide = On) {
-				bottom: 8px;
-				-moz-transition: bottom 0.5s ease-in;
-				-ms-transition: bottom 0.5s ease-in;
-				-o-transition: bottom 0.5s ease-in;
-				-webkit-transition: bottom 0.5s ease-in;
-				transition: bottom 0.5s ease-in;
-			}
-			& when (@Autohide = Fade) or (@Autohide = Auto) {
-				bottom: 3px;
-				-moz-transition: bottom 0.5s ease-in;
-				-ms-transition: bottom 0.5s ease-in;
-				-o-transition: bottom 0.5s ease-in;
-				-webkit-transition: bottom 0.5s ease-in;
-				transition: bottom 0.5s ease-in;
+				-moz-transition: bottom 0.05s ease-in;
+				-ms-transition: bottom 0.05s ease-in;
+				-o-transition: bottom 0.05s ease-in;
+				-webkit-transition: bottom 0.05s ease-in;
+				transition: bottom 0.05s ease-in;
 			}
 		}
-	}
-	#movie_player.html5-video-player:hover .ytp-player-content.ytp-subtitles-player-content when (@PlayerMonth = Early) {
-		-moz-transition: all 0s linear 0s;
-		-ms-transition: all 0s linear 0s;
-		-o-transition: all 0s linear 0s;
-		-webkit-transition: all 0s linear 0s;
-		transition: all 0s linear 0s;
+		.disabled-control-seek &.ytp-subtitles-player-content, .autominimize-progress-bar:not(.ytp-block-autohide) &.ytp-subtitles-player-content, html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) &.ytp-subtitles-player-content, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &.ytp-subtitles-player-content, .ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &.ytp-subtitles-player-content, html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) &.ytp-subtitles-player-content {
+			& when (@PlayerMonth = Early) {
+				& when (@Autohide = Off) or (@Autohide = On) or (@Autohide = Fade) {
+					bottom: 38px;
+				}
+				& when (@Autohide = Auto) {
+					bottom: 7px;
+					-webkit-transition: bottom 0.25s ease-in;
+					-moz-transition: bottom 0.25s ease-in;
+					-o-transition: bottom 0.25s ease-in;
+					-ms-transition: bottom 0.25s ease-in;
+				}
+				transition-delay: 3s;
+			}
+			& when (@PlayerMonth = Middle) or (@PlayerMonth = Late) {
+				& when (@Autohide = Off) {
+					bottom: 43px;
+				}
+				& when (@Autohide = On) {
+					bottom: 8px;
+				}
+				& when (@Autohide = Fade) {
+					bottom: 38px;
+				}
+				& when (@Autohide = Auto) {
+					bottom: 11px;
+				}
+				& when (@Autohide = On) or (@Autohide = Fade) or (@Autohide = Auto) {
+					-moz-transition: bottom 0.5s ease-in;
+					-ms-transition: bottom 0.5s ease-in;
+					-o-transition: bottom 0.5s ease-in;
+					-webkit-transition: bottom 0.5s ease-in;
+					transition: bottom 0.5s ease-in;
+				}
+			}
+		}
+		.autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &.ytp-subtitles-player-content, html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) &.ytp-subtitles-player-content, html:not([data-player-size=fullscreen]) .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &.ytp-subtitles-player-content {
+			& when (@PlayerMonth = Middle) or (@PlayerMonth = Late) {
+				& when (@Autohide = Off) {
+					bottom: 43px;
+				}
+				& when (@Autohide = On) {
+					bottom: 8px;
+					-moz-transition: bottom 0.5s ease-in;
+					-ms-transition: bottom 0.5s ease-in;
+					-o-transition: bottom 0.5s ease-in;
+					-webkit-transition: bottom 0.5s ease-in;
+					transition: bottom 0.5s ease-in;
+				}
+				& when (@Autohide = Fade) or (@Autohide = Auto) {
+					bottom: 3px;
+					-moz-transition: bottom 0.5s ease-in;
+					-ms-transition: bottom 0.5s ease-in;
+					-o-transition: bottom 0.5s ease-in;
+					-webkit-transition: bottom 0.5s ease-in;
+					transition: bottom 0.5s ease-in;
+				}
+			}
+		}
+		#movie_player.html5-video-player:hover &.ytp-subtitles-player-content when (@PlayerMonth = Early) {
+			-moz-transition: all 0s linear 0s;
+			-ms-transition: all 0s linear 0s;
+			-o-transition: all 0s linear 0s;
+			-webkit-transition: all 0s linear 0s;
+			transition: all 0s linear 0s;
+		}
 	}
 	.html5-video-player .standard-caption-window {
 		position: absolute;
