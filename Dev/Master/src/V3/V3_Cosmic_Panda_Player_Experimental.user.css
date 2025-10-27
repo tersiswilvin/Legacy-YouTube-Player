@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player Experimental
 @namespace      userstyles.world/user/tersiswilvin
-@version        20251027-00.1.2
+@version        20251027-01.1.2
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
 @updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_Experimental.user.css
@@ -14,7 +14,7 @@
 @var            select                                            AhCursor                "Cursor Preset"                  ["Default*", "Default_Autohide", "Off", "Off_Autohide"]
 @var            checkbox                                          DefaultProgTooltipStyle "Default Progress Tooltip Style" 0
 @var            checkbox                                          DefaultSettingStyle     "Default Setting Style"          0
-@var            checkbox                                          JFKTrsprntBkg           " ↳ Transparent JFK Background"  0
+@var            checkbox                                          JFKTrsprntBkg           " └ Transparent JFK Background"  0
 @var            checkbox                                          DefaultTooltipStyle     "Default Tooltip Style"          0
 @var            checkbox                                          DefaultUnavailableStyle "Default Unavailable Style"      0
 @var            checkbox                                          DefaultVideoLoader      "Default Video Loader"           0
@@ -28,7 +28,7 @@
 @var            select                                            FallbackTVStaticPreset  "Fallback TV Static Preset"      ["None*", "Animated", "Canvas", "Static"]
 @var            checkbox                                          FlashPlayerMode         "Flash Player Mode ( WIP )"      0
 @var            checkbox                                          FlatterSettings         "Flatter Menu Styling"           0
-@var            checkbox                                          FSFloating              " ↳ Floating"                    1
+@var            checkbox                                          FSFloating              " └ Floating"                    1
 @var            checkbox                                          FocusOutline            "Focus Outline"                  1
 @var            checkbox                                          ForceProgressTooltip    "Force Progress Tooltip"         0
 @var            checkbox                                          ForceSettingsMenu       "Force Settings Menu"            0
@@ -37,7 +37,7 @@
 @var            checkbox                                          Forcewatermark          "Force Watermark"                0
 @var            checkbox                                          Forceinfobar            "Force infobar"                  0
 @var            number                                            FsTbW                   "Fullscreen Taskbar Width"       [0, 0, null, 1, "px"]
-@var            select                                            FsPre                   " ↳ Preset"                      ["Left", "Right", "Bottom*"]
+@var            select                                            FsPre                   " └ Preset"                      ["Left", "Right", "Bottom*"]
 @var            checkbox                                          HideAdProgress          "Hide Ad progress"               1
 @var            checkbox                                          HideAdSkipButton        "Hide Ad Skip Container"         1
 @var            checkbox                                          HideAnnotation          "Hide Annotation Button"         0
@@ -1442,7 +1442,7 @@
 		}
 		z-index: 920;
 		& when not (@PlayerMonth = Early) and (@Autohide = On) or (@Autohide = Auto) {
-			.disabled-control-seek:not(.ytp-no-controls) &, .ad-interrupting:not(.ytp-no-controls):not(.html5-native-controls) &, .autominimize-progress-bar:not(.cued-mode) &, html:not([data-player-size=fullscreen]) :not(.ideal-aspect).autominimize-progress-bar-non-aspect:not(.cued-mode) &, .queue-miniplayer #player .html5-video-player:not(.ytp-block-autohide) & {
+			.disabled-control-seek:not(.ytp-no-controls) &, .ad-interrupting:not(.ytp-no-controls):not(.html5-native-controls) &, .autominimize-progress-bar:not(.cued-mode) &, html:not([data-player-size=fullscreen]) :not(.ideal-aspect).autominimize-progress-bar-non-aspect:not(.cued-mode) &, .queue-miniplayer #player .html5-video-player:not(.ytp-block-autohide) &, .queue-miniplayer #player .html5-video-player:not(.ytp-block-autohide) & {
 				bottom: 3px;
 			}
 			.html5-main-video, .html5-video-content {
@@ -1455,6 +1455,10 @@
 	}
 	.html5-main-video {
 		z-index: unset;
+	}
+	html:not([data-player-size="fullscreen"]) .queue-miniplayer #player .html5-video-player video {
+		max-width: 100%;
+		max-height: 100%;
 	}
 
 	.html5-fresca-module {
@@ -1619,7 +1623,7 @@
 		.cued-mode & when (@Autohide = On) or (@Autohide = Auto) {
 			bottom: -35px;
 		}
-		.disabled-control-seek &,.autominimize-progress-bar:not(.ytp-block-autohide) &,html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) &, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &,.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &, .queue-miniplayer #player:not(:hover) .html5-video-player:not(.paused-mode) {
+		.disabled-control-seek &,.autominimize-progress-bar:not(.ytp-block-autohide) &,html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) &, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &,.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &, .queue-miniplayer #player .html5-video-player:not(.ytp-block-autohide) & {
 			& when (@PlayerMonth = Early) {
 				& when (@Autohide = Auto) {
 					bottom: -31px;
@@ -1656,7 +1660,7 @@
 				}
 			}
 		}
-		.autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &,.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &,html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) &, .queue-miniplayer #player .html5-video-player:not(.ytp-block-autohide) & {
+		.autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &,.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &,html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) & {
 			& when (@PlayerMonth = Early) {
 				& when (@Autohide = Auto) {
 					bottom: -31px;
