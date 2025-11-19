@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player Experimental
 @namespace      userstyles.world/user/tersiswilvin
-@version        20251028-00.1.2
+@version        20251118-00.1.2
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
 @updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_Experimental.user.css
@@ -9,9 +9,10 @@
 @preprocessor   less
 @var            checkbox                                          AccPrevTailPos          "Accurate Preview Tail Position" 1
 @var            checkbox                                          AccWtmAnim              "Accurate Watermark Animations"  1
-@var            select                                            Autohide                "Autohide Preset"                ["Off", "On", "Fade*", "Auto"]
 @var            checkbox                                          CMIcons                 "Context Menu Icons"             0
 @var            select                                            AhCursor                "Cursor Preset"                  ["Default*", "Default_Autohide", "Off", "Off_Autohide"]
+@var            checkbox                                          DefaultInfobarStyle     "Default Infobar Style"          0
+@var            checkbox                                          DefaultInfobarIconStyle "Default Infobar icon Style"     0
 @var            checkbox                                          DefaultProgTooltipStyle "Default Progress Tooltip Style" 0
 @var            checkbox                                          DefaultSettingStyle     "Default Setting Style"          0
 @var            checkbox                                          JFKTrsprntBkg           " └ Transparent JFK Background"  0
@@ -19,6 +20,13 @@
 @var            checkbox                                          DefaultUnavailableStyle "Default Unavailable Style"      0
 @var            checkbox                                          DefaultVideoLoader      "Default Video Loader"           0
 @var            checkbox                                          DEVMode                 "Developer Mode"                 0
+@var            checkbox                                          Forceinfobar            " ├ Force Infobar"               1
+@var            checkbox                                          ForceProgressTooltip    " ├ Force Progress Tooltip"      1
+@var            checkbox                                          ForceSettingsMenu       " ├ Force Settings Menu"         1
+@var            checkbox                                          ForceThumbnail          " ├ Force Thumbnail"             1
+@var            checkbox                                          ForceWOYTi              " ├ Force Watch On Youtube icon" 1
+@var            checkbox                                          Forcewatermark          " ├ Force Watermark"             1
+@var            checkbox                                          ForceYTPButtons         " └ Force YTP Buttons"           1
 @var            checkbox                                          EarlyClipsEnabled       "Early Clips Enabled"            0
 @var            checkbox                                          ECMHSF                  "Early Context Menu hover Fix"   0
 @var            checkbox                                          EarlyFsExperiment       "Early Fullscreen Experiment"    0
@@ -30,14 +38,8 @@
 @var            checkbox                                          FlatterSettings         "Flatter Menu Styling"           0
 @var            checkbox                                          FSFloating              " └ Floating"                    1
 @var            checkbox                                          FocusOutline            "Focus Outline"                  1
-@var            checkbox                                          ForceProgressTooltip    "Force Progress Tooltip"         0
-@var            checkbox                                          ForceSettingsMenu       "Force Settings Menu"            0
-@var            checkbox                                          ForceThumbnail          "Force Thumbnail"                0
-@var            checkbox                                          ForceWOYTi              "Force Watch On Youtube icon"    0
-@var            checkbox                                          Forcewatermark          "Force Watermark"                0
-@var            checkbox                                          Forceinfobar            "Force infobar"                  0
-@var            number                                            FsTbW                   "Fullscreen Taskbar Width"       [0, 0, null, 1, "px"]
-@var            select                                            FsPre                   " └ Preset"                      ["Left", "Right", "Bottom*"]
+@var            number                                            FsTbS                   "Fullscreen Taskbar Size"        [0, 0, null, 1, "px"]
+@var            select                                            FsLocPre                " └ Location Preset"             ["Left", "Right", "Bottom*"]
 @var            checkbox                                          HideAdProgress          "Hide Ad progress"               1
 @var            checkbox                                          HideAdSkipButton        "Hide Ad Skip Container"         1
 @var            checkbox                                          HideAnnotation          "Hide Annotation Button"         0
@@ -54,7 +56,9 @@
 @var            checkbox                                          HUnB                    "Hide Unavailable Buttons"       1
 @var            checkbox                                          QualityBadges           "Hide Quality Badges"            1
 @var            checkbox                                          IBIO                    "Infobar Icons Only"             0
+@var            select                                            MiniplayerAutohide      "Miniplayer Autohide Preset"     ["PlayerSync", "Off", "On", "Fade", "Auto*"]
 @var            select                                            PlayButtonStyle         "Play Button Style"              ["2010M", "2011M", "2012E*", "2013M", "2014"]
+@var            select                                            PlayerAutohide          "Player Autohide Preset"         ["Off", "On", "Fade*", "Auto"]
 @var            select                                            PlayerMonth             "Player Month"                   ["Early", "Middle*", "Late"]
 @var            checkbox                                          PlayerSizeTransition    "Player Size Transition"         1
 @var            checkbox                                          PlayerTheaterTransition "Player Theater Transition"      1
@@ -234,16 +238,16 @@
 				transition: top 0.05s ease-in;
 			}
 			[class*="flash7"] ~ * &:before {
-				content: "V3 Cosmic Panda Player does not support Flash7 Player.\APlease disable either Flash7 Player or V3 Cosmic Panda Player.";
+				content: "V3 Cosmic Panda Player does not support Flash7 Player.\APlease disable either Flash7 Player or V3 Cosmic Panda Player for the best compatibility.";
 			}
 			[pl-ver^="c"] &:before {
-				content: "V3 Cosmic Panda Player does not support StarTubes 2012 Player.\APlease disable either StarTubes 2012 Player or V3 Cosmic Panda Player.";
+				content: "V3 Cosmic Panda Player does not fully support StarTubes 2012 Player (bugs may occur).\APlease disable either StarTubes 2012 Player or V3 Cosmic Panda Player for the best compatibility.";
 			}
 			[exp-modern-player] &:before, [pl-ver^="m"] &:before {
-				content: "V3 Cosmic Panda Player does not support StarTubes Modern Player.\APlease disable either StarTubes Modern Player or V3 Cosmic Panda Player.";
+				content: "V3 Cosmic Panda Player does not support StarTubes Modern Player.\APlease disable either StarTubes Modern Player or V3 Cosmic Panda Player for the best compatibility.";
 			}
 			&[data-version*="/base.js"]:before {
-				content: "V3 Cosmic Panda Player does not support the modern YouTube Player.\APlease disable either the modern YouTube Player or V3 Cosmic Panda Player.";
+				content: "V3 Cosmic Panda Player does not support the modern YouTube Player.\APlease disable either the modern YouTube Player or V3 Cosmic Panda Player for the best compatibility.";
 			}
 			&.disabled-control-seek:before, &.autominimize-progress-bar:not(.ytp-block-autohide):before, html:not([data-player-size=fullscreen]) &.autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide):before, &.autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting):before, &.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting):before, html[data-player-size=fullscreen] &.autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting):before {
 				top: -100px;
@@ -665,151 +669,155 @@
 	}
 
 	.html5-info-bar {
-		& when (@Forceinfobar = 0) and (@DEVMode = 0) {
+		& when (@DEVMode = 0) and (@Forceinfobar = 0) {
 			display: none;
 		}
-		& when (@Forceinfobar = 1) or (@DEVMode = 1) {
+		& when (@DEVMode = 1) and (@Forceinfobar = 1) {
 			display: block;
 		}
-		height: 28px;
-		z-index: 920;
-		cursor: pointer;
-		-moz-transition: top 0.05s ease-in;
-		-ms-transition: top 0.05s ease-in;
-		-o-transition: top 0.05s ease-in;
-		-webkit-transition: top 0.05s ease-in;
-		transition: top 0.05s ease-in;
-		.html5-video-player:not(.ytp-block-autohide) &:not(.show-share) {
-			top: -45px;
-			-moz-transition: top 0.5s ease-in;
-			-ms-transition: top 0.5s ease-in;
-			-o-transition: top 0.5s ease-in;
-			-webkit-transition: top 0.5s ease-in;
-			transition: top 0.5s ease-in;
-			opacity: 1;
-		}
-		.queue-miniplayer #player:not(:hover) .html5-video-player:not(.paused-mode) & {
-			opacity: 1
-		}
-	}
-	.html5-title {
-		font-size: 16px;
-		line-height: 29px;
-		&-text-wrapper, &-text {
-			color: inherit !important;
-			font-size: 16px;
-			line-height: 29px;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			white-space: nowrap;
-		}
-		&-text {
-			float: left;
-			width: unset;
-		}
-		&-logo {
-			color: #fff;
-			position: absolute;
-			bottom: 4px;
-			right: 5px;
-			font-size: 11px;
-			float: unset;
-			line-height: 1;
-			padding: 0;
-			&:hover {
-				text-decoration: none
+		& when (@DefaultInfobarStyle = 0) {
+			height: 28px;
+			z-index: 920;
+			cursor: pointer;
+			-moz-transition: top 0.05s ease-in;
+			-ms-transition: top 0.05s ease-in;
+			-o-transition: top 0.05s ease-in;
+			-webkit-transition: top 0.05s ease-in;
+			transition: top 0.05s ease-in;
+			.html5-video-player:not(.ytp-block-autohide) &:not(.show-share) {
+				top: -45px;
+				-moz-transition: top 0.5s ease-in;
+				-ms-transition: top 0.5s ease-in;
+				-o-transition: top 0.5s ease-in;
+				-webkit-transition: top 0.5s ease-in;
+				transition: top 0.5s ease-in;
+				opacity: 1;
+			}
+			.queue-miniplayer #player:not(:hover) .html5-video-player:not(.paused-mode) & {
+				opacity: 1
 			}
 		}
 	}
-	.html5-info-panel {
-		top: 28px;
-		height: 100%;
-		z-index: 880;
-		opacity: 0;
-		border-top: 1px solid #222;
-		margin: 0;
-		.show-more-info & {
-			opacity: 1
+	& when (@DefaultInfobarStyle = 0) {
+		.html5-title {
+			font-size: 16px;
+			line-height: 29px;
+			&-text-wrapper, &-text {
+				color: inherit !important;
+				font-size: 16px;
+				line-height: 29px;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+			&-text {
+				float: left;
+				width: unset;
+			}
+			&-logo {
+				color: #fff;
+				position: absolute;
+				bottom: 4px;
+				right: 5px;
+				font-size: 11px;
+				float: unset;
+				line-height: 1;
+				padding: 0;
+				&:hover {
+					text-decoration: none
+				}
+			}
 		}
-		&-content div:has(.html5-author-img) {
-			float: left
+		.html5-info-panel {
+			top: 28px;
+			height: 100%;
+			z-index: 880;
+			opacity: 0;
+			border-top: 1px solid #222;
+			margin: 0;
+			.show-more-info & {
+				opacity: 1
+			}
+			&-content div:has(.html5-author-img) {
+				float: left
+			}
+
+		}
+		.ytp-button-playlist-text {
+			padding: 1px 10px 0 2px;
+		}
+		.ytp-playlist-tray-index-length {
+			margin-top: 0
 		}
 
-	}
-	.ytp-button-playlist-text {
-		padding: 1px 10px 0 2px;
-	}
-	.ytp-playlist-tray-index-length {
-		margin-top: 0
-	}
-
-	.html5-author, .html5-author-img, .html5-description-text {
-		float: left;
-	}
-	.html5-author-info {
-		margin: 0;
-		margin-top: 12px;
-		margin-left: 54px;
-	}
-	.html5-author-img, .html5-author-info {
-		display: block;
-	}
-	.html5-author-name {
-		font-size: 17px;
-		padding-left: 3px;
-	}
-	.html5-video-info {
-		width: 165px;
-		clear: left;
-		margin-top: 12px;
-	}
-	.html5-view-count {
-		font-size: 19px;
-		font-weight: normal;
-		&:after {
-			content: " views";
-			font-size: 13px;
-			line-height: 1
-		}
-	}
-	.ytp-sentiment-display {
-		height: 4px;
-		margin: 2px 0;
-		border: 1px solid #ccc;
-		overflow: hidden;
-		.html5-info-panel  & {
-			margin-top: 6px;
-		}
-	}
-	.ytp-sentiment-bar {
-		margin: 0;
-		&-likes {
+		.html5-author, .html5-author-img, .html5-description-text {
 			float: left;
-			height: 4px;
-			border-right: 1px solid #fff;
-			background: #060;
 		}
-		&-dislikes {
-			float: right;
-			height: 4px;
-			margin-right: -1px;
-			background: #c00;
+		.html5-author-info {
+			margin: 0;
+			margin-top: 12px;
+			margin-left: 54px;
 		}
-	}
-	.html5-description-text {
-		white-space: pre-wrap;
-		margin: 0;
-		margin-top: 19px;
-		margin-left: 32px;
-	}
+		.html5-author-img, .html5-author-info {
+			display: block;
+		}
+		.html5-author-name {
+			font-size: 17px;
+			padding-left: 3px;
+		}
+		.html5-video-info {
+			width: 165px;
+			clear: left;
+			margin-top: 12px;
+		}
+		.html5-view-count {
+			font-size: 19px;
+			font-weight: normal;
+			&:after {
+				content: " views";
+				font-size: 13px;
+				line-height: 1
+			}
+		}
+		.ytp-sentiment-display {
+			height: 4px;
+			margin: 2px 0;
+			border: 1px solid #ccc;
+			overflow: hidden;
+			.html5-info-panel  & {
+				margin-top: 6px;
+			}
+		}
+		.ytp-sentiment-bar {
+			margin: 0;
+			&-likes {
+				float: left;
+				height: 4px;
+				border-right: 1px solid #fff;
+				background: #060;
+			}
+			&-dislikes {
+				float: right;
+				height: 4px;
+				margin-right: -1px;
+				background: #c00;
+			}
+		}
+		.html5-description-text {
+			white-space: pre-wrap;
+			margin: 0;
+			margin-top: 19px;
+			margin-left: 32px;
+		}
 
-	.show-share .ytp-button-like, .show-share .ytp-button-dislike, .show-share .ytp-button-info, .show-more-info .ytp-button-like, .show-more-info .ytp-button-dislike, .show-more-info .ytp-button-share, .sentiment-dislike .ytp-button-like, .sentiment-like .ytp-button-dislike {
-		opacity: 1;
+		.show-share .ytp-button-like, .show-share .ytp-button-dislike, .show-share .ytp-button-info, .show-more-info .ytp-button-like, .show-more-info .ytp-button-dislike, .show-more-info .ytp-button-share, .sentiment-dislike .ytp-button-like, .sentiment-like .ytp-button-dislike {
+			opacity: 1;
+		}
 	}
 
 	.html5-endscreen {
 		z-index: 920;
-		html:not([data-player-size=fullscreen]) & when (@Forceinfobar = 1) or (@DEVMode = 1) {
+		html:not([data-player-size=fullscreen]) & when (@DEVMode = 1) and (@Forceinfobar = 1) {
 			top: 28px;
 		}
 	}
@@ -1049,7 +1057,7 @@
 		}
 	}
 	.ytp-menu-container {
-		& when (@DEVMode = 1) or (@ForceSettingsMenu = 1) {
+		& when (@DEVMode = 1) and (@ForceSettingsMenu = 1) {
 			display: block !important;
 		}
 		& when (@DefaultSettingStyle = 1) {
@@ -1174,91 +1182,95 @@
 		}
 	}
 
-	.ytp-progress-tooltip when (@DefaultProgTooltipStyle = 0) {
-		position: absolute;
-		left: 0;
-		bottom: 18px;
-		top: unset;
-		width: 50px;
-		height: 20px;
-		background-color: rgba(22, 22, 22, 0.8);
-		-moz-border-radius: 4px;
-		-webkit-border-radius: 4px;
-		border-radius: 4px;
-		margin: 0;
-		padding: 2px;
-		overflow: visible;
-		& when (@ForceProgressTooltip = 1) or (@DEVMode = 1) {
+	.ytp-progress-tooltip {
+		& when (@DefaultProgTooltipStyle = 0) {
+			position: absolute;
+			left: 0;
+			bottom: 18px;
+			top: unset;
+			width: 50px;
+			height: 20px;
+			background-color: rgba(22, 22, 22, 0.8);
+			-moz-border-radius: 4px;
+			-webkit-border-radius: 4px;
+			border-radius: 4px;
+			margin: 0;
+			padding: 2px;
+			overflow: visible;
+		}
+		& when (@DEVMode = 1) and (@ForceProgressTooltip = 1) {
 			display: block !important;
 		}
-		&.with-thumbnail {
-			width: 108px;
-			height: 72px;
-			top: unset;
-			bottom: 18px;
-			.ytp-progress-tooltip-timestamp-container, .ytp-progress-tooltip-timestamp {
+		& when (@DefaultProgTooltipStyle = 0) {
+			&.with-thumbnail {
 				width: 108px;
-				height: 12px;
-				line-height: 12px;
-				background: transparent;
-				position: unset;
+				height: 72px;
+				top: unset;
+				bottom: 18px;
+				.ytp-progress-tooltip-timestamp-container, .ytp-progress-tooltip-timestamp {
+					width: 108px;
+					height: 12px;
+					line-height: 12px;
+					background: transparent;
+					position: unset;
+					.exp-player-bigger-storyboard & {
+						width: 142px;
+					}
+				}
+				.ytp-progress-tooltip-thumbnail-container {
+					background-color: transparent;
+					.exp-player-bigger-storyboard & {
+						height: 80px !important;
+					}
+					.ytp-progress-tooltip-thumbnail {
+						&[style*="width: 60px"] {
+							transform: scalex(1.3333);
+						}
+					}
+				}
 				.exp-player-bigger-storyboard & {
-					width: 142px;
+					height: 92px !important;
 				}
 			}
-			.ytp-progress-tooltip-thumbnail-container {
-				background-color: transparent;
-				.exp-player-bigger-storyboard & {
-					height: 80px !important;
+			&-timestamp-container, &-timestamp {
+				display: block;
+				width: 50px;
+				height: 20px;
+				margin: 0;
+				padding: 0;
+				font-size: 11px;
+				line-height: 20px;
+				color: #e3e3e3;
+				text-align: center;
+			}
+			&-arrow {
+				border-top: 5px solid rgba(22, 22, 22, 0.8);
+				& when (@AccPrevTailPos = 0)  {
+					&[style^="left: -"], &[style*="left: 0"], &[style*="left: 0.5px"], &[style*="left: 1px"], &[style*="left: 1.5px"], &[style*="left: 2px"], &[style*="left: 2.5px"], &[style*="left: 3px"], &[style*="left: 3.5px"], &[style*="left: 4px"], &[style*="left: 4.5px"], &[style*="left: 5px"], &[style*="left: 5.5px"] {
+						left: 6px !important;
+					}
 				}
-				.ytp-progress-tooltip-thumbnail {
-					&[style*="width: 60px"] {
-						transform: scalex(1.3333);
+				& when (@AccPrevTailPos = 1)  {
+					&[style^="left: -"], &[style*="left: 0"], &[style*="left: 0.5px"] {
+						left: 1px !important;
 					}
 				}
 			}
-			.exp-player-bigger-storyboard & {
-				height: 92px !important;
+			&:not(.with-thumbnail) &-arrow[style^="left: 4"]:not([style*="left: 4px"]):not([style*="left: 4.5px"]) {
+				left: 39px !important;
 			}
-		}
-		&-timestamp-container, &-timestamp {
-			display: block;
-			width: 50px;
-			height: 20px;
-			margin: 0;
-			padding: 0;
-			font-size: 11px;
-			line-height: 20px;
-			color: #e3e3e3;
-			text-align: center;
-		}
-		&-arrow {
-			border-top: 5px solid rgba(22, 22, 22, 0.8);
-			& when (@AccPrevTailPos = 0)  {
-				&[style^="left: -"], &[style*="left: 0"], &[style*="left: 0.5px"], &[style*="left: 1px"], &[style*="left: 1.5px"], &[style*="left: 2px"], &[style*="left: 2.5px"], &[style*="left: 3px"], &[style*="left: 3.5px"], &[style*="left: 4px"], &[style*="left: 4.5px"], &[style*="left: 5px"], &[style*="left: 5.5px"] {
-					left: 6px !important;
-				}
+			&.with-thumbnail &-arrow[style*="left: 98px"], &.with-thumbnail &-arrow[style*="left: 98.5px"], &.with-thumbnail &-arrow[style*="left: 99px"], &.with-thumbnail &-arrow[style*="left: 99.5px"], &.with-thumbnail &-arrow[style^="left: 10"]:not([style*="left: 10px"]):not([style*="left: 10.5px"]) {
+				left: 97px !important;
 			}
-			& when (@AccPrevTailPos = 1)  {
-				&[style^="left: -"], &[style*="left: 0"], &[style*="left: 0.5px"] {
-					left: 1px !important;
-				}
-			}
-		}
-		&:not(.with-thumbnail) &-arrow[style^="left: 4"]:not([style*="left: 4px"]):not([style*="left: 4.5px"]) {
-			left: 39px !important;
-		}
-		&.with-thumbnail &-arrow[style*="left: 98px"], &.with-thumbnail &-arrow[style*="left: 98.5px"], &.with-thumbnail &-arrow[style*="left: 99px"], &.with-thumbnail &-arrow[style*="left: 99.5px"], &.with-thumbnail &-arrow[style^="left: 10"]:not([style*="left: 10px"]):not([style*="left: 10.5px"]) {
-			left: 97px !important;
-		}
-		.sponsorCategoryTooltipVisible&[style*="width: 108px;"] when (@SponsorPreviewFix = 1) {
-			width: 108px !important;
-			height: 86px;
-			&.with-text .ytp-progress-tooltip-text-container {
-				display: block;
-				height: 12px;
-				.ytp-progress-tooltip-text {
-					display: none;
+			.sponsorCategoryTooltipVisible&[style*="width: 108px;"] when (@SponsorPreviewFix = 1) {
+				width: 108px !important;
+				height: 86px;
+				&.with-text .ytp-progress-tooltip-text-container {
+					display: block;
+					height: 12px;
+					.ytp-progress-tooltip-text {
+						display: none;
+					}
 				}
 			}
 		}
@@ -1375,14 +1387,14 @@
 		-webkit-transition: opacity 0.05s ease-in, bottom 0.05s ease-in;
 		transition: opacity 0.05s ease-in, bottom 0.05s ease-in;
 		[data-player-size=fullscreen] & {
-			& when (@FsPre = Right) {
-				Right: @FsTbW + 5;
+			& when (@FsLocPre = Right) {
+				Right: @FsTbS + 5;
 			}
-			& when (@FsPre = Bottom) {
-				bottom: @FsTbW + 33;
+			& when (@FsLocPre = Bottom) {
+				bottom: @FsTbS + 33;
 			}
 		}
-		& when (@Forcewatermark = 1) or (@DEVMode = 1) {
+		& when (@DEVMode = 1) and (@Forcewatermark = 1) {
 			display: block !important;
 		}
 		&[src*="base64,"], &[src*="/img/pixel"] {
@@ -1395,18 +1407,18 @@
 			opacity: 0.8
 		}
 		.disabled-control-seek:not(.ytp-no-controls) &, .ad-interrupting:not(.ytp-no-controls) .video-ads &, .autominimize-progress-bar:not(.ytp-block-autohide) &, html:not([data-player-size=fullscreen]) :not(.ideal-aspect).autominimize-progress-bar-non-aspect:not(.ytp-block-autohide) & {
-			& when (@Autohide = Off) or (@Autohide = Fade) {
+			& when (@PlayerAutohide = Off) or (@PlayerAutohide = Fade) {
 				bottom: 33px;
 			}
 			& when (@AccWtmAnim = 0) {
-				& when (@Autohide = On) {
+				& when (@PlayerAutohide = On) {
 					bottom: -2px;
 				}
-				& when (@Autohide = Auto) {
+				& when (@PlayerAutohide = Auto) {
 					bottom: 1px;
 				}
 			}
-			& when (@AccWtmAnim = 1) and ((@Autohide = On) or (@Autohide = Auto)) {
+			& when (@AccWtmAnim = 1) and ((@PlayerAutohide = On) or (@PlayerAutohide = Auto)) {
 				bottom: 3px;
 			}
 			opacity: 0;
@@ -1434,15 +1446,28 @@
 
 	/*/== Video Container Items ==/*/
 	.html5-video-container {
-		& when (@Autohide = Off) or (@Autohide = Fade) or (@PlayerMonth = Early) and (@Autohide = On) {
+		& when (@PlayerAutohide = Off) or (@PlayerAutohide = Fade) or (@PlayerMonth = Early) and (@PlayerAutohide = On) {
 			bottom: 30px;
 		}
-		& when not (@PlayerMonth = Early) and (@Autohide = On) or (@Autohide = Auto) {
+		& when not (@PlayerMonth = Early) and (@PlayerAutohide = On) or (@PlayerAutohide = Auto) {
 			bottom: 3px;
 		}
 		z-index: 920;
-		& when not (@PlayerMonth = Early) and (@Autohide = On) or (@Autohide = Auto) {
-			.disabled-control-seek:not(.ytp-no-controls) &, .ad-interrupting:not(.ytp-no-controls):not(.html5-native-controls) &, .autominimize-progress-bar:not(.cued-mode) &, html:not([data-player-size=fullscreen]) :not(.ideal-aspect).autominimize-progress-bar-non-aspect:not(.cued-mode) &, .queue-miniplayer #player .html5-video-player:not(.ytp-block-autohide) &, .queue-miniplayer #player .html5-video-player:not(.ytp-block-autohide) & {
+		& when not (@PlayerMonth = Early) and (@PlayerAutohide = On) or (@PlayerAutohide = Auto) {
+			.disabled-control-seek:not(.ytp-no-controls) &, .ad-interrupting:not(.ytp-no-controls):not(.html5-native-controls) &, .autominimize-progress-bar:not(.cued-mode) &, html:not([data-player-size=fullscreen]) :not(.ideal-aspect).autominimize-progress-bar-non-aspect:not(.cued-mode) & {
+				bottom: 3px;
+			}
+			& when (@MiniplayerAutohide = PlayerSync) {
+				.queue-miniplayer #player .html5-video-player & {
+					bottom: 3px;
+				}
+			}
+			.html5-main-video, .html5-video-content {
+				height: 100% !important;
+			}
+		}
+		& when not (@PlayerMonth = Early) and (@MiniplayerAutohide = On) or (@MiniplayerAutohide = Auto) {
+			.queue-miniplayer #player .html5-video-player & {
 				bottom: 3px;
 			}
 			.html5-main-video, .html5-video-content {
@@ -1531,7 +1556,7 @@
 		}
 	}
 
-	.ytp-thumbnail when (@ForceThumbnail = 1) or (@DEVMode = 1) {
+	.ytp-thumbnail when (@DEVMode = 1) and (@ForceThumbnail = 1) {
 		display: block;
 	}
 
@@ -1588,18 +1613,18 @@
 		min-height: 26px;
 		z-index: 931;
 		html[data-player-size=fullscreen] & {
-			& when (@FsPre = Left) {
-				left: @FsTbW;
+			& when (@FsLocPre = Left) {
+				left: @FsTbS;
 				right: 0;
 			}
-			& when (@FsPre = Right) {
+			& when (@FsLocPre = Right) {
 				left: 0;
-				right: @FsTbW;
+				right: @FsTbS;
 			}
-			& when (@FsPre = Bottom) {
-				bottom: @FsTbW;
+			& when (@FsLocPre = Bottom) {
+				bottom: @FsTbS;
 			}
-			& when not (@FsPre = Bottom) {
+			& when not (@FsLocPre = Bottom) {
 				width: unset;
 			}
 		}
@@ -1620,12 +1645,12 @@
 		.el-embedded & {
 			opacity: 1;
 		}
-		.cued-mode & when (@Autohide = On) or (@Autohide = Auto) {
+		.cued-mode & when (@PlayerAutohide = On) or (@PlayerAutohide = Auto) {
 			bottom: -35px;
 		}
-		.disabled-control-seek &,.autominimize-progress-bar:not(.ytp-block-autohide) &,html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) &, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &,.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &, .queue-miniplayer #player .html5-video-player:not(.ytp-block-autohide) & {
+		.disabled-control-seek &,.autominimize-progress-bar:not(.ytp-block-autohide) &,html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) &, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &,.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) & {
 			& when (@PlayerMonth = Early) {
-				& when (@Autohide = Auto) {
+				& when (@PlayerAutohide = Auto) {
 					bottom: -31px;
 					-webkit-transition: bottom 0.25s ease-in;
 					-moz-transition: bottom 0.25s ease-in;
@@ -1633,7 +1658,7 @@
 					-ms-transition: bottom 0.25s ease-in;
 					transition-delay: 3s;
 				}
-				& when not (@Autohide = Auto) {
+				& when not (@PlayerAutohide = Auto) {
 					bottom: 0;
 					-webkit-transition: unset;
 					-moz-transition: unset;
@@ -1642,7 +1667,7 @@
 				}
 			}
 			& when not (@PlayerMonth = Early) {
-				& when (@Autohide = On) {
+				& when (@PlayerAutohide = On) {
 					bottom: -35px;
 					-moz-transition: bottom 0.5s ease-in;
 					-ms-transition: bottom 0.5s ease-in;
@@ -1650,7 +1675,75 @@
 					-webkit-transition: bottom 0.5s ease-in;
 					transition: bottom 0.5s ease-in;
 				}
-				& when (@Autohide = Auto) {
+				& when (@PlayerAutohide = Auto) {
+					bottom: -27px;
+					-moz-transition: bottom 0.5s ease-in;
+					-ms-transition: bottom 0.5s ease-in;
+					-o-transition: bottom 0.5s ease-in;
+					-webkit-transition: bottom 0.5s ease-in;
+					transition: bottom 0.5s ease-in;
+				}
+			}
+		}
+		.queue-miniplayer #player .html5-video-player:not(.ytp-block-autohide) & {
+			& when (@PlayerMonth = Early) {
+				& when (@PlayerAutohide = Auto) and (@MiniplayerAutohide = PlayerSync) {
+					bottom: -31px;
+					-webkit-transition: bottom 0.25s ease-in;
+					-moz-transition: bottom 0.25s ease-in;
+					-o-transition: bottom 0.25s ease-in;
+					-ms-transition: bottom 0.25s ease-in;
+					transition-delay: 3s;
+				}
+				& when (@MiniplayerAutohide = Auto) {
+					bottom: -31px;
+					-webkit-transition: bottom 0.25s ease-in;
+					-moz-transition: bottom 0.25s ease-in;
+					-o-transition: bottom 0.25s ease-in;
+					-ms-transition: bottom 0.25s ease-in;
+					transition-delay: 3s;
+				}
+				& when not (@PlayerAutohide = Auto) and (@MiniplayerAutohide = PlayerSync) {
+					bottom: 0;
+					-webkit-transition: unset;
+					-moz-transition: unset;
+					-o-transition: unset;
+					-ms-transition: unset;
+				}
+				& when not (@MiniplayerAutohide = Auto) {
+					bottom: 0;
+					-webkit-transition: unset;
+					-moz-transition: unset;
+					-o-transition: unset;
+					-ms-transition: unset;
+				}
+			}
+			& when not (@PlayerMonth = Early) {
+				& when (@PlayerAutohide = On) and (@MiniplayerAutohide = PlayerSync) {
+					bottom: -35px;
+					-moz-transition: bottom 0.5s ease-in;
+					-ms-transition: bottom 0.5s ease-in;
+					-o-transition: bottom 0.5s ease-in;
+					-webkit-transition: bottom 0.5s ease-in;
+					transition: bottom 0.5s ease-in;
+				}
+				& when (@MiniplayerAutohide = On) {
+					bottom: -35px;
+					-moz-transition: bottom 0.5s ease-in;
+					-ms-transition: bottom 0.5s ease-in;
+					-o-transition: bottom 0.5s ease-in;
+					-webkit-transition: bottom 0.5s ease-in;
+					transition: bottom 0.5s ease-in;
+				}
+				& when (@PlayerAutohide = Auto) and (@MiniplayerAutohide = PlayerSync) {
+					bottom: -27px;
+					-moz-transition: bottom 0.5s ease-in;
+					-ms-transition: bottom 0.5s ease-in;
+					-o-transition: bottom 0.5s ease-in;
+					-webkit-transition: bottom 0.5s ease-in;
+					transition: bottom 0.5s ease-in;
+				}
+				& when (@MiniplayerAutohide = Auto) {
 					bottom: -27px;
 					-moz-transition: bottom 0.5s ease-in;
 					-ms-transition: bottom 0.5s ease-in;
@@ -1662,7 +1755,7 @@
 		}
 		.autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &,.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &,html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) & {
 			& when (@PlayerMonth = Early) {
-				& when (@Autohide = Auto) {
+				& when (@PlayerAutohide = Auto) {
 					bottom: -31px;
 					-webkit-transition: bottom 0.25s ease-in;
 					-moz-transition: bottom 0.25s ease-in;
@@ -1670,7 +1763,7 @@
 					-ms-transition: bottom 0.25s ease-in;
 					transition-delay: 3s;
 				}
-				& when not (@Autohide = Auto) {
+				& when not (@PlayerAutohide = Auto) {
 					bottom: 0;
 					-webkit-transition: unset;
 					-moz-transition: unset;
@@ -1680,7 +1773,7 @@
 				}
 			}
 			& when not (@PlayerMonth = Early) {
-				& when not (@Autohide = Off) {
+				& when not (@PlayerAutohide = Off) {
 					bottom: -35px;
 					-moz-transition: bottom 0.5s ease-in;
 					-ms-transition: bottom 0.5s ease-in;
@@ -1732,11 +1825,50 @@
 		.queue-miniplayer #player:not(:hover) .html5-video-player:not(.paused-mode) & {
 			height: 8px !important;
 		}
-		.disabled-control-seek &,.autominimize-progress-bar:not(.ytp-block-autohide) &,html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) &, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &,.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &,html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) &, .queue-miniplayer #player .html5-video-player:not(.ytp-block-autohide) &, .queue-miniplayer #player:not(:hover) .html5-video-player:not(.paused-mode):not(.ytp-block-autohide) & {
-			& when not (@PlayerMonth = Early) and ((@Autohide = Off) or (@Autohide = On)) {
+		.disabled-control-seek &,.autominimize-progress-bar:not(.ytp-block-autohide) &,html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) &, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &,.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &,html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) & {
+			& when not (@PlayerMonth = Early) and ((@PlayerAutohide = Off) or (@PlayerAutohide = On)) {
 				height: 8px !important;
 			}
-			& when (@Autohide = Fade) or (@Autohide = Auto) or (@PlayerMonth = Early) {
+			& when (@PlayerAutohide = Fade) or (@PlayerAutohide = Auto) or (@PlayerMonth = Early) {
+				height: 3px !important;
+			}
+			& when (@PlayerMonth = Early) {
+				-moz-transition: unset;
+				-ms-transition: unset;
+				-o-transition: unset;
+				-webkit-transition: unset;
+				transition: unset;
+				-moz-transition-property: height;
+				-webkit-transition-property: height;
+				-o-transition-property: height;
+				-ms-transition-property: height;
+				transition-property: height;
+				-webkit-transition-duration: 0.5s;
+				-moz-transition-duration: 0.5s;
+				-o-transition-duration: 0.5s;
+				-ms-transition-duration: 0.5s;
+				transition-duration: 0.5s;
+				transition-delay: 3s;
+			}
+			& when not (@PlayerMonth = Early) {
+				-moz-transition: height 0.5s ease-in;
+				-ms-transition: height 0.5s ease-in;
+				-o-transition: height 0.5s ease-in;
+				-webkit-transition: height 0.5s ease-in;
+				transition: height 0.5s ease-in;
+			}
+		}
+		.queue-miniplayer #player .html5-video-player:not(.ytp-block-autohide) &, .queue-miniplayer #player:not(:hover) .html5-video-player:not(.paused-mode):not(.ytp-block-autohide) & {
+			& when not (@PlayerMonth = Early) and ((@PlayerAutohide = Off) or (@PlayerAutohide = On)) and (@MiniplayerAutohide = PlayerSync) {
+				height: 8px !important;
+			}
+			& when not (@PlayerMonth = Early) and ((@MiniplayerAutohide = Off) or (@MiniplayerAutohide = On)) {
+				height: 8px !important;
+			}
+			& when ((@PlayerAutohide = Fade) or (@PlayerAutohide = Auto) or (@PlayerMonth = Early)) and (@MiniplayerAutohide = PlayerSync) {
+				height: 3px !important;
+			}
+			& when (@MiniplayerAutohide = Fade) or (@MiniplayerAutohide = Auto) or (@MiniplayerAutohide = Early) {
 				height: 3px !important;
 			}
 			& when (@PlayerMonth = Early) {
@@ -1830,11 +1962,54 @@
 		transform: none;
 		bottom: unset;
 		z-index: -2;
-		.disabled-control-seek &,.autominimize-progress-bar:not(.ytp-block-autohide) &,html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) &, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &,.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &,html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) &, .queue-miniplayer #player .html5-video-player:not(.ytp-block-autohide) & {
-			& when not (@PlayerMonth = Early) and ((@Autohide = Off) or (@Autohide = On)) {
+		.disabled-control-seek &,.autominimize-progress-bar:not(.ytp-block-autohide) &,html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) &, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &,.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &,html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) & {
+			& when not (@PlayerMonth = Early) and ((@PlayerAutohide = Off) or (@PlayerAutohide = On)) {
 				height: 8px;
 			}
-			& when (@Autohide = Fade) or (@Autohide = Auto) or (@PlayerMonth = Early) {
+			& when (@PlayerAutohide = Fade) or (@PlayerAutohide = Auto) or (@PlayerMonth = Early) {
+				height: 3px;
+			}
+			& when (@PlayerMonth = Early) {
+				-moz-transition: unset;
+				-ms-transition: unset;
+				-o-transition: unset;
+				-webkit-transition: unset;
+				transition: unset;
+				-moz-transition-property: height;
+				-webkit-transition-property: height;
+				-o-transition-property: height;
+				-ms-transition-property: height;
+				transition-property: height;
+				-webkit-transition-duration: 0.5s;
+				-moz-transition-duration: 0.5s;
+				-o-transition-duration: 0.5s;
+				-ms-transition-duration: 0.5s;
+				transition-duration: 0.5s;
+				transition-delay: 3s;
+			}
+			& when not (@PlayerMonth = Early) {
+				-moz-transition: height 0.5s ease-in;
+				-ms-transition: height 0.5s ease-in;
+				-o-transition: height 0.5s ease-in;
+				-webkit-transition: height 0.5s ease-in;
+				transition: height 0.5s ease-in;
+			}
+			-moz-transform: none;
+			-ms-transform: none;
+			-webkit-transform: none;
+			transform: none;
+		}
+		.queue-miniplayer #player .html5-video-player:not(.ytp-block-autohide) & {
+			& when not (@PlayerMonth = Early) and ((@PlayerAutohide = Off) or (@PlayerAutohide = On)) and (@MiniplayerAutohide = PlayerSync) {
+				height: 8px;
+			}
+			& when not (@MiniplayerAutohide = Early) and ((@MiniplayerAutohide = Off) or (@MiniplayerAutohide = On)) {
+				height: 8px;
+			}
+			& when ((@PlayerAutohide = Fade) or (@PlayerAutohide = Auto) or (@PlayerMonth = Early)) and (@MiniplayerAutohide = PlayerSync) {
+				height: 3px;
+			}
+			& when (@MiniplayerAutohide = Fade) or (@MiniplayerAutohide = Auto) or (@MiniplayerAutohide = Early) {
 				height: 3px;
 			}
 			& when (@PlayerMonth = Early) {
@@ -2053,8 +2228,50 @@
 			-webkit-transform-origin: unset !important;
 			transform-origin: unset !important;
 		}
-		& when not (@Autohide = Off) or (@PlayerMonth = Early) {
-			.disabled-control-seek &,.autominimize-progress-bar:not(.ytp-block-autohide) &,html:not([data-player-size=fullscreen]) :not(.ideal-aspect).autominimize-progress-bar-non-aspect:not(.ytp-block-autohide) &, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &,.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &,html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) &, .queue-miniplayer #player .html5-video-player:not(.ytp-block-autohide) & {
+		& when not (@PlayerAutohide = Off) or (@PlayerMonth = Early) {
+			.disabled-control-seek &,.autominimize-progress-bar:not(.ytp-block-autohide) &,html:not([data-player-size=fullscreen]) :not(.ideal-aspect).autominimize-progress-bar-non-aspect:not(.ytp-block-autohide) &, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &,.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &,html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) & {
+				& when (@PlayerMonth = Early) {
+					-moz-transition: unset;
+					-ms-transition: unset;
+					-o-transition: unset;
+					-webkit-transition: unset;
+					transition: unset;
+					-moz-transform-origin: 50% 50%;
+					-moz-transition-property: -moz-transform, bottom;
+					-o-transform-origin: 50% 50%;
+					-o-transition-property: -o-transform, bottom;
+					-webkit-transform-origin: 50% 50%;
+					-webkit-transition-property: -webkit-transform, bottom;
+					-ms-transform-origin: 50% 50%;
+					-ms-transition-property: -ms-transform, bottom;
+					-moz-transform: scale(0);
+					-ms-transform: scale(0);
+					-o-transform: scale(0);
+					-webkit-transform: scale(0);
+					transform: scale(0);
+					bottom: 0;
+					-webkit-transition-duration: 0.5s;
+					-moz-transition-duration: 0.5s;
+					-o-transition-duration: 0.5s;
+					-ms-transition-duration: 0.5s;
+					transition-duration: 0.5s;
+					transition-delay: 3s;
+				}
+				& when not (@PlayerMonth = Early) {
+					top: -8px;
+					-moz-transform: scale(0);
+					-ms-transform: scale(0);
+					-o-transform: scale(0);
+					-webkit-transform: scale(0);
+					transform: scale(0);
+					transition: height 0.5s, top 0.5s, transform 0.5s;
+					-moz-transition: height 0.5s, top 0.5s, -moz-transform 0.5s;
+					-ms-transition: height 0.5s, top 0.5s, -ms-transform 0.5s;
+					-o-transition: height 0.5s, top 0.5s, -o-transform 0.5s;
+					-webkit-transition: height 0.5s, top 0.5s, -webkit-transform 0.5s;
+				}
+			}
+			.queue-miniplayer #player .html5-video-player:not(.ytp-block-autohide) & when (@MiniplayerAutohide = PlayerSync) {
 				& when (@PlayerMonth = Early) {
 					-moz-transition: unset;
 					-ms-transition: unset;
@@ -2097,8 +2314,80 @@
 				}
 			}
 		}
-		& when (@Autohide = Off) and not (@PlayerMonth = Early) {
+		& when not (@MiniplayerAutohide = Off) or (@PlayerMonth = Early) {
+			.queue-miniplayer #player .html5-video-player:not(.ytp-block-autohide) & {
+				& when (@PlayerMonth = Early) {
+					-moz-transition: unset;
+					-ms-transition: unset;
+					-o-transition: unset;
+					-webkit-transition: unset;
+					transition: unset;
+					-moz-transform-origin: 50% 50%;
+					-moz-transition-property: -moz-transform, bottom;
+					-o-transform-origin: 50% 50%;
+					-o-transition-property: -o-transform, bottom;
+					-webkit-transform-origin: 50% 50%;
+					-webkit-transition-property: -webkit-transform, bottom;
+					-ms-transform-origin: 50% 50%;
+					-ms-transition-property: -ms-transform, bottom;
+					-moz-transform: scale(0);
+					-ms-transform: scale(0);
+					-o-transform: scale(0);
+					-webkit-transform: scale(0);
+					transform: scale(0);
+					bottom: 0;
+					-webkit-transition-duration: 0.5s;
+					-moz-transition-duration: 0.5s;
+					-o-transition-duration: 0.5s;
+					-ms-transition-duration: 0.5s;
+					transition-duration: 0.5s;
+					transition-delay: 3s;
+				}
+				& when not (@PlayerMonth = Early) {
+					top: -8px;
+					-moz-transform: scale(0);
+					-ms-transform: scale(0);
+					-o-transform: scale(0);
+					-webkit-transform: scale(0);
+					transform: scale(0);
+					transition: height 0.5s, top 0.5s, transform 0.5s;
+					-moz-transition: height 0.5s, top 0.5s, -moz-transform 0.5s;
+					-ms-transition: height 0.5s, top 0.5s, -ms-transform 0.5s;
+					-o-transition: height 0.5s, top 0.5s, -o-transform 0.5s;
+					-webkit-transition: height 0.5s, top 0.5s, -webkit-transform 0.5s;
+				}
+			}
+		}
+		& when (@PlayerAutohide = Off) and not (@PlayerMonth = Early) {
 			.disabled-control-seek &,.autominimize-progress-bar:not(.ytp-block-autohide) &,html:not([data-player-size=fullscreen]) :not(.ideal-aspect).autominimize-progress-bar-non-aspect:not(.ytp-block-autohide) &, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &,.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &,html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) & {
+				top: -5px;
+				-moz-transform: none;
+				-ms-transform: none;
+				-o-transform: none;
+				-webkit-transform: none;
+				transform: none;
+				transition: height 0.5s, top 0.5s, transform 0.5s;
+				-moz-transition: height 0.5s, top 0.5s, -moz-transform 0.5s;
+				-ms-transition: height 0.5s, top 0.5s, -ms-transform 0.5s;
+				-o-transition: height 0.5s, top 0.5s, -o-transform 0.5s;
+				-webkit-transition: height 0.5s, top 0.5s, -webkit-transform 0.5s;
+			}
+			.queue-miniplayer #player .html5-video-player:not(.ytp-block-autohide) & when (@MiniplayerAutohide = PlayerSync) {
+				top: -5px;
+				-moz-transform: none;
+				-ms-transform: none;
+				-o-transform: none;
+				-webkit-transform: none;
+				transform: none;
+				transition: height 0.5s, top 0.5s, transform 0.5s;
+				-moz-transition: height 0.5s, top 0.5s, -moz-transform 0.5s;
+				-ms-transition: height 0.5s, top 0.5s, -ms-transform 0.5s;
+				-o-transition: height 0.5s, top 0.5s, -o-transform 0.5s;
+				-webkit-transition: height 0.5s, top 0.5s, -webkit-transform 0.5s;
+			}
+		}
+		& when (@MiniplayerAutohide = Off) and not (@PlayerMonth = Early) {
+			.queue-miniplayer #player .html5-video-player:not(.ytp-block-autohide) & {
 				top: -5px;
 				-moz-transform: none;
 				-ms-transform: none;
@@ -2376,7 +2665,7 @@
 		-ms-box-sizing: content-box;
 		-webkit-box-sizing: content-box;
 		box-sizing: content-box;
-		.html5-player-chrome & when (@DEVMode = 1) {
+		.html5-player-chrome & when (@DEVMode = 1) and (@ForceYTPButtons = 1) {
 			display: block !important;
 		}
 		.ytp-subtitles-settings-dialog-list-option:hover & {
@@ -3733,7 +4022,7 @@
 			}
 		}
 		&-watch-on-youtube {
-			& when (@ForceWOYTi = 1) {
+			& when (@DEVMode = 1) and (@ForceWOYTi = 1) {
 				display: block !important;
 			}
 			& when (@PlayerMonth = Early) {
@@ -4082,206 +4371,208 @@
 			}
 		}
 		/*/== Infobar Items ==/*/
-		&-info {
-			background: none;
-			width: auto;
-			height: 100%;
-			padding: 0 9px;
-			margin-right: 7px;
-			opacity: 1;
-			line-height: normal;
-			.show-more-info & {
-				border-bottom: none;
-			}
-			& when (@IBIO = 0) {
-				&:focus:before, &:hover:before {
-					opacity: 1;
+		& when (@DefaultInfobarStyle = 0) and (@DefaultInfobarIconStyle = 0) {
+			&-info {
+				background: none;
+				width: auto;
+				height: 100%;
+				padding: 0 9px;
+				margin-right: 7px;
+				opacity: 1;
+				line-height: normal;
+				.show-more-info & {
+					border-bottom: none;
 				}
-				&:after {
-					content: "More info";
-					vertical-align: middle;
-					font-size: 11px;
-					line-height: 28px;
-				}
-				&:hover:after {
-					color: #fff;
-				}
-			}
-			& when (@IBIO = 1) {
-				&:hover:before, &:focus:before {
-					background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-common-vfloYYly0.png) -52px -93px;
-					width: 22px;
-					height: 23px;
-				}
-			}
-			&:before {
-				content: "";
 				& when (@IBIO = 0) {
-					background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) 0 -92px;
-					.show-more-info & {
-						background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) -114px -136px;
+					&:focus:before, &:hover:before {
+						opacity: 1;
 					}
-					width: 8px;
-					height: 9px;
-					opacity: 0.7;
-					margin-right: 7px;
-					vertical-align: middle;
+					&:after {
+						content: "More info";
+						vertical-align: middle;
+						font-size: 11px;
+						line-height: 28px;
+					}
+					&:hover:after {
+						color: #fff;
+					}
 				}
 				& when (@IBIO = 1) {
-					background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-common-vfloYYly0.png) 0 0;
-					width: 22px;
-					height: 23px;
-					margin-top: 3px;
-					.show-more-info & {
-						border-bottom: 3px solid #b91f1f;
+					&:hover:before, &:focus:before {
+						background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-common-vfloYYly0.png) -52px -93px;
+						width: 22px;
+						height: 23px;
 					}
 				}
-				display: inline-block;
-			}
-		}
-		&-share {
-			background: none;
-			width: auto;
-			height: 100%;
-			padding: 0 9px;
-			& when (@PlayerMonth = Late) {
-				padding: 0 0 0 5px;
-			}
-			opacity: 1;
-			line-height: normal;
-			& when (@IBIO = 0) {
-				&:after {
-					content: "Share";
-					vertical-align: middle;
-					font-size: 11px;
-					line-height: 28px;
-				}
-				&:hover:after {
-					color: #fff;
-				}
-			}
-			& when (@IBIO = 1) {
 				&:before {
 					content: "";
-					background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-common-vfloYYly0.png) -28px -68px;
-					width: 22px;
-					height: 23px;
-					margin-top: 3px;
+					& when (@IBIO = 0) {
+						background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) 0 -92px;
+						.show-more-info & {
+							background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) -114px -136px;
+						}
+						width: 8px;
+						height: 9px;
+						opacity: 0.7;
+						margin-right: 7px;
+						vertical-align: middle;
+					}
+					& when (@IBIO = 1) {
+						background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-common-vfloYYly0.png) 0 0;
+						width: 22px;
+						height: 23px;
+						margin-top: 3px;
+						.show-more-info & {
+							border-bottom: 3px solid #b91f1f;
+						}
+					}
 					display: inline-block;
 				}
-				&:hover:before {
-					background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-common-vfloYYly0.png) -66px -68px;
-					width: 22px;
-					height: 23px;
-				}
 			}
-		}
-		&-dislike {
-			background: none;
-			width: auto;
-			height: 100%;
-			opacity: 1;
-			& when (@IBIO = 0) {
-				padding-top: 7px;
-				padding-left: 3px;
-				padding-right: 10px;
-			}
-			& when (@IBIO = 1) {
+			&-share {
+				background: none;
+				width: auto;
+				height: 100%;
 				padding: 0 9px;
-				padding-left: 0;
-			}
-			margin: 0;
-			line-height: normal;
-			&:before {
-				content: "";
+				& when (@PlayerMonth = Late) {
+					padding: 0 0 0 5px;
+				}
+				opacity: 1;
+				line-height: normal;
 				& when (@IBIO = 0) {
-					background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) -72px -118px;
-					width: 14px;
-					height: 16px;
-					opacity: 0.7;
-					vertical-align: top;
+					&:after {
+						content: "Share";
+						vertical-align: middle;
+						font-size: 11px;
+						line-height: 28px;
+					}
+					&:hover:after {
+						color: #fff;
+					}
 				}
 				& when (@IBIO = 1) {
-					background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-common-vfloYYly0.png) -54px -30px;
-					width: 22px;
-					height: 23px;
-					margin-top: 3px;
-					margin-left: 3px;
-					vertical-align: middle;
-				}
-				display: inline-block;
-			}
-			& when (@IBIO = 0) {
-				&:hover:before, &:focus:before {
-					opacity: 1;
-				}
-			}
-			& when (@IBIO = 1) {
-				&:hover:before {
-					background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-common-vfloYYly0.png) 0 -227px;
-					width: 22px;
-					height: 23px;
+					&:before {
+						content: "";
+						background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-common-vfloYYly0.png) -28px -68px;
+						width: 22px;
+						height: 23px;
+						margin-top: 3px;
+						display: inline-block;
+					}
+					&:hover:before {
+						background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-common-vfloYYly0.png) -66px -68px;
+						width: 22px;
+						height: 23px;
+					}
 				}
 			}
-		}
-		&-like {
-			background: none;
-			width: auto;
-			height: 100%;
-			padding: 0 9px;
-			& when (@IBIO = 1) {
-				padding-right: 0;
-			}
-			opacity: 1;
-			line-height: normal;
-			&:before {
-				content: "";
+			&-dislike {
+				background: none;
+				width: auto;
+				height: 100%;
+				opacity: 1;
 				& when (@IBIO = 0) {
-					background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) -101px -187px;
-					width: 13px;
-					height: 15px;
-					opacity: 0.7;
-					margin-right: 12px;
-					vertical-align: middle;
+					padding-top: 7px;
+					padding-left: 3px;
+					padding-right: 10px;
 				}
 				& when (@IBIO = 1) {
-					background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-common-vfloYYly0.png) -64px -337px;
-					width: 22px;
-					height: 23px;
-					margin-top: 4px;
-					margin-right: 5px;
-					vertical-align: top;
+					padding: 0 9px;
+					padding-left: 0;
 				}
-				display: inline-block;
+				margin: 0;
+				line-height: normal;
+				&:before {
+					content: "";
+					& when (@IBIO = 0) {
+						background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) -72px -118px;
+						width: 14px;
+						height: 16px;
+						opacity: 0.7;
+						vertical-align: top;
+					}
+					& when (@IBIO = 1) {
+						background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-common-vfloYYly0.png) -54px -30px;
+						width: 22px;
+						height: 23px;
+						margin-top: 3px;
+						margin-left: 3px;
+						vertical-align: middle;
+					}
+					display: inline-block;
+				}
+				& when (@IBIO = 0) {
+					&:hover:before, &:focus:before {
+						opacity: 1;
+					}
+				}
+				& when (@IBIO = 1) {
+					&:hover:before {
+						background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-common-vfloYYly0.png) 0 -227px;
+						width: 22px;
+						height: 23px;
+					}
+				}
 			}
-			& when (@IBIO = 0) {
-				&:hover:before, &:focus:before {
-					opacity: 1;
+			&-like {
+				background: none;
+				width: auto;
+				height: 100%;
+				padding: 0 9px;
+				& when (@IBIO = 1) {
+					padding-right: 0;
 				}
-				&:after {
-					content: "Like";
-					vertical-align: middle;
-					font-size: 11px;
-					line-height: 28px;
+				opacity: 1;
+				line-height: normal;
+				&:before {
+					content: "";
+					& when (@IBIO = 0) {
+						background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) -101px -187px;
+						width: 13px;
+						height: 15px;
+						opacity: 0.7;
+						margin-right: 12px;
+						vertical-align: middle;
+					}
+					& when (@IBIO = 1) {
+						background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-common-vfloYYly0.png) -64px -337px;
+						width: 22px;
+						height: 23px;
+						margin-top: 4px;
+						margin-right: 5px;
+						vertical-align: top;
+					}
+					display: inline-block;
 				}
-				&:hover:after {
-					color: #fff;
+				& when (@IBIO = 0) {
+					&:hover:before, &:focus:before {
+						opacity: 1;
+					}
+					&:after {
+						content: "Like";
+						vertical-align: middle;
+						font-size: 11px;
+						line-height: 28px;
+					}
+					&:hover:after {
+						color: #fff;
+					}
+				}
+				& when (@IBIO = 1) {
+					&:hover:before {
+						background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-common-vfloYYly0.png) -28px -93px;
+						width: 22px;
+						height: 23px;
+					}
 				}
 			}
-			& when (@IBIO = 1) {
-				&:hover:before {
-					background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-common-vfloYYly0.png) -28px -93px;
-					width: 22px;
-					height: 23px;
-				}
-			}
-		}
-		/*/== TODO: Remove Early when early infobar is implimented ==/*/
-		& when (@PlayerMonth = Early) or (@PlayerMonth = Middle) {
-			&-info, &-share, &-like {
-				border-left: 1px solid #222;
-				&:hover, &:focus {
+			/*/== TODO: Remove Early when early infobar is implimented ==/*/
+			& when (@PlayerMonth = Early) or (@PlayerMonth = Middle) {
+				&-info, &-share, &-like {
 					border-left: 1px solid #222;
+					&:hover, &:focus {
+						border-left: 1px solid #222;
+					}
 				}
 			}
 		}
@@ -5720,7 +6011,7 @@
 		.disabled-control-seek:not(.ytp-no-controls) &.ytp-subtitles-player-content, .ad-interrupting:not(.ytp-no-controls):not(.html5-native-controls) &.ytp-subtitles-player-content, .autominimize-progress-bar &.ytp-subtitles-player-content, html:not([data-player-size=fullscreen]) .html5-video-player:not(.ideal-aspect).autominimize-progress-bar-non-aspect &.ytp-subtitles-player-content, .disabled-control-seek:not(.ytp-no-controls) &.ytp-subtitles-player-content, .ad-interrupting:not(.ytp-no-controls):not(.html5-native-controls) &.ytp-subtitles-player-content, .autominimize-progress-bar &.ytp-subtitles-player-content, html:not([data-player-size=fullscreen]) .html5-video-player:not(.ideal-aspect).autominimize-progress-bar-non-aspect &.ytp-subtitles-player-content, .html5-video-player:not(.el-detailpage):not(.house-brand):not(.ad-interrupting) .html5-endscreen, .html5-video-player:not(.ad-interrupting):not(.hide-info-bar):not(.playing-mode) &.ytp-subtitles-player-content, .ytp-block-autohide:not(.ad-interrupting):not(.hide-info-bar) &.ytp-subtitles-player-content, .ended-mode.endscreen-loaded:not(.el-detailpage):not(.house-brand):not(.ad-interrupting) &.ytp-subtitles-player-content, html[data-player-size=fullscreen] .html5-video-player:not(.house-brand):not(.ad-interrupting):not(.playing-mode) &.ytp-subtitles-player-content, html[data-player-size=fullscreen] .ytp-block-autohide:not(.house-brand):not(.ad-interrupting) &.ytp-subtitles-player-content {
 			& when (@PlayerMonth = Early) {
 				bottom: 43px;
-				& when (@Autohide = Off) or (@Autohide = On) or (@Autohide = Fade) {
+				& when (@PlayerAutohide = Off) or (@PlayerAutohide = On) or (@PlayerAutohide = Fade) {
 					-webkit-transition-duration: 0.5s;
 					-moz-transition-duration: 0.5s;
 					-o-transition-duration: 0.5s;
@@ -5732,7 +6023,7 @@
 					-ms-transition-property: bottom;
 					transition-property: bottom;
 				}
-				& when (@Autohide = Auto) {
+				& when (@PlayerAutohide = Auto) {
 					-moz-transition: unset;
 					-ms-transition: unset;
 					-o-transition: unset;
@@ -5751,10 +6042,10 @@
 		}
 		.disabled-control-seek &.ytp-subtitles-player-content, .autominimize-progress-bar:not(.ytp-block-autohide) &.ytp-subtitles-player-content, html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) &.ytp-subtitles-player-content, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &.ytp-subtitles-player-content, .ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &.ytp-subtitles-player-content, html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) &.ytp-subtitles-player-content {
 			& when (@PlayerMonth = Early) {
-				& when (@Autohide = Off) or (@Autohide = On) or (@Autohide = Fade) {
+				& when (@PlayerAutohide = Off) or (@PlayerAutohide = On) or (@PlayerAutohide = Fade) {
 					bottom: 38px;
 				}
-				& when (@Autohide = Auto) {
+				& when (@PlayerAutohide = Auto) {
 					bottom: 7px;
 					-webkit-transition: bottom 0.25s ease-in;
 					-moz-transition: bottom 0.25s ease-in;
@@ -5764,19 +6055,19 @@
 				transition-delay: 3s;
 			}
 			& when (@PlayerMonth = Middle) or (@PlayerMonth = Late) {
-				& when (@Autohide = Off) {
+				& when (@PlayerAutohide = Off) {
 					bottom: 43px;
 				}
-				& when (@Autohide = On) {
+				& when (@PlayerAutohide = On) {
 					bottom: 8px;
 				}
-				& when (@Autohide = Fade) {
+				& when (@PlayerAutohide = Fade) {
 					bottom: 38px;
 				}
-				& when (@Autohide = Auto) {
+				& when (@PlayerAutohide = Auto) {
 					bottom: 11px;
 				}
-				& when (@Autohide = On) or (@Autohide = Fade) or (@Autohide = Auto) {
+				& when (@PlayerAutohide = On) or (@PlayerAutohide = Fade) or (@PlayerAutohide = Auto) {
 					-moz-transition: bottom 0.5s ease-in;
 					-ms-transition: bottom 0.5s ease-in;
 					-o-transition: bottom 0.5s ease-in;
@@ -5787,10 +6078,10 @@
 		}
 		.autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &.ytp-subtitles-player-content, html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) &.ytp-subtitles-player-content, html:not([data-player-size=fullscreen]) .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &.ytp-subtitles-player-content {
 			& when (@PlayerMonth = Middle) or (@PlayerMonth = Late) {
-				& when (@Autohide = Off) {
+				& when (@PlayerAutohide = Off) {
 					bottom: 43px;
 				}
-				& when (@Autohide = On) {
+				& when (@PlayerAutohide = On) {
 					bottom: 8px;
 					-moz-transition: bottom 0.5s ease-in;
 					-ms-transition: bottom 0.5s ease-in;
@@ -5798,7 +6089,7 @@
 					-webkit-transition: bottom 0.5s ease-in;
 					transition: bottom 0.5s ease-in;
 				}
-				& when (@Autohide = Fade) or (@Autohide = Auto) {
+				& when (@PlayerAutohide = Fade) or (@PlayerAutohide = Auto) {
 					bottom: 3px;
 					-moz-transition: bottom 0.5s ease-in;
 					-ms-transition: bottom 0.5s ease-in;
@@ -5929,57 +6220,57 @@
 	.ytp-endscreen-content {
 		max-width: 1000px;
 	}
-	.videowall-still-info {
-		&-bg {
-			background: #000;
-			opacity: 0;
-			-moz-transition: opacity 0.3s ease;
-			-ms-transition: opacity 0.3s ease;
-			-o-transition: opacity 0.3s ease;
-			-webkit-transition: opacity 0.3s ease;
-			transition: opacity 0.3s ease;
-			.videowall-still-autoplay & {
+	.videowall-still {
+		transition-delay: 0s !important;
+		&-info {
+			&-bg {
 				background: #000;
+				opacity: 0;
 				-moz-transition: opacity 0.3s ease;
 				-ms-transition: opacity 0.3s ease;
 				-o-transition: opacity 0.3s ease;
 				-webkit-transition: opacity 0.3s ease;
 				transition: opacity 0.3s ease;
-				.videowall-still:hover&, .videowall-still:focus& {
+				.videowall-still-autoplay & {
 					background: #000;
+					-moz-transition: opacity 0.3s ease;
+					-ms-transition: opacity 0.3s ease;
+					-o-transition: opacity 0.3s ease;
+					-webkit-transition: opacity 0.3s ease;
+					transition: opacity 0.3s ease;
+					.videowall-still:hover&, .videowall-still:focus& {
+						background: #000;
+					}
+				}
+				.videowall-still:hover &, .videowall-still:focus & {
+					opacity: 0.86;
 				}
 			}
-			.videowall-still:hover &, .videowall-still:focus & {
-				opacity: 0.86;
+			&-title {
+				padding: 10px 10px 0;
+				font-size: 13px;
+				line-height: 15px;
+				color: #fff;
+				height: 30px;
+				max-height: unset;
+				.videowall-still-autoplay & {
+					height: unset;
+					padding: 10px 10px 2px;
+				}
+			}
+			&-author {
+				position: absolute;
+				bottom: 10px;
+				left: 10px;
+				height: 11px;
+				font-size: 11px;
+				padding: 0;
+				.videowall-still-autoplay & {
+					position: unset;
+					padding: 0 10px 10px;
+				}
 			}
 		}
-		&-title {
-			padding: 10px 10px 0;
-			font-size: 13px;
-			line-height: 15px;
-			color: #fff;
-			height: 30px;
-			max-height: unset;
-			.videowall-still-autoplay & {
-				height: unset;
-				padding: 10px 10px 2px;
-			}
-		}
-		&-author {
-			position: absolute;
-			bottom: 10px;
-			left: 10px;
-			height: 11px;
-			font-size: 11px;
-			padding: 0;
-			.videowall-still-autoplay & {
-				position: unset;
-				padding: 0 10px 10px;
-			}
-		}
-	}
-	.videowall-still {
-		transition-delay: 0s !important;
 		&-listlabel-autoplay {
 			background-color: #000;
 			opacity: 0.86;
@@ -5988,6 +6279,37 @@
 			}
 			&-cancel {
 				font-size: 13px;
+			}
+		}
+		&-featured-label {
+			position: absolute;
+			display: none;
+			top: 0;
+			right: 0;
+			padding: 5px;
+			line-height: 11px;
+			text-align: left;
+			font-size: 11px;
+			color: #ccc;
+			background: rgba(0, 0, 0, 0.5);
+			word-wrap: break-word;
+			-moz-box-sizing: border-box;
+			-ms-box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+			-moz-transition: opacity 0.3s ease;
+			-ms-transition: opacity 0.3s ease;
+			-o-transition: opacity 0.3s ease;
+			-webkit-transition: opacity 0.3s ease;
+			transition: opacity 0.3s ease;
+			&:after {
+				content: " video"
+			}
+			.videowall-still-featured & {
+				display: inline
+			}
+			.videowall-still:hover &, .videowall-still:focus & {
+				opacity: 0
 			}
 		}
 	}
@@ -6140,6 +6462,17 @@
 	2012M => June 14th 2012 ( https://web.archive.org/web/20120614223748if_/https://www.youtube.com/watch?v=jNQXAC9IVRw ),
 	2012L => December 7th 2012 ( https://web.archive.org/web/20121207043038if_/https://www.youtube.com/watch?v=jNQXAC9IVRw )
 
+	== Presets ==
+	= 2011 =
+	https://discord.com/channels/1132972877755469824/1234318018310438913/1402131276957356132
+	
+	= 2012 =
+	https://discord.com/channels/1132972877755469824/1234318018310438913/1402131286549860364
+	
+	= 2013 =
+	https://discord.com/channels/1132972877755469824/1234318018310438913/1402131318808121364
+	https://discord.com/channels/1132972877755469824/1234318018310438913/1404061099296428082
+	
 	== TODO Features ==
 	Add setting button glow on active as an option ( X | % )
 	Fix and redo captions CSS on all periods ( X | % )
