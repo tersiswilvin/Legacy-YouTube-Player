@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player Experimental
 @namespace      userstyles.world/user/tersiswilvin
-@version        20251206-00.1.2
+@version        20251206-01.1.2
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
 @updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_Experimental.user.css
@@ -1092,10 +1092,22 @@
 			}
 		}
 	}
-	.ytp-menu-row:has(.ytp-segmented-control) when (@DefaultSettingStyle = 1) and (@HESR = 1) {
-		display: none
+	& when (@DefaultSettingStyle = 1) {
+		.ytp-drop-down .ytp-drop-down-label {
+			color: #101010;
+			border-radius: 2px;
+		}
+		.ytp-drop-down .ytp-drop-down-menu-button {
+			color: #555;
+		}
+		.ytp-drop-down .ytp-drop-down-menu-button-selected {
+			color: #101010;
+		}
+		.ytp-menu-row:has(.ytp-segmented-control) when (@HESR = 1) {
+			display: none
+		}
 	}
-
+	
 	@-webkit-keyframes ytp-fade {
 		0% {
 			opacity: 0;
@@ -2802,10 +2814,6 @@
 		}
 		.ytp-subtitles-settings-dialog-list-option:hover & {
 			color: #ddd;
-		}
-		.ytp-drop-down & when (@DefaultSettingStyle = 1) {
-			color: #101010;
-			border-radius: 2px;
 		}
 		& when (@PlayerMonth = Early) {
 			&-play, &-pause, &-replay, &-stop, &-next {
