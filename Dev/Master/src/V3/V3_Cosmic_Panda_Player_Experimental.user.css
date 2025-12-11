@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player Experimental
 @namespace      userstyles.world/user/tersiswilvin
-@version        20251206-01.1.2
+@version        20251211-00.1.2
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
 @updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_Experimental.user.css
@@ -9,8 +9,9 @@
 @preprocessor   less
 @var            checkbox                                          AccPlyrCtlPos           "Accurate Player Controls Positions" 1
 @var            checkbox                                          AccPrevTailPos          "Accurate Preview Tail Position"     1
+@var            checkbox                                          AccSizeBtnBehavior      "Accurate Size Button Behavior"      1
 @var            checkbox                                          AccWtmAnim              "Accurate Watermark Animations"      1
-@var            checkbox                                          ActiveSettingsbtnGlow   "Active Settings button Glow"        0
+@var            checkbox                                          ActiveSettingsBtnGlow   "Active Settings Button Glow"        0
 @var            checkbox                                          CMIcons                 "Context Menu Icons"                 0
 @var            select                                            AhCursor                "Cursor Preset"                      ["Default*", "Default_Autohide", "Off", "Off_Autohide"]
 @var            checkbox                                          DefaultBezelStyle       "Default Bezel Style"                0
@@ -23,11 +24,10 @@
 @var            checkbox                                          DefaultProgTooltipStyle "Default Progress Tooltip Style"     0
 @var            checkbox                                          DefaultSettingStyle     "Default Setting Style"              0
 @var            checkbox                                          JFKTrsprntBkg           " └ Transparent JFK Background"      0
-@var            checkbox                                          DefaultTooltipStyle     "Default Tooltip Style"              0
 @var            checkbox                                          DefaultUnavailableStyle "Default Unavailable Style"          0
 @var            checkbox                                          DefaultInfoPanelStyle   "Default Video Info Style"           0
 @var            checkbox                                          DefaultVideoLoader      "Default Video Loader"               0
-@var            checkbox                                          DEVMode                 "Developer Mode"                     0
+@var            checkbox                                          DEV                     "Developer Options"                  0
 @var            checkbox                                          Forceinfobar            " ├ Force Infobar"                   1
 @var            checkbox                                          ForceProgressTooltip    " ├ Force Progress Tooltip"          1
 @var            checkbox                                          ForceSettingsMenu       " ├ Force Settings Menu"             1
@@ -36,7 +36,6 @@
 @var            checkbox                                          Forcewatermark          " ├ Force Watermark"                 1
 @var            checkbox                                          ForceYTPButtons         " └ Force YTP Buttons"               1
 @var            checkbox                                          EarlyClipsEnabled       "Early Clips Enabled"                0
-@var            checkbox                                          ECMHSF                  "Early Context Menu hover Fix"       0
 @var            checkbox                                          EarlyFsExperiment       "Early Fullscreen Experiment"        0
 @var            checkbox                                          EarlyReplayExperiment   "Early Replay Icon Experiment"       0
 @var            checkbox                                          EarlySizeExperiment     "Early Size Icons Experiment"        0
@@ -48,7 +47,7 @@
 @var            checkbox                                          FocusOutline            "Focus Outline"                      1
 @var            number                                            FsTbS                   "Fullscreen Taskbar Size"            [0, 0, null, 1, "px"]
 @var            select                                            FsLocPre                " └ Location Preset"                 ["Left", "Right", "Bottom*"]
-@var            checkbox                                          HideAdProgress          "Hide Ad progress"                   1
+@var            checkbox                                          HideAdProgress          "Hide Ad Progress"                   1
 @var            checkbox                                          HideAdSkipButton        "Hide Ad Skip Container"             1
 @var            checkbox                                          HideAnnotation          "Hide Annotation Button"             0
 @var            checkbox                                          HideBranding            "Hide Annotation Branding"           1
@@ -59,7 +58,8 @@
 @var            checkbox                                          HidePlrChptrs           "Hide Player Chapters"               1
 @var            checkbox                                          HPaNB                   "Hide Prev & Next Buttons"           1
 @var            checkbox                                          HideSettingBoxShadow    "Hide Settings Box Shadow"           0
-@var            checkbox                                          HideSponsorBlock        "Hide SponsorBlock"                  1
+@var            checkbox                                          HideSponsorBlockButtons "Hide SponsorBlock Control Buttons"  1
+@var            checkbox                                          HideSponsorBlockPrevbar "Hide SponsorBlock Previewbar"       1
 @var            checkbox                                          SupportWarning          "Hide Support Warning"               0
 @var            checkbox                                          HUnB                    "Hide Unavailable Buttons"           1
 @var            checkbox                                          QualityBadges           "Hide Quality Badges"                1
@@ -74,9 +74,12 @@
 @var            checkbox                                          PlayerTheaterGradient   "Player Theater Gradient"            1
 @var            checkbox                                          RemovePlayFocusState    "Remove Fullscreen Play Focus"       0
 @var            checkbox                                          ReplayIconExperiment    "Replay Icon Experiment"             0
-@var            checkbox                                          SoloSizeButton          "Solo Size Button"                   0
-@var            checkbox                                          SponsorPreviewFix       "SponsorBlock Preview Fix"           0
-@var            checkbox                                          TooltipCrtFix           "Tooltip 2012L Caret Fix"            0
+@var            checkbox                                          SoloSizeButton          "Solo Size Button Experiment"        0
+@var            select                                            TooltipStyle            "Tooltip Style"                      ["PlayerSync*", "Off", "Early", "Middle", "Late"]
+@var            checkbox                                          ECMHSFix                "(QoL) Early Context Menu Hover Fix" 0
+@var            checkbox                                          MiniplayerXBtnQoL       "(QoL) Miniplayer Improved X Button" 1
+@var            checkbox                                          SponsorPreviewFix       "(QoL) SponsorBlock Preview Fix"     0
+@var            checkbox                                          TooltipCrtFix           "(QoL) Tooltip 2012L Caret Fix"      0
 ==/UserStyle== */
 
 @-moz-document domain("www.youtube.com") {
@@ -651,18 +654,18 @@
 			.yt-uix-button-menu-item.selected, .yt-uix-button-menu-item-highlight .yt-uix-button-menu-item, .yt-uix-button-menu-item:hover {
 				& when (@PlayerMonth = Early) {
 					background: #eaeaea;
-					& when (@ECMHSF = 0) {
+					& when (@ECMHSFix = 0) {
 						color: #fff;
 					}
-					& when (@ECMHSF = 1) {
+					& when (@ECMHSFix = 1) {
 						color: #000;
 					}
 					[class*="darkmode"] ~ &, .dark-mode & {
 						background: #151515;
-						& when (@ECMHSF = 0) {
+						& when (@ECMHSFix = 0) {
 							color: #000;
 						}
-						& when (@ECMHSF = 1) {
+						& when (@ECMHSFix = 1) {
 							color: var(--color-black-text);
 						}
 					}
@@ -684,10 +687,10 @@
 	}
 
 	.html5-info-bar {
-		& when (@DEVMode = 0) and (@Forceinfobar = 0) {
+		& when (@DEV = 0) and (@Forceinfobar = 0) {
 			display: none;
 		}
-		& when (@DEVMode = 1) and (@Forceinfobar = 1) {
+		& when (@DEV = 1) and (@Forceinfobar = 1) {
 			display: block;
 		}
 		& when (@DefaultInfobarStyle = 0) {
@@ -842,7 +845,7 @@
 
 	.html5-endscreen {
 		z-index: 922;
-		html:not([data-player-size=fullscreen]) & when (@DEVMode = 1) and (@Forceinfobar = 1) {
+		html:not([data-player-size=fullscreen]) & when (@DEV = 1) and (@Forceinfobar = 1) {
 			top: 28px;
 		}
 	}
@@ -1082,7 +1085,7 @@
 		}
 	}
 	.ytp-menu-container {
-		& when (@DEVMode = 1) and (@ForceSettingsMenu = 1) {
+		& when (@DEV = 1) and (@ForceSettingsMenu = 1) {
 			display: block !important;
 		}
 		& when (@DefaultSettingStyle = 1) {
@@ -1107,7 +1110,7 @@
 			display: none
 		}
 	}
-	
+
 	@-webkit-keyframes ytp-fade {
 		0% {
 			opacity: 0;
@@ -1128,14 +1131,14 @@
 		}
 	}
 
-	& when (@DefaultTooltipStyle = 0) {
+	& when not (@TooltipStyle = Off) {
 		.ytp-tooltip {
 			animation: ytp-fade 0.2s ease-in-out;
 			&-body {
 				.ytp-tooltip-below & {
 					bottom: unset
 				}
-				& when (@PlayerMonth = Early) or (@PlayerMonth = Middle) {
+				& when (@TooltipStyle = PlayerSync) and ((@PlayerMonth = Early) or (@PlayerMonth = Middle)) or (@TooltipStyle = Early) or (@TooltipStyle = Middle) {
 					padding: .75em;
 					color: #fff;
 					white-space: nowrap;
@@ -1156,7 +1159,7 @@
 					font-size: 12px;
 					font-family: arial, sans-serif;
 				}
-				& when (@PlayerMonth = Late) {
+				& when (@TooltipStyle = PlayerSync) and (@PlayerMonth = Late) or (@TooltipStyle = Late) {
 					padding: 6px;
 					color: #fff;
 					background: #333;
@@ -1175,7 +1178,7 @@
 				height: unset;
 			}
 			&-arrow {
-				& when (@PlayerMonth = Early) or (@PlayerMonth = Middle) {
+				& when (@TooltipStyle = PlayerSync) and ((@PlayerMonth = Early) or (@PlayerMonth = Middle)) or (@TooltipStyle = Early) or (@TooltipStyle = Middle) {
 					z-index: 1000001;
 					bottom: 0;
 					width: 0;
@@ -1187,7 +1190,7 @@
 						border-bottom-color: #4a4a4a;
 					}
 				}
-				& when (@PlayerMonth = Late) {
+				& when (@TooltipStyle = PlayerSync) and (@PlayerMonth = Late) or (@TooltipStyle = Late) {
 					position: absolute;
 					z-index: 1000001;
 					width: 0;
@@ -1235,7 +1238,7 @@
 			padding: 2px;
 			overflow: visible;
 		}
-		& when (@DEVMode = 1) and (@ForceProgressTooltip = 1) {
+		& when (@DEV = 1) and (@ForceProgressTooltip = 1) {
 			display: block !important;
 		}
 		& when (@DefaultProgTooltipStyle = 0) {
@@ -1450,7 +1453,7 @@
 				bottom: @FsTbS + 33;
 			}
 		}
-		& when (@DEVMode = 1) and (@Forcewatermark = 1) {
+		& when (@DEV = 1) and (@Forcewatermark = 1) {
 			display: block !important;
 		}
 		&[src*="base64,"], &[src*="/img/pixel"] {
@@ -1615,7 +1618,7 @@
 		}
 	}
 
-	.ytp-thumbnail when (@DEVMode = 1) and (@ForceThumbnail = 1) {
+	.ytp-thumbnail when (@DEV = 1) and (@ForceThumbnail = 1) {
 		display: block;
 	}
 
@@ -2212,7 +2215,7 @@
 	}
 	#player-api_VORAPI_ELEMENT_ID #previewbar {
 		z-index: 934;
-		& when (@HideSponsorBlock = 1) {
+		& when (@HideSponsorBlockPrevbar = 1) {
 			display: none;
 		}
 	}
@@ -2766,7 +2769,6 @@
 					border-color: #ccc;
 				}
 			}
-			
 		}
 		.ytp-settings-button, .ytp-settings-button-active {
 			order: 96
@@ -2809,7 +2811,7 @@
 		-ms-box-sizing: content-box;
 		-webkit-box-sizing: content-box;
 		box-sizing: content-box;
-		.html5-player-chrome & when (@DEVMode = 1) and (@ForceYTPButtons = 1) {
+		.html5-player-chrome & when (@DEV = 1) and (@ForceYTPButtons = 1) {
 			display: block !important;
 		}
 		.ytp-subtitles-settings-dialog-list-option:hover & {
@@ -4162,7 +4164,7 @@
 			}
 		}
 		&-watch-on-youtube {
-			& when (@DEVMode = 1) and (@ForceWOYTi = 1) {
+			& when (@DEV = 1) and (@ForceWOYTi = 1) {
 				display: block !important;
 			}
 			& when (@PlayerMonth = Early) {
@@ -4753,6 +4755,11 @@
 					background-clip: content-box, border-box;
 					background-origin: content-box, border-box;
 					cursor: default;
+					& when (@AccSizeBtnBehavior = 1) {
+						position: absolute;
+						left: -32px;
+						pointer-events: none;
+					}
 				}
 			}
 			&:after {
@@ -4811,6 +4818,11 @@
 						background-origin: content-box;
 						height: 17px;
 						width: 16px;
+					}
+					& when (@AccSizeBtnBehavior = 1) {
+						position: absolute;
+						right: -32px;
+						pointer-events: none;
 					}
 				}
 			}
@@ -4916,6 +4928,22 @@
 				}
 				height: 100%;
 			}
+			[data-player-size=small] & when (@AccSizeBtnBehavior = 1) {
+				width: 32px;
+				position: relative;
+				margin: 0 0 0 32px;
+				&:focus, &:hover {
+					width: 32px;
+				}
+			}
+			[data-player-size=large] & when (@AccSizeBtnBehavior = 1) {
+				width: 32px;
+				position: relative;
+				margin: 0 32px 0 0;
+				&:focus, &:hover {
+					width: 32px;
+				}
+			}
 		}
 		& when (@PlayerMonth = Middle) {
 			& when (@SoloSizeButton = 0) {
@@ -4997,6 +5025,11 @@
 						-ms-box-shadow: inset 0 -5px 5px #000;
 						-webkit-box-shadow: inset 0 -5px 5px #000;
 						box-shadow: inset 0 -5px 5px #000;
+						& when (@AccSizeBtnBehavior = 1) {
+							position: absolute;
+							left: -30px;
+							pointer-events: none;
+						}
 					}
 				}
 				&:after {
@@ -5022,12 +5055,33 @@
 						-ms-box-shadow: inset 0 -5px 5px #000;
 						-webkit-box-shadow: inset 0 -5px 5px #000;
 						box-shadow: inset 0 -5px 5px #000;
+						& when (@AccSizeBtnBehavior = 1) {
+							position: absolute;
+							right: -30px;
+							pointer-events: none;
+						}
 					}
 				}
 				.light-theme & {
 					background: none;
 					height: 26px;
 					width: 60px;
+				}
+				[data-player-size=small] & when (@AccSizeBtnBehavior = 1) {
+					width: 30px;
+					position: relative;
+					margin: 0 0 0 30px;
+					&:focus, &:hover {
+						width: 30px;
+					}
+				}
+				[data-player-size=large] & when (@AccSizeBtnBehavior = 1) {
+					width: 30px;
+					position: relative;
+					margin: 0 30px 0 0;
+					&:focus, &:hover {
+						width: 30px;
+					}
 				}
 			}
 			& when (@SoloSizeButton = 1) {
@@ -5105,6 +5159,9 @@
 					[data-player-size=small] & {
 						background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -621px;
 						cursor: default;
+						position: absolute;
+						left: -30px;
+						pointer-events: none;
 					}
 				}
 				&:after {
@@ -5122,12 +5179,33 @@
 					[data-player-size=large] & {
 						background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -2160px;
 						cursor: default;
+						& when (@AccSizeBtnBehavior = 1) {
+							position: absolute;
+							right: -30px;
+							pointer-events: none;
+						}
 					}
 				}
 				.light-theme & {
 					background: none;
 					height: 26px;
 					width: 60px;
+				}
+				[data-player-size=small] & when (@AccSizeBtnBehavior = 1) {
+					width: 30px;
+					position: relative;
+					margin: 0 0 0 30px;
+					&:focus, &:hover {
+						width: 30px;
+					}
+				}
+				[data-player-size=large] & when (@AccSizeBtnBehavior = 1) {
+					width: 30px;
+					position: relative;
+					margin: 0 30px 0 0;
+					&:focus, &:hover {
+						width: 30px;
+					}
 				}
 			}
 			& when (@SoloSizeButton = 1) {
@@ -5188,6 +5266,11 @@
 					background-clip: content-box, border-box;
 					background-origin: content-box, border-box;
 					cursor: default;
+					& when (@AccSizeBtnBehavior = 1) {
+						position: absolute;
+						left: -32px;
+						pointer-events: none;
+					}
 				}
 			}
 			&:after {
@@ -5246,6 +5329,11 @@
 						background-origin: content-box;
 						height: 17px;
 						width: 16px;
+					}
+					& when (@AccSizeBtnBehavior = 1) {
+						position: absolute;
+						right: -32px;
+						pointer-events: none;
 					}
 				}
 			}
@@ -5351,6 +5439,22 @@
 				}
 				height: 100%;
 			}
+			[data-player-size=small] & when (@AccSizeBtnBehavior = 1) {
+				width: 32px;
+				position: relative;
+				margin: 0 0 0 32px;
+				&:focus, &:hover {
+					width: 32px;
+				}
+			}
+			[data-player-size=large] & when (@AccSizeBtnBehavior = 1) {
+				width: 32px;
+				position: relative;
+				margin: 0 32px 0 0;
+				&:focus, &:hover {
+					width: 32px;
+				}
+			}
 		}
 		& when (@PlayerMonth = Middle) {
 			& when (@SoloSizeButton = 0) {
@@ -5432,6 +5536,11 @@
 						-ms-box-shadow: inset 0 -5px 5px #000;
 						-webkit-box-shadow: inset 0 -5px 5px #000;
 						box-shadow: inset 0 -5px 5px #000;
+						& when (@AccSizeBtnBehavior = 1) {
+							position: absolute;
+							left: -30px;
+							pointer-events: none;
+						}
 					}
 				}
 				&:after {
@@ -5457,12 +5566,33 @@
 						-ms-box-shadow: inset 0 -5px 5px #000;
 						-webkit-box-shadow: inset 0 -5px 5px #000;
 						box-shadow: inset 0 -5px 5px #000;
+						& when (@AccSizeBtnBehavior = 1) {
+							position: absolute;
+							right: -30px;
+							pointer-events: none;
+						}
 					}
 				}
 				.light-theme & {
 					background: none;
 					height: 26px;
 					width: 60px;
+				}
+				[data-player-size=small] & when (@AccSizeBtnBehavior = 1) {
+					width: 30px;
+					position: relative;
+					margin: 0 0 0 30px;
+					&:focus, &:hover {
+						width: 30px;
+					}
+				}
+				[data-player-size=large] & when (@AccSizeBtnBehavior = 1) {
+					width: 30px;
+					position: relative;
+					margin: 0 30px 0 0;
+					&:focus, &:hover {
+						width: 30px;
+					}
 				}
 			}
 			& when (@SoloSizeButton = 1) {
@@ -5540,6 +5670,9 @@
 					[data-player-size=small] & {
 						background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -621px;
 						cursor: default;
+						position: absolute;
+						left: -30px;
+						pointer-events: none;
 					}
 				}
 				&:after {
@@ -5557,12 +5690,33 @@
 					[data-player-size=large] & {
 						background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -2160px;
 						cursor: default;
+						& when (@AccSizeBtnBehavior = 1) {
+							position: absolute;
+							right: -30px;
+							pointer-events: none;
+						}
 					}
 				}
 				.light-theme & {
 					background: none;
 					height: 26px;
 					width: 60px;
+				}
+				[data-player-size=small] & when (@AccSizeBtnBehavior = 1) {
+					width: 30px;
+					position: relative;
+					margin: 0 0 0 30px;
+					&:focus, &:hover {
+						width: 30px;
+					}
+				}
+				[data-player-size=large] & when (@AccSizeBtnBehavior = 1) {
+					width: 30px;
+					position: relative;
+					margin: 0 30px 0 0;
+					&:focus, &:hover {
+						width: 30px;
+					}
 				}
 			}
 			& when (@SoloSizeButton = 1) {
@@ -5698,7 +5852,7 @@
 		}
 	}
 	.ytp-settings-button-active {
-		&:before when (@PlayerMonth = Early) and (@ActiveSettingsbtnGlow = 1) {
+		&:before when (@PlayerMonth = Early) and (@ActiveSettingsBtnGlow = 1) {
 			color: #fff;
 			.light-theme & {
 				color: #000;
@@ -5736,18 +5890,18 @@
 		}
 		& when (@PlayerMonth = Middle) {
 			& when (@HideSettingBoxShadow = 0) {
-				& when (@ActiveSettingsbtnGlow = 0) {
+				& when (@ActiveSettingsBtnGlow = 0) {
 					background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -153px -124px #141414;
 				}
-				& when (@ActiveSettingsbtnGlow = 1) {
+				& when (@ActiveSettingsBtnGlow = 1) {
 					background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -128px -205px #141414;
 				}
 			}
 			& when (@HideSettingBoxShadow = 1) {
-				& when (@ActiveSettingsbtnGlow = 0) {
+				& when (@ActiveSettingsBtnGlow = 0) {
 					background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -153px -124px;
 				}
-				& when (@ActiveSettingsbtnGlow = 1) {
+				& when (@ActiveSettingsBtnGlow = 1) {
 					background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -128px -205px;
 				}
 			}
@@ -5775,18 +5929,18 @@
 			}
 			.light-theme & {
 				& when (@HideSettingBoxShadow = 0) {
-					& when (@ActiveSettingsbtnGlow = 0) {
+					& when (@ActiveSettingsBtnGlow = 0) {
 						background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -153px -124px #f1f1f1;
 					}
-					& when (@ActiveSettingsbtnGlow = 1) {
+					& when (@ActiveSettingsBtnGlow = 1) {
 						background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -128px -205px #f1f1f1;
 					}
 				}
 				& when (@HideSettingBoxShadow = 1) {
-					& when (@ActiveSettingsbtnGlow = 0) {
+					& when (@ActiveSettingsBtnGlow = 0) {
 						background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -153px -124px;
 					}
-					& when (@ActiveSettingsbtnGlow = 1) {
+					& when (@ActiveSettingsBtnGlow = 1) {
 						background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) -128px -205px;
 					}
 				}
@@ -5796,18 +5950,18 @@
 		}
 		& when (@PlayerMonth = Late) {
 			& when (@HideSettingBoxShadow = 0) {
-				& when (@ActiveSettingsbtnGlow = 0) {
+				& when (@ActiveSettingsBtnGlow = 0) {
 					background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -810px #141414;
 				}
-				& when (@ActiveSettingsbtnGlow = 1) {
+				& when (@ActiveSettingsBtnGlow = 1) {
 					background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -675px #141414;
 				}
 			}
 			& when (@HideSettingBoxShadow = 1) {
-				& when (@ActiveSettingsbtnGlow = 0) {
+				& when (@ActiveSettingsBtnGlow = 0) {
 					background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -810px;
 				}
-				& when (@ActiveSettingsbtnGlow = 1) {
+				& when (@ActiveSettingsBtnGlow = 1) {
 					background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -675px;
 				}
 			}
@@ -5835,18 +5989,18 @@
 					background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -810px;
 				}
 				& when (@HideSettingBoxShadow = 0) {
-					& when (@ActiveSettingsbtnGlow = 0) {
+					& when (@ActiveSettingsBtnGlow = 0) {
 						background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -810px #f1f1f1;
 					}
-					& when (@ActiveSettingsbtnGlow = 1) {
+					& when (@ActiveSettingsBtnGlow = 1) {
 						background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -675px #f1f1f1;
 					}
 				}
 				& when (@HideSettingBoxShadow = 1) {
-					& when (@ActiveSettingsbtnGlow = 0) {
+					& when (@ActiveSettingsBtnGlow = 0) {
 						background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -810px;
 					}
-					& when (@ActiveSettingsbtnGlow = 1) {
+					& when (@ActiveSettingsBtnGlow = 1) {
 						background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 -675px;
 					}
 				}
@@ -6423,7 +6577,7 @@
 		}
 	}
 
-	& when (@HideSponsorBlock = 1) {
+	& when (@HideSponsorBlockButtons = 1) {
 		#infoButton, #submitButton, #deleteButton, #cancelSegmentButton, #startSegmentButton {
 			display: none !important;
 		}
@@ -6871,7 +7025,7 @@
 			}
 		}
 	}
-	
+
 	.player-unavailable when (@DefaultUnavailableStyle = 0) {
 		background: #000;
 		text-shadow: 1px 1px 0 #000;
@@ -7009,8 +7163,8 @@
 			}
 		}
 	}
-	
-	.queue-miniplayer-close .oz-sprite {
+
+	.queue-miniplayer-close .oz-sprite when (@MiniplayerXBtnQoL = 1) {
 		top: 6px;
 		right: 11px;
 		background-color: rgba(255, 255, 255, .5);
@@ -7042,14 +7196,14 @@
 	== Presets ==
 	= 2011 =
 	https://discord.com/channels/1132972877755469824/1234318018310438913/1402131276957356132
-	
+
 	= 2012 =
 	https://discord.com/channels/1132972877755469824/1234318018310438913/1402131286549860364
-	
+
 	= 2013 =
 	https://discord.com/channels/1132972877755469824/1234318018310438913/1402131318808121364
 	https://discord.com/channels/1132972877755469824/1234318018310438913/1404061099296428082
-	
+
 	== TODO Features ==
 	Fix and redo captions CSS on all periods ( X | % )
 	Impliment Early 2012 & 2013 infobar ( X | % )
