@@ -1,7 +1,7 @@
 /* ==UserStyle==
-@name           V3 Cosmic Panda Player DEV
+@name           V3 Cosmic Panda Player (DEV)
 @namespace      userstyles.world/user/tersiswilvin
-@version        20260126-00.1.2
+@version        20260228-00.1.2
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
 @updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_DEV.user.css
@@ -9,6 +9,8 @@
 @preprocessor   less
 @var            checkbox                                          ECMHSFix                "(QoL) 20120125 Context Menu Hover Fix" 0
 @var            checkbox                                          MiniplayerXBtnQoL       "(QoL) Miniplayer Improved X Button"  1
+@var            checkbox                                          PlaylistTrayTrimMatches "(QoL) Playlist Tray Trim Matches"    0
+@var            checkbox                                          RemovePlayFocusState    "(QoL) Remove Fullscreen Play Focus"  0
 @var            checkbox                                          SponsorPreviewFix       "(QoL) SponsorBlock Preview Fix"      0
 @var            checkbox                                          TooltipCrtFix           "(QoL) Tooltip 20121207 Caret Fix"    0
 @var            checkbox                                          AccPlyrCtlPos           "Accurate Player Controls Positions"  1
@@ -16,7 +18,7 @@
 @var            checkbox                                          AccSizeBtnBehavior      "Accurate Size Button Behavior"       1
 @var            checkbox                                          AccWtmAnim              "Accurate Watermark Animations"       1
 @var            select                                            AhCursor                "Cursor Preset"                       ["Default*", "Default_Autohide", "Off", "Off_Autohide"]
-@var            checkbox                                          DEV                     "Developer Options"                   1
+@var            checkbox                                          DEV                     "Developer Options"                   0
 @var            checkbox                                          Forceinfobar            " ├ Force Infobar"                    1
 @var            checkbox                                          ForceProgressTooltip    " ├ Force Progress Tooltip"           1
 @var            checkbox                                          ForceSettingsMenu       " ├ Force Settings Menu"              1
@@ -81,8 +83,6 @@
 @var            checkbox                                          SoloSizeBtnExperiment   " ├ Solo Size Button Experiment"      0
 @var            select                                            TooltipStyle            " └ Tooltip Style"                    ["Sync*", "Off", "20111201", "20121207"]
 @var            select                                            TooltipAnimations       "    └ Animations"                    ["Sync*", "Off", "On"]
-@var            checkbox                                          PlaylistTrayTrimMatches "Playlist Tray Trim Matches"          0
-@var            checkbox                                          RemovePlayFocusState    "Remove Fullscreen Play Focus"        0
 ==/UserStyle== */
 
 @-moz-document regexp("^https?:\\/\\/(www\\.)?youtube\\.com\\/(?!embed\\/?).*") {
