@@ -4691,7 +4691,6 @@
 					}
 				}
 			}
-			/*/== TODO: Remove Early when early infobar is implimented ==/*/
 			& when (@PlayerStyle = 20120125) or (@PlayerStyle = 20120913) {
 				&-info, &-share, &-like {
 					border-left: 1px solid #222;
@@ -7427,15 +7426,7 @@
 	September 2013
 
 	== Presets ==
-	= 2011 =
-	https://discord.com/channels/1132972877755469824/1234318018310438913/1402131276957356132
-
-	= 2012 =
-	https://discord.com/channels/1132972877755469824/1234318018310438913/1402131286549860364
-
-	= 2013 =
-	https://discord.com/channels/1132972877755469824/1234318018310438913/1402131318808121364
-	https://discord.com/channels/1132972877755469824/1234318018310438913/1404061099296428082
+	https://docs.google.com/document/d/1Cw2RUDC5B4fetmFtUJ_v99lke0wBF2oAQtSG94_sE-w
 
 	== TODO Features ==
 	Fix and redo captions CSS on all periods ( X | % )
