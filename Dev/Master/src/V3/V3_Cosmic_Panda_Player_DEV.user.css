@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player (DEV)
 @namespace      userstyles.world/user/tersiswilvin
-@version        20260228-00.1.2
+@version        20260315-00.1.2
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
 @updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_DEV.user.css
@@ -187,6 +187,9 @@
 			-webkit-tap-highlight-color: transparent;
 			background-color: #000;
 			color: #fff;
+			&:before {
+				content: "V3 Cosmic Panda Player does not support the Tablet Player yet.\APlease disable the Tablet Player in V3 settings or remove html5-tablet class for the best compatibility.";
+			}
 		}
 		.captions-text when (@PlayerStyle = 20120125) {
 			opacity: 0.8
