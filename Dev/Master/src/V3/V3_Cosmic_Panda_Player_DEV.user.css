@@ -1,12 +1,13 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player (DEV)
 @namespace      userstyles.world/user/tersiswilvin
-@version        20260324-00.1.2
+@version        20260326-00.1.2
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
 @updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_DEV.user.css
 @license        CC-BY-SA-4.0
 @preprocessor   less
+@var            select                                            CustomProgress              "(Fun) Custom Video Progress"                ["None*", "Bowser", "Donkey_Kong_Jr", "Koopa_Troopa", "Luigi", "Mario", "Peach", "Pikachu", "Pikachu_alternative", "Square", "Toad", "Wario", "Yoshi"]
 @var            checkbox                                          ECMHSFix                    "(QoL) 20120125 Context Menu Hover Fix"      0
 @var            checkbox                                          MiniplayerXBtnQoL           "(QoL) Miniplayer Improved X Button"         1
 @var            checkbox                                          PlaylistTrayTrimMatches     "(QoL) Playlist Tray Trim Matches"           0
@@ -2240,18 +2241,63 @@
 		display: none
 	}
 	.html5-scrubber-button {
+		@drivers: {
+			@Mario: "http://i.imgur.com/NitjtT1.gif";
+			@Luigi: "http://i.imgur.com/MplOS83.gif";
+			@Peach: "http://i.imgur.com/xjrpLMl.gif";
+			@Toad: "http://i.imgur.com/7Ch8r7K.gif";
+			@Yoshi: "http://i.imgur.com/Ayxgokc.gif";
+			@Wario: "http://i.imgur.com/5SbFoUK.gif";
+			@Koopa_Troopa: "http://i.imgur.com/aZxO1Zy.gif";
+			@Donkey_Kong_Jr: "http://i.imgur.com/VdB9p6r.gif";
+			@Bowser: "http://i.imgur.com/sVpRjhS.gif";
+		};
 		-ms-touch-action: none;
-		& when (@PlayerStyle = 20120125) {
-			background: no-repeat url(//s.ytimg.com/yt/imgbin/player-common-vfl6Awq62.png) -89px 0;
+		& when (@CustomProgress = None) {
+			& when (@PlayerStyle = 20120125) {
+				background: no-repeat url(//s.ytimg.com/yt/imgbin/player-common-vfl6Awq62.png) -89px 0;
+			}
+			& when (@PlayerStyle = 20120913) {
+				background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) -17px -137px;
+			}
+			& when (@PlayerStyle = 20121207) {
+				background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) -54px -135px;
+			}
 		}
-		& when (@PlayerStyle = 20120913) {
-			background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) -17px -137px;
+		& when ((@CustomProgress = Mario) or (@CustomProgress = Luigi) or (@CustomProgress = Peach) or (@CustomProgress = Toad) or (@CustomProgress = Yoshi) or (@CustomProgress = Wario) or (@CustomProgress = Koopa_Troopa) or (@CustomProgress = Donkey_Kong_Jr) or (@CustomProgress = Bowser)) {
+			background: no-repeat url(@drivers[@@CustomProgress]);
+			width: 31px;
+			height: 33px !important;
+			margin-left: -16px;
+			margin-top: -19px;
 		}
-		& when (@PlayerStyle = 20121207) {
-			background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) -54px -135px;
+		& when (@CustomProgress = Pikachu) {
+			background: no-repeat url("http://i.imgur.com/aqJhzLZ.gif");
+			width: 59px;
+			height: 50px !important;
+			margin-left: -43px;
+			margin-top: -36px;
 		}
-		height: 17px !important;
-		width: 16px;
+		& when (@CustomProgress = Pikachu_alternative) {
+			background: no-repeat url("http://i.imgur.com/u1fZNTy.gif");
+			background-size: 120px 60px;
+			width: 117px;
+			height: 60px !important;
+			margin-left: -73px;
+			margin-top: -48px;
+		}
+		& when (@CustomProgress = Square) {
+			& when (@PlayerStyle = 20120125) or (@PlayerStyle = 20120913) {
+				background: no-repeat url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wBHg07A4ntUjkAAAC3SURBVDjLtVPbDYMwDDybfPUHMVAGYYR2oK7AVEhMUSkKtvsDacojBaSelI9Yl8vFFxOAOz5gADat11S7oQAHACLyxAVUVfVwAKCquAqXb0Tk6M3fAiEEJSIGgK7riofbtoWIwMw0Cagqz4SmaYoCmUtOAuM4JkJd10WBnJuncLhpS+7KATPvpkJE2w7yYilSM/vTE2KMKcZfmB3sxui9LwoMw7COMbfV9/35r3ymB6tkFuN8eqTfL4dlhx5tIlkAAAAASUVORK5CYII=") 0 1px;
+			}
+			& when (@PlayerStyle = 20121207) {
+				background: no-repeat url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAAGa2tLEAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAGUExURerq6q6urhsSkOsAAAAJcEhZcwAADsIAAA7CARUoSoAAAAAZdEVYdFNvZnR3YXJlAFBhaW50Lk5FVCA1LjEuMTITAUd0AAAAuGVYSWZJSSoACAAAAAUAGgEFAAEAAABKAAAAGwEFAAEAAABSAAAAKAEDAAEAAAACAAAAMQECABEAAABaAAAAaYcEAAEAAABsAAAAAAAAAPJ2AQDoAwAA8nYBAOgDAABQYWludC5ORVQgNS4xLjEyAAADAACQBwAEAAAAMDIzMAGgAwABAAAAAQAAAAWgBAABAAAAlgAAAAAAAAACAAEAAgAEAAAAUjk4AAIABwAEAAAAMDEwMAAAAACDfy8cctDT3wAAACRJREFUGNNjYGBgZEAHjAJIbEEYgQ0ICqAQeAGjIFQNJgMXAABV6QEzVmXCHAAAAABJRU5ErkJggg==") 0 1px;
+			}
+		}
+		& when not ((@CustomProgress = Pikachu) or (@CustomProgress = Pikachu_alternative) or (@CustomProgress = Mario) or (@CustomProgress = Luigi) or (@CustomProgress = Peach) or (@CustomProgress = Toad) or (@CustomProgress = Yoshi) or (@CustomProgress = Wario) or (@CustomProgress = Koopa_Troopa) or (@CustomProgress = Donkey_Kong_Jr) or (@CustomProgress = Bowser)) {
+			height: 17px !important;
+			width: 16px;
+		}
 		border: none;
 		overflow: hidden;
 		top: -5px;
@@ -2483,27 +2529,58 @@
 			transition: all 0s linear 0s;
 		}
 		.html5-progress-bar:focus &, &:active, &:hover, .seeking-mode & {
-			& when (@PlayerStyle = 20120125) {
-				background: no-repeat url(//s.ytimg.com/yt/imgbin/player-common-vfl6Awq62.png) -89px -19px;
+			& when (@CustomProgress = None) {
+				& when (@PlayerStyle = 20120125) {
+					background: no-repeat url(//s.ytimg.com/yt/imgbin/player-common-vfl6Awq62.png) -89px -19px;
+				}
+				& when (@PlayerStyle = 20120913) {
+					background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) -33px -118px;
+				}
+				& when (@PlayerStyle = 20121207) {
+					background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) -101px -169px;
+					&:after {
+						position: relative;
+						top: 5px;
+						left: 5px;
+						display: block;
+						width: 6px;
+						height: 6px;
+						background: #b91f1f;
+						content: '';
+						z-index: -1;
+						-moz-border-radius: 4px;
+						-webkit-border-radius: 4px;
+						border-radius: 4px;
+					}
+				}
 			}
-			& when (@PlayerStyle = 20120913) {
-				background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) -33px -118px;
+			& when ((@CustomProgress = Mario) or (@CustomProgress = Luigi) or (@CustomProgress = Peach) or (@CustomProgress = Toad) or (@CustomProgress = Yoshi) or (@CustomProgress = Wario) or (@CustomProgress = Koopa_Troopa) or (@CustomProgress = Donkey_Kong_Jr) or (@CustomProgress = Bowser)) {
+				background: no-repeat url(@drivers[@@CustomProgress]);
 			}
-			& when (@PlayerStyle = 20121207) {
-				background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) -101px -169px;
-				&:after {
-					position: relative;
-					top: 5px;
-					left: 5px;
-					display: block;
-					width: 6px;
-					height: 6px;
-					background: #b91f1f;
-					content: '';
-					z-index: -1;
-					-moz-border-radius: 4px;
-					-webkit-border-radius: 4px;
-					border-radius: 4px;
+			& when (@CustomProgress = Pikachu) {
+				background: url("http://i.imgur.com/aqJhzLZ.gif");
+			}
+			& when (@CustomProgress = Pikachu_alternative) {
+				background: no-repeat url("http://i.imgur.com/u1fZNTy.gif");
+				background-size: 120px 60px;
+			}
+			& when (@CustomProgress = Square) {
+				& when (@PlayerStyle = 20120125) or (@PlayerStyle = 20120913) {
+					background: no-repeat url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wBHg4AIvtwEwYAAADGSURBVDjLtVMxDsIwDLyknegT4BdszAxMiG/AgxgYeAcvYOMJlTogXlAqValtlpKmUKy0EidliGWfLznbANijgwUg7ana2AwKUgAgoiMmIEmSQwoAzIypSMMLEcV27hPUdc3GGAsAl+VKLd7criAiiAh7Ama274TF/aESBCqtJ2iapksQUQnC3NAFH6ggsQowqKBUim2WDSvoEygKnuWfnuCc8zbOd9uoT/xp4/p8UgmKovi2MZSV5/n4UY4d4SGYj3UevdIvHNFrXoCgaYcAAAAASUVORK5CYII=") 0 1px;
+				}
+				& when (@PlayerStyle = 20121207) {
+					background: no-repeat url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAFfKj/FAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAGUExURerq6gAAAMke/wkAAAACdFJOU/8A5bcwSgAAAAlwSFlzAAAOwwAADsMBx2+oZAAAABl0RVh0U29mdHdhcmUAUGFpbnQuTkVUIDUuMS4xMhMBR3QAAAC4ZVhJZklJKgAIAAAABQAaAQUAAQAAAEoAAAAbAQUAAQAAAFIAAAAoAQMAAQAAAAMAAAAxAQIAEQAAAFoAAABphwQAAQAAAGwAAAAAAAAAo5MAAOgDAACjkwAA6AMAAFBhaW50Lk5FVCA1LjEuMTIAAAMAAJAHAAQAAAAwMjMwAaADAAEAAAABAAAABaAEAAEAAACWAAAAAAAAAAIAAQACAAQAAABSOTgAAgAHAAQAAAAwMTAwAAAAAAd3fp62zNoUAAAAKElEQVQYV2NgYGBgYAQRuAAjNllGmCicQQTA1ESKbmyAEQxIEiAJAAAUwAAlhmrl4wAAAABJRU5ErkJggg==") 0 1px;
+					&:after {
+						position: relative;
+						top: 5px;
+						left: 5px;
+						display: block;
+						width: 6px;
+						height: 6px;
+						background: #b91f1f;
+						content: '';
+						z-index: -1;
+					}
 				}
 			}
 		}
