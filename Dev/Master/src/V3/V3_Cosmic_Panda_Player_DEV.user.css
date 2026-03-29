@@ -1,13 +1,13 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player (DEV)
 @namespace      userstyles.world/user/tersiswilvin
-@version        20260326-00.1.2
+@version        20260329-00.1.2
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
 @updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_DEV.user.css
 @license        CC-BY-SA-4.0
 @preprocessor   less
-@var            select                                            CustomProgress              "(Fun) Custom Video Progress"                ["None*", "Bowser", "Donkey_Kong_Jr", "Koopa_Troopa", "Luigi", "Mario", "Peach", "Pikachu", "Pikachu_alternative", "Square", "Toad", "Wario", "Yoshi"]
+@var            select                                            CustomProgress              "(Fun) Custom Video Progress"                ["None*", "Bowser", "Donkey_Kong_Jr", "Hamster", "Koopa_Troopa", "Knuckles", "Luigi", "Mario", "Peach", "Pikachu", "Pikachu_alternative", "Rilakkuma", "Sonic", "Square", "Tails", "Toad", "Wario", "Yoshi"]
 @var            checkbox                                          ECMHSFix                    "(QoL) 20120125 Context Menu Hover Fix"      0
 @var            checkbox                                          MiniplayerXBtnQoL           "(QoL) Miniplayer Improved X Button"         1
 @var            checkbox                                          PlaylistTrayTrimMatches     "(QoL) Playlist Tray Trim Matches"           0
@@ -2158,7 +2158,7 @@
 		display: none
 	}
 	.ytp-play-progress {
-		& when (@PlayerStyle = 20120125) {
+		& when (@PlayerStyle = 20120125) and not ((@CustomProgress = Sonic) or (@CustomProgress = Tails)) {
 			background: -webkit-linear-gradient(top, #c00, #600);
 			background: -moz-linear-gradient(top, #c00, #600);
 			background: -o-linear-gradient(top, #c00, #600);
@@ -2174,8 +2174,40 @@
 				filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#eeeeee',EndColorStr='#949494')";
 			}
 		}
+		& when (@PlayerStyle = 20120125) and (@CustomProgress = Sonic) {
+			background: -webkit-linear-gradient(top, #006bbf, #003d6c);
+			background: -moz-linear-gradient(top, #006bbf, #003d6c);
+			background: -o-linear-gradient(top, #006bbf, #003d6c);
+			background: -ms-linear-gradient(top, #006bbf, #003d6c);
+			background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #006bbf), color-stop(100%, #003d6c));
+			-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#006bbf',EndColorStr='#003d6c')";
+			.html5-progress-bar.white & {
+				background: -webkit-linear-gradient(top, #eee 0, #949494 100%);
+				background: -moz-linear-gradient(top, #eee 0, #949494 100%);
+				background: -o-linear-gradient(top, #eee 0, #949494 100%);
+				background: -ms-linear-gradient(top, #eee 0, #949494 100%);
+				background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #eee), color-stop(100%, #949494));
+				filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#eeeeee',EndColorStr='#949494')";
+			}
+		}
+		& when (@PlayerStyle = 20120125) and (@CustomProgress = Tails) {
+			background: -webkit-linear-gradient(top, #d67d08, #864e05);
+			background: -moz-linear-gradient(top, #d67d08, #864e05);
+			background: -o-linear-gradient(top, #d67d08, #864e05);
+			background: -ms-linear-gradient(top, #d67d08, #864e05);
+			background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #d67d08), color-stop(100%, #864e05));
+			-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#d67d08',EndColorStr='#864e05')";
+			.html5-progress-bar.white & {
+				background: -webkit-linear-gradient(top, #eee 0, #949494 100%);
+				background: -moz-linear-gradient(top, #eee 0, #949494 100%);
+				background: -o-linear-gradient(top, #eee 0, #949494 100%);
+				background: -ms-linear-gradient(top, #eee 0, #949494 100%);
+				background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #eee), color-stop(100%, #949494));
+				filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#eeeeee',EndColorStr='#949494')";
+			}
+		}
 		z-index: 933;
-		& when (@PlayerStyle = 20120913) {
+		& when (@PlayerStyle = 20120913) and not ((@CustomProgress = Sonic) or (@CustomProgress = Tails)) {
 			background-image: -moz-linear-gradient(top, #c00 0, #600 100%);
 			background-image: -ms-linear-gradient(top, #c00 0, #600 100%);
 			background-image: -o-linear-gradient(top, #c00 0, #600 100%);
@@ -2193,8 +2225,56 @@
 				filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr=#eee,EndColorStr=#949494);
 			}
 		}
-		& when (@PlayerStyle = 20121207) {
+		& when (@PlayerStyle = 20120913) and (@CustomProgress = Sonic) {
+			background-image: -moz-linear-gradient(top, #006bbf 0, #003d6c 100%);
+			background-image: -ms-linear-gradient(top, #006bbf, #003d6c 100%);
+			background-image: -o-linear-gradient(top, #006bbf 0, #003d6c 100%);
+			background-image: -webkit-gradient(linear, left top, left 004479, color-stop(0, #006bbf), color-stop(100%, #003d6c));
+			background-image: -webkit-linear-gradient(top, #006bbf 0, #003d6c 100%);
+			background-image: linear-gradient(to bottom, #006bbf 0, #003d6c 100%);
+			filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr=#006bbf,EndColorStr=#003d6c);
+			.html5-progress-bar.white & {
+				background-image: -moz-linear-gradient(top, #eee 0, #949494 100%);
+				background-image: -ms-linear-gradient(top, #eee 0, #949494 100%);
+				background-image: -o-linear-gradient(top, #eee 0, #949494 100%);
+				background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #eee), color-stop(100%, #949494));
+				background-image: -webkit-linear-gradient(top, #eee 0, #949494 100%);
+				background-image: linear-gradient(to bottom, #eee 0, #949494 100%);
+				filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr=#eee,EndColorStr=#949494);
+			}
+		}
+		& when (@PlayerStyle = 20120913) and (@CustomProgress = Tails) {
+			background-image: -moz-linear-gradient(top, #d67d08 0, #864e05 100%);
+			background-image: -ms-linear-gradient(top, #d67d08, #864e05 100%);
+			background-image: -o-linear-gradient(top, #d67d08 0, #864e05 100%);
+			background-image: -webkit-gradient(linear, left top, left 004479, color-stop(0, #d67d08), color-stop(100%, #864e05));
+			background-image: -webkit-linear-gradient(top, #d67d08 0, #864e05 100%);
+			background-image: linear-gradient(to bottom, #d67d08 0, #864e05 100%);
+			filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr=#d67d08,EndColorStr=#864e05);
+			.html5-progress-bar.white & {
+				background-image: -moz-linear-gradient(top, #eee 0, #949494 100%);
+				background-image: -ms-linear-gradient(top, #eee 0, #949494 100%);
+				background-image: -o-linear-gradient(top, #eee 0, #949494 100%);
+				background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #eee), color-stop(100%, #949494));
+				background-image: -webkit-linear-gradient(top, #eee 0, #949494 100%);
+				background-image: linear-gradient(to bottom, #eee 0, #949494 100%);
+				filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr=#eee,EndColorStr=#949494);
+			}
+		}
+		& when (@PlayerStyle = 20121207) and not ((@CustomProgress = Sonic) or (@CustomProgress = Tails)) {
 			background: #b91f1f;
+			.html5-progress-bar.white & {
+				background: #bbb;
+			}
+		}
+		& when (@PlayerStyle = 20121207) and (@CustomProgress = Sonic) {
+			background: #0076d2;
+			.html5-progress-bar.white & {
+				background: #bbb;
+			}
+		}
+		& when (@PlayerStyle = 20121207) and (@CustomProgress = Tails) {
+			background: #e88809;
 			.html5-progress-bar.white & {
 				background: #bbb;
 			}
@@ -2252,6 +2332,7 @@
 			@Donkey_Kong_Jr: "http://i.imgur.com/VdB9p6r.gif";
 			@Bowser: "http://i.imgur.com/sVpRjhS.gif";
 		};
+		@Hamster_GIF: "data:image/gif;base64,R0lGODlhIwAXAPMAAAAAAAAA//+EpffGe//v3v///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQJFAABACwAAAAAIwAXAAAIswADCBxIsKDBgwgTKgwAAMDChwkBDBjgEKJFgRIHCKh4sWDDjxUzbvzYkWHGiRMbohQgAGVDiydRypw5k2NEmjhlqhxAwKbBmDlrAigAgIBRnwSBBnX50ejRg0qXMnX69CcBqTNZCqDa02dDo1hlauXac+DXomDDTiRbFW1PqmqpurUJkitWsiShkpWKF6lZtnZlyvXrETBclEcJW31rOOPLi2hBSv6YsmRkhY5LmnyYV2FAACH5BAkPAAEALAAAAAAjABcAAAiwAAMIHEiwoEEAAAwqXMhQIIABAxI2nLjwIUSJFCsi3OgQYkSOGQci9OhxJMmSGCdaPMmyZcqKLWOivNhwpUyWCAsAIEDgJUGbN0lu3MnTZwCgQYUSLapwZ9KTAqLyLOqT6FOSUQVMZSoS4dSrH71ulSh2KQGwKLke7Sn2K9qdCAua3Xo26dC4cunq3XpyrFGHbfcKZhsy8OCpf2veXTw05EHEIiE7bqqWaOLJeLtODggAIfkECRQAAQAsAAAAACMAFwAACLEAAwgcSLCgwYMIEypcyLChQAAAHEoMABHAgAERJy60aPFiRo0PK0KkCPEixpETS5r02HElS4ctXcqU+TFhzJkzVdY0eBOnS4gFABAgsJNgT58mRQ4levAo0qRClxalSOCpTAFYlxLdCXGoVZdYBWhlGpLo0q8mx0p9KFUrWq1RyYbs6vap2ooI4561C3cqW7VjceK1Cbjw0Jh+/xoujJjwVpGQI1dMmlekUbyWL6McGBAAIfkECRQAAQAsAAAAACMAFwAACLMAAwgcSLCgwYMIEyoMAADAwocJAQwY4BCiRYESBwioeLFgw48VM2782JFhxokTG6IUIABlQ4snUcqcOZNjRJo4ZaocQMCmwZg5awIoAICAUZ8EgQZ1+dHo0YNKlzJ1+vQnAakzWQqg2tNnQ6NYZWrl2nPg16Jgw04kWxVtT6pqqbq1CZIrVrIkoZKVihepWbZ2Zcr16xEwXJRHCVt9azjjy4toQUr+mLJkZIWOS5p8mFdhQAAh+QQJDwABACwAAAAAIwAXAAAIvQADCBxIsKBBAAAMKlzIUCCAAQMQNpy48KEAAQgTUlSYMaPDARc7biSIEKLJiA9BCjgpcWPKkzBjmtTY8KXMmCUHECBAk+PNmwgLANi5s2dBmz9nZiRa1GdSmQiZNj1I4OnJiwKkeiQ5tKpViFilTg3QkehXk2KLJuzKk+lZomx5QlxbVKpVrRlnOoxqN6nYjlsdpu0LEe/EuINPwjVaUatYtDwZ12QK2GbLkQPZ9nwpGXPXzXoxc7y8t/PCgAAh+QQJFAABACwAAAAAIwAXAAAIuAADCBxIsKDBgwgTKlzIsGEAAAAeOpz4cMAAABcpMsQoQADGiBoFQhwJkqPHkRohWlx5EeOAjgJWQnTokqXNmzI34tzZ0iIBAiAR1uTJEmIBAD9/BjU4lKhFkkmVHmzq9CnSqECnEqi6EiZWlAQh/uRq0SvWrCKRXt1KdsBZqQ+TrmVbVW7UpVCj1r0LlulZp2dnCg08l+XXpX7n2gVqWCliv0oPM17pGK5QkopHysTcdyPmh50XBgQAIf4TZ2lmIGFuaW1lIGJ5IG1vbW9tbwAh/htHaWZBbmltIGJ5IE5vYnVoaXJvIEhhdHRvcmkAOw==";
 		-ms-touch-action: none;
 		& when (@CustomProgress = None) {
 			& when (@PlayerStyle = 20120125) {
@@ -2271,6 +2352,20 @@
 			margin-left: -16px;
 			margin-top: -19px;
 		}
+		& when (@CustomProgress = Hamster) {
+			background: no-repeat url(@Hamster_GIF);
+			width: 31px;
+			height: 33px !important;
+			margin-left: -16px;
+			margin-top: -19px;
+		}
+		& when (@CustomProgress = Knuckles) {
+			background: no-repeat url("https://i.imgur.com/96Q0DBf.jpg");
+			width: 36px;
+			height: 36px !important;
+			margin-left: -16px;
+			margin-top: -22px;
+		}
 		& when (@CustomProgress = Pikachu) {
 			background: no-repeat url("http://i.imgur.com/aqJhzLZ.gif");
 			width: 59px;
@@ -2286,6 +2381,20 @@
 			margin-left: -73px;
 			margin-top: -48px;
 		}
+		& when (@CustomProgress = Rilakkuma) {
+			background: no-repeat url("http://i.hizliresim.com/VlP7zv.gif");
+			width: 50px;
+			height: 50px !important;
+			margin-left: -16px;
+			margin-top: -19px;
+		}
+		& when (@CustomProgress = Sonic) {
+			background: no-repeat url("http://i.imgur.com/sR2lxuX.gif");
+			width: 31px;
+			height: 40px !important;
+			margin-left: -16px;
+			margin-top: -25px;
+		}
 		& when (@CustomProgress = Square) {
 			& when (@PlayerStyle = 20120125) or (@PlayerStyle = 20120913) {
 				background: no-repeat url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wBHg07A4ntUjkAAAC3SURBVDjLtVPbDYMwDDybfPUHMVAGYYR2oK7AVEhMUSkKtvsDacojBaSelI9Yl8vFFxOAOz5gADat11S7oQAHACLyxAVUVfVwAKCquAqXb0Tk6M3fAiEEJSIGgK7riofbtoWIwMw0Cagqz4SmaYoCmUtOAuM4JkJd10WBnJuncLhpS+7KATPvpkJE2w7yYilSM/vTE2KMKcZfmB3sxui9LwoMw7COMbfV9/35r3ymB6tkFuN8eqTfL4dlhx5tIlkAAAAASUVORK5CYII=") 0 1px;
@@ -2294,7 +2403,14 @@
 				background: no-repeat url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAAGa2tLEAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAGUExURerq6q6urhsSkOsAAAAJcEhZcwAADsIAAA7CARUoSoAAAAAZdEVYdFNvZnR3YXJlAFBhaW50Lk5FVCA1LjEuMTITAUd0AAAAuGVYSWZJSSoACAAAAAUAGgEFAAEAAABKAAAAGwEFAAEAAABSAAAAKAEDAAEAAAACAAAAMQECABEAAABaAAAAaYcEAAEAAABsAAAAAAAAAPJ2AQDoAwAA8nYBAOgDAABQYWludC5ORVQgNS4xLjEyAAADAACQBwAEAAAAMDIzMAGgAwABAAAAAQAAAAWgBAABAAAAlgAAAAAAAAACAAEAAgAEAAAAUjk4AAIABwAEAAAAMDEwMAAAAACDfy8cctDT3wAAACRJREFUGNNjYGBgZEAHjAJIbEEYgQ0ICqAQeAGjIFQNJgMXAABV6QEzVmXCHAAAAABJRU5ErkJggg==") 0 1px;
 			}
 		}
-		& when not ((@CustomProgress = Pikachu) or (@CustomProgress = Pikachu_alternative) or (@CustomProgress = Mario) or (@CustomProgress = Luigi) or (@CustomProgress = Peach) or (@CustomProgress = Toad) or (@CustomProgress = Yoshi) or (@CustomProgress = Wario) or (@CustomProgress = Koopa_Troopa) or (@CustomProgress = Donkey_Kong_Jr) or (@CustomProgress = Bowser)) {
+		& when (@CustomProgress = Tails) {
+			background: no-repeat url("http://i.imgur.com/3HNuxg7.gif");
+			width: 36px;
+			height: 38px !important;
+			margin-left: -16px;
+			margin-top: -25px;
+		}
+		& when (@CustomProgress = None) or (@CustomProgress = Square) {
 			height: 17px !important;
 			width: 16px;
 		}
@@ -2557,12 +2673,24 @@
 			& when ((@CustomProgress = Mario) or (@CustomProgress = Luigi) or (@CustomProgress = Peach) or (@CustomProgress = Toad) or (@CustomProgress = Yoshi) or (@CustomProgress = Wario) or (@CustomProgress = Koopa_Troopa) or (@CustomProgress = Donkey_Kong_Jr) or (@CustomProgress = Bowser)) {
 				background: no-repeat url(@drivers[@@CustomProgress]);
 			}
+			& when (@CustomProgress = Hamster) {
+				background: no-repeat url(@Hamster_GIF);
+			}
+			& when (@CustomProgress = Knuckles) {
+				background: no-repeat url("https://i.imgur.com/96Q0DBf.jpg");
+			}
 			& when (@CustomProgress = Pikachu) {
 				background: url("http://i.imgur.com/aqJhzLZ.gif");
 			}
 			& when (@CustomProgress = Pikachu_alternative) {
 				background: no-repeat url("http://i.imgur.com/u1fZNTy.gif");
 				background-size: 120px 60px;
+			}
+			& when (@CustomProgress = Rilakkuma) {
+				background: no-repeat url("http://i.hizliresim.com/VlP7zv.gif");
+			}
+			& when (@CustomProgress = Sonic) {
+				background: no-repeat url("http://i.imgur.com/sR2lxuX.gif");
 			}
 			& when (@CustomProgress = Square) {
 				& when (@PlayerStyle = 20120125) or (@PlayerStyle = 20120913) {
@@ -2582,6 +2710,9 @@
 						z-index: -1;
 					}
 				}
+			}
+			& when (@CustomProgress = Tails) {
+				background: no-repeat url("http://i.imgur.com/3HNuxg7.gif");
 			}
 		}
 		.html5-progress-bar.white:focus &, .html5-progress-bar.white &:hover, .html5-progress-bar.white &:active {
@@ -6776,7 +6907,15 @@
 					display: block;
 					width: 55px;
 					height: 4px;
-					background: #b91f1f;
+					& when not ((@CustomProgress = Sonic) or (@CustomProgress = Tails)) {
+						background: #b91f1f;
+					}
+					& when (@CustomProgress = Sonic) {
+						background: #0278d0;
+					}
+					& when (@CustomProgress = Tails) {
+						background: #e88809;
+					}
 					content: '';
 				}
 			}
@@ -7480,7 +7619,7 @@
 			opacity: 1;
 		}
 	}
-	
+
 	#watch7-playlist-tray-trim when (@PlaylistTrayTrimMatches = 1) {
 		& when (@PlayerStyle = 20120125) or (@PlayerStyle = 20120913) {
 			background: #000;
@@ -7529,6 +7668,13 @@
 	Impliment Flash Player sub options ( X | % )
 	Impliment Tablet Player support ( X | % )
 	Impliment 2013 flat translate menu option ( X | % )
+
+	== Notes ==
+	Pre December 2012 color gradient should use 3.7% darken and 20% darken of the original HEX, for post December use the original HEX color.
+	For example:
+	HEX: #cc181e
+	darken(#cc181e, 3.7%) => #bb161c
+	darken(#cc181e, 20%) => #710d11
 
 	== Legend ==
 	| => Separator
