@@ -1,88 +1,109 @@
 /* ==UserStyle==
-@name           V3 Cosmic Panda Player Experimental
+@name           V3 Cosmic Panda Player (Experimental)
 @namespace      userstyles.world/user/tersiswilvin
-@version        20251212-00.1.2
+@version        20260329-00.1.2
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
 @updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_Experimental.user.css
 @license        CC-BY-SA-4.0
 @preprocessor   less
-@var            checkbox                                          AccPlyrCtlPos           "Accurate Player Controls Positions" 1
-@var            checkbox                                          AccPrevTailPos          "Accurate Preview Tail Position"     1
-@var            checkbox                                          AccSizeBtnBehavior      "Accurate Size Button Behavior"      1
-@var            checkbox                                          AccWtmAnim              "Accurate Watermark Animations"      1
-@var            checkbox                                          ActiveSettingsBtnGlow   "Active Settings Button Glow"        0
-@var            checkbox                                          CMIcons                 "Context Menu Icons"                 0
-@var            select                                            AhCursor                "Cursor Preset"                      ["Default*", "Default_Autohide", "Off", "Off_Autohide"]
-@var            checkbox                                          DefaultBezelStyle       "Default Bezel Style"                0
-@var            checkbox                                          DefaultContextMenuStyle "Default Context Menu Style"         0
-@var            checkbox                                          DefaultDialogStyle      "Default Dialog Style"               0
-@var            checkbox                                          DefaultTranslateStyle   "Default Translate Style"            0
-@var            checkbox                                          DefaultInfobarStyle     "Default Infobar Style"              0
-@var            checkbox                                          DefaultInfobarIconStyle "Default Infobar icon Style"         0
-@var            checkbox                                          DefaultLiveBadgeStyle   "Default Live Badge Style"           0
-@var            checkbox                                          DefaultProgTooltipStyle "Default Progress Tooltip Style"     0
-@var            checkbox                                          DefaultSettingStyle     "Default Setting Style"              0
-@var            checkbox                                          JFKTrsprntBkg           " └ Transparent JFK Background"      0
-@var            checkbox                                          DefaultUnavailableStyle "Default Unavailable Style"          0
-@var            checkbox                                          DefaultInfoPanelStyle   "Default Video Info Style"           0
-@var            checkbox                                          DefaultVideoLoader      "Default Video Loader"               0
-@var            checkbox                                          DEV                     "Developer Options"                  0
-@var            checkbox                                          Forceinfobar            " ├ Force Infobar"                   1
-@var            checkbox                                          ForceProgressTooltip    " ├ Force Progress Tooltip"          1
-@var            checkbox                                          ForceSettingsMenu       " ├ Force Settings Menu"             1
-@var            checkbox                                          ForceThumbnail          " ├ Force Thumbnail"                 1
-@var            checkbox                                          ForceWOYTi              " ├ Force Watch On Youtube icon"     1
-@var            checkbox                                          Forcewatermark          " ├ Force Watermark"                 1
-@var            checkbox                                          ForceYTPButtons         " └ Force YTP Buttons"               1
-@var            checkbox                                          EarlyClipsEnabled       "Early Clips Enabled"                0
-@var            checkbox                                          EarlyFsExperiment       "Early Fullscreen Experiment"        0
-@var            checkbox                                          EarlyReplayExperiment   "Early Replay Icon Experiment"       0
-@var            checkbox                                          EarlySizeExperiment     "Early Size Icons Experiment"        0
-@var            checkbox                                          ExtraSFNItems           "Extra Stats for nerds items"        0
-@var            select                                            FallbackTVStaticPreset  "Fallback TV Static Preset"          ["None*", "Animated", "Canvas", "Static"]
-@var            checkbox                                          FlashPlayerMode         "Flash Player Mode ( WIP )"          0
-@var            checkbox                                          FlatterSettings         "Flatter Menu Styling"               0
-@var            checkbox                                          FSFloating              " └ Floating"                        1
-@var            checkbox                                          FocusOutline            "Focus Outline"                      1
-@var            number                                            FsTbS                   "Fullscreen Taskbar Size"            [0, 0, null, 1, "px"]
-@var            select                                            FsLocPre                " └ Location Preset"                 ["Left", "Right", "Bottom*"]
-@var            checkbox                                          HideAdProgress          "Hide Ad Progress"                   1
-@var            checkbox                                          HideAdSkipButton        "Hide Ad Skip Container"             1
-@var            checkbox                                          HideAnnotation          "Hide Annotation Button"             0
-@var            checkbox                                          HideBranding            "Hide Annotation Branding"           1
-@var            checkbox                                          HideASRIcons            "Hide ASR Icons"                     0
-@var            checkbox                                          HideCaptionSettingsRow  "Hide Caption Settings Row"          1
-@var            checkbox                                          HideCards               "Hide Cards"                         1
-@var            checkbox                                          HESR                    "Hide Extra Settings Rows"           1
-@var            checkbox                                          HidePlrChptrs           "Hide Player Chapters"               1
-@var            checkbox                                          HPaNB                   "Hide Prev & Next Buttons"           1
-@var            checkbox                                          HideSettingBoxShadow    "Hide Settings Box Shadow"           0
-@var            checkbox                                          HideSponsorBlockButtons "Hide SponsorBlock Control Buttons"  1
-@var            checkbox                                          HideSponsorBlockPrevbar "Hide SponsorBlock Previewbar"       1
-@var            checkbox                                          SupportWarning          "Hide Support Warning"               0
-@var            checkbox                                          HUnB                    "Hide Unavailable Buttons"           1
-@var            checkbox                                          QualityBadges           "Hide Quality Badges"                1
-@var            checkbox                                          IBIO                    "Infobar Icons Only"                 0
-@var            select                                            MiniplayerAutohide      "Miniplayer Autohide Preset"         ["PlayerSync", "Off", "On", "Fade", "Auto*"]
-@var            checkbox                                          MiniplayerEndscreen     "Miniplayer Endscreen Visible"       0
-@var            select                                            PlayButtonStyle         "Play Button Style"                  ["2010M", "2011M", "2012E*", "2013M", "2014"]
-@var            select                                            PlayerAutohide          "Player Autohide Preset"             ["Off", "On", "Fade*", "Auto"]
-@var            select                                            PlayerMonth             "Player Month"                       ["Early", "Middle*", "Late"]
-@var            checkbox                                          PlayerSizeTransition    "Player Size Transition"             1
-@var            checkbox                                          PlayerTheaterTransition "Player Theater Transition"          1
-@var            checkbox                                          PlayerTheaterGradient   "Player Theater Gradient"            1
-@var            checkbox                                          RemovePlayFocusState    "Remove Fullscreen Play Focus"       0
-@var            checkbox                                          ReplayIconExperiment    "Replay Icon Experiment"             0
-@var            checkbox                                          SoloSizeButton          "Solo Size Button Experiment"        0
-@var            select                                            TooltipStyle            "Tooltip Style"                      ["PlayerSync*", "Off", "Early", "Middle", "Late"]
-@var            checkbox                                          ECMHSFix                "(QoL) Early Context Menu Hover Fix" 0
-@var            checkbox                                          MiniplayerXBtnQoL       "(QoL) Miniplayer Improved X Button" 1
-@var            checkbox                                          SponsorPreviewFix       "(QoL) SponsorBlock Preview Fix"     0
-@var            checkbox                                          TooltipCrtFix           "(QoL) Tooltip 2012L Caret Fix"      0
+@var            select                                            CustomProgress              "(Fun) Custom Video Progress"                ["None*", "Bowser", "Donkey_Kong_Jr", "Hamster", "Koopa_Troopa", "Knuckles", "Luigi", "Mario", "Peach", "Pikachu", "Pikachu_alternative", "Rilakkuma", "Sonic", "Square", "Tails", "Toad", "Wario", "Yoshi"]
+@var            checkbox                                          ECMHSFix                    "(QoL) 20120125 Context Menu Hover Fix"      0
+@var            checkbox                                          MiniplayerXBtnQoL           "(QoL) Miniplayer Improved X Button"         1
+@var            checkbox                                          PlaylistTrayTrimMatches     "(QoL) Playlist Tray Trim Matches"           0
+@var            checkbox                                          RemovePlayFocusState        "(QoL) Remove Fullscreen Play Focus"         0
+@var            checkbox                                          SponsorPreviewFix           "(QoL) SponsorBlock Preview Fix"             0
+@var            checkbox                                          TooltipCrtFix               "(QoL) Tooltip 20121207 Caret Fix"           0
+@var            checkbox                                          AccPlyrCtlPos               "Accurate Player Controls Positions"         1
+@var            number                                            AccPlyrCtlPos_media         " ├ Multimedia button order"                 1
+@var            number                                            AccPlyrCtlPos_prev          " ├ Prev button order"                       2
+@var            number                                            AccPlyrCtlPos_next          " ├ Next button order"                       3
+@var            number                                            AccPlyrCtlPos_volume        " ├ volume button order"                     4
+@var            number                                            AccPlyrCtlPos_fs            " ├ Fullscreen enter button order"           100
+@var            number                                            AccPlyrCtlPos_tog           " ├ Toggle button order"                     99
+@var            number                                            AccPlyrCtlPos_woyt          " ├ Watch on YouTube button order"           98
+@var            number                                            AccPlyrCtlPos_wl            " ├ Watch later button order"                97
+@var            number                                            AccPlyrCtlPos_sett          " ├ Settings button order"                   96
+@var            number                                            AccPlyrCtlPos_subt          " ├ Subtitle button order"                   95
+@var            number                                            AccPlyrCtlPos_anot          " ├ Annotations button order"                94
+@var            number                                            AccPlyrCtlPos_playlist      " ├ Playlist button order"                   92
+@var            number                                            AccPlyrCtlPos_sb-start-seg  " ├ Sponsorblock start segment button order" 91
+@var            number                                            AccPlyrCtlPos_sb-cancel-seg " ├ Sponsorblock cancel segment button order"90
+@var            number                                            AccPlyrCtlPos_sb-delete     " ├ Sponsorblock delete button order"        89
+@var            number                                            AccPlyrCtlPos_sb-submit     " ├ Sponsorblock submit button order"        88
+@var            number                                            AccPlyrCtlPos_sb-info       " └ Sponsorblock info button order"          87
+@var            checkbox                                          AccPrevTailPos              "Accurate Preview Tail Position"             1
+@var            checkbox                                          AccSizeBtnBehavior          "Accurate Size Button Behavior"              1
+@var            checkbox                                          AccWtmAnim                  "Accurate Watermark Animations"              1
+@var            select                                            AhCursor                    "Cursor Preset"                              ["Default*", "Default_Autohide", "Off", "Off_Autohide"]
+@var            checkbox                                          DEV                         "Developer Options"                          0
+@var            checkbox                                          Forceinfobar                " ├ Force Infobar"                           1
+@var            checkbox                                          ForceProgressTooltip        " ├ Force Progress Tooltip"                  1
+@var            checkbox                                          ForceSettingsMenu           " ├ Force Settings Menu"                     1
+@var            checkbox                                          ForceThumbnail              " ├ Force Thumbnail"                         1
+@var            checkbox                                          ForceWOYTi                  " ├ Force Watch On Youtube icon"             1
+@var            checkbox                                          Forcewatermark              " ├ Force Watermark"                         1
+@var            checkbox                                          ForceYTPButtons             " └ Force YTP Buttons"                       1
+@var            checkbox                                          ExtraSFNItems               "Extra Stats for nerds items"                0
+@var            checkbox                                          FlashPlayerMode             "Flash Player Mode ( WIP )"                  0
+@var            checkbox                                          FocusOutline                "Focus Outline"                              1
+@var            number                                            FsTbS                       "Fullscreen Taskbar Size"                    [0, 0, null, 1, "px"]
+@var            select                                            FsLocPre                    " └ Location Preset"                         ["Left", "Right", "Bottom*"]
+@var            checkbox                                          HideAdProgress              "Hide Ad Progress"                           1
+@var            checkbox                                          HideAdSkipButton            "Hide Ad Skip Container"                     1
+@var            checkbox                                          HideAnnotation              "Hide Annotation Button"                     0
+@var            checkbox                                          HideBranding                "Hide Annotation Branding"                   1
+@var            checkbox                                          HideASRIcons                "Hide ASR Icons"                             0
+@var            checkbox                                          HideCaptionSettingsRow      "Hide Caption Settings Row"                  1
+@var            checkbox                                          HideCards                   "Hide Cards"                                 1
+@var            checkbox                                          HideCMIcons                 "Hide Context Menu Icons"                    1
+@var            checkbox                                          HESR                        "Hide Extra Settings Rows"                   1
+@var            checkbox                                          HideIBLikeTooltip           "Hide Infobar Like Tooltip"                  1
+@var            checkbox                                          HidePlrChptrs               "Hide Player Chapters"                       1
+@var            checkbox                                          HPaNB                       "Hide Prev & Next Buttons"                   1
+@var            checkbox                                          HideSettingBoxShadow        "Hide Settings Box Shadow"                   0
+@var            checkbox                                          HideSponsorBlockButtons     "Hide SponsorBlock Control Buttons"          0
+@var            checkbox                                          HideSponsorBlockPrevbar     "Hide SponsorBlock Previewbar"               0
+@var            checkbox                                          SupportWarning              "Hide Support Warning"                       0
+@var            checkbox                                          HUnB                        "Hide Unavailable Buttons"                   1
+@var            checkbox                                          QualityBadges               "Hide Quality Badges"                        1
+@var            select                                            MiniplayerAutohide          "Miniplayer Autohide Preset"                 ["Sync", "Off", "On", "Fade", "Auto*"]
+@var            checkbox                                          MiniplayerEndscreen         "Miniplayer Endscreen Visible"               0
+@var            select                                            PlayerAutohide              "Player Autohide Preset"                     ["Off", "On", "Fade*", "Auto"] 
+@var            select                                            PlayerStyle                 "Player Style"                               ["20120125", "20120913*", "20121207"]
+@var            checkbox                                          201201ClipsEnabled          " ├ 20120125 Clips Enabled"                  0
+@var            checkbox                                          201201FsExperiment          " ├ 20120125 Fullscreen Experiment"          0
+@var            checkbox                                          201201ReplayExperiment      " ├ 20120125 Replay Icon Experiment"         0
+@var            checkbox                                          201201SizeExperiment        " ├ 20120125 Size Icons Experiment"          0
+@var            checkbox                                          ActiveSettingsBtnGlow       " ├ Active Settings Button Glow"             0
+@var            checkbox                                          DefaultBezelStyle           " ├ Default Bezel Style"                     0
+@var            checkbox                                          DefaultContextMenuStyle     " ├ Default Context Menu Style"              0
+@var            checkbox                                          DefaultDialogStyle          " ├ Default Dialog Style"                    0
+@var            checkbox                                          DefaultTranslateStyle       " ├ Default Translate Style"                 0
+@var            checkbox                                          DefaultInfobarStyle         " ├ Default Infobar Style"                   0
+@var            checkbox                                          DefaultInfobarIconStyle     " ├ Default Infobar icon Style"              0
+@var            checkbox                                          DefaultLiveBadgeStyle       " ├ Default Live Badge Style"                0
+@var            checkbox                                          DefaultProgTooltipStyle     " ├ Default Progress Tooltip Style"          0
+@var            checkbox                                          DefaultSettingStyle         " ├ Default Setting Style"                   0
+@var            checkbox                                          JFKTrsprntBkg               "    └ Transparent JFK Background"           1
+@var            checkbox                                          DefaultUnavailableStyle     " ├ Default Unavailable Style"               0
+@var            checkbox                                          DefaultInfoPanelStyle       " ├ Default Video Info Style"                0
+@var            checkbox                                          DefaultVideoLoader          " ├ Default Video Loader"                    0
+@var            select                                            FallbackTVStaticPreset      " ├ Fallback TV Static Preset"               ["None*", "Animated", "Canvas", "Static"]
+@var            checkbox                                          FlatterSettings             " ├ Flatter Menu Styling"                    0
+@var            checkbox                                          FSFloating                  "    └ Floating"                             1
+@var            select                                            IBIO                        " ├ Infobar Icons Only"                      ["Sync*", "Off", "On"]
+@var            select                                            PlayButtonStyle             " ├ Play Button Style"                       ["Sync*", "Off", "20100601", "2011M", "201205", "2013M"]
+@var            checkbox                                          PlayerSizeTransition        " ├ Player Size Transition"                  1
+@var            checkbox                                          PlayerTheaterTransition     " ├ Player Theater Transition"               1
+@var            checkbox                                          PlayerTheaterGradient       " ├ Player Theater Gradient"                 1
+@var            checkbox                                          ReplayIconExperiment        " ├ Replay Icon Experiment"                  0
+@var            checkbox                                          SoloSizeBtnExperiment       " ├ Solo Size Button Experiment"             0
+@var            select                                            TooltipStyle                " └ Tooltip Style"                           ["Sync*", "Off", "20111201", "20121207"]
+@var            select                                            TooltipAnimations           "    └ Animations"                           ["Sync*", "Off", "On"]
 ==/UserStyle== */
 
-@-moz-document domain("www.youtube.com") {
+@-moz-document regexp("^https?:\\/\\/(www\\.)?youtube\\.com\\/(?!embed\\/?).*") {
 	/*/== Player Base ==/*/
 	.player-api {
 		position: relative;
@@ -90,9 +111,15 @@
 		background: #000;
 		color: #fff;
 		& when (@PlayerSizeTransition = 1) {
-			-moz-transition: width, height 0.2s ease-in-out;
-			-o-transition: width, height 0.2s ease-in-out;
-			-webkit-transition: width, height 0.2s ease-in-out;
+			& when not (@PlayerStyle = 20120913) {
+				-moz-transition: width,height 0.2s ease-in-out;
+				-o-transition: width,height 0.2s ease-in-out;
+				-webkit-transition: width,height 0.2s ease-in-out,
+			}
+			& when (@PlayerStyle = 20120913) {
+				-moz-transition: width,height 0.2s ease-in-out;
+				-o-transition: width,height 0.2s ease-in-out;
+			}
 		}
 	}
 
@@ -102,9 +129,15 @@
 			height: 390px;
 		}
 		& when (@PlayerSizeTransition = 1) and (@PlayerTheaterGradient = 0) or (@PlayerTheaterTransition = 0) {
-			-moz-transition: width, height 0.2s ease-in-out;
-			-o-transition: width, height 0.2s ease-in-out;
-			-webkit-transition: width, height 0.2s ease-in-out;
+			& when not (@PlayerStyle = 20120913) {
+				-moz-transition: width,height 0.2s ease-in-out;
+				-o-transition: width,height 0.2s ease-in-out;
+				-webkit-transition: width,height 0.2s ease-in-out;
+			}
+			& when (@PlayerStyle = 20120913) {
+				-moz-transition: width,height 0.2s ease-in-out;
+				-o-transition: width,height 0.2s ease-in-out;
+			}
 		}
 		& when (@PlayerTheaterGradient = 1) {
 			width: 100%;
@@ -112,14 +145,20 @@
 			left: 0;
 			z-index: -1;
 			& when (@PlayerSizeTransition = 0) and (@PlayerTheaterTransition = 1) {
-				-moz-transition: background-color 0.2s ease-in;
-				-o-transition: background-color 0.2s ease-in;
-				-webkit-transition: background-color 0.2s ease-in;
+				-moz-transition: background-color 0.2s ease-in-out;
+				-o-transition: background-color 0.2s ease-in-out;
+				-webkit-transition: background-color 0.2s ease-in-out;
 			}
 			& when (@PlayerSizeTransition = 1) and (@PlayerTheaterTransition = 1) {
-				-moz-transition: width, height 0.2s ease-in-out, background-color 0.2s ease-in;
-				-o-transition: width, height 0.2s ease-in-out, background-color 0.2s ease-in;
-				-webkit-transition: width, height 0.2s ease-in-out, background-color 0.2s ease-in;
+				& when not (@PlayerStyle = 20120913) {
+					-moz-transition: width,height 0.2s ease-in-out,background-color 0.2s ease-in-out;
+					-o-transition: width,height 0.2s ease-in-out,background-color 0.2s ease-in-out;
+					-webkit-transition: width,height 0.2s ease-in-out,background-color 0.2s ease-in-out;
+				}
+				& when (@PlayerStyle = 20120913) {
+					-moz-transition: width,height 0.2s ease-in-out,background-color 0.2s ease-in-out;
+					-o-transition: width,height 0.2s ease-in-out,background-color 0.2s ease-in-out;
+				}
 			}
 		}
 		@media screen and (min-width: 1496px) and (min-height: 768px) {
@@ -166,8 +205,11 @@
 			-webkit-tap-highlight-color: transparent;
 			background-color: #000;
 			color: #fff;
+			&:before {
+				content: "V3 Cosmic Panda Player does not support the Tablet Player yet.\APlease disable the Tablet Player in V3 settings or remove html5-tablet class for the best compatibility.";
+			}
 		}
-		.captions-text when (@PlayerMonth = Early) {
+		.captions-text when (@PlayerStyle = 20120125) {
 			opacity: 0.8
 		}
 		.captions-asr .caption-window-transform:before {
@@ -270,6 +312,9 @@
 				transition: top 0.5s ease-in;
 			}
 		}
+		&:has(.html5-info-bar .ytp-button-like:hover) .ytp-tooltip[style*="display: block"] when (@HideIBLikeTooltip = 1) {
+			display: none !important;
+		}
 	}
 
 	.html5-video-player:not(.el-detailpage):not(.house-brand):not(.ad-interrupting) .html5-endscreen, .html5-video-player:not(.ad-interrupting):not(.hide-info-bar):not(.playing-mode) .ytp-player-content, .ytp-block-autohide:not(.ad-interrupting):not(.hide-info-bar) .ytp-player-content, .ended-mode.endscreen-loaded:not(.el-detailpage):not(.house-brand):not(.ad-interrupting) .ytp-player-content, html[data-player-size=fullscreen] .html5-video-player:not(.house-brand):not(.ad-interrupting):not(.playing-mode) .ytp-player-content, html[data-player-size=fullscreen] .ytp-block-autohide:not(.house-brand):not(.ad-interrupting) .ytp-player-content {
@@ -282,39 +327,33 @@
 	}
 
 	.html5-video-info-panel when (@DefaultInfoPanelStyle = 0) {
+		position: absolute;
 		z-index: 930;
 		background: rgba(0, 0, 0, .85);
-		& when (@PlayerMonth = Early) {
-			min-width: 430px;
-			min-height: 130px;
-			border-top: 1px solid #555;
-			padding: 3px 5px;
-		}
-		& when not (@PlayerMonth = Early) {
-			width: 80%;
-		}
+		min-width: 430px;
+		min-height: 130px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		border-top: 1px solid #555;
+		padding: 3px 5px;
 		cursor: default;
-		& when (@PlayerMonth = Early) {
-			-moz-border-radius: 2px;
-			-webkit-border-radius: 2px;
-			border-radius: 2px;
-			-moz-box-shadow: 0 1px 0 #000;
-			-ms-box-shadow: 0 1px 0 #000;
-			-webkit-box-shadow: 0 1px 0 #000;
-			box-shadow: 0 1px 0 #000;
-		}
-		& when not (@PlayerMonth = Early) {
-			-moz-border-radius: 3px;
-			-webkit-border-radius: 3px;
-			border-radius: 3px;
-		}
+		-moz-border-radius: 2px;
+		-webkit-border-radius: 2px;
+		border-radius: 2px;
+		-moz-box-shadow: 0 1px 0 #000;
+		-ms-box-shadow: 0 1px 0 #000;
+		-webkit-box-shadow: 0 1px 0 #000;
+		box-shadow: 0 1px 0 #000;
+		top: 10px;
+		left: 10px;
 		color: unset;
 		&-close {
 			top: 2px;
 			color: #999;
 			cursor: pointer;
 			font-size: 0px;
-			& when (@PlayerMonth = Early) {
+			& when (@PlayerStyle = 20120125) {
 				background: transparent;
 				border: 0;
 				z-index: 1;
@@ -328,23 +367,20 @@
 			}
 		}
 		&-content {
-			& when (@PlayerMonth = Early) {
-				display: block;
-				position: absolute;
-				width: 100%;
-				height: 100%;
-			}
+			display: block;
+			position: absolute;
+			width: 100%;
+			height: 100%;
 			font-size: 12px;
 			color: #aaa;
-			& when (@PlayerMonth = Early) {
-				text-align: left;
-				padding: 5px 8px;
-			}
+			text-align: left;
+			padding: 5px 8px;
 		}
 	}
 	.html5-video-info-table {
 		& when (@DefaultInfoPanelStyle = 0) {
 			font-size: 10px;
+			line-height: normal; /* needed for accurate height */
 			th, td {
 				padding: 0
 			}
@@ -357,19 +393,24 @@
 		}
 		&:not(.html5-video-element-info-table) {
 			& when (@ExtraSFNItems = 0) {
-				tr:nth-child(3), tr:nth-last-child(-n+5) {
+				tr:nth-child(3), tr:nth-last-child(-n+6) {
 					display: none
 				}
 			}
 			&:after when (@DefaultInfoPanelStyle = 0) {
-				content: "\000a0"
+				content: "\000A0";
+				font-size: 12px;
+				line-height: normal;
 			}
 		}
 	}
 	& when (@DefaultInfoPanelStyle = 0) {
 		.html5-video-element-info-table th, .html5-video-element-info-table td {
 			padding: 0;
+			border: 1px solid #999;
+			text-align: center;
 			width: 25%;
+			line-height: normal; /* needed for accurate height */
 		}
 	}
 	.ytp-dialog-holder {
@@ -384,85 +425,55 @@
 				position: absolute;
 				z-index: 930;
 				background: rgba(0, 0, 0, .85);
-				& when (@PlayerMonth = Early) {
-					min-width: 430px;
-					min-height: 130px;
-					border-top: 1px solid #555;
-					padding: 3px 5px;
-				}
-				& when not (@PlayerMonth = Early) {
-					width: 80%;
-				}
+				min-width: 430px;
+				min-height: 130px;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				border-top: 1px solid #555;
+				padding: 3px 5px;
 				cursor: default;
-				& when (@PlayerMonth = Early) {
-					-moz-border-radius: 2px;
-					-webkit-border-radius: 2px;
-					border-radius: 2px;
-					-moz-box-shadow: 0 1px 0 #000;
-					-ms-box-shadow: 0 1px 0 #000;
-					-webkit-box-shadow: 0 1px 0 #000;
-					box-shadow: 0 1px 0 #000;
-				}
-				& when not (@PlayerMonth = Early) {
-					-moz-border-radius: 3px;
-					-webkit-border-radius: 3px;
-					border-radius: 3px;
-				}
+				-moz-border-radius: 2px;
+				-webkit-border-radius: 2px;
+				border-radius: 2px;
+				-moz-box-shadow: 0 1px 0 #000;
+				-ms-box-shadow: 0 1px 0 #000;
+				-webkit-box-shadow: 0 1px 0 #000;
+				box-shadow: 0 1px 0 #000;
 				display: block;
 				max-width: 100%;
-				& when (@PlayerMonth = Early) {
-					top: 50%;
-					left: 50%;
-					-moz-transform: translate(-50%, -50%);
-					-ms-transform: translate(-50%, -50%);
-					-o-transform: translate(-50%, -50%);
-					-webkit-transform: translate(-50%, -50%);
-					transform: translate(-50%, -50%);
-					margin: 0 !important;
-				}
-				& when not (@PlayerMonth = Early) {
-					margin: 30% 0 0 10% !important;
-				}
+				top: 50%;
+				left: 50%;
+				-moz-transform: translate(-50%,-50%);
+				-ms-transform: translate(-50%,-50%);
+				-o-transform: translate(-50%,-50%);
+				-webkit-transform: translate(-50%, -50%);
+				transform: translate(-50%, -50%);
+				margin: 0 !important;
 				font: 12px arial, sans-serif;
 				&-body {
 					margin: 0;
-					& when (@PlayerMonth = Early) {
-						display: block;
-						top: 50%;
-						left: 50%;
-						position: absolute;
-						width: 100%;
-						text-align: center;
-						-moz-transform: translate(-50%, -50%);
-						-ms-transform: translate(-50%, -50%);
-						-o-transform: translate(-50%, -50%);
-						-webkit-transform: translate(-50%, -50%);
-						transform: translate(-50%, -50%);
-					}
-					& when not (@PlayerMonth = Early) {
-						padding: 30px;
-					}
+					display: block;
+					top: 50%;
+					left: 50%;
+					position: absolute;
+					width: 100%;
+					text-align: center;
+					-moz-transform: translate(-50%,-50%);
+					-ms-transform: translate(-50%,-50%);
+					-o-transform: translate(-50%,-50%);
+					-webkit-transform: translate(-50%, -50%);
+					transform: translate(-50%, -50%);
 					input {
-						& when (@PlayerMonth = Early) {
-							border: none;
-							height: 25px;
-							width: 80%;
-							font-size: 18px;
-							padding: 10px;
-							margin: 5px;
-							-moz-border-radius: 4px;
-							-webkit-border-radius: 4px;
-							border-radius: 4px;
-						}
-						& when not (@PlayerMonth = Early) {
-							border: none;
-							width: 90%;
-							font-size: 18px;
-							padding: 10px;
-							-moz-border-radius: 3px;
-							-webkit-border-radius: 3px;
-							border-radius: 3px;
-						}
+						border: none;
+						height: 25px;
+						width: 80%;
+						font-size: 18px;
+						padding: 10px;
+						margin: 5px;
+						-moz-border-radius: 4px;
+						-webkit-border-radius: 4px;
+						border-radius: 4px;
 					}
 				}
 				&-buttons {
@@ -599,7 +610,7 @@
 	.html5-context-menu when (@DefaultContextMenuStyle = 0) {
 		padding: 0;
 		&.yt-uix-button-menu {
-			& when (@PlayerMonth = Early) {
+			& when (@PlayerStyle = 20120125) {
 				background: #ebebeb;
 				padding: 6px 0;
 				-webkit-border-radius: 3px;
@@ -620,7 +631,7 @@
 					list-style: none;
 				}
 			}
-			& when not (@PlayerMonth = Early) {
+			& when not (@PlayerStyle = 20120125) {
 				-moz-border-radius: 3px;
 				-webkit-border-radius: 3px;
 				border-radius: 3px;
@@ -630,7 +641,7 @@
 				box-shadow: 0 1px 1px rgba(100,100,100,.2);
 			}
 			.yt-uix-button-menu-item {
-				& when (@PlayerMonth = Early) {
+				& when (@PlayerStyle = 20120125) {
 					padding: .4166em .6666em;
 					color: #000;
 					background: #fff;
@@ -639,7 +650,7 @@
 						background: #000;
 					}
 				}
-				& when not (@PlayerMonth = Early) {
+				& when not (@PlayerStyle = 20120125) {
 					padding: 6px 20px;
 					color: #555;
 					[class*="darkmode"] ~ &, .dark-mode & {
@@ -647,12 +658,12 @@
 					}
 				}
 				line-height: normal;
-				&:after when (@CMIcons = 0) {
+				&:after when (@HideCMIcons = 1) {
 					display: none
 				}
 			}
 			.yt-uix-button-menu-item.selected, .yt-uix-button-menu-item-highlight .yt-uix-button-menu-item, .yt-uix-button-menu-item:hover {
-				& when (@PlayerMonth = Early) {
+				& when (@PlayerStyle = 20120125) {
 					background: #eaeaea;
 					& when (@ECMHSFix = 0) {
 						color: #fff;
@@ -670,7 +681,7 @@
 						}
 					}
 				}
-				& when not (@PlayerMonth = Early) {
+				& when not (@PlayerStyle = 20120125) {
 					background-color: #555;
 					color: #fff;
 					[class*="darkmode"] ~ &, .dark-mode & {
@@ -917,7 +928,7 @@
 				background-color: rgba(27, 27, 27, 0.75);
 			}
 			z-index: 2147483647;
-			& when (@PlayerMonth = Late) and (@FlatterSettings = 0) {
+			& when (@PlayerStyle = 20121207) and (@FlatterSettings = 0) {
 				bottom: 26px
 			}
 		}
@@ -1133,12 +1144,14 @@
 
 	& when not (@TooltipStyle = Off) {
 		.ytp-tooltip {
-			animation: ytp-fade 0.2s ease-in-out;
+			& when (@TooltipAnimations = Sync) and ((@PlayerStyle = 20120125) or (@PlayerStyle = 20120913)) or (@TooltipAnimations = On) {
+				animation: ytp-fade 0.2s ease-in-out;
+			}
 			&-body {
 				.ytp-tooltip-below & {
 					bottom: unset
 				}
-				& when (@TooltipStyle = PlayerSync) and ((@PlayerMonth = Early) or (@PlayerMonth = Middle)) or (@TooltipStyle = Early) or (@TooltipStyle = Middle) {
+				& when (@TooltipStyle = Sync) and ((@PlayerStyle = 20120125) or (@PlayerStyle = 20120913)) or (@TooltipStyle = 20111201) {
 					padding: .75em;
 					color: #fff;
 					white-space: nowrap;
@@ -1159,7 +1172,7 @@
 					font-size: 12px;
 					font-family: arial, sans-serif;
 				}
-				& when (@TooltipStyle = PlayerSync) and (@PlayerMonth = Late) or (@TooltipStyle = Late) {
+				& when (@TooltipStyle = Sync) and (@PlayerStyle = 20121207) or (@TooltipStyle = 20121207) {
 					padding: 6px;
 					color: #fff;
 					background: #333;
@@ -1178,7 +1191,7 @@
 				height: unset;
 			}
 			&-arrow {
-				& when (@TooltipStyle = PlayerSync) and ((@PlayerMonth = Early) or (@PlayerMonth = Middle)) or (@TooltipStyle = Early) or (@TooltipStyle = Middle) {
+				& when (@TooltipStyle = Sync) and ((@PlayerStyle = 20120125) or (@PlayerStyle = 20120913)) or (@TooltipStyle = 20111201) {
 					z-index: 1000001;
 					bottom: 0;
 					width: 0;
@@ -1190,7 +1203,7 @@
 						border-bottom-color: #4a4a4a;
 					}
 				}
-				& when (@TooltipStyle = PlayerSync) and (@PlayerMonth = Late) or (@TooltipStyle = Late) {
+				& when (@TooltipStyle = Sync) and (@PlayerStyle = 20121207) or (@TooltipStyle = 20121207) {
 					position: absolute;
 					z-index: 1000001;
 					width: 0;
@@ -1307,7 +1320,7 @@
 			}
 			.sponsorCategoryTooltipVisible&[style*="width: 108px;"] when (@SponsorPreviewFix = 1) {
 				width: 108px !important;
-				height: 86px;
+				height: 84px;
 				&.with-text .ytp-progress-tooltip-text-container {
 					display: block;
 					height: 12px;
@@ -1505,18 +1518,18 @@
 
 	/*/== Video Container Items ==/*/
 	.html5-video-container {
-		& when (@PlayerAutohide = Off) or (@PlayerAutohide = Fade) or (@PlayerMonth = Early) and (@PlayerAutohide = On) {
+		& when (@PlayerAutohide = Off) or (@PlayerAutohide = Fade) or (@PlayerStyle = 20120125) and (@PlayerAutohide = On) {
 			bottom: 30px;
 		}
-		& when not (@PlayerMonth = Early) and (@PlayerAutohide = On) or (@PlayerAutohide = Auto) {
+		& when not (@PlayerStyle = 20120125) and (@PlayerAutohide = On) or (@PlayerAutohide = Auto) {
 			bottom: 3px;
 		}
 		z-index: 920;
-		& when not (@PlayerMonth = Early) and (@PlayerAutohide = On) or (@PlayerAutohide = Auto) {
+		& when not (@PlayerStyle = 20120125) and (@PlayerAutohide = On) or (@PlayerAutohide = Auto) {
 			.disabled-control-seek:not(.ytp-no-controls) &, .ad-interrupting:not(.ytp-no-controls):not(.html5-native-controls) &, .autominimize-progress-bar:not(.cued-mode) &, html:not([data-player-size=fullscreen]) :not(.ideal-aspect).autominimize-progress-bar-non-aspect:not(.cued-mode) & {
 				bottom: 3px;
 			}
-			& when (@MiniplayerAutohide = PlayerSync) {
+			& when (@MiniplayerAutohide = Sync) {
 				.queue-miniplayer #player .html5-video-player & {
 					bottom: 3px;
 				}
@@ -1525,10 +1538,10 @@
 				height: 100% !important;
 			}
 		}
-		.queue-miniplayer #player .html5-video-player & when (@PlayerAutohide = Off) or (@MiniplayerAutohide = Fade) or (@PlayerMonth = Early) and (@MiniplayerAutohide = On) {
+		.queue-miniplayer #player .html5-video-player & when (@PlayerAutohide = Off) or (@MiniplayerAutohide = Fade) or (@PlayerStyle = 20120125) and (@MiniplayerAutohide = On) {
 			bottom: 30px;
 		}
-		& when not (@PlayerMonth = Early) and (@MiniplayerAutohide = On) or (@MiniplayerAutohide = Auto) {
+		& when not (@PlayerStyle = 20120125) and (@MiniplayerAutohide = On) or (@MiniplayerAutohide = Auto) {
 			.queue-miniplayer #player .html5-video-player & {
 				bottom: 3px;
 			}
@@ -1690,14 +1703,14 @@
 				width: unset;
 			}
 		}
-		& when (@PlayerMonth = Early) {
+		& when (@PlayerStyle = 20120125) {
 			-moz-transition: unset;
 			-ms-transition: unset;
 			-o-transition: unset;
 			-webkit-transition: unset;
 			transition: unset;
 		}
-		& when not (@PlayerMonth = Early) {
+		& when not (@PlayerStyle = 20120125) {
 			-moz-transition: bottom 0.05s ease-in;
 			-ms-transition: bottom 0.05s ease-in;
 			-o-transition: bottom 0.05s ease-in;
@@ -1711,7 +1724,7 @@
 			bottom: -35px;
 		}
 		.disabled-control-seek &,.autominimize-progress-bar:not(.ytp-block-autohide) &,html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) &, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &,.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) & {
-			& when (@PlayerMonth = Early) {
+			& when (@PlayerStyle = 20120125) {
 				& when (@PlayerAutohide = Auto) {
 					bottom: -31px;
 					-webkit-transition: bottom 0.25s ease-in;
@@ -1728,7 +1741,7 @@
 					-ms-transition: unset;
 				}
 			}
-			& when not (@PlayerMonth = Early) {
+			& when not (@PlayerStyle = 20120125) {
 				& when (@PlayerAutohide = On) {
 					bottom: -35px;
 					-moz-transition: bottom 0.5s ease-in;
@@ -1748,8 +1761,8 @@
 			}
 		}
 		.queue-miniplayer #player .html5-video-player:not(.ytp-block-autohide) & {
-			& when (@PlayerMonth = Early) {
-				& when (@PlayerAutohide = Auto) and (@MiniplayerAutohide = PlayerSync) {
+			& when (@PlayerStyle = 20120125) {
+				& when (@PlayerAutohide = Auto) and (@MiniplayerAutohide = Sync) {
 					bottom: -31px;
 					-webkit-transition: bottom 0.25s ease-in;
 					-moz-transition: bottom 0.25s ease-in;
@@ -1765,7 +1778,7 @@
 					-ms-transition: bottom 0.25s ease-in;
 					transition-delay: 3s;
 				}
-				& when not (@PlayerAutohide = Auto) and (@MiniplayerAutohide = PlayerSync) {
+				& when not (@PlayerAutohide = Auto) and (@MiniplayerAutohide = Sync) {
 					bottom: 0;
 					-webkit-transition: unset;
 					-moz-transition: unset;
@@ -1780,8 +1793,8 @@
 					-ms-transition: unset;
 				}
 			}
-			& when not (@PlayerMonth = Early) {
-				& when (@PlayerAutohide = On) and (@MiniplayerAutohide = PlayerSync) {
+			& when not (@PlayerStyle = 20120125) {
+				& when (@PlayerAutohide = On) and (@MiniplayerAutohide = Sync) {
 					bottom: -35px;
 					-moz-transition: bottom 0.5s ease-in;
 					-ms-transition: bottom 0.5s ease-in;
@@ -1797,7 +1810,7 @@
 					-webkit-transition: bottom 0.5s ease-in;
 					transition: bottom 0.5s ease-in;
 				}
-				& when (@PlayerAutohide = Auto) and (@MiniplayerAutohide = PlayerSync) {
+				& when (@PlayerAutohide = Auto) and (@MiniplayerAutohide = Sync) {
 					bottom: -27px;
 					-moz-transition: bottom 0.5s ease-in;
 					-ms-transition: bottom 0.5s ease-in;
@@ -1816,7 +1829,7 @@
 			}
 		}
 		.autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &,.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &,html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) & {
-			& when (@PlayerMonth = Early) {
+			& when (@PlayerStyle = 20120125) {
 				& when (@PlayerAutohide = Auto) {
 					bottom: -31px;
 					-webkit-transition: bottom 0.25s ease-in;
@@ -1834,7 +1847,7 @@
 					transition-delay: 3s;
 				}
 			}
-			& when not (@PlayerMonth = Early) {
+			& when not (@PlayerStyle = 20120125) {
 				& when not (@PlayerAutohide = Off) {
 					bottom: -35px;
 					-moz-transition: bottom 0.5s ease-in;
@@ -1846,7 +1859,7 @@
 			}
 			opacity: 1;
 		}
-		#movie_player.html5-video-player:hover & when (@PlayerMonth = Early) {
+		#movie_player.html5-video-player:hover & when (@PlayerStyle = 20120125) {
 			-moz-transition: all 0s linear 0s;
 			-ms-transition: all 0s linear 0s;
 			-o-transition: all 0s linear 0s;
@@ -1861,7 +1874,7 @@
 		background: rgba(0, 0, 0, 0);
 		overflow: visible;
 		z-index: 760;
-		& when (@PlayerMonth = Early) {
+		& when (@PlayerStyle = 20120125) {
 			-moz-transition: unset;
 			-ms-transition: unset;
 			-o-transition: unset;
@@ -1877,7 +1890,7 @@
 			-o-transition-duration: 0.5s;
 			-ms-transition-duration: 0.5s;
 		}
-		& when not (@PlayerMonth = Early) {
+		& when not (@PlayerStyle = 20120125) {
 			-moz-transition: height 0.05s ease-in;
 			-ms-transition: height 0.05s ease-in;
 			-o-transition: height 0.05s ease-in;
@@ -1888,13 +1901,13 @@
 			height: 8px !important;
 		}
 		.disabled-control-seek &,.autominimize-progress-bar:not(.ytp-block-autohide) &,html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) &, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &,.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &,html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) & {
-			& when not (@PlayerMonth = Early) and ((@PlayerAutohide = Off) or (@PlayerAutohide = On)) {
+			& when not (@PlayerStyle = 20120125) and ((@PlayerAutohide = Off) or (@PlayerAutohide = On)) {
 				height: 8px !important;
 			}
-			& when (@PlayerAutohide = Fade) or (@PlayerAutohide = Auto) or (@PlayerMonth = Early) {
+			& when (@PlayerAutohide = Fade) or (@PlayerAutohide = Auto) or (@PlayerStyle = 20120125) {
 				height: 3px !important;
 			}
-			& when (@PlayerMonth = Early) {
+			& when (@PlayerStyle = 20120125) {
 				-moz-transition: unset;
 				-ms-transition: unset;
 				-o-transition: unset;
@@ -1912,7 +1925,7 @@
 				transition-duration: 0.5s;
 				transition-delay: 3s;
 			}
-			& when not (@PlayerMonth = Early) {
+			& when not (@PlayerStyle = 20120125) {
 				-moz-transition: height 0.5s ease-in;
 				-ms-transition: height 0.5s ease-in;
 				-o-transition: height 0.5s ease-in;
@@ -1921,19 +1934,19 @@
 			}
 		}
 		.queue-miniplayer #player .html5-video-player:not(.ytp-block-autohide) &, .queue-miniplayer #player:not(:hover) .html5-video-player:not(.paused-mode):not(.ytp-block-autohide) & {
-			& when not (@PlayerMonth = Early) and ((@PlayerAutohide = Off) or (@PlayerAutohide = On)) and (@MiniplayerAutohide = PlayerSync) {
+			& when not (@PlayerStyle = 20120125) and ((@PlayerAutohide = Off) or (@PlayerAutohide = On)) and (@MiniplayerAutohide = Sync) {
 				height: 8px !important;
 			}
-			& when not (@PlayerMonth = Early) and ((@MiniplayerAutohide = Off) or (@MiniplayerAutohide = On)) {
+			& when not (@PlayerStyle = 20120125) and ((@MiniplayerAutohide = Off) or (@MiniplayerAutohide = On)) {
 				height: 8px !important;
 			}
-			& when ((@PlayerAutohide = Fade) or (@PlayerAutohide = Auto) or (@PlayerMonth = Early)) and (@MiniplayerAutohide = PlayerSync) {
+			& when ((@PlayerAutohide = Fade) or (@PlayerAutohide = Auto) or (@PlayerStyle = 20120125)) and (@MiniplayerAutohide = Sync) {
 				height: 3px !important;
 			}
 			& when (@MiniplayerAutohide = Fade) or (@MiniplayerAutohide = Auto) or (@MiniplayerAutohide = Early) {
 				height: 3px !important;
 			}
-			& when (@PlayerMonth = Early) {
+			& when (@PlayerStyle = 20120125) {
 				-moz-transition: unset;
 				-ms-transition: unset;
 				-o-transition: unset;
@@ -1951,7 +1964,7 @@
 				transition-duration: 0.5s;
 				transition-delay: 3s;
 			}
-			& when not (@PlayerMonth = Early) {
+			& when not (@PlayerStyle = 20120125) {
 				-moz-transition: height 0.5s ease-in;
 				-ms-transition: height 0.5s ease-in;
 				-o-transition: height 0.5s ease-in;
@@ -1959,7 +1972,7 @@
 				transition: height 0.5s ease-in;
 			}
 		}
-		#movie_player.html5-video-player:hover & when (@PlayerMonth = Early) {
+		#movie_player.html5-video-player:hover & when (@PlayerStyle = 20120125) {
 			-moz-transition: all 0s linear 0s;
 			-ms-transition: all 0s linear 0s;
 			-o-transition: all 0s linear 0s;
@@ -1975,7 +1988,7 @@
 	.ytp-progress-list {
 		height: 8px;
 		width: 100%;
-		& when (@PlayerMonth = Early) {
+		& when (@PlayerStyle = 20120125) {
 			background: #1e1f1f;
 			background: -webkit-linear-gradient(bottom, rgba(30, 31, 31, .75) 89%, #2f2f2f 90%);
 			background: -moz-linear-gradient(bottom, rgba(30, 31, 31, .75) 89%, #2f2f2f 90%);
@@ -1983,7 +1996,7 @@
 			background: -ms-linear-gradient(bottom, rgba(30, 31, 31, .75) 89%, #2f2f2f 90%);
 			background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0%, rgba(30, 31, 31, .75)), color-stop(89%, rgba(30, 31, 31, .75)), color-stop(90%, #2f2f2f));
 		}
-		& when (@PlayerMonth = Middle) {
+		& when (@PlayerStyle = 20120913) {
 			background: #1e1f1f;
 			background-image: -moz-linear-gradient(bottom, rgba(30, 31, 31, .75) 89%, #2f2f2f 90%);
 			background-image: -ms-linear-gradient(bottom, rgba(30, 31, 31, .75) 89%, #2f2f2f 90%);
@@ -1992,10 +2005,10 @@
 			background-image: -webkit-linear-gradient(bottom, rgba(30, 31, 31, .75) 89%, #2f2f2f 90%);
 			background-image: linear-gradient(to top, rgba(30, 31, 31, .75) 89%, #2f2f2f 90%);
 		}
-		& when (@PlayerMonth = Late) {
+		& when (@PlayerStyle = 20121207) {
 			background: #2a2a2a;
 		}
-		& when (@PlayerMonth = Early) {
+		& when (@PlayerStyle = 20120125) {
 			-moz-transition: unset;
 			-ms-transition: unset;
 			-o-transition: unset;
@@ -2011,7 +2024,7 @@
 			-o-transition-duration: 0.5s;
 			-ms-transition-duration: 0.5s;
 		}
-		& when not (@PlayerMonth = Early) {
+		& when not (@PlayerStyle = 20120125) {
 			-moz-transition: height 0.05s ease-in;
 			-ms-transition: height 0.05s ease-in;
 			-o-transition: height 0.05s ease-in;
@@ -2025,13 +2038,13 @@
 		bottom: unset;
 		z-index: -2;
 		.disabled-control-seek &,.autominimize-progress-bar:not(.ytp-block-autohide) &,html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) &, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &,.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &,html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) & {
-			& when not (@PlayerMonth = Early) and ((@PlayerAutohide = Off) or (@PlayerAutohide = On)) {
+			& when not (@PlayerStyle = 20120125) and ((@PlayerAutohide = Off) or (@PlayerAutohide = On)) {
 				height: 8px;
 			}
-			& when (@PlayerAutohide = Fade) or (@PlayerAutohide = Auto) or (@PlayerMonth = Early) {
+			& when (@PlayerAutohide = Fade) or (@PlayerAutohide = Auto) or (@PlayerStyle = 20120125) {
 				height: 3px;
 			}
-			& when (@PlayerMonth = Early) {
+			& when (@PlayerStyle = 20120125) {
 				-moz-transition: unset;
 				-ms-transition: unset;
 				-o-transition: unset;
@@ -2049,7 +2062,7 @@
 				transition-duration: 0.5s;
 				transition-delay: 3s;
 			}
-			& when not (@PlayerMonth = Early) {
+			& when not (@PlayerStyle = 20120125) {
 				-moz-transition: height 0.5s ease-in;
 				-ms-transition: height 0.5s ease-in;
 				-o-transition: height 0.5s ease-in;
@@ -2062,19 +2075,19 @@
 			transform: none;
 		}
 		.queue-miniplayer #player .html5-video-player:not(.ytp-block-autohide) & {
-			& when not (@PlayerMonth = Early) and ((@PlayerAutohide = Off) or (@PlayerAutohide = On)) and (@MiniplayerAutohide = PlayerSync) {
+			& when not (@PlayerStyle = 20120125) and ((@PlayerAutohide = Off) or (@PlayerAutohide = On)) and (@MiniplayerAutohide = Sync) {
 				height: 8px;
 			}
 			& when not (@MiniplayerAutohide = Early) and ((@MiniplayerAutohide = Off) or (@MiniplayerAutohide = On)) {
 				height: 8px;
 			}
-			& when ((@PlayerAutohide = Fade) or (@PlayerAutohide = Auto) or (@PlayerMonth = Early)) and (@MiniplayerAutohide = PlayerSync) {
+			& when ((@PlayerAutohide = Fade) or (@PlayerAutohide = Auto) or (@PlayerStyle = 20120125)) and (@MiniplayerAutohide = Sync) {
 				height: 3px;
 			}
 			& when (@MiniplayerAutohide = Fade) or (@MiniplayerAutohide = Auto) or (@MiniplayerAutohide = Early) {
 				height: 3px;
 			}
-			& when (@PlayerMonth = Early) {
+			& when (@PlayerStyle = 20120125) {
 				-moz-transition: unset;
 				-ms-transition: unset;
 				-o-transition: unset;
@@ -2092,7 +2105,7 @@
 				transition-duration: 0.5s;
 				transition-delay: 3s;
 			}
-			& when not (@PlayerMonth = Early) {
+			& when not (@PlayerStyle = 20120125) {
 				-moz-transition: height 0.5s ease-in;
 				-ms-transition: height 0.5s ease-in;
 				-o-transition: height 0.5s ease-in;
@@ -2104,7 +2117,7 @@
 			-webkit-transform: none;
 			transform: none;
 		}
-		#movie_player.html5-video-player:hover & when (@PlayerMonth = Early) {
+		#movie_player.html5-video-player:hover & when (@PlayerStyle = 20120125) {
 			-moz-transition: all 0s linear 0s;
 			-ms-transition: all 0s linear 0s;
 			-o-transition: all 0s linear 0s;
@@ -2117,13 +2130,13 @@
 	}
 	& when (@HideAdProgress = 0) {
 		.ytp-ad-progress {
-			& when (@PlayerMonth = Early) {
+			& when (@PlayerStyle = 20120125) {
 				background: -webkit-linear-gradient(top,#fc0,#666);
 				background: -moz-linear-gradient(top,#fc0,#666);
 				background: -o-linear-gradient(top,#fc0,#666);
 				background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#fc0),color-stop(100%,#666));
 			}
-			& when (@PlayerMonth = Middle) {
+			& when (@PlayerStyle = 20120913) {
 				background-image: -moz-linear-gradient(top, #fc0 0, #666 100%);
 				background-image: -ms-linear-gradient(top, #fc0 0, #666 100%);
 				background-image: -o-linear-gradient(top, #fc0 0, #666 100%);
@@ -2131,7 +2144,7 @@
 				background-image: -webkit-linear-gradient(top, #fc0 0, #666 100%);
 				background-image: linear-gradient(to bottom, #fc0 0, #666 100%);
 			}
-			& when (@PlayerMonth = Late) {
+			& when (@PlayerStyle = 20121207) {
 				background: #fc0;
 			}
 		}
@@ -2145,7 +2158,7 @@
 		display: none
 	}
 	.ytp-play-progress {
-		& when (@PlayerMonth = Early) {
+		& when (@PlayerStyle = 20120125) and not ((@CustomProgress = Sonic) or (@CustomProgress = Tails)) {
 			background: -webkit-linear-gradient(top, #c00, #600);
 			background: -moz-linear-gradient(top, #c00, #600);
 			background: -o-linear-gradient(top, #c00, #600);
@@ -2161,8 +2174,40 @@
 				filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#eeeeee',EndColorStr='#949494')";
 			}
 		}
+		& when (@PlayerStyle = 20120125) and (@CustomProgress = Sonic) {
+			background: -webkit-linear-gradient(top, #006bbf, #003d6c);
+			background: -moz-linear-gradient(top, #006bbf, #003d6c);
+			background: -o-linear-gradient(top, #006bbf, #003d6c);
+			background: -ms-linear-gradient(top, #006bbf, #003d6c);
+			background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #006bbf), color-stop(100%, #003d6c));
+			-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#006bbf',EndColorStr='#003d6c')";
+			.html5-progress-bar.white & {
+				background: -webkit-linear-gradient(top, #eee 0, #949494 100%);
+				background: -moz-linear-gradient(top, #eee 0, #949494 100%);
+				background: -o-linear-gradient(top, #eee 0, #949494 100%);
+				background: -ms-linear-gradient(top, #eee 0, #949494 100%);
+				background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #eee), color-stop(100%, #949494));
+				filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#eeeeee',EndColorStr='#949494')";
+			}
+		}
+		& when (@PlayerStyle = 20120125) and (@CustomProgress = Tails) {
+			background: -webkit-linear-gradient(top, #d67d08, #864e05);
+			background: -moz-linear-gradient(top, #d67d08, #864e05);
+			background: -o-linear-gradient(top, #d67d08, #864e05);
+			background: -ms-linear-gradient(top, #d67d08, #864e05);
+			background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #d67d08), color-stop(100%, #864e05));
+			-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#d67d08',EndColorStr='#864e05')";
+			.html5-progress-bar.white & {
+				background: -webkit-linear-gradient(top, #eee 0, #949494 100%);
+				background: -moz-linear-gradient(top, #eee 0, #949494 100%);
+				background: -o-linear-gradient(top, #eee 0, #949494 100%);
+				background: -ms-linear-gradient(top, #eee 0, #949494 100%);
+				background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #eee), color-stop(100%, #949494));
+				filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#eeeeee',EndColorStr='#949494')";
+			}
+		}
 		z-index: 933;
-		& when (@PlayerMonth = Middle) {
+		& when (@PlayerStyle = 20120913) and not ((@CustomProgress = Sonic) or (@CustomProgress = Tails)) {
 			background-image: -moz-linear-gradient(top, #c00 0, #600 100%);
 			background-image: -ms-linear-gradient(top, #c00 0, #600 100%);
 			background-image: -o-linear-gradient(top, #c00 0, #600 100%);
@@ -2180,15 +2225,63 @@
 				filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr=#eee,EndColorStr=#949494);
 			}
 		}
-		& when (@PlayerMonth = Late) {
+		& when (@PlayerStyle = 20120913) and (@CustomProgress = Sonic) {
+			background-image: -moz-linear-gradient(top, #006bbf 0, #003d6c 100%);
+			background-image: -ms-linear-gradient(top, #006bbf, #003d6c 100%);
+			background-image: -o-linear-gradient(top, #006bbf 0, #003d6c 100%);
+			background-image: -webkit-gradient(linear, left top, left 004479, color-stop(0, #006bbf), color-stop(100%, #003d6c));
+			background-image: -webkit-linear-gradient(top, #006bbf 0, #003d6c 100%);
+			background-image: linear-gradient(to bottom, #006bbf 0, #003d6c 100%);
+			filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr=#006bbf,EndColorStr=#003d6c);
+			.html5-progress-bar.white & {
+				background-image: -moz-linear-gradient(top, #eee 0, #949494 100%);
+				background-image: -ms-linear-gradient(top, #eee 0, #949494 100%);
+				background-image: -o-linear-gradient(top, #eee 0, #949494 100%);
+				background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #eee), color-stop(100%, #949494));
+				background-image: -webkit-linear-gradient(top, #eee 0, #949494 100%);
+				background-image: linear-gradient(to bottom, #eee 0, #949494 100%);
+				filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr=#eee,EndColorStr=#949494);
+			}
+		}
+		& when (@PlayerStyle = 20120913) and (@CustomProgress = Tails) {
+			background-image: -moz-linear-gradient(top, #d67d08 0, #864e05 100%);
+			background-image: -ms-linear-gradient(top, #d67d08, #864e05 100%);
+			background-image: -o-linear-gradient(top, #d67d08 0, #864e05 100%);
+			background-image: -webkit-gradient(linear, left top, left 004479, color-stop(0, #d67d08), color-stop(100%, #864e05));
+			background-image: -webkit-linear-gradient(top, #d67d08 0, #864e05 100%);
+			background-image: linear-gradient(to bottom, #d67d08 0, #864e05 100%);
+			filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr=#d67d08,EndColorStr=#864e05);
+			.html5-progress-bar.white & {
+				background-image: -moz-linear-gradient(top, #eee 0, #949494 100%);
+				background-image: -ms-linear-gradient(top, #eee 0, #949494 100%);
+				background-image: -o-linear-gradient(top, #eee 0, #949494 100%);
+				background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #eee), color-stop(100%, #949494));
+				background-image: -webkit-linear-gradient(top, #eee 0, #949494 100%);
+				background-image: linear-gradient(to bottom, #eee 0, #949494 100%);
+				filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr=#eee,EndColorStr=#949494);
+			}
+		}
+		& when (@PlayerStyle = 20121207) and not ((@CustomProgress = Sonic) or (@CustomProgress = Tails)) {
 			background: #b91f1f;
+			.html5-progress-bar.white & {
+				background: #bbb;
+			}
+		}
+		& when (@PlayerStyle = 20121207) and (@CustomProgress = Sonic) {
+			background: #0076d2;
+			.html5-progress-bar.white & {
+				background: #bbb;
+			}
+		}
+		& when (@PlayerStyle = 20121207) and (@CustomProgress = Tails) {
+			background: #e88809;
 			.html5-progress-bar.white & {
 				background: #bbb;
 			}
 		}
 	}
 	.ytp-load-progress, .ytp-spacecast-load-progress {
-		& when (@PlayerMonth = Early) {
+		& when (@PlayerStyle = 20120125) {
 			background: -webkit-linear-gradient(bottom, #5a5a5a 89%, #666 90%);
 			background: -moz-linear-gradient(bottom, #5a5a5a 89%, #666 90%);
 			background: -o-linear-gradient(bottom, #5a5a5a 89%, #666 90%);
@@ -2197,7 +2290,7 @@
 			-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#2f2f2f',EndColorStr='#5a5a5a')";
 		}
 		z-index: 932;
-		& when (@PlayerMonth = Middle) {
+		& when (@PlayerStyle = 20120913) {
 			background-image: -moz-linear-gradient(bottom, #5a5a5a 89%, #666 90%);
 			background-image: -ms-linear-gradient(bottom, #5a5a5a 89%, #666 90%);
 			background-image: -o-linear-gradient(bottom, #5a5a5a 89%, #666 90%);
@@ -2206,11 +2299,11 @@
 			background-image: linear-gradient(to top, #5a5a5a 89%, #666 90%);
 			filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr=#2f2f2f,EndColorStr=#5a5a5a);
 		}
-		& when (@PlayerMonth = Late) {
+		& when (@PlayerStyle = 20121207) {
 			background: #757575;
 		}
 	}
-	.previewbar when not (@PlayerMonth = Late) {
+	.previewbar when not (@PlayerStyle = 20121207) {
 		background-image: linear-gradient(0deg, rgba(0, 0, 0, .5), transparent);
 	}
 	#player-api_VORAPI_ELEMENT_ID #previewbar {
@@ -2228,35 +2321,116 @@
 		display: none
 	}
 	.html5-scrubber-button {
+		@drivers: {
+			@Mario: "http://i.imgur.com/NitjtT1.gif";
+			@Luigi: "http://i.imgur.com/MplOS83.gif";
+			@Peach: "http://i.imgur.com/xjrpLMl.gif";
+			@Toad: "http://i.imgur.com/7Ch8r7K.gif";
+			@Yoshi: "http://i.imgur.com/Ayxgokc.gif";
+			@Wario: "http://i.imgur.com/5SbFoUK.gif";
+			@Koopa_Troopa: "http://i.imgur.com/aZxO1Zy.gif";
+			@Donkey_Kong_Jr: "http://i.imgur.com/VdB9p6r.gif";
+			@Bowser: "http://i.imgur.com/sVpRjhS.gif";
+		};
+		@Hamster_GIF: "data:image/gif;base64,R0lGODlhIwAXAPMAAAAAAAAA//+EpffGe//v3v///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQJFAABACwAAAAAIwAXAAAIswADCBxIsKDBgwgTKgwAAMDChwkBDBjgEKJFgRIHCKh4sWDDjxUzbvzYkWHGiRMbohQgAGVDiydRypw5k2NEmjhlqhxAwKbBmDlrAigAgIBRnwSBBnX50ejRg0qXMnX69CcBqTNZCqDa02dDo1hlauXac+DXomDDTiRbFW1PqmqpurUJkitWsiShkpWKF6lZtnZlyvXrETBclEcJW31rOOPLi2hBSv6YsmRkhY5LmnyYV2FAACH5BAkPAAEALAAAAAAjABcAAAiwAAMIHEiwoEEAAAwqXMhQIIABAxI2nLjwIUSJFCsi3OgQYkSOGQci9OhxJMmSGCdaPMmyZcqKLWOivNhwpUyWCAsAIEDgJUGbN0lu3MnTZwCgQYUSLapwZ9KTAqLyLOqT6FOSUQVMZSoS4dSrH71ulSh2KQGwKLke7Sn2K9qdCAua3Xo26dC4cunq3XpyrFGHbfcKZhsy8OCpf2veXTw05EHEIiE7bqqWaOLJeLtODggAIfkECRQAAQAsAAAAACMAFwAACLEAAwgcSLCgwYMIEypcyLChQAAAHEoMABHAgAERJy60aPFiRo0PK0KkCPEixpETS5r02HElS4ctXcqU+TFhzJkzVdY0eBOnS4gFABAgsJNgT58mRQ4levAo0qRClxalSOCpTAFYlxLdCXGoVZdYBWhlGpLo0q8mx0p9KFUrWq1RyYbs6vap2ooI4561C3cqW7VjceK1Cbjw0Jh+/xoujJjwVpGQI1dMmlekUbyWL6McGBAAIfkECRQAAQAsAAAAACMAFwAACLMAAwgcSLCgwYMIEyoMAADAwocJAQwY4BCiRYESBwioeLFgw48VM2782JFhxokTG6IUIABlQ4snUcqcOZNjRJo4ZaocQMCmwZg5awIoAICAUZ8EgQZ1+dHo0YNKlzJ1+vQnAakzWQqg2tNnQ6NYZWrl2nPg16Jgw04kWxVtT6pqqbq1CZIrVrIkoZKVihepWbZ2Zcr16xEwXJRHCVt9azjjy4toQUr+mLJkZIWOS5p8mFdhQAAh+QQJDwABACwAAAAAIwAXAAAIvQADCBxIsKBBAAAMKlzIUCCAAQMQNpy48KEAAQgTUlSYMaPDARc7biSIEKLJiA9BCjgpcWPKkzBjmtTY8KXMmCUHECBAk+PNmwgLANi5s2dBmz9nZiRa1GdSmQiZNj1I4OnJiwKkeiQ5tKpViFilTg3QkehXk2KLJuzKk+lZomx5QlxbVKpVrRlnOoxqN6nYjlsdpu0LEe/EuINPwjVaUatYtDwZ12QK2GbLkQPZ9nwpGXPXzXoxc7y8t/PCgAAh+QQJFAABACwAAAAAIwAXAAAIuAADCBxIsKDBgwgTKlzIsGEAAAAeOpz4cMAAABcpMsQoQADGiBoFQhwJkqPHkRohWlx5EeOAjgJWQnTokqXNmzI34tzZ0iIBAiAR1uTJEmIBAD9/BjU4lKhFkkmVHmzq9CnSqECnEqi6EiZWlAQh/uRq0SvWrCKRXt1KdsBZqQ+TrmVbVW7UpVCj1r0LlulZp2dnCg08l+XXpX7n2gVqWCliv0oPM17pGK5QkopHysTcdyPmh50XBgQAIf4TZ2lmIGFuaW1lIGJ5IG1vbW9tbwAh/htHaWZBbmltIGJ5IE5vYnVoaXJvIEhhdHRvcmkAOw==";
 		-ms-touch-action: none;
-		& when (@PlayerMonth = Early) {
-			background: no-repeat url(//s.ytimg.com/yt/imgbin/player-common-vfl6Awq62.png) -89px 0;
+		& when (@CustomProgress = None) {
+			& when (@PlayerStyle = 20120125) {
+				background: no-repeat url(//s.ytimg.com/yt/imgbin/player-common-vfl6Awq62.png) -89px 0;
+			}
+			& when (@PlayerStyle = 20120913) {
+				background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) -17px -137px;
+			}
+			& when (@PlayerStyle = 20121207) {
+				background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) -54px -135px;
+			}
 		}
-		& when (@PlayerMonth = Middle) {
-			background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) -17px -137px;
+		& when ((@CustomProgress = Mario) or (@CustomProgress = Luigi) or (@CustomProgress = Peach) or (@CustomProgress = Toad) or (@CustomProgress = Yoshi) or (@CustomProgress = Wario) or (@CustomProgress = Koopa_Troopa) or (@CustomProgress = Donkey_Kong_Jr) or (@CustomProgress = Bowser)) {
+			background: no-repeat url(@drivers[@@CustomProgress]);
+			width: 31px;
+			height: 33px !important;
+			margin-left: -16px;
+			margin-top: -19px;
 		}
-		& when (@PlayerMonth = Late) {
-			background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) -54px -135px;
+		& when (@CustomProgress = Hamster) {
+			background: no-repeat url(@Hamster_GIF);
+			width: 31px;
+			height: 33px !important;
+			margin-left: -16px;
+			margin-top: -19px;
 		}
-		height: 17px !important;
-		width: 16px;
+		& when (@CustomProgress = Knuckles) {
+			background: no-repeat url("https://i.imgur.com/96Q0DBf.jpg");
+			width: 36px;
+			height: 36px !important;
+			margin-left: -16px;
+			margin-top: -22px;
+		}
+		& when (@CustomProgress = Pikachu) {
+			background: no-repeat url("http://i.imgur.com/aqJhzLZ.gif");
+			width: 59px;
+			height: 50px !important;
+			margin-left: -43px;
+			margin-top: -36px;
+		}
+		& when (@CustomProgress = Pikachu_alternative) {
+			background: no-repeat url("http://i.imgur.com/u1fZNTy.gif");
+			background-size: 120px 60px;
+			width: 117px;
+			height: 60px !important;
+			margin-left: -73px;
+			margin-top: -48px;
+		}
+		& when (@CustomProgress = Rilakkuma) {
+			background: no-repeat url("http://i.hizliresim.com/VlP7zv.gif");
+			width: 50px;
+			height: 50px !important;
+			margin-left: -16px;
+			margin-top: -19px;
+		}
+		& when (@CustomProgress = Sonic) {
+			background: no-repeat url("http://i.imgur.com/sR2lxuX.gif");
+			width: 31px;
+			height: 40px !important;
+			margin-left: -16px;
+			margin-top: -25px;
+		}
+		& when (@CustomProgress = Square) {
+			& when (@PlayerStyle = 20120125) or (@PlayerStyle = 20120913) {
+				background: no-repeat url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wBHg07A4ntUjkAAAC3SURBVDjLtVPbDYMwDDybfPUHMVAGYYR2oK7AVEhMUSkKtvsDacojBaSelI9Yl8vFFxOAOz5gADat11S7oQAHACLyxAVUVfVwAKCquAqXb0Tk6M3fAiEEJSIGgK7riofbtoWIwMw0Cagqz4SmaYoCmUtOAuM4JkJd10WBnJuncLhpS+7KATPvpkJE2w7yYilSM/vTE2KMKcZfmB3sxui9LwoMw7COMbfV9/35r3ymB6tkFuN8eqTfL4dlhx5tIlkAAAAASUVORK5CYII=") 0 1px;
+			}
+			& when (@PlayerStyle = 20121207) {
+				background: no-repeat url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAAGa2tLEAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAGUExURerq6q6urhsSkOsAAAAJcEhZcwAADsIAAA7CARUoSoAAAAAZdEVYdFNvZnR3YXJlAFBhaW50Lk5FVCA1LjEuMTITAUd0AAAAuGVYSWZJSSoACAAAAAUAGgEFAAEAAABKAAAAGwEFAAEAAABSAAAAKAEDAAEAAAACAAAAMQECABEAAABaAAAAaYcEAAEAAABsAAAAAAAAAPJ2AQDoAwAA8nYBAOgDAABQYWludC5ORVQgNS4xLjEyAAADAACQBwAEAAAAMDIzMAGgAwABAAAAAQAAAAWgBAABAAAAlgAAAAAAAAACAAEAAgAEAAAAUjk4AAIABwAEAAAAMDEwMAAAAACDfy8cctDT3wAAACRJREFUGNNjYGBgZEAHjAJIbEEYgQ0ICqAQeAGjIFQNJgMXAABV6QEzVmXCHAAAAABJRU5ErkJggg==") 0 1px;
+			}
+		}
+		& when (@CustomProgress = Tails) {
+			background: no-repeat url("http://i.imgur.com/3HNuxg7.gif");
+			width: 36px;
+			height: 38px !important;
+			margin-left: -16px;
+			margin-top: -25px;
+		}
+		& when (@CustomProgress = None) or (@CustomProgress = Square) {
+			height: 17px !important;
+			width: 16px;
+		}
 		border: none;
 		overflow: hidden;
 		top: -5px;
 		left: 0;
-		& when (@PlayerMonth = Early) {
+		& when (@PlayerStyle = 20120125) {
 			position: absolute;
 			cursor: pointer;
 			z-index: 935;
 		}
-		& when (@PlayerMonth = Middle) {
+		& when (@PlayerStyle = 20120913) {
 			z-index: 936;
 		}
-		& when (@PlayerMonth = Late) {
+		& when (@PlayerStyle = 20121207) {
 			z-index: auto;
 		}
 		border-radius: 0;
-		& when (@PlayerMonth = Early) {
+		& when (@PlayerStyle = 20120125) {
 			-webkit-transition-duration: 0.5s;
 			-moz-transition-duration: 0.5s;
 			-o-transition-duration: 0.5s;
@@ -2276,7 +2450,7 @@
 			-webkit-transform: scale(1);
 			transform: scale(1);
 		}
-		& when not (@PlayerMonth = Early) {
+		& when not (@PlayerStyle = 20120125) {
 			-moz-transform: unset;
 			-ms-transform: unset;
 			-o-transform: unset;
@@ -2290,9 +2464,9 @@
 			-webkit-transform-origin: unset !important;
 			transform-origin: unset !important;
 		}
-		& when not (@PlayerAutohide = Off) or (@PlayerMonth = Early) {
+		& when not (@PlayerAutohide = Off) or (@PlayerStyle = 20120125) {
 			.disabled-control-seek &,.autominimize-progress-bar:not(.ytp-block-autohide) &,html:not([data-player-size=fullscreen]) :not(.ideal-aspect).autominimize-progress-bar-non-aspect:not(.ytp-block-autohide) &, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &,.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &,html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) & {
-				& when (@PlayerMonth = Early) {
+				& when (@PlayerStyle = 20120125) {
 					-moz-transition: unset;
 					-ms-transition: unset;
 					-o-transition: unset;
@@ -2319,7 +2493,7 @@
 					transition-duration: 0.5s;
 					transition-delay: 3s;
 				}
-				& when not (@PlayerMonth = Early) {
+				& when not (@PlayerStyle = 20120125) {
 					top: -8px;
 					-moz-transform: scale(0);
 					-ms-transform: scale(0);
@@ -2333,8 +2507,8 @@
 					-webkit-transition: height 0.5s, top 0.5s, -webkit-transform 0.5s;
 				}
 			}
-			.queue-miniplayer #player .html5-video-player:not(.ytp-block-autohide) & when (@MiniplayerAutohide = PlayerSync) {
-				& when (@PlayerMonth = Early) {
+			.queue-miniplayer #player .html5-video-player:not(.ytp-block-autohide) & when (@MiniplayerAutohide = Sync) {
+				& when (@PlayerStyle = 20120125) {
 					-moz-transition: unset;
 					-ms-transition: unset;
 					-o-transition: unset;
@@ -2361,7 +2535,7 @@
 					transition-duration: 0.5s;
 					transition-delay: 3s;
 				}
-				& when not (@PlayerMonth = Early) {
+				& when not (@PlayerStyle = 20120125) {
 					top: -8px;
 					-moz-transform: scale(0);
 					-ms-transform: scale(0);
@@ -2376,9 +2550,9 @@
 				}
 			}
 		}
-		& when not (@MiniplayerAutohide = Off) or (@PlayerMonth = Early) {
+		& when not (@MiniplayerAutohide = Off) or (@PlayerStyle = 20120125) {
 			.queue-miniplayer #player .html5-video-player:not(.ytp-block-autohide) & {
-				& when (@PlayerMonth = Early) {
+				& when (@PlayerStyle = 20120125) {
 					-moz-transition: unset;
 					-ms-transition: unset;
 					-o-transition: unset;
@@ -2405,7 +2579,7 @@
 					transition-duration: 0.5s;
 					transition-delay: 3s;
 				}
-				& when not (@PlayerMonth = Early) {
+				& when not (@PlayerStyle = 20120125) {
 					top: -8px;
 					-moz-transform: scale(0);
 					-ms-transform: scale(0);
@@ -2420,7 +2594,7 @@
 				}
 			}
 		}
-		& when (@PlayerAutohide = Off) and not (@PlayerMonth = Early) {
+		& when (@PlayerAutohide = Off) and not (@PlayerStyle = 20120125) {
 			.disabled-control-seek &,.autominimize-progress-bar:not(.ytp-block-autohide) &,html:not([data-player-size=fullscreen]) :not(.ideal-aspect).autominimize-progress-bar-non-aspect:not(.ytp-block-autohide) &, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &,.ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &,html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) & {
 				top: -5px;
 				-moz-transform: none;
@@ -2434,7 +2608,7 @@
 				-o-transition: height 0.5s, top 0.5s, -o-transform 0.5s;
 				-webkit-transition: height 0.5s, top 0.5s, -webkit-transform 0.5s;
 			}
-			.queue-miniplayer #player .html5-video-player:not(.ytp-block-autohide) & when (@MiniplayerAutohide = PlayerSync) {
+			.queue-miniplayer #player .html5-video-player:not(.ytp-block-autohide) & when (@MiniplayerAutohide = Sync) {
 				top: -5px;
 				-moz-transform: none;
 				-ms-transform: none;
@@ -2448,7 +2622,7 @@
 				-webkit-transition: height 0.5s, top 0.5s, -webkit-transform 0.5s;
 			}
 		}
-		& when (@MiniplayerAutohide = Off) and not (@PlayerMonth = Early) {
+		& when (@MiniplayerAutohide = Off) and not (@PlayerStyle = 20120125) {
 			.queue-miniplayer #player .html5-video-player:not(.ytp-block-autohide) & {
 				top: -5px;
 				-moz-transform: none;
@@ -2463,7 +2637,7 @@
 				-webkit-transition: height 0.5s, top 0.5s, -webkit-transform 0.5s;
 			}
 		}
-		#movie_player.html5-video-player:hover & when (@PlayerMonth = Early) {
+		#movie_player.html5-video-player:hover & when (@PlayerStyle = 20120125) {
 			-moz-transition: all 0s linear 0s;
 			-ms-transition: all 0s linear 0s;
 			-o-transition: all 0s linear 0s;
@@ -2471,35 +2645,81 @@
 			transition: all 0s linear 0s;
 		}
 		.html5-progress-bar:focus &, &:active, &:hover, .seeking-mode & {
-			& when (@PlayerMonth = Early) {
-				background: no-repeat url(//s.ytimg.com/yt/imgbin/player-common-vfl6Awq62.png) -89px -19px;
-			}
-			& when (@PlayerMonth = Middle) {
-				background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) -33px -118px;
-			}
-			& when (@PlayerMonth = Late) {
-				background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) -101px -169px;
-				&:after {
-					position: relative;
-					top: 5px;
-					left: 5px;
-					display: block;
-					width: 6px;
-					height: 6px;
-					background: #b91f1f;
-					content: '';
-					z-index: -1;
-					-moz-border-radius: 4px;
-					-webkit-border-radius: 4px;
-					border-radius: 4px;
+			& when (@CustomProgress = None) {
+				& when (@PlayerStyle = 20120125) {
+					background: no-repeat url(//s.ytimg.com/yt/imgbin/player-common-vfl6Awq62.png) -89px -19px;
 				}
+				& when (@PlayerStyle = 20120913) {
+					background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) -33px -118px;
+				}
+				& when (@PlayerStyle = 20121207) {
+					background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) -101px -169px;
+					&:after {
+						position: relative;
+						top: 5px;
+						left: 5px;
+						display: block;
+						width: 6px;
+						height: 6px;
+						background: #b91f1f;
+						content: '';
+						z-index: -1;
+						-moz-border-radius: 4px;
+						-webkit-border-radius: 4px;
+						border-radius: 4px;
+					}
+				}
+			}
+			& when ((@CustomProgress = Mario) or (@CustomProgress = Luigi) or (@CustomProgress = Peach) or (@CustomProgress = Toad) or (@CustomProgress = Yoshi) or (@CustomProgress = Wario) or (@CustomProgress = Koopa_Troopa) or (@CustomProgress = Donkey_Kong_Jr) or (@CustomProgress = Bowser)) {
+				background: no-repeat url(@drivers[@@CustomProgress]);
+			}
+			& when (@CustomProgress = Hamster) {
+				background: no-repeat url(@Hamster_GIF);
+			}
+			& when (@CustomProgress = Knuckles) {
+				background: no-repeat url("https://i.imgur.com/96Q0DBf.jpg");
+			}
+			& when (@CustomProgress = Pikachu) {
+				background: url("http://i.imgur.com/aqJhzLZ.gif");
+			}
+			& when (@CustomProgress = Pikachu_alternative) {
+				background: no-repeat url("http://i.imgur.com/u1fZNTy.gif");
+				background-size: 120px 60px;
+			}
+			& when (@CustomProgress = Rilakkuma) {
+				background: no-repeat url("http://i.hizliresim.com/VlP7zv.gif");
+			}
+			& when (@CustomProgress = Sonic) {
+				background: no-repeat url("http://i.imgur.com/sR2lxuX.gif");
+			}
+			& when (@CustomProgress = Square) {
+				& when (@PlayerStyle = 20120125) or (@PlayerStyle = 20120913) {
+					background: no-repeat url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wBHg4AIvtwEwYAAADGSURBVDjLtVMxDsIwDLyknegT4BdszAxMiG/AgxgYeAcvYOMJlTogXlAqValtlpKmUKy0EidliGWfLznbANijgwUg7ana2AwKUgAgoiMmIEmSQwoAzIypSMMLEcV27hPUdc3GGAsAl+VKLd7criAiiAh7Ama274TF/aESBCqtJ2iapksQUQnC3NAFH6ggsQowqKBUim2WDSvoEygKnuWfnuCc8zbOd9uoT/xp4/p8UgmKovi2MZSV5/n4UY4d4SGYj3UevdIvHNFrXoCgaYcAAAAASUVORK5CYII=") 0 1px;
+				}
+				& when (@PlayerStyle = 20121207) {
+					background: no-repeat url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAFfKj/FAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAGUExURerq6gAAAMke/wkAAAACdFJOU/8A5bcwSgAAAAlwSFlzAAAOwwAADsMBx2+oZAAAABl0RVh0U29mdHdhcmUAUGFpbnQuTkVUIDUuMS4xMhMBR3QAAAC4ZVhJZklJKgAIAAAABQAaAQUAAQAAAEoAAAAbAQUAAQAAAFIAAAAoAQMAAQAAAAMAAAAxAQIAEQAAAFoAAABphwQAAQAAAGwAAAAAAAAAo5MAAOgDAACjkwAA6AMAAFBhaW50Lk5FVCA1LjEuMTIAAAMAAJAHAAQAAAAwMjMwAaADAAEAAAABAAAABaAEAAEAAACWAAAAAAAAAAIAAQACAAQAAABSOTgAAgAHAAQAAAAwMTAwAAAAAAd3fp62zNoUAAAAKElEQVQYV2NgYGBgYAQRuAAjNllGmCicQQTA1ESKbmyAEQxIEiAJAAAUwAAlhmrl4wAAAABJRU5ErkJggg==") 0 1px;
+					&:after {
+						position: relative;
+						top: 5px;
+						left: 5px;
+						display: block;
+						width: 6px;
+						height: 6px;
+						background: #b91f1f;
+						content: '';
+						z-index: -1;
+					}
+				}
+			}
+			& when (@CustomProgress = Tails) {
+				background: no-repeat url("http://i.imgur.com/3HNuxg7.gif");
 			}
 		}
 		.html5-progress-bar.white:focus &, .html5-progress-bar.white &:hover, .html5-progress-bar.white &:active {
-			& when (@PlayerMonth = Middle) {
+			& when (@PlayerStyle = 20120913) {
 				background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) -33px -118px;
 			}
-			& when (@PlayerMonth = Late) {
+			& when (@PlayerStyle = 20121207) {
 				background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) -101px -169px;
 				&:after {
 					background: #bbb;
@@ -2550,7 +2770,7 @@
 		.ytp-clip-hover & {
 			background: url(http://s.ytimg.com/yts/img/carbon_fiber_light-vflnxuCYh.png)
 		}
-		.ytp-clip-start-enabled & when (@PlayerMonth = Early) and (@EarlyClipsEnabled = 0) {
+		.ytp-clip-start-enabled & when (@PlayerStyle = 20120125) and (@201201ClipsEnabled = 0) {
 			display: none
 		}
 	}
@@ -2559,7 +2779,7 @@
 		width: 9px;
 		height: 16px;
 		margin-left: -1px;
-		& when (@PlayerMonth = Early) and (@EarlyClipsEnabled = 0) {
+		& when (@PlayerStyle = 20120125) and (@201201ClipsEnabled = 0) {
 			display: none
 		}
 	}
@@ -2568,7 +2788,7 @@
 		width: 9px;
 		height: 16px;
 		margin-left: -9px;
-		& when (@PlayerMonth = Early) and (@EarlyClipsEnabled = 0) {
+		& when (@PlayerStyle = 20120125) and (@201201ClipsEnabled = 0) {
 			display: none
 		}
 	}
@@ -2630,7 +2850,7 @@
 			display: flex
 		}
 		&:after when (@HideAnnotation = 0) {
-			& when (@PlayerMonth = Early) {
+			& when (@PlayerStyle = 20120125) {
 				background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) 0 -15px;
 				height: 18px;
 				width: 16px;
@@ -2643,7 +2863,7 @@
 					background-origin: content-box;
 				}
 			}
-			& when (@PlayerMonth = Middle) {
+			& when (@PlayerStyle = 20120913) {
 				background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) 0 -151px;
 				height: 26px;
 				width: 30px;
@@ -2651,7 +2871,7 @@
 					background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) 0 -151px;
 				}
 			}
-			& when (@PlayerMonth = Late) {
+			& when (@PlayerStyle = 20121207) {
 				background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -2052px;
 				height: 25px;
 				width: 30px;
@@ -2664,13 +2884,13 @@
 			float: right;
 			cursor: pointer;
 			& when (@AccPlyrCtlPos = 1) {
-				order: 94
+				order: @AccPlyrCtlPos_anot
 			}
 			.iv-module-created & {
 				content: "";
 			}
 			.iv-module-loaded & {
-				& when (@PlayerMonth = Early) {
+				& when (@PlayerStyle = 20120125) {
 					background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -232px 0;
 					background-clip: content-box;
 					background-origin: content-box;
@@ -2680,13 +2900,13 @@
 						background-origin: content-box;
 					}
 				}
-				& when (@PlayerMonth = Middle) {
+				& when (@PlayerStyle = 20120913) {
 					background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) 0 -97px;
 					.light-theme& {
 						background: no-repeat url(//s.ytimg.com/yts/imgbin/player-light-vflm__o3E.png) 0 -97px;
 					}
 				}
-				& when (@PlayerMonth = Late) {
+				& when (@PlayerStyle = 20121207) {
 					background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 0;
 					.light-theme& {
 						background: no-repeat url(//s.ytimg.com/yts/imgbin/player-lighthh-vflr36htq.png) 0 0;
@@ -2704,7 +2924,7 @@
 			background-repeat: repeat-x;
 		}
 	}
-	& when (@PlayerMonth = Late) {
+	& when (@PlayerStyle = 20121207) {
 		.html5-player-chrome {
 			padding: 1px 0 0;
 			background: #1b1b1b;
@@ -2720,30 +2940,30 @@
 	}
 	& when (@AccPlyrCtlPos = 1) {
 		.ytp-button-play, .ytp-button-pause, .ytp-button-replay, .ytp-button-stop {
-			order: 1
+			order: @AccPlyrCtlPos_media
 		}
 		.ytp-button-prev {
-			order: 2
+			order: @AccPlyrCtlPos_prev
 		}
 		.ytp-button-next {
-			order: 3
+			order: @AccPlyrCtlPos_next
 		}
 		.ytp-volume-hover-area {
-			order: 4;
+			order: @AccPlyrCtlPos_volume;
 			margin-right: auto
 		}
 		.ytp-button-fullscreen-enter, .ytp-button-fullscreen-exit {
-			order: 100
+			order: @AccPlyrCtlPos_fs
 		}
 		.ytp-size-toggle-small, .ytp-size-toggle-large {
-			order: 99
+			order: @AccPlyrCtlPos_tog
 		}
 		.ytp-button-watch-on-youtube {
-			order: 98
+			order: @AccPlyrCtlPos_woyt
 		}
 		.ytp-button-watch-later {
-			order: 97;
-			& when (@PlayerMonth = Early) {
+			order: @AccPlyrCtlPos_wl;
+			& when (@PlayerStyle = 20120125) {
 				border-left: 1px solid #222;
 				&:hover, &:focus {
 					border-left: 1px solid #222;
@@ -2755,7 +2975,7 @@
 					border-color: #ccc;
 				}
 			}
-			& when (@PlayerMonth = Middle) {
+			& when (@PlayerStyle = 20120913) {
 				border-right: 1px solid #222;
 				padding-right: 1px;
 				&:hover, &:focus {
@@ -2771,29 +2991,14 @@
 			}
 		}
 		.ytp-settings-button, .ytp-settings-button-active {
-			order: 96
+			order: @AccPlyrCtlPos_sett
 		}
 		.ytp-subtitles-button, .ytp-subtitles-button-active {
-			order: 95
+			order: @AccPlyrCtlPos_subt
 		}
-		/* if 3D button still existed, order: 94 would be in its place */
+		/* if 3D button still existed, order: 93 would be in its place */
 		.ytp-button-playlist {
-			order: 93
-		}
-		#startSegmentButton {
-			order: 92
-		}
-		#cancelSegmentButton {
-			order: 91
-		}
-		#deleteButton {
-			order: 90
-		}
-		#submitButton {
-			order: 89
-		}
-		#infoButton {
-			order: 88
+			order: @AccPlyrCtlPos_playlist
 		}
 	}
 	.ytp-button {
@@ -2817,7 +3022,7 @@
 		.ytp-subtitles-settings-dialog-list-option:hover & {
 			color: #ddd;
 		}
-		& when (@PlayerMonth = Early) {
+		& when (@PlayerStyle = 20120125) {
 			&-play, &-pause, &-replay, &-stop, &-next {
 				border-right: 1px solid #222;
 				.light-theme & {
@@ -2831,11 +3036,11 @@
 				}
 			}
 		}
-		& when (@PlayerMonth = Middle) {
+		& when (@PlayerStyle = 20120913) {
 			&-play, &-pause, &-replay, &-stop, &-watch-on-youtube {
 				&, &:hover, &:focus {
 					border-right: 1px solid #222;
-					& when (@PlayerMonth = Middle) {
+					& when (@PlayerStyle = 20120913) {
 						padding-right: 1px;
 					}
 					.light-theme & {
@@ -2845,7 +3050,7 @@
 			}
 		}
 		&-play {
-			& when (@PlayerMonth = Early) {
+			& when (@PlayerStyle = 20120125) {
 				background: none;
 				width: 58px;
 				height: 100%;
@@ -2895,7 +3100,7 @@
 					height: 100%;
 				}
 			}
-			& when (@PlayerMonth = Middle) {
+			& when (@PlayerStyle = 20120913) {
 				background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -96px -232px;
 				height: 26px;
 				width: 55px;
@@ -2929,7 +3134,7 @@
 					width: 55px;
 				}
 			}
-			& when (@PlayerMonth = Late) {
+			& when (@PlayerStyle = 20121207) {
 				background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1323px;
 				height: 26px;
 				width: 55px;
@@ -2965,7 +3170,7 @@
 			}
 		}
 		&-pause {
-			& when (@PlayerMonth = Early) {
+			& when (@PlayerStyle = 20120125) {
 				background: none;
 				width: 58px;
 				height: 100%;
@@ -3015,7 +3220,7 @@
 					height: 100%;
 				}
 			}
-			& when (@PlayerMonth = Middle) {
+			& when (@PlayerStyle = 20120913) {
 				background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -64px -178px;
 				height: 26px;
 				width: 55px;
@@ -3049,7 +3254,7 @@
 					width: 55px;
 				}
 			}
-			& when (@PlayerMonth = Late) {
+			& when (@PlayerStyle = 20121207) {
 				background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1134px;
 				height: 26px;
 				width: 55px;
@@ -3083,7 +3288,7 @@
 			}
 		}
 		&-stop {
-			& when (@PlayerMonth = Early) {
+			& when (@PlayerStyle = 20120125) {
 				background: none;
 				width: 58px;
 				height: 100%;
@@ -3133,7 +3338,7 @@
 					height: 100%;
 				}
 			}
-			& when (@PlayerMonth = Middle) {
+			& when (@PlayerStyle = 20120913) {
 				background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) 0 -124px;
 				height: 26px;
 				width: 55px;
@@ -3167,7 +3372,7 @@
 					width: 55px;
 				}
 			}
-			& when (@PlayerMonth = Late) {
+			& when (@PlayerStyle = 20121207) {
 				background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -891px;
 				height: 26px;
 				width: 55px;
@@ -3203,12 +3408,12 @@
 			}
 		}
 		&-replay {
-			& when (@PlayerMonth = Early) {
+			& when (@PlayerStyle = 20120125) {
 				background: none;
-				& when (@EarlyReplayExperiment = 0) {
+				& when (@201201ReplayExperiment = 0) {
 					width: 58px;
 				}
-				& when (@EarlyReplayExperiment = 1) {
+				& when (@201201ReplayExperiment = 1) {
 					width: auto;
 					padding: 0 5px;
 				}
@@ -3217,7 +3422,7 @@
 				line-height: 26px;
 				&:before {
 					content: "";
-					& when (@EarlyReplayExperiment = 0) {
+					& when (@201201ReplayExperiment = 0) {
 						background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -46px -34px;
 						height: 18px;
 						width: 14px;
@@ -3225,7 +3430,7 @@
 							background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -46px -34px;
 						}
 					}
-					& when (@EarlyReplayExperiment = 1) {
+					& when (@201201ReplayExperiment = 1) {
 						background: no-repeat url(//s.ytimg.com/yt/imgbin/player-common-vfl6Awq62.png) 0 -41px;
 						width: 15px;
 						height: 14px;
@@ -3238,7 +3443,7 @@
 					vertical-align: middle;
 					display: inline-block;
 				}
-				&:after when (@EarlyReplayExperiment = 1) {
+				&:after when (@201201ReplayExperiment = 1) {
 					content: "Replay";
 					font-size: 11px;
 					line-height: 28px;
@@ -3251,16 +3456,16 @@
 				}
 				&:not(.ytp-disabled):focus, &:not(.ytp-disabled):hover {
 					background: none;
-					& when (@EarlyReplayExperiment = 0) {
+					& when (@201201ReplayExperiment = 0) {
 						width: 58px;
 					}
-					& when (@EarlyReplayExperiment = 1) {
+					& when (@201201ReplayExperiment = 1) {
 						width: auto;
 						padding: 0 5px;
 					}
 					height: 100%;
 					&:before {
-						& when (@EarlyReplayExperiment = 0) {
+						& when (@201201ReplayExperiment = 0) {
 							background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -148px 0;
 							height: 18px;
 							width: 14px;
@@ -3268,14 +3473,14 @@
 								background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -148px 0;
 							}
 						}
-						& when (@EarlyReplayExperiment = 1) {
+						& when (@201201ReplayExperiment = 1) {
 							background: no-repeat url(//s.ytimg.com/yt/imgbin/player-common-vfl6Awq62.png) 0 -41px;
 							width: 15px;
 							height: 14px;
 							opacity: 1;
 						}
 					}
-					&:after when (@EarlyReplayExperiment = 1) {
+					&:after when (@201201ReplayExperiment = 1) {
 						color: #fff;
 						.light-theme & {
 							color: #000;
@@ -3283,10 +3488,10 @@
 					}
 					.light-theme & {
 						background: none;
-						& when (@EarlyReplayExperiment = 0) {
+						& when (@201201ReplayExperiment = 0) {
 							width: 58px;
 						}
-						& when (@EarlyReplayExperiment = 1) {
+						& when (@201201ReplayExperiment = 1) {
 							width: auto;
 						}
 						height: 100%;
@@ -3294,16 +3499,16 @@
 				}
 				.light-theme & {
 					background: none;
-					& when (@EarlyReplayExperiment = 0) {
+					& when (@201201ReplayExperiment = 0) {
 						width: 58px;
 					}
-					& when (@EarlyReplayExperiment = 1) {
+					& when (@201201ReplayExperiment = 1) {
 						width: auto;
 					}
 					height: 100%;
 				}
 			}
-			& when (@PlayerMonth = Middle) {
+			& when (@PlayerStyle = 20120913) {
 				& when (@ReplayIconExperiment = 0) {
 					background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -96px -286px;
 				}
@@ -3343,7 +3548,7 @@
 					width: 55px;
 				}
 			}
-			& when (@PlayerMonth = Late) {
+			& when (@PlayerStyle = 20121207) {
 				& when (@ReplayIconExperiment = 0) {
 					background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1053px;
 				}
@@ -3389,7 +3594,7 @@
 			& when (@HPaNB = 1) {
 				display: none !important;
 			}
-			& when (@PlayerMonth = Early) {
+			& when (@PlayerStyle = 20120125) {
 				background: none;
 				width: 34px;
 				height: 100%;
@@ -3428,7 +3633,7 @@
 					height: 100%;
 				}
 			}
-			& when (@PlayerMonth = Middle) {
+			& when (@PlayerStyle = 20120913) {
 				background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -32px -43px;
 				height: 26px;
 				width: 30px;
@@ -3448,7 +3653,7 @@
 					width: 30px;
 				}
 			}
-			& when (@PlayerMonth = Late) {
+			& when (@PlayerStyle = 20121207) {
 				background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -2132px;
 				height: 26px;
 				width: 30px;
@@ -3473,7 +3678,7 @@
 			& when (@HPaNB = 1) {
 				display: none !important;
 			}
-			& when (@PlayerMonth = Early) {
+			& when (@PlayerStyle = 20120125) {
 				background: none;
 				width: 34px;
 				height: 100%;
@@ -3512,7 +3717,7 @@
 					height: 100%;
 				}
 			}
-			& when (@PlayerMonth = Middle) {
+			& when (@PlayerStyle = 20120913) {
 				background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -32px -43px;
 				height: 26px;
 				width: 30px;
@@ -3532,7 +3737,7 @@
 					width: 30px;
 				}
 			}
-			& when (@PlayerMonth = Late) {
+			& when (@PlayerStyle = 20121207) {
 				background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -2132px;
 				height: 26px;
 				width: 30px;
@@ -3554,7 +3759,7 @@
 			}
 		}
 		&-volume {
-			& when (@PlayerMonth = Early) {
+			& when (@PlayerStyle = 20120125) {
 				background: none;
 				display: inline-block;
 				width: 34px;
@@ -3599,7 +3804,7 @@
 					height: 100%;
 				}
 			}
-			& when (@PlayerMonth = Middle) {
+			& when (@PlayerStyle = 20120913) {
 				background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -153px -232px;
 				height: 26px;
 				width: 30px;
@@ -3619,7 +3824,7 @@
 					width: 30px;
 				}
 			}
-			& when (@PlayerMonth = Late) {
+			& when (@PlayerStyle = 20121207) {
 				background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1269px;
 				height: 26px;
 				width: 35px;
@@ -3641,7 +3846,7 @@
 			}
 
 			&[data-value=off] {
-				& when (@PlayerMonth = Early) {
+				& when (@PlayerStyle = 20120125) {
 					background: none;
 					width: 34px;
 					height: 100%;
@@ -3678,7 +3883,7 @@
 						height: 100%;
 					}
 				}
-				& when (@PlayerMonth = Middle) {
+				& when (@PlayerStyle = 20120913) {
 					background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -121px -16px;
 					height: 26px;
 					width: 30px;
@@ -3698,7 +3903,7 @@
 						width: 30px;
 					}
 				}
-				& when (@PlayerMonth = Late) {
+				& when (@PlayerStyle = 20121207) {
 					background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1107px;
 					height: 26px;
 					width: 35px;
@@ -3720,7 +3925,7 @@
 				}
 			}
 			&[data-value=min] {
-				& when (@PlayerMonth = Early) {
+				& when (@PlayerStyle = 20120125) {
 					background: none;
 					width: 34px;
 					height: 100%;
@@ -3757,7 +3962,7 @@
 						height: 100%;
 					}
 				}
-				& when (@PlayerMonth = Middle) {
+				& when (@PlayerStyle = 20120913) {
 					background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -153px -232px;
 					height: 26px;
 					width: 30px;
@@ -3777,7 +3982,7 @@
 						width: 30px;
 					}
 				}
-				& when (@PlayerMonth = Late) {
+				& when (@PlayerStyle = 20121207) {
 					background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1269px;
 					height: 26px;
 					width: 35px;
@@ -3799,7 +4004,7 @@
 				}
 			}
 			&[data-value=normal], &[data-value=quiet] {
-				& when (@PlayerMonth = Early) {
+				& when (@PlayerStyle = 20120125) {
 					background: none;
 					width: 34px;
 					height: 100%;
@@ -3836,7 +4041,7 @@
 						height: 100%;
 					}
 				}
-				& when (@PlayerMonth = Middle) {
+				& when (@PlayerStyle = 20120913) {
 					background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -121px -259px;
 					height: 26px;
 					width: 30px;
@@ -3856,7 +4061,7 @@
 						width: 30px;
 					}
 				}
-				& when (@PlayerMonth = Late) {
+				& when (@PlayerStyle = 20121207) {
 					background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1539px;
 					height: 26px;
 					width: 35px;
@@ -3878,7 +4083,7 @@
 				}
 			}
 			&[data-value=max], &[data-value=loud] {
-				& when (@PlayerMonth = Early) {
+				& when (@PlayerStyle = 20120125) {
 					background: none;
 					width: 34px;
 					height: 100%;
@@ -3915,7 +4120,7 @@
 						height: 100%;
 					}
 				}
-				& when (@PlayerMonth = Middle) {
+				& when (@PlayerStyle = 20120913) {
 					background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -153px -259px;
 					height: 26px;
 					width: 30px;
@@ -3935,7 +4140,7 @@
 						width: 30px;
 					}
 				}
-				& when (@PlayerMonth = Late) {
+				& when (@PlayerStyle = 20121207) {
 					background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1485px;
 					height: 26px;
 					width: 35px;
@@ -3958,7 +4163,7 @@
 			}
 		}
 		&-fullscreen-enter {
-			& when (@PlayerMonth = Early) {
+			& when (@PlayerStyle = 20120125) {
 				background: none;
 				width: 32px;
 				height: 100%;
@@ -3966,12 +4171,12 @@
 				line-height: 26px;
 				&:before {
 					content: "";
-					& when (@EarlyFsExperiment = 0) {
+					& when (@201201FsExperiment = 0) {
 						background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -62px 0;
 						height: 20px;
 						width: 26px;
 					}
-					& when (@EarlyFsExperiment = 1) {
+					& when (@201201FsExperiment = 1) {
 						background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -214px -16px;
 						height: 16px;
 						width: 16px;
@@ -3979,10 +4184,10 @@
 					vertical-align: middle;
 					display: inline-block;
 					.light-theme & {
-						& when (@EarlyFsExperiment = 0) {
+						& when (@201201FsExperiment = 0) {
 							background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -62px 0;
 						}
-						& when (@EarlyFsExperiment = 1) {
+						& when (@201201FsExperiment = 1) {
 							background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -214px -16px;
 						}
 					}
@@ -3992,17 +4197,17 @@
 					width: 32px;
 					height: 100%;
 					&:before {
-						& when (@EarlyFsExperiment = 0) {
+						& when (@201201FsExperiment = 0) {
 							background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -273px -22px;
 						}
-						& when (@EarlyFsExperiment = 1) {
+						& when (@201201FsExperiment = 1) {
 							background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -111px -20px;
 						}
 						.light-theme & {
-							& when (@EarlyFsExperiment = 0) {
+							& when (@201201FsExperiment = 0) {
 								background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -273px -22px;
 							}
-							& when (@EarlyFsExperiment = 1) {
+							& when (@201201FsExperiment = 1) {
 								background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -111px -20px;
 							}
 						}
@@ -4019,7 +4224,7 @@
 					height: 100%;
 				}
 			}
-			& when (@PlayerMonth = Middle) {
+			& when (@PlayerStyle = 20120913) {
 				background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -89px -124px;
 				height: 26px;
 				width: 30px;
@@ -4039,7 +4244,7 @@
 					width: 30px;
 				}
 			}
-			& when (@PlayerMonth = Late) {
+			& when (@PlayerStyle = 20121207) {
 				background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1998px;
 				height: 26px;
 				width: 30px;
@@ -4061,7 +4266,7 @@
 			}
 		}
 		&-fullscreen-exit {
-			& when (@PlayerMonth = Early) {
+			& when (@PlayerStyle = 20120125) {
 				background: none;
 				width: 32px;
 				height: 100%;
@@ -4069,12 +4274,12 @@
 				line-height: 26px;
 				&:before {
 					content: "";
-					& when (@EarlyFsExperiment = 0) {
+					& when (@201201FsExperiment = 0) {
 						background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -268px 0;
 						height: 20px;
 						width: 26px;
 					}
-					& when (@EarlyFsExperiment = 1) {
+					& when (@201201FsExperiment = 1) {
 						background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -177px -16px;
 						height: 16px;
 						width: 16px;
@@ -4082,10 +4287,10 @@
 					vertical-align: middle;
 					display: inline-block;
 					.light-theme & {
-						& when (@EarlyFsExperiment = 0) {
+						& when (@201201FsExperiment = 0) {
 							background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -268px 0;
 						}
-						& when (@EarlyFsExperiment = 1) {
+						& when (@201201FsExperiment = 1) {
 							background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -177px -16px;
 						}
 					}
@@ -4095,17 +4300,17 @@
 					width: 32px;
 					height: 100%;
 					&:before {
-						& when (@EarlyFsExperiment = 0) {
+						& when (@201201FsExperiment = 0) {
 							background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -18px -34px;
 						}
-						& when (@EarlyFsExperiment = 1) {
+						& when (@201201FsExperiment = 1) {
 							background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -93px -20px;
 						}
 						.light-theme & {
-							& when (@EarlyFsExperiment = 0) {
+							& when (@201201FsExperiment = 0) {
 								background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -18px -34px;
 							}
-							& when (@EarlyFsExperiment = 1) {
+							& when (@201201FsExperiment = 1) {
 								background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -93px -20px;
 							}
 						}
@@ -4122,7 +4327,7 @@
 					height: 100%;
 				}
 			}
-			& when (@PlayerMonth = Middle) {
+			& when (@PlayerStyle = 20120913) {
 				background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) 0 -70px;
 				height: 26px;
 				width: 30px;
@@ -4142,7 +4347,7 @@
 					width: 30px;
 				}
 			}
-			& when (@PlayerMonth = Late) {
+			& when (@PlayerStyle = 20121207) {
 				background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -2187px;
 				height: 26px;
 				width: 30px;
@@ -4167,7 +4372,7 @@
 			& when (@DEV = 1) and (@ForceWOYTi = 1) {
 				display: block !important;
 			}
-			& when (@PlayerMonth = Early) {
+			& when (@PlayerStyle = 20120125) {
 				background: none;
 				width: 49px;
 				height: 100%;
@@ -4202,7 +4407,7 @@
 					height: 100%;
 				}
 			}
-			& when (@PlayerMonth = Middle) {
+			& when (@PlayerStyle = 20120913) {
 				background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) 0 -156px;
 				height: 26px;
 				width: 52px;
@@ -4222,7 +4427,7 @@
 					width: 52px;
 				}
 			}
-			& when (@PlayerMonth = Late) {
+			& when (@PlayerStyle = 20121207) {
 				background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1863px;
 				height: 26px;
 				width: 52px;
@@ -4244,7 +4449,7 @@
 			}
 		}
 		&-playlist {
-			& when (@PlayerMonth = Early) or (@PlayerMonth = Middle) {
+			& when (@PlayerStyle = 20120125) or (@PlayerStyle = 20120913) {
 				background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -64px -97px;
 				height: 26px;
 				width: 30px;
@@ -4274,7 +4479,7 @@
 					width: 30px;
 				}
 			}
-			& when (@PlayerMonth = Late) {
+			& when (@PlayerStyle = 20121207) {
 				background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -216px;
 				height: 26px;
 				width: 30px;
@@ -4382,7 +4587,7 @@
 					display: inline-block;
 				}
 			}
-			& when (@PlayerMonth = Early) {
+			& when (@PlayerStyle = 20120125) {
 				background: none;
 				width: 32px;
 				height: 100%;
@@ -4471,7 +4676,7 @@
 					height: 100%;
 				}
 			}
-			& when (@PlayerMonth = Middle) {
+			& when (@PlayerStyle = 20120913) {
 				background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) 0 -259px;
 				height: 26px;
 				width: 30px;
@@ -4491,7 +4696,7 @@
 					width: 30px;
 				}
 			}
-			& when (@PlayerMonth = Late) {
+			& when (@PlayerStyle = 20121207) {
 				background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1971px;
 				height: 26px;
 				width: 30px;
@@ -4525,7 +4730,7 @@
 				.show-more-info & {
 					border-bottom: none;
 				}
-				& when (@IBIO = 0) {
+				& when (@IBIO = Sync) and ((@PlayerStyle = 20120125) or (@PlayerStyle = 20120913)) or (@IBIO = Off) {
 					&:focus:before, &:hover:before {
 						opacity: 1;
 					}
@@ -4539,7 +4744,7 @@
 						color: #fff;
 					}
 				}
-				& when (@IBIO = 1) {
+				& when (@IBIO = Sync) and (@PlayerStyle = 20121207) or (@IBIO = On) {
 					&:hover:before, &:focus:before {
 						background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-common-vfloYYly0.png) -52px -93px;
 						width: 22px;
@@ -4548,7 +4753,7 @@
 				}
 				&:before {
 					content: "";
-					& when (@IBIO = 0) {
+					& when (@IBIO = Sync) and ((@PlayerStyle = 20120125) or (@PlayerStyle = 20120913)) or (@IBIO = Off) {
 						background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) 0 -92px;
 						.show-more-info & {
 							background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) -114px -136px;
@@ -4559,7 +4764,7 @@
 						margin-right: 7px;
 						vertical-align: middle;
 					}
-					& when (@IBIO = 1) {
+					& when (@IBIO = Sync) and (@PlayerStyle = 20121207) or (@IBIO = On) {
 						background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-common-vfloYYly0.png) 0 0;
 						width: 22px;
 						height: 23px;
@@ -4576,12 +4781,12 @@
 				width: auto;
 				height: 100%;
 				padding: 0 9px;
-				& when (@PlayerMonth = Late) {
+				& when (@PlayerStyle = 20121207) {
 					padding: 0 0 0 5px;
 				}
 				opacity: 1;
 				line-height: normal;
-				& when (@IBIO = 0) {
+				& when (@IBIO = Sync) and ((@PlayerStyle = 20120125) or (@PlayerStyle = 20120913)) or (@IBIO = Off) {
 					&:after {
 						content: "Share";
 						vertical-align: middle;
@@ -4592,7 +4797,7 @@
 						color: #fff;
 					}
 				}
-				& when (@IBIO = 1) {
+				& when (@IBIO = Sync) and (@PlayerStyle = 20121207) or (@IBIO = On) {
 					&:before {
 						content: "";
 						background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-common-vfloYYly0.png) -28px -68px;
@@ -4613,12 +4818,12 @@
 				width: auto;
 				height: 100%;
 				opacity: 1;
-				& when (@IBIO = 0) {
+				& when (@IBIO = Sync) and ((@PlayerStyle = 20120125) or (@PlayerStyle = 20120913)) or (@IBIO = Off) {
 					padding-top: 7px;
 					padding-left: 3px;
 					padding-right: 10px;
 				}
-				& when (@IBIO = 1) {
+				& when (@IBIO = Sync) and (@PlayerStyle = 20121207) or (@IBIO = On) {
 					padding: 0 9px;
 					padding-left: 0;
 				}
@@ -4626,14 +4831,14 @@
 				line-height: normal;
 				&:before {
 					content: "";
-					& when (@IBIO = 0) {
+					& when (@IBIO = Sync) and ((@PlayerStyle = 20120125) or (@PlayerStyle = 20120913)) or (@IBIO = Off) {
 						background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) -72px -118px;
 						width: 14px;
 						height: 16px;
 						opacity: 0.7;
 						vertical-align: top;
 					}
-					& when (@IBIO = 1) {
+					& when (@IBIO = Sync) and (@PlayerStyle = 20121207) or (@IBIO = On) {
 						background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-common-vfloYYly0.png) -54px -30px;
 						width: 22px;
 						height: 23px;
@@ -4643,17 +4848,20 @@
 					}
 					display: inline-block;
 				}
-				& when (@IBIO = 0) {
+				& when (@IBIO = Sync) and ((@PlayerStyle = 20120125) or (@PlayerStyle = 20120913)) or (@IBIO = Off) {
 					&:hover:before, &:focus:before {
 						opacity: 1;
 					}
 				}
-				& when (@IBIO = 1) {
+				& when (@IBIO = Sync) and (@PlayerStyle = 20121207) or (@IBIO = On) {
 					&:hover:before {
 						background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-common-vfloYYly0.png) 0 -227px;
 						width: 22px;
 						height: 23px;
 					}
+				}
+				html:not([data-player-size=fullscreen]) .queue-miniplayer #player .html5-video-player & {
+					margin-right: 25px;
 				}
 			}
 			&-like {
@@ -4661,14 +4869,14 @@
 				width: auto;
 				height: 100%;
 				padding: 0 9px;
-				& when (@IBIO = 1) {
+				& when (@IBIO = Sync) and (@PlayerStyle = 20121207) or (@IBIO = On) {
 					padding-right: 0;
 				}
 				opacity: 1;
 				line-height: normal;
 				&:before {
 					content: "";
-					& when (@IBIO = 0) {
+					& when (@IBIO = Sync) and ((@PlayerStyle = 20120125) or (@PlayerStyle = 20120913)) or (@IBIO = Off) {
 						background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) -101px -187px;
 						width: 13px;
 						height: 15px;
@@ -4676,7 +4884,7 @@
 						margin-right: 12px;
 						vertical-align: middle;
 					}
-					& when (@IBIO = 1) {
+					& when (@IBIO = Sync) and (@PlayerStyle = 20121207) or (@IBIO = On) {
 						background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-common-vfloYYly0.png) -64px -337px;
 						width: 22px;
 						height: 23px;
@@ -4686,7 +4894,7 @@
 					}
 					display: inline-block;
 				}
-				& when (@IBIO = 0) {
+				& when (@IBIO = Sync) and ((@PlayerStyle = 20120125) or (@PlayerStyle = 20120913)) or (@IBIO = Off) {
 					&:hover:before, &:focus:before {
 						opacity: 1;
 					}
@@ -4700,7 +4908,7 @@
 						color: #fff;
 					}
 				}
-				& when (@IBIO = 1) {
+				& when (@IBIO = Sync) and (@PlayerStyle = 20121207) or (@IBIO = On) {
 					&:hover:before {
 						background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-common-vfloYYly0.png) -28px -93px;
 						width: 22px;
@@ -4708,8 +4916,7 @@
 					}
 				}
 			}
-			/*/== TODO: Remove Early when early infobar is implimented ==/*/
-			& when (@PlayerMonth = Early) or (@PlayerMonth = Middle) {
+			& when (@PlayerStyle = 20120125) or (@PlayerStyle = 20120913) {
 				&-info, &-share, &-like {
 					border-left: 1px solid #222;
 					&:hover, &:focus {
@@ -4719,20 +4926,73 @@
 			}
 		}
 	}
+	#startSegmentButton {
+		height: 100%;
+		width: 30px;
+		& when (@AccPlyrCtlPos = 1) {
+			order: @AccPlyrCtlPos_sb-start-seg;
+		}
+		& when (@HideSponsorBlockButtons = 1) {
+			display: none !important;
+		}
+	}
+	#cancelSegmentButton {
+		height: 100%;
+		width: 30px;
+		& when (@AccPlyrCtlPos = 1) {
+			order: @AccPlyrCtlPos_sb-cancel-seg;
+		}
+		& when (@HideSponsorBlockButtons = 1) {
+			display: none !important;
+		}
+	}
+	#deleteButton {
+		height: 100%;
+		width: 30px;
+		& when (@AccPlyrCtlPos = 1) {
+			order: @AccPlyrCtlPos_sb-delete;
+		}
+		& when (@HideSponsorBlockButtons = 1) {
+			display: none !important;
+		}
+	}
+	#submitButton {
+		height: 100%;
+		width: 30px;
+		& when (@AccPlyrCtlPos = 1) {
+			order: @AccPlyrCtlPos_sb-submit;
+		}
+		& when (@HideSponsorBlockButtons = 1) {
+			display: none !important;
+		}
+	}
+	#infoButton {
+		height: 100%;
+		width: 30px;
+		& when (@AccPlyrCtlPos = 1) {
+			order: @AccPlyrCtlPos_sb-info;
+		}
+		& when (@HideSponsorBlockButtons = 0) {
+			display: inline-block; /* needed for the animation */
+		}
+		& when (@HideSponsorBlockButtons = 1) {
+			display: none !important;
+		}
+	}
 	.ytp-size-toggle-large {
-		& when (@PlayerMonth = Early) {
-			& when (@SoloSizeButton = 0) {
+		& when (@PlayerStyle = 20120125) {
+			& when (@SoloSizeBtnExperiment = 0) {
 				background: none;
-				& when (@EarlySizeExperiment = 1) {
+				& when (@201201SizeExperiment = 1) {
 					width: 32px;
 				}
-				& when (@EarlySizeExperiment = 0) {
+				& when (@201201SizeExperiment = 0) {
 					width: 64px;
 				}
 				height: 100%;
 				text-align: center;
 				line-height: 26px;
-				&:before when (@EarlySizeExperiment = 0) {
+				&:before when (@201201SizeExperiment = 0) {
 					content: "";
 					background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -232px -39px content-box;
 					background-clip: content-box;
@@ -4756,7 +5016,7 @@
 						background-clip: content-box, border-box;
 						background-origin: content-box, border-box;
 						cursor: default;
-						& when (@AccSizeBtnBehavior = 1) and (@SoloSizeButton = 0) and (@EarlySizeExperiment = 0) {
+						& when (@AccSizeBtnBehavior = 1) and (@SoloSizeBtnExperiment = 0) and (@201201SizeExperiment = 0) {
 							position: absolute;
 							left: -32px;
 							pointer-events: none;
@@ -4765,7 +5025,7 @@
 				}
 				&:after {
 					content: "";
-					& when (@EarlySizeExperiment = 0) {
+					& when (@201201SizeExperiment = 0) {
 						background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -250px -38px content-box;
 						background-clip: content-box;
 						background-origin: content-box;
@@ -4773,7 +5033,7 @@
 						width: 21px;
 						padding: 7px 6px 5px 5px;
 					}
-					& when (@EarlySizeExperiment = 1) {
+					& when (@201201SizeExperiment = 1) {
 						background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -232px -20px content-box;
 						background-clip: content-box;
 						background-origin: content-box;
@@ -4783,23 +5043,23 @@
 					}
 					display: inline-block;
 					.light-theme & {
-						& when (@EarlySizeExperiment = 0) {
+						& when (@201201SizeExperiment = 0) {
 							background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -250px -38px content-box;
 							background-clip: content-box;
 							background-origin: content-box;
 						}
-						& when (@EarlySizeExperiment = 1) {
+						& when (@201201SizeExperiment = 1) {
 							background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -232px -20px content-box;
 							background-clip: content-box;
 							background-origin: content-box;
 						}
 						[data-player-size=large] & {
-							& when (@EarlySizeExperiment = 0) {
+							& when (@201201SizeExperiment = 0) {
 								background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -250px -38px content-box, rgba(0,0,0,0.1);
 								background-clip: content-box, border-box;
 								background-origin: content-box, border-box;
 							}
-							& when (@EarlySizeExperiment = 1) {
+							& when (@201201SizeExperiment = 1) {
 								background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) 0 -35px content-box;
 								background-clip: content-box;
 								background-origin: content-box;
@@ -4807,20 +5067,20 @@
 						}
 					}
 					[data-player-size=large] & {
-						& when (@EarlySizeExperiment = 0) {
+						& when (@201201SizeExperiment = 0) {
 							background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -250px -38px content-box, rgba(0,0,0,0.5);
 							background-clip: content-box, border-box;
 							background-origin: content-box, border-box;
 							cursor: default;
 						}
-						& when (@EarlySizeExperiment = 1) {
+						& when (@201201SizeExperiment = 1) {
 							background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) 0 -35px content-box;
 							background-clip: content-box;
 							background-origin: content-box;
 							height: 17px;
 							width: 16px;
 						}
-						& when (@AccSizeBtnBehavior = 1) and (@SoloSizeButton = 0) and (@EarlySizeExperiment = 0) {
+						& when (@AccSizeBtnBehavior = 1) and (@SoloSizeBtnExperiment = 0) and (@201201SizeExperiment = 0) {
 							position: absolute;
 							right: -32px;
 							pointer-events: none;
@@ -4829,14 +5089,14 @@
 				}
 				&:focus, &:hover {
 					background: none;
-					& when not ((@SoloSizeButton = 0) and (@EarlySizeExperiment = 0)) {
+					& when not ((@SoloSizeBtnExperiment = 0) and (@201201SizeExperiment = 0)) {
 						width: 32px;
 					}
-					& when (@SoloSizeButton = 0) and (@EarlySizeExperiment = 0) {
+					& when (@SoloSizeBtnExperiment = 0) and (@201201SizeExperiment = 0) {
 						width: 64px;
 					}
 					height: 100%;
-					&:before when (@SoloSizeButton = 0) and (@EarlySizeExperiment = 0) {
+					&:before when (@SoloSizeBtnExperiment = 0) and (@201201SizeExperiment = 0) {
 						background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -214px -40px content-box;
 						background-clip: content-box;
 						background-origin: content-box;
@@ -4857,34 +5117,34 @@
 						}
 					}
 					&:after {
-						& when (@EarlySizeExperiment = 0) {
+						& when (@201201SizeExperiment = 0) {
 							background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -148px -20px content-box;
 							background-clip: content-box;
 							background-origin: content-box;
 						}
-						& when (@EarlySizeExperiment = 1) {
+						& when (@201201SizeExperiment = 1) {
 							background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -129px -14px content-box;
 							background-clip: content-box;
 							background-origin: content-box;
 						}
 						.light-theme & {
-							& when (@EarlySizeExperiment = 0) {
+							& when (@201201SizeExperiment = 0) {
 								background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -148px -20px content-box;
 								background-clip: content-box;
 								background-origin: content-box;
 							}
-							& when (@EarlySizeExperiment = 1) {
+							& when (@201201SizeExperiment = 1) {
 								background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -129px -14px content-box;
 								background-clip: content-box;
 								background-origin: content-box;
 							}
 							[data-player-size=large] & {
-								& when (@EarlySizeExperiment = 0) {
+								& when (@201201SizeExperiment = 0) {
 									background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -250px -38px content-box, rgba(0,0,0,0.1);
 									background-clip: content-box, border-box;
 									background-origin: content-box, border-box;
 								}
-								& when (@EarlySizeExperiment = 1) {
+								& when (@201201SizeExperiment = 1) {
 									background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -38px 0 content-box;
 									background-clip: content-box;
 									background-origin: content-box;
@@ -4892,14 +5152,14 @@
 							}
 						}
 						[data-player-size=large] & {
-							& when (@EarlySizeExperiment = 0) {
+							& when (@201201SizeExperiment = 0) {
 								background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -250px -38px content-box, rgba(0,0,0,0.5);
 								background-clip: content-box, border-box;
 								background-origin: content-box, border-box;
 								height: 14px;
 								width: 21px;
 							}
-							& when (@EarlySizeExperiment = 1) {
+							& when (@201201SizeExperiment = 1) {
 								background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -38px 0 content-box;
 								background-clip: content-box;
 								background-origin: content-box;
@@ -4910,10 +5170,10 @@
 					}
 					.light-theme & {
 						background: none;
-						& when not ((@SoloSizeButton = 0) and (@EarlySizeExperiment = 0)) {
+						& when not ((@SoloSizeBtnExperiment = 0) and (@201201SizeExperiment = 0)) {
 							width: 32px;
 						}
-						& when (@SoloSizeButton = 0) and (@EarlySizeExperiment = 0) {
+						& when (@SoloSizeBtnExperiment = 0) and (@201201SizeExperiment = 0) {
 							width: 64px;
 						}
 						height: 100%;
@@ -4921,15 +5181,15 @@
 				}
 				.light-theme & {
 					background: none;
-					& when not ((@SoloSizeButton = 0) and (@EarlySizeExperiment = 0)) {
+					& when not ((@SoloSizeBtnExperiment = 0) and (@201201SizeExperiment = 0)) {
 						width: 32px;
 					}
-					& when (@SoloSizeButton = 0) and (@EarlySizeExperiment = 0) {
+					& when (@SoloSizeBtnExperiment = 0) and (@201201SizeExperiment = 0) {
 						width: 64px;
 					}
 					height: 100%;
 				}
-				[data-player-size=small] & when (@AccSizeBtnBehavior = 1) and (@SoloSizeButton = 0) and (@EarlySizeExperiment = 0) {
+				[data-player-size=small] & when (@AccSizeBtnBehavior = 1) and (@SoloSizeBtnExperiment = 0) and (@201201SizeExperiment = 0) {
 					width: 32px;
 					position: relative;
 					margin: 0 0 0 32px;
@@ -4937,7 +5197,7 @@
 						width: 32px;
 					}
 				}
-				[data-player-size=large] & when (@AccSizeBtnBehavior = 1) and (@SoloSizeButton = 0) and (@EarlySizeExperiment = 0) {
+				[data-player-size=large] & when (@AccSizeBtnBehavior = 1) and (@SoloSizeBtnExperiment = 0) and (@201201SizeExperiment = 0) {
 					width: 32px;
 					position: relative;
 					margin: 0 32px 0 0;
@@ -4946,7 +5206,7 @@
 					}
 				}
 			}
-			& when (@SoloSizeButton = 1) {
+			& when (@SoloSizeBtnExperiment = 1) {
 				background: none;
 				width: 32px;
 				height: 100%;
@@ -4954,7 +5214,7 @@
 				line-height: 26px;
 				&:after {
 					content: "";
-					& when (@EarlySizeExperiment = 0) {
+					& when (@201201SizeExperiment = 0) {
 						background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -250px -38px content-box;
 						background-clip: content-box;
 						background-origin: content-box;
@@ -4962,7 +5222,7 @@
 						width: 21px;
 						padding: 7px 6px 5px 5px;
 					}
-					& when (@EarlySizeExperiment = 1) {
+					& when (@201201SizeExperiment = 1) {
 						background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -232px -20px content-box;
 						background-clip: content-box;
 						background-origin: content-box;
@@ -4972,23 +5232,23 @@
 					}
 					display: inline-block;
 					.light-theme & {
-						& when (@EarlySizeExperiment = 0) {
+						& when (@201201SizeExperiment = 0) {
 							background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -250px -38px content-box;
 							background-clip: content-box;
 							background-origin: content-box;
 						}
-						& when (@EarlySizeExperiment = 1) {
+						& when (@201201SizeExperiment = 1) {
 							background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -232px -20px content-box;
 							background-clip: content-box;
 							background-origin: content-box;
 						}
 						[data-player-size=large] & {
-							& when (@EarlySizeExperiment = 0) {
+							& when (@201201SizeExperiment = 0) {
 								background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -250px -38px content-box, rgba(0,0,0,0.1);
 								background-clip: content-box, border-box;
 								background-origin: content-box, border-box;
 							}
-							& when (@EarlySizeExperiment = 1) {
+							& when (@201201SizeExperiment = 1) {
 								background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) 0 -35px content-box;
 								background-clip: content-box;
 								background-origin: content-box;
@@ -5001,23 +5261,23 @@
 					width: 32px;
 					height: 100%;
 					&:after {
-						& when (@EarlySizeExperiment = 0) {
+						& when (@201201SizeExperiment = 0) {
 							background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -148px -20px content-box;
 							background-clip: content-box;
 							background-origin: content-box;
 						}
-						& when (@EarlySizeExperiment = 1) {
+						& when (@201201SizeExperiment = 1) {
 							background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -129px -14px content-box;
 							background-clip: content-box;
 							background-origin: content-box;
 						}
 						.light-theme & {
-							& when (@EarlySizeExperiment = 0) {
+							& when (@201201SizeExperiment = 0) {
 								background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -148px -20px content-box;
 								background-clip: content-box;
 								background-origin: content-box;
 							}
-							& when (@EarlySizeExperiment = 1) {
+							& when (@201201SizeExperiment = 1) {
 								background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -129px -14px content-box;
 								background-clip: content-box;
 								background-origin: content-box;
@@ -5037,8 +5297,8 @@
 				}
 			}
 		}
-		& when (@PlayerMonth = Middle) {
-			& when (@SoloSizeButton = 0) {
+		& when (@PlayerStyle = 20120913) {
+			& when (@SoloSizeBtnExperiment = 0) {
 				background: none;
 				height: 26px;
 				width: 60px;
@@ -5176,7 +5436,7 @@
 					}
 				}
 			}
-			& when (@SoloSizeButton = 1) {
+			& when (@SoloSizeBtnExperiment = 1) {
 				background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -89px -16px;
 				height: 26px;
 				width: 30px;
@@ -5197,8 +5457,8 @@
 				}
 			}
 		}
-		& when (@PlayerMonth = Late) {
-			& when (@SoloSizeButton = 0) {
+		& when (@PlayerStyle = 20121207) {
+			& when (@SoloSizeBtnExperiment = 0) {
 				background: none;
 				height: 26px;
 				width: 60px;
@@ -5300,7 +5560,7 @@
 					}
 				}
 			}
-			& when (@SoloSizeButton = 1) {
+			& when (@SoloSizeBtnExperiment = 1) {
 				background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1458px;
 				height: 26px;
 				width: 30px;
@@ -5323,19 +5583,19 @@
 		}
 	}
 	.ytp-size-toggle-small {
-		& when (@PlayerMonth = Early) {
-			& when (@SoloSizeButton = 0) {
+		& when (@PlayerStyle = 20120125) {
+			& when (@SoloSizeBtnExperiment = 0) {
 				background: none;
-				& when (@EarlySizeExperiment = 1) {
+				& when (@201201SizeExperiment = 1) {
 					width: 32px;
 				}
-				& when (@EarlySizeExperiment = 0) {
+				& when (@201201SizeExperiment = 0) {
 					width: 64px;
 				}
 				height: 100%;
 				text-align: center;
 				line-height: 26px;
-				&:before when (@EarlySizeExperiment = 0) {
+				&:before when (@201201SizeExperiment = 0) {
 					content: "";
 					background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -232px -39px content-box;
 					background-clip: content-box;
@@ -5359,7 +5619,7 @@
 						background-clip: content-box, border-box;
 						background-origin: content-box, border-box;
 						cursor: default;
-						& when (@AccSizeBtnBehavior = 1) and (@SoloSizeButton = 0) and (@EarlySizeExperiment = 0) {
+						& when (@AccSizeBtnBehavior = 1) and (@SoloSizeBtnExperiment = 0) and (@201201SizeExperiment = 0) {
 							position: absolute;
 							left: -32px;
 							pointer-events: none;
@@ -5368,7 +5628,7 @@
 				}
 				&:after {
 					content: "";
-					& when (@EarlySizeExperiment = 0) {
+					& when (@201201SizeExperiment = 0) {
 						background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -250px -38px content-box;
 						background-clip: content-box;
 						background-origin: content-box;
@@ -5376,7 +5636,7 @@
 						width: 21px;
 						padding: 7px 6px 5px 5px;
 					}
-					& when (@EarlySizeExperiment = 1) {
+					& when (@201201SizeExperiment = 1) {
 						background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -232px -20px content-box;
 						background-clip: content-box;
 						background-origin: content-box;
@@ -5386,23 +5646,23 @@
 					}
 					display: inline-block;
 					.light-theme & {
-						& when (@EarlySizeExperiment = 0) {
+						& when (@201201SizeExperiment = 0) {
 							background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -250px -38px content-box;
 							background-clip: content-box;
 							background-origin: content-box;
 						}
-						& when (@EarlySizeExperiment = 1) {
+						& when (@201201SizeExperiment = 1) {
 							background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -232px -20px content-box;
 							background-clip: content-box;
 							background-origin: content-box;
 						}
 						[data-player-size=large] & {
-							& when (@EarlySizeExperiment = 0) {
+							& when (@201201SizeExperiment = 0) {
 								background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -250px -38px content-box, rgba(0,0,0,0.1);
 								background-clip: content-box, border-box;
 								background-origin: content-box, border-box;
 							}
-							& when (@EarlySizeExperiment = 1) {
+							& when (@201201SizeExperiment = 1) {
 								background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) 0 -35px content-box;
 								background-clip: content-box;
 								background-origin: content-box;
@@ -5410,20 +5670,20 @@
 						}
 					}
 					[data-player-size=large] & {
-						& when (@EarlySizeExperiment = 0) {
+						& when (@201201SizeExperiment = 0) {
 							background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -250px -38px content-box, rgba(0,0,0,0.5);
 							background-clip: content-box, border-box;
 							background-origin: content-box, border-box;
 							cursor: default;
 						}
-						& when (@EarlySizeExperiment = 1) {
+						& when (@201201SizeExperiment = 1) {
 							background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) 0 -35px content-box;
 							background-clip: content-box;
 							background-origin: content-box;
 							height: 17px;
 							width: 16px;
 						}
-						& when (@AccSizeBtnBehavior = 1) and (@SoloSizeButton = 0) and (@EarlySizeExperiment = 0) {
+						& when (@AccSizeBtnBehavior = 1) and (@SoloSizeBtnExperiment = 0) and (@201201SizeExperiment = 0) {
 							position: absolute;
 							right: -32px;
 							pointer-events: none;
@@ -5432,14 +5692,14 @@
 				}
 				&:focus, &:hover {
 					background: none;
-					& when not ((@SoloSizeButton = 0) and (@EarlySizeExperiment = 0)) {
+					& when not ((@SoloSizeBtnExperiment = 0) and (@201201SizeExperiment = 0)) {
 						width: 32px;
 					}
-					& when (@SoloSizeButton = 0) and (@EarlySizeExperiment = 0) {
+					& when (@SoloSizeBtnExperiment = 0) and (@201201SizeExperiment = 0) {
 						width: 64px;
 					}
 					height: 100%;
-					&:before when (@SoloSizeButton = 0) and (@EarlySizeExperiment = 0) {
+					&:before when (@SoloSizeBtnExperiment = 0) and (@201201SizeExperiment = 0) {
 						background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -214px -40px content-box;
 						background-clip: content-box;
 						background-origin: content-box;
@@ -5460,34 +5720,34 @@
 						}
 					}
 					&:after {
-						& when (@EarlySizeExperiment = 0) {
+						& when (@201201SizeExperiment = 0) {
 							background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -148px -20px content-box;
 							background-clip: content-box;
 							background-origin: content-box;
 						}
-						& when (@EarlySizeExperiment = 1) {
+						& when (@201201SizeExperiment = 1) {
 							background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -129px -14px content-box;
 							background-clip: content-box;
 							background-origin: content-box;
 						}
 						.light-theme & {
-							& when (@EarlySizeExperiment = 0) {
+							& when (@201201SizeExperiment = 0) {
 								background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -148px -20px content-box;
 								background-clip: content-box;
 								background-origin: content-box;
 							}
-							& when (@EarlySizeExperiment = 1) {
+							& when (@201201SizeExperiment = 1) {
 								background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -129px -14px content-box;
 								background-clip: content-box;
 								background-origin: content-box;
 							}
 							[data-player-size=large] & {
-								& when (@EarlySizeExperiment = 0) {
+								& when (@201201SizeExperiment = 0) {
 									background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -250px -38px content-box, rgba(0,0,0,0.1);
 									background-clip: content-box, border-box;
 									background-origin: content-box, border-box;
 								}
-								& when (@EarlySizeExperiment = 1) {
+								& when (@201201SizeExperiment = 1) {
 									background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -38px 0 content-box;
 									background-clip: content-box;
 									background-origin: content-box;
@@ -5495,14 +5755,14 @@
 							}
 						}
 						[data-player-size=large] & {
-							& when (@EarlySizeExperiment = 0) {
+							& when (@201201SizeExperiment = 0) {
 								background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -250px -38px content-box, rgba(0,0,0,0.5);
 								background-clip: content-box, border-box;
 								background-origin: content-box, border-box;
 								height: 14px;
 								width: 21px;
 							}
-							& when (@EarlySizeExperiment = 1) {
+							& when (@201201SizeExperiment = 1) {
 								background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -38px 0 content-box;
 								background-clip: content-box;
 								background-origin: content-box;
@@ -5513,10 +5773,10 @@
 					}
 					.light-theme & {
 						background: none;
-						& when not ((@SoloSizeButton = 0) and (@EarlySizeExperiment = 0)) {
+						& when not ((@SoloSizeBtnExperiment = 0) and (@201201SizeExperiment = 0)) {
 							width: 32px;
 						}
-						& when (@SoloSizeButton = 0) and (@EarlySizeExperiment = 0) {
+						& when (@SoloSizeBtnExperiment = 0) and (@201201SizeExperiment = 0) {
 							width: 64px;
 						}
 						height: 100%;
@@ -5524,15 +5784,15 @@
 				}
 				.light-theme & {
 					background: none;
-					& when not ((@SoloSizeButton = 0) and (@EarlySizeExperiment = 0)) {
+					& when not ((@SoloSizeBtnExperiment = 0) and (@201201SizeExperiment = 0)) {
 						width: 32px;
 					}
-					& when (@SoloSizeButton = 0) and (@EarlySizeExperiment = 0) {
+					& when (@SoloSizeBtnExperiment = 0) and (@201201SizeExperiment = 0) {
 						width: 64px;
 					}
 					height: 100%;
 				}
-				[data-player-size=small] & when (@AccSizeBtnBehavior = 1) and (@SoloSizeButton = 0) and (@EarlySizeExperiment = 0) {
+				[data-player-size=small] & when (@AccSizeBtnBehavior = 1) and (@SoloSizeBtnExperiment = 0) and (@201201SizeExperiment = 0) {
 					width: 32px;
 					position: relative;
 					margin: 0 0 0 32px;
@@ -5540,7 +5800,7 @@
 						width: 32px;
 					}
 				}
-				[data-player-size=large] & when (@AccSizeBtnBehavior = 1) and (@SoloSizeButton = 0) and (@EarlySizeExperiment = 0) {
+				[data-player-size=large] & when (@AccSizeBtnBehavior = 1) and (@SoloSizeBtnExperiment = 0) and (@201201SizeExperiment = 0) {
 					width: 32px;
 					position: relative;
 					margin: 0 32px 0 0;
@@ -5549,7 +5809,7 @@
 					}
 				}
 			}
-			& when (@SoloSizeButton = 1) {
+			& when (@SoloSizeBtnExperiment = 1) {
 				background: none;
 				width: 32px;
 				height: 100%;
@@ -5557,7 +5817,7 @@
 				line-height: 26px;
 				&:before {
 					content: "";
-					& when (@EarlySizeExperiment = 0) {
+					& when (@201201SizeExperiment = 0) {
 						background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -232px -39px content-box;
 						background-clip: content-box;
 						background-origin: content-box;
@@ -5565,7 +5825,7 @@
 						width: 16px;
 						padding: 9px 8px 7px 8px;
 					}
-					& when (@EarlySizeExperiment = 1) {
+					& when (@201201SizeExperiment = 1) {
 						background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) 0 -35px content-box;
 						background-clip: content-box;
 						background-origin: content-box;
@@ -5575,12 +5835,12 @@
 					}
 					display: inline-block;
 					.light-theme & {
-						& when (@EarlySizeExperiment = 0) {
+						& when (@201201SizeExperiment = 0) {
 							background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -232px -39px content-box;
 							background-clip: content-box;
 							background-origin: content-box;
 						}
-						& when (@EarlySizeExperiment = 1) {
+						& when (@201201SizeExperiment = 1) {
 							background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) 0 -35px content-box;
 							background-clip: content-box;
 							background-origin: content-box;
@@ -5592,23 +5852,23 @@
 					width: 32px;
 					height: 100%;
 					&:before {
-						& when (@EarlySizeExperiment = 0) {
+						& when (@201201SizeExperiment = 0) {
 							background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -214px -40px content-box;
 							background-clip: content-box;
 							background-origin: content-box;
 						}
-						& when (@EarlySizeExperiment = 1) {
+						& when (@201201SizeExperiment = 1) {
 							background: no-repeat url(//s.ytimg.com/yt/imgbin/player-dark-vflEKkI3e.png) -38px 0 content-box;
 							background-clip: content-box;
 							background-origin: content-box;
 						}
 						.light-theme & {
-							& when (@EarlySizeExperiment = 0) {
+							& when (@201201SizeExperiment = 0) {
 								background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -214px -40px content-box;
 								background-clip: content-box;
 								background-origin: content-box;
 							}
-							& when (@EarlySizeExperiment = 1) {
+							& when (@201201SizeExperiment = 1) {
 								background: no-repeat url(//s.ytimg.com/yt/imgbin/player-light-vflvw7Rva.png) -38px 0 content-box;
 								background-clip: content-box;
 								background-origin: content-box;
@@ -5628,8 +5888,8 @@
 				}
 			}
 		}
-		& when (@PlayerMonth = Middle) {
-			& when (@SoloSizeButton = 0) {
+		& when (@PlayerStyle = 20120913) {
+			& when (@SoloSizeBtnExperiment = 0) {
 				background: none;
 				height: 26px;
 				width: 60px;
@@ -5767,7 +6027,7 @@
 					}
 				}
 			}
-			& when (@SoloSizeButton = 1) {
+			& when (@SoloSizeBtnExperiment = 1) {
 				background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -57px -124px;
 				height: 26px;
 				width: 30px;
@@ -5788,8 +6048,8 @@
 				}
 			}
 		}
-		& when (@PlayerMonth = Late) {
-			& when (@SoloSizeButton = 0) {
+		& when (@PlayerStyle = 20121207) {
+			& when (@SoloSizeBtnExperiment = 0) {
 				background: none;
 				height: 26px;
 				width: 60px;
@@ -5891,7 +6151,7 @@
 					}
 				}
 			}
-			& when (@SoloSizeButton = 1) {
+			& when (@SoloSizeBtnExperiment = 1) {
 				background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -918px;
 				height: 26px;
 				width: 30px;
@@ -5914,7 +6174,7 @@
 		}
 	}
 	.ytp-settings-button, .ytp-settings-button-active {
-		& when (@PlayerMonth = Early) {
+		& when (@PlayerStyle = 20120125) {
 			background: none;
 			width: auto;
 			height: 100%;
@@ -5982,7 +6242,7 @@
 				height: 100%;
 			}
 		}
-		& when (@PlayerMonth = Middle) {
+		& when (@PlayerStyle = 20120913) {
 			background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -153px -124px;
 			height: 26px;
 			width: 30px;
@@ -6002,7 +6262,7 @@
 				width: 30px;
 			}
 		}
-		& when (@PlayerMonth = Late) {
+		& when (@PlayerStyle = 20121207) {
 			background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -810px;
 			height: 26px;
 			width: 30px;
@@ -6024,13 +6284,13 @@
 		}
 	}
 	.ytp-settings-button-active {
-		&:before when (@PlayerMonth = Early) and (@ActiveSettingsBtnGlow = 1) {
+		&:before when (@PlayerStyle = 20120125) and (@ActiveSettingsBtnGlow = 1) {
 			color: #fff;
 			.light-theme & {
 				color: #000;
 			}
 		}
-		& when (@HideSettingBoxShadow = 0) and not (@PlayerMonth = Early) {
+		& when (@HideSettingBoxShadow = 0) and not (@PlayerStyle = 20120125) {
 			-moz-box-shadow: inset 0 -5px 5px #000;
 			-ms-box-shadow: inset 0 -5px 5px #000;
 			-webkit-box-shadow: inset 0 -5px 5px #000;
@@ -6060,7 +6320,7 @@
 				}
 			}
 		}
-		& when (@PlayerMonth = Middle) {
+		& when (@PlayerStyle = 20120913) {
 			& when (@HideSettingBoxShadow = 0) {
 				& when (@ActiveSettingsBtnGlow = 0) {
 					background: no-repeat url(http://s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -153px -124px #141414;
@@ -6120,7 +6380,7 @@
 				width: 30px;
 			}
 		}
-		& when (@PlayerMonth = Late) {
+		& when (@PlayerStyle = 20121207) {
 			& when (@HideSettingBoxShadow = 0) {
 				& when (@ActiveSettingsBtnGlow = 0) {
 					background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -810px #141414;
@@ -6180,7 +6440,7 @@
 		}
 	}
 	.ytp-subtitles-button {
-		& when (@PlayerMonth = Early) {
+		& when (@PlayerStyle = 20120125) {
 			background: none;
 			width: 36px;
 			height: 100%;
@@ -6295,7 +6555,7 @@
 				height: 100%;
 			}
 		}
-		& when (@PlayerMonth = Middle) {
+		& when (@PlayerStyle = 20120913) {
 			background: no-repeat url(//s.ytimg.com/yts/imgbin/player-dark-vfllzTuHQ.png) -64px -205px;
 			height: 26px;
 			width: 30px;
@@ -6355,7 +6615,7 @@
 				width: 30px;
 			}
 		}
-		& when (@PlayerMonth = Late) {
+		& when (@PlayerStyle = 20121207) {
 			background: no-repeat url(//s.ytimg.com/yts/imgbin/player-darkhh-vflvDcUVL.png) 0 -1593px;
 			height: 26px;
 			width: 30px;
@@ -6424,55 +6684,55 @@
 	& when (@FlashPlayerMode = 1) {
 		@QualityBadge: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAeCAYAAAFF3D5OAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAFBhaW50Lk5FVCA1LjEuOBtp6qgAAAC2ZVhJZklJKgAIAAAABQAaAQUAAQAAAEoAAAAbAQUAAQAAAFIAAAAoAQMAAQAAAAMAAAAxAQIAEAAAAFoAAABphwQAAQAAAGoAAAAAAAAAo5MAAOgDAACjkwAA6AMAAFBhaW50Lk5FVCA1LjEuOAADAACQBwAEAAAAMDIzMAGgAwABAAAAAQAAAAWgBAABAAAAlAAAAAAAAAACAAEAAgAEAAAAUjk4AAIABwAEAAAAMDEwMAAAAAC6HzhD+YwuiQAAAmJJREFUOE/dlLFq40AQhn8JLk2KayxcxCA/wIK5Jl3AqQTqAtf4CdLcA+QRzKEyHLgXiMDBFQkCN0nqFIEgFvwAViFQEeMH2CvOM5ldr6zjOC5wPxhWY83O7j/fKLhLkgcDTI9WKwBA+FrX2NQ1SCGAKQCMypIDmBQFvpyeAgCC2yQxAfD4YbWahpu6xivlV1VlcqWM1tqEvCWAIFfKTIoCL7MZAODTzQ0AYJ2mvyp0KaATAwBVpT/59NYpKPM2SQw90H0BIBxnGTZ1jXGWAeKqQa4UZ0Tb7VsGLSZFwUEACN0Ab9Vb/OvzMwdHZdldfM87uaYXqS4OebpoGjdkyfLa+sPx3VKulDmLIkPNr6rKnEWRyZUyyzg2yzg258fHRmtttNZmGccmyJV6INIcPUbbrS/+hqY0fbe2EqQZIXouPm9bzNvWilndk5KddBUSiOMs4x+NljzS3vHkfaixJHp5nab2SMoXXQrXaQrsknlsJV9SkjVXf26EnDEyhuQzg+9EvZJ3kv2Rd2L3vt3fA44p109PvF6nKT//YyMkFb9thARWGuEmWEZAJEoj6CX8NSPkHfr08eTkoEldCqmIZ9oxKQosmgaLpuFYn7GjsuRh3xtBEm0qdTkc4nI4tGJSvi/I1WCAq8HAirHfi6bhDWkti8pi1It52/KGtJZFZbEAwAWAzxzp13cAP9xgn94HBrfxPkBcGNzG+wCBhOFlNvN+VXyAkORw0ScYHYBYMEgRDC4gcGCQIhhcQPB/w4Bdw30AyLV7qFFZdgLghcG3KXpg6Nr0IAykLgB8MJC6AHgXGH4CVvvyvvctpwUAAAAASUVORK5CYII=";
 		.ytp-settings-hd-quality-badge {
-			& when (@PlayerMonth = Middle) {
+			& when (@PlayerStyle = 20120913) {
 				background: url(@QualityBadge) 0 0;
 			}
-			& when (@PlayerMonth = Late) {
+			& when (@PlayerStyle = 20121207) {
 				background: url(@QualityBadge) 13px 0;
 			}
 			width: 13px;
-			& when (@PlayerMonth = Middle) {
+			& when (@PlayerStyle = 20120913) {
 				height: 10px;
 			}
-			& when (@PlayerMonth = Late) {
+			& when (@PlayerStyle = 20121207) {
 				height: 9px;
 				margin-top: 0;
 			}
 		}
 		.ytp-settings-2k-quality-badge {
-			& when (@PlayerMonth = Middle) {
+			& when (@PlayerStyle = 20120913) {
 				background: url(@QualityBadge) 0 -10px;
 			}
-			& when (@PlayerMonth = Late) {
+			& when (@PlayerStyle = 20121207) {
 				background: url(@QualityBadge) 13px -10px;
 			}
 			width: 13px;
-			& when (@PlayerMonth = Middle) {
+			& when (@PlayerStyle = 20120913) {
 				height: 10px;
 				margin-top: 1px;
 			}
-			& when (@PlayerMonth = Late) {
+			& when (@PlayerStyle = 20121207) {
 				height: 9px;
 			}
 		}
 		.ytp-settings-4k-quality-badge {
-			& when (@PlayerMonth = Middle) {
+			& when (@PlayerStyle = 20120913) {
 				background: url(@QualityBadge) 0 -20px;
 			}
-			& when (@PlayerMonth = Late) {
+			& when (@PlayerStyle = 20121207) {
 				background: url(@QualityBadge) 13px -20px
 			}
 			width: 13px;
-			& when (@PlayerMonth = Middle) {
+			& when (@PlayerStyle = 20120913) {
 				height: 10px;
 				margin-top: 1px;
 			}
-			& when (@PlayerMonth = Late) {
+			& when (@PlayerStyle = 20121207) {
 				height: 9px;
 			}
 		}
 	}
-	& when (@PlayerMonth = Early) {
+	& when (@PlayerStyle = 20120125) {
 		.ytp-volume-control {
 			border-right: 1px solid #222;
 			.light-theme & {
@@ -6498,7 +6758,7 @@
 			}
 		}
 	}
-	& when (@PlayerMonth = Middle) {
+	& when (@PlayerStyle = 20120913) {
 		.ytp-volume-control, .ytp-settings-button, .ytp-settings-button-active, .ytp-button-next {
 			border-right: 1px solid #222;
 			padding-right: 1px;
@@ -6514,7 +6774,7 @@
 			}
 		}
 	}
-	& when (@PlayerMonth = Early) {
+	& when (@PlayerStyle = 20120125) {
 		.ytp-volume-control {
 			padding-right: 0;
 			&:hover, &:focus {
@@ -6522,7 +6782,7 @@
 			}
 		}
 	}
-	& when not (@PlayerMonth = Early) {
+	& when not (@PlayerStyle = 20120125) {
 		.ytp-volume-control {
 			padding-right: 4px;
 			&:hover, &:focus {
@@ -6561,10 +6821,10 @@
 		}
 		&:focus, .ytp-volume-control:hover & {
 			& when (@FlashPlayerMode = 0) {
-				& when (@PlayerMonth = Early) {
+				& when (@PlayerStyle = 20120125) {
 					width: 66px;
 				}
-				& when (@PlayerMonth = Middle) or (@PlayerMonth = Late) {
+				& when (@PlayerStyle = 20120913) or (@PlayerStyle = 20121207) {
 					width: 56px;
 				}
 				-webkit-transition: width 0.1s linear 0s;
@@ -6596,19 +6856,19 @@
 			bottom: unset;
 			height: 14px;
 			width: 5px;
-			& when (@PlayerMonth = Early) {
+			& when (@PlayerStyle = 20120125) {
 				background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAAAOCAYAAADdeGlVAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAABIAAAASABGyWs+AAAACXZwQWcAAABmAAAADgBV/HzAAAABWklEQVRYw+2Yv2rCUBSHvyu3QhYtNiDuXYqTS6eALnmDvkG3PkAfonMpfYPuWeOgayk4ZSt0cLEQnUqDiXg71EhJOtSblGvED+6Qw/3z++VwbjgRSimqhhACAKVUH7gDLoFn4FYIMa6ip5zHIiZc1/3z3PFoVJroZLUCIIqieb1eb6XxOI4XlmWdnUiZW9MfDHY6w/f90vTqIItvocdTp6O99mo6BaBWq7VWmySlz6b8lI24sKzK1v1LGOZip82maVmlIO/bbdMatPlZLYeG/FyvTWvQJkkS0xL+DflxTMxeIt+PidlL5NtyaVqDNgedmKDXM61Bm98+/rv2K/uKsQbzutHQPvdxsQAgCIKc+G63K44N5g5kX8xrkc2GQwBmsxm2bW/D4aavOYiqUUpVbqQ4jjP3PE9NJhPleZ5yHGdeVU/ZUegqM0X6ExNwgQfgnO8ivAH8KnrK8gWUVJKQEjVwyAAAAABJRU5ErkJggg==) -47px 0;
 				.light-theme & {
 					background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAAAOCAYAAADdeGlVAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAABIAAAASABGyWs+AAAACXZwQWcAAABmAAAADgBV/HzAAAABwElEQVRYw92YsU/bQBSHv3MuFFREt7CwZmBjYmyyZM/giblLJzakFClDhg7d2OBfiDKkS+a0m1mQYEcglSkSEhmclDvHHXKRIPZAfMTW9ZNOtp7k997v3j09+UQcx7iKEAKAXq9XA34Ah8AlcOL7/i+Xtck8gzWbzbX4VUp1tdaV2WyG53mHUsousLscr9/v5ynXilwLk8aXq6vM3/40z8lkUnnZHUqpStG6bBFfGw13+91w4PsJ22AwKDotK+TRw0PROVhzrXXCVq1Wi07LCjl1eEAuUEolbDqlWC4hwygqOgdr0gqTZnMJOfpPC+N8x9w9PxedgzUbKUVwvWNEHMdn5v0TsAFoQAAfgS1g06wSEAN7Sz7ugQ/ANjADHt8QtwR4Jg7AEMh8Qtrt9rdlW6fT+Z7BVf1Fbhq4NXois7TRuMpg9sySxnfJ6I6Nv7/G9yskcJx1Q1ZWXa8nbPs3N5n9nT/Oz0Cr1UoURghxWqvVXtmGw2FeUq3J9QfzvTfm3FzJTKfTcblc3lnYlVLjdcTLE6/oBN6DIAguwjAcRVFEGIajIAguis7JFuHyRd/iEpP53PvMfE4+Ab+BPy5r+wf8X56z5gTiSAAAAABJRU5ErkJggg==)-49px 0;
 				}
 			}
-			& when (@PlayerMonth = Middle) {
+			& when (@PlayerStyle = 20120913) {
 				background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAAAOCAYAAADdeGlVAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAABIAAAASABGyWs+AAAACXZwQWcAAABmAAAADgBV/HzAAAABW0lEQVRYw+2YsWqDQBjH/3dcBZekWCFk71KcsnQSksU36Bt06wP0ITqXkjfofqsZkrUUnNwKHbJYUKdSiUquQ1sxTYfESzkv+IOD78S7+//9+JRPIoSAbhBCqlgIMQZwB+ASwBOAW0LIQkdfGx5lDHiet/O9i/n8YKKLsqziLMsSwzCsn3me56lpmmcnjG2sGU8me53h+/7B9DaByW/RjMfhsPHaq+WyiimlVllLFKXUarJn2yAXpql1zT/H8da1035ftSxp2P1goFqDFPVqOSbYx3qtWoMURVGolvAvsPcuMa2EvXWJaSXsdbVSrUGKo01MOBqp1iDFXx//fXuWNqKswbzu9RqfO03TKg7DcMuA4zikazB35PeDeZHZbDarwiiKYNt2NY+/+xrtq0YIod2o47puwjkXQRAIzrlwXTfR1Vd9SL3KVFH/iQnAA/AA4BxfhXgDwNfRV51Pa+CPkys0tRoAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAAElFTkSuQmCC) -48px 0;
 				.light-theme & {
 					background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAAAOCAYAAADdeGlVAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAABIAAAASABGyWs+AAAACXZwQWcAAABmAAAADgBV/HzAAAABy0lEQVRYw92Yv2obQRCHv/MdF4VYpLhKkBeQwFWqVBIBvUTyBDkJXKRzSpO4jgvFr2CSh9AbqFCVJiQWqgKGNIu0s7ebwnvCdppYK7ycPhh27ziG38zs7b/EOUfTKcvyEDgDXgFz4P1kMrmOrSuELLaAHXEmIuP1eo1z7mW73c6Bt7FFhXAQW8COGKZpSp7nGGMAXscWFErybjhs/FyW93oopbDWopSiKAoWi0VsWUFkb5bL2BqC+drtIiJYa6mqCoDZbBZbVhDZag8WfwARoaoqRATnHCISW1IQmfIjrMk459BaY4xBaw2waZtK9nvPClP/KavVKrasILKfDR9ZNVrrzXRWF6rJZKdXV+e+/xzIAQMkwDPgKdDylgIOeHHPxy/gCXAIWOB/DnYpN1v1xD9Pga0zOR6PT0QEEam3y2itP23hanBLmwF++Hgqb8bH+JCF+cBb5n2nPm7n/a2977uFAY63TciDox4M/nnXnc+39ndxfTMGRqPRiYigtd7sypIk+dDv9+98P51OHyvUYB715L/rxHzxbVmWc2vtUb2+OOeWTb9q2pcrmW9FURwppWi1WgCXsQWFsi+F+djpdP4APeA78Dm2oFD+ApXfy33JgKtbAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAABJRU5ErkJggg==) -49px 0;
 				}
 			}
-			& when (@PlayerMonth = Late) {
+			& when (@PlayerStyle = 20121207) {
 				background: #ddd;
 				.light-theme & {
 					background: #222;
@@ -6616,7 +6876,7 @@
 			}
 			background-repeat: no-repeat;
 			&:before {
-				& when (@PlayerMonth = Early) {
+				& when (@PlayerStyle = 20120125) {
 					background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAAOCAYAAACVbiH8AAABnklEQVR4Xu2asWrCUBSGvYuSyWIyWDFBbMEW11IoBFrQvkAfo4F2y0Nk6mJfoQ/QsWQoOIgWwcGtm6u6ii7p7WBoeqEg92z9Lpwt+QIfP38IOarEwYCAgSzLrjUm0XOpZ6wnVkq9C6BBYCA3oHCBAQkDm81mVS6Xa3vWbrdbO47jSrBhYGBvgMIiCyIGtttt9htUqVTIl4hdIHlhnTuOETT0YOBQAx/LpXHLUbV6KIbrMfCnAZW2WhQWIbE2cDGbGQzP5YvQWiyAggH1GgQUFqGwNnA1nRqM43rdmgsAAz8NqJdmk8IiE9YGbiYTgxH4vjUXAAYKhfXUaFBYZMLawN1oZDBO2m1rLgAMFArr0XUpLDJhbeBh/L16VTxnnY41FwAGCoXV7/cpLDJhbWAwGBiMKIqsuQAwUCgsdGBAwsB8PjdefN1ulz0sCbkwcgMEijCIGEjTNPM8L2ct9V5Wr9cjXyJ2gewNECiyIGIgDMNVHMc1X/8ZXCwWpSRJ1sPhkEUsEbtAKCwyIG3gVgOf9Zzq+dRzr+dN+iHw/reBL2+ySCKiWvjwAAAAAElFTkSuQmCC);
 					background-repeat: no-repeat;
 					height: 13px;
@@ -6628,7 +6888,7 @@
 						background-repeat: no-repeat;
 					}
 				}
-				& when (@PlayerMonth = Middle) {
+				& when (@PlayerStyle = 20120913) {
 					background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAAOCAYAAAHiaRFqAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF9SURBVGhD7dkxa8JAFAfwu0mcLCSDFRWxgy1ZuxQEC7FfoF9DaL9Kl/QrdE/n7FaL4pCpXyEOTpIhXHPyQpz0yj3Ktfx/8Lj3ku1iLu9O4Sr57HmKcmuvux1lDlFKfVBqjW22nhYLcT0aUWVHJoMB2yPkcrvZCN/zqIKT4jh27gE6i/N95oTX8AdYPztcOBflfw9r1h+X57nSQSWcId+6XUyWgfvl8jD2e73DCMAiTVOlg0oAe+V2YlKGNqFLcIakEU447q0ajQbmzICTe2jX6D19BUdsZtC8G6gadw3NuxknD7Jcow/WKjhgM4N+wcDxbjAIAswZ8BiPx9v1eq30SJcA4Lfs9/ttURSqCl3TLQAW8qbZRO8OLD6zjLLaRatFGYA9+d7vY8ECFnerFWW1y3abMgB78qXTwYIFLB7nc8pqV8MhZQD25HQ6xYIFLKIooqw2m80oA7CHv7yATZIkyvd9qoTIskyEYYjfGAA46aGMrzJ0165HXQMwEeIbL1mI2ftk/oMAAAAOZVhJZk1NACoAAAAIAAAAAAAAANJTkwAAAABJRU5ErkJggg==);
 					background-repeat: no-repeat;
 					height: 13px;
@@ -6640,19 +6900,27 @@
 						background-repeat: no-repeat;
 					}
 				}
-				& when (@PlayerMonth = Late) {
+				& when (@PlayerStyle = 20121207) {
 					position: absolute;
 					top: 5px;
 					left: -55px;
 					display: block;
 					width: 55px;
 					height: 4px;
-					background: #b91f1f;
+					& when not ((@CustomProgress = Sonic) or (@CustomProgress = Tails)) {
+						background: #b91f1f;
+					}
+					& when (@CustomProgress = Sonic) {
+						background: #0278d0;
+					}
+					& when (@CustomProgress = Tails) {
+						background: #e88809;
+					}
 					content: '';
 				}
 			}
 			&:after {
-				& when (@PlayerMonth = Early) {
+				& when (@PlayerStyle = 20120125) {
 					background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAAOCAYAAACVbiH8AAABnklEQVR4Xu2asWrCUBSGvYuSyWIyWDFBbMEW11IoBFrQvkAfo4F2y0Nk6mJfoQ/QsWQoOIgWwcGtm6u6ii7p7WBoeqEg92z9Lpwt+QIfP38IOarEwYCAgSzLrjUm0XOpZ6wnVkq9C6BBYCA3oHCBAQkDm81mVS6Xa3vWbrdbO47jSrBhYGBvgMIiCyIGtttt9htUqVTIl4hdIHlhnTuOETT0YOBQAx/LpXHLUbV6KIbrMfCnAZW2WhQWIbE2cDGbGQzP5YvQWiyAggH1GgQUFqGwNnA1nRqM43rdmgsAAz8NqJdmk8IiE9YGbiYTgxH4vjUXAAYKhfXUaFBYZMLawN1oZDBO2m1rLgAMFArr0XUpLDJhbeBh/L16VTxnnY41FwAGCoXV7/cpLDJhbWAwGBiMKIqsuQAwUCgsdGBAwsB8PjdefN1ulz0sCbkwcgMEijCIGEjTNPM8L2ct9V5Wr9cjXyJ2gewNECiyIGIgDMNVHMc1X/8ZXCwWpSRJ1sPhkEUsEbtAKCwyIG3gVgOf9Zzq+dRzr+dN+iHw/reBL2+ySCKiWvjwAAAAAElFTkSuQmCC);
 					background-repeat: no-repeat;
 					background-position: -151px 0;
@@ -6665,7 +6933,7 @@
 						background-position: -153px 0;
 					}
 				}
-				& when (@PlayerMonth = Middle) {
+				& when (@PlayerStyle = 20120913) {
 					background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAAOCAYAAAHiaRFqAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF9SURBVGhD7dkxa8JAFAfwu0mcLCSDFRWxgy1ZuxQEC7FfoF9DaL9Kl/QrdE/n7FaL4pCpXyEOTpIhXHPyQpz0yj3Ktfx/8Lj3ku1iLu9O4Sr57HmKcmuvux1lDlFKfVBqjW22nhYLcT0aUWVHJoMB2yPkcrvZCN/zqIKT4jh27gE6i/N95oTX8AdYPztcOBflfw9r1h+X57nSQSWcId+6XUyWgfvl8jD2e73DCMAiTVOlg0oAe+V2YlKGNqFLcIakEU447q0ajQbmzICTe2jX6D19BUdsZtC8G6gadw3NuxknD7Jcow/WKjhgM4N+wcDxbjAIAswZ8BiPx9v1eq30SJcA4Lfs9/ttURSqCl3TLQAW8qbZRO8OLD6zjLLaRatFGYA9+d7vY8ECFnerFWW1y3abMgB78qXTwYIFLB7nc8pqV8MhZQD25HQ6xYIFLKIooqw2m80oA7CHv7yATZIkyvd9qoTIskyEYYjfGAA46aGMrzJ0165HXQMwEeIbL1mI2ftk/oMAAAAOZVhJZk1NACoAAAAIAAAAAAAAANJTkwAAAABJRU5ErkJggg==);
 					background-repeat: no-repeat;
 					background-position: -152px 0;
@@ -6678,7 +6946,7 @@
 						background-position: -153px 0;
 					}
 				}
-				& when (@PlayerMonth = Late) {
+				& when (@PlayerStyle = 20121207) {
 					position: absolute;
 					top: 5px;
 					left: 5px;
@@ -6746,12 +7014,6 @@
 				-webkit-box-shadow: 0 1px 0 0 rgba(255,255,255,0.2);
 				box-shadow: 0 1px 0 0 rgba(255,255,255,0.2)
 			}
-		}
-	}
-
-	& when (@HideSponsorBlockButtons = 1) {
-		#infoButton, #submitButton, #deleteButton, #cancelSegmentButton, #startSegmentButton {
-			display: none !important;
 		}
 	}
 
@@ -6870,10 +7132,10 @@
 		transform: translate(-100%,-100%)
 	}
 	.ytp-player-content {
-		& when (@PlayerAutohide = Off) or (@PlayerAutohide = Fade) or (@PlayerMonth = Early) and (@PlayerAutohide = On) {
+		& when (@PlayerAutohide = Off) or (@PlayerAutohide = Fade) or (@PlayerStyle = 20120125) and (@PlayerAutohide = On) {
 			bottom: 30px;
 		}
-		& when not (@PlayerMonth = Early) and (@PlayerAutohide = On) or (@PlayerAutohide = Auto) {
+		& when not (@PlayerStyle = 20120125) and (@PlayerAutohide = On) or (@PlayerAutohide = Auto) {
 			bottom: 3px;
 		}
 		-moz-transition: top 0.05s ease-in;
@@ -6882,7 +7144,7 @@
 		-webkit-transition: top 0.05s ease-in;
 		transition: top 0.05s ease-in;
 		.disabled-control-seek:not(.ytp-no-controls) &.ytp-subtitles-player-content, .ad-interrupting:not(.ytp-no-controls):not(.html5-native-controls) &.ytp-subtitles-player-content, .autominimize-progress-bar &.ytp-subtitles-player-content, html:not([data-player-size=fullscreen]) .html5-video-player:not(.ideal-aspect).autominimize-progress-bar-non-aspect &.ytp-subtitles-player-content, .disabled-control-seek:not(.ytp-no-controls) &.ytp-subtitles-player-content, .ad-interrupting:not(.ytp-no-controls):not(.html5-native-controls) &.ytp-subtitles-player-content, .autominimize-progress-bar &.ytp-subtitles-player-content, html:not([data-player-size=fullscreen]) .html5-video-player:not(.ideal-aspect).autominimize-progress-bar-non-aspect &.ytp-subtitles-player-content, .html5-video-player:not(.el-detailpage):not(.house-brand):not(.ad-interrupting) .html5-endscreen, .html5-video-player:not(.ad-interrupting):not(.hide-info-bar):not(.playing-mode) &.ytp-subtitles-player-content, .ytp-block-autohide:not(.ad-interrupting):not(.hide-info-bar) &.ytp-subtitles-player-content, .ended-mode.endscreen-loaded:not(.el-detailpage):not(.house-brand):not(.ad-interrupting) &.ytp-subtitles-player-content, html[data-player-size=fullscreen] .html5-video-player:not(.house-brand):not(.ad-interrupting):not(.playing-mode) &.ytp-subtitles-player-content, html[data-player-size=fullscreen] .ytp-block-autohide:not(.house-brand):not(.ad-interrupting) &.ytp-subtitles-player-content {
-			& when (@PlayerMonth = Early) {
+			& when (@PlayerStyle = 20120125) {
 				bottom: 43px;
 				& when (@PlayerAutohide = Off) or (@PlayerAutohide = On) or (@PlayerAutohide = Fade) {
 					-webkit-transition-duration: 0.5s;
@@ -6904,7 +7166,7 @@
 					transition: unset;
 				}
 			}
-			& when (@PlayerMonth = Middle) or (@PlayerMonth = Late) {
+			& when (@PlayerStyle = 20120913) or (@PlayerStyle = 20121207) {
 				bottom: 43px;
 				-moz-transition: bottom 0.05s ease-in;
 				-ms-transition: bottom 0.05s ease-in;
@@ -6914,7 +7176,7 @@
 			}
 		}
 		.disabled-control-seek &.ytp-subtitles-player-content, .autominimize-progress-bar:not(.ytp-block-autohide) &.ytp-subtitles-player-content, html:not([data-player-size=fullscreen]) .autominimize-progress-bar-non-aspect:not(.ideal-aspect):not(.ytp-block-autohide) &.ytp-subtitles-player-content, .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &.ytp-subtitles-player-content, .ideal-aspect.autohide-controls-aspect:not(.ytp-block-autohide):not(.ad-interrupting) &.ytp-subtitles-player-content, html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) &.ytp-subtitles-player-content {
-			& when (@PlayerMonth = Early) {
+			& when (@PlayerStyle = 20120125) {
 				& when (@PlayerAutohide = Off) or (@PlayerAutohide = On) or (@PlayerAutohide = Fade) {
 					bottom: 38px;
 				}
@@ -6927,7 +7189,7 @@
 				}
 				transition-delay: 3s;
 			}
-			& when (@PlayerMonth = Middle) or (@PlayerMonth = Late) {
+			& when (@PlayerStyle = 20120913) or (@PlayerStyle = 20121207) {
 				& when (@PlayerAutohide = Off) {
 					bottom: 43px;
 				}
@@ -6950,7 +7212,7 @@
 			}
 		}
 		.autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &.ytp-subtitles-player-content, html[data-player-size=fullscreen] .autohide-controls-fullscreen:not(.ytp-block-autohide):not(.ad-interrupting) &.ytp-subtitles-player-content, html:not([data-player-size=fullscreen]) .autohide-controls:not(.ytp-block-autohide):not(.ad-interrupting) &.ytp-subtitles-player-content {
-			& when (@PlayerMonth = Middle) or (@PlayerMonth = Late) {
+			& when (@PlayerStyle = 20120913) or (@PlayerStyle = 20121207) {
 				& when (@PlayerAutohide = Off) {
 					bottom: 43px;
 				}
@@ -6972,7 +7234,7 @@
 				}
 			}
 		}
-		#movie_player.html5-video-player:hover &.ytp-subtitles-player-content when (@PlayerMonth = Early) {
+		#movie_player.html5-video-player:hover &.ytp-subtitles-player-content when (@PlayerStyle = 20120125) {
 			-moz-transition: all 0s linear 0s;
 			-ms-transition: all 0s linear 0s;
 			-o-transition: all 0s linear 0s;
@@ -6980,10 +7242,10 @@
 			transition: all 0s linear 0s;
 		}
 		.queue-miniplayer #player .html5-video-player & {
-			& when not (@PlayerMonth = Early) and (@MiniplayerAutohide = On) or (@MiniplayerAutohide = Auto) {
+			& when not (@PlayerStyle = 20120125) and (@MiniplayerAutohide = On) or (@MiniplayerAutohide = Auto) {
 				bottom: 3px;
 			}
-			& when (@PlayerAutohide = Off) or (@MiniplayerAutohide = Fade) or (@PlayerMonth = Early) and (@MiniplayerAutohide = On) {
+			& when (@PlayerAutohide = Off) or (@MiniplayerAutohide = Fade) or (@PlayerStyle = 20120125) and (@MiniplayerAutohide = On) {
 				bottom: 30px;
 			}
 		}
@@ -7004,19 +7266,18 @@
 		}
 	}
 
-	.ytp-large-play-button when not (@PlayButtonStyle = 2014) {
+	.ytp-large-play-button when not (@PlayButtonStyle = Off) {
 		position: absolute;
 		top: 50%;
 		left: 50%;
-		& when (@PlayButtonStyle = 2010M) or (@PlayButtonStyle = 2011M) {
+		& when (@PlayButtonStyle = Sync) and (@PlayerStyle = 20120125) or (@PlayButtonStyle = 20100601) or (@PlayButtonStyle = 2011M) {
 			width: 96px;
 			height: 68px;
 			margin-left: -48px;
 			margin-top: -36px;
 		}
-		& when (@PlayButtonStyle = 2010M) {
+		& when (@PlayButtonStyle = 20100601) {
 			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='html5-big-play-button html5-center-overlay' style='&%2310;'%3E%3Cg opacity='0.4'%3E%3Cpath fill='none' stroke='%23FFFFFF' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' d='M88.34,9.698 c-1.09-1.04-2.43-1.62-3.92-1.8c-23.061-1.44-46.08-1.44-69.14,0c-1.48,0.18-2.72,0.76-3.84,1.8c-1.09,1.04-1.81,2.27-2.14,3.78 c-1.05,7.07-1.56,14.17-1.56,21.26c0,7.21,0.51,14.27,1.56,21.34c0.33,1.51,1.05,2.74,2.14,3.779c1.12,1.051,2.36,1.621,3.84,1.801 c23.06,1.439,46.08,1.439,69.14,0c1.49-0.18,2.83-0.75,3.92-1.801c1.12-1.039,1.77-2.34,2.1-3.819 C91.46,48.938,92,41.878,92,34.738c0-7.09-0.54-14.16-1.561-21.22C90.109,12.038,89.46,10.818,88.34,9.698z'/%3E%3C/g%3E%3C/svg%3E");
-			display: flex;
 			&:before {
 				content: '';
 				background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='html5-big-play-button html5-center-overlay'%3E%3Cg class='html5-overlay-button-background'%3E%3Cpath d='M88.34,9.698c-1.09-1.04-2.43-1.62-3.92-1.8c-23.061-1.44-46.08-1.44-69.14,0c-1.48,0.18-2.72,0.76-3.84,1.8 c-1.09,1.04-1.81,2.27-2.14,3.78c-1.05,7.07-1.56,14.17-1.56,21.26c0,7.21,0.51,14.27,1.56,21.34c0.33,1.51,1.05,2.74,2.14,3.779 c1.12,1.051,2.36,1.621,3.84,1.801c23.06,1.439,46.08,1.439,69.14,0c1.49-0.18,2.83-0.75,3.92-1.801 c1.12-1.039,1.77-2.34,2.1-3.819C91.46,48.938,92,41.878,92,34.738c0-7.09-0.54-14.16-1.561-21.22 C90.109,12.038,89.46,10.818,88.34,9.698z'%3E%3C/path%3E%3C/g%3E%3Cg class='html5-overlay-button-background'%3E%3Cpolygon fill='%23FFFFFF' points='39.32,16.729 39.32,52.798 68.18,34.168'%3E%3C/polygon%3E%3C/g%3E%3C/svg%3E");
@@ -7044,10 +7305,10 @@
 				opacity: 1
 			}
 		}
-		& when (@PlayButtonStyle = 2011M) {
+		& when (@PlayButtonStyle = Sync) and (@PlayerStyle = 20120125) or (@PlayButtonStyle = 2011M) {
 			background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='html5-big-play-button html5-center-overlay html5-scalable-icon'%3E%3Cg opacity='0.4'%3E%3Cpath fill='none' stroke='%23FFFFFF' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' d='M88.34,9.698 c-1.09-1.04-2.43-1.62-3.92-1.8c-23.061-1.44-46.08-1.44-69.14,0c-1.48,0.18-2.72,0.76-3.84,1.8c-1.09,1.04-1.81,2.27-2.14,3.78 c-1.05,7.07-1.56,14.17-1.56,21.26c0,7.21,0.51,14.27,1.56,21.34c0.33,1.51,1.05,2.74,2.14,3.779c1.12,1.051,2.36,1.621,3.84,1.801 c23.06,1.439,46.08,1.439,69.14,0c1.49-0.18,2.83-0.75,3.92-1.801c1.12-1.039,1.77-2.34,2.1-3.819 C91.46,48.938,92,41.878,92,34.738c0-7.09-0.54-14.16-1.561-21.22C90.109,12.038,89.46,10.818,88.34,9.698z'%3E%3C/path%3E%3C/g%3E%3Cg class='html5-overlay-button-background' opacity='0.8'%3E%3Cpath d='M88.34,9.698c-1.09-1.04-2.43-1.62-3.92-1.8c-23.061-1.44-46.08-1.44-69.14,0c-1.48,0.18-2.72,0.76-3.84,1.8 c-1.09,1.04-1.81,2.27-2.14,3.78c-1.05,7.07-1.56,14.17-1.56,21.26c0,7.21,0.51,14.27,1.56,21.34c0.33,1.51,1.05,2.74,2.14,3.779 c1.12,1.051,2.36,1.621,3.84,1.801c23.06,1.439,46.08,1.439,69.14,0c1.49-0.18,2.83-0.75,3.92-1.801 c1.12-1.039,1.77-2.34,2.1-3.819C91.46,48.938,92,41.878,92,34.738c0-7.09-0.54-14.16-1.561-21.22 C90.109,12.038,89.46,10.818,88.34,9.698z'%3E%3C/path%3E%3C/g%3E%3Cpath opacity='0.19' fill='%23FFFFFF' enable-background='new' d='M88.34,9.698c-1.09-1.04-2.43-1.62-3.92-1.8 c-23.061-1.44-46.08-1.44-69.14,0c-1.48,0.18-2.72,0.76-3.84,1.8c-1.09,1.04-1.81,2.27-2.14,3.78c-1.05,7.07-1.56,14.17-1.56,21.26 c0,7.21,1.49,21.949,1.56,21.34c30.89-29.62,44.3-5.48,81.14-42.56C91.51,12.438,89.46,10.818,88.34,9.698z'%3E%3C/path%3E%3Cg class='html5-overlay-button-background' opacity='0.66'%3E%3Cpolygon fill='%23FFFFFF' points='39.32,16.729 39.32,52.798 68.18,34.168'%3E%3C/polygon%3E%3C/g%3E%3C/svg%3E");
 		}
-		& when (@PlayButtonStyle = 2012E) {
+		& when (@PlayButtonStyle = Sync) and ((@PlayerStyle = 20120913) or (@PlayerStyle = 20121207)) or (@PlayButtonStyle = 201205) {
 			width: 90px;
 			height: 64px;
 			-margin-left: -44px;
@@ -7062,7 +7323,7 @@
 			background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20class%3D%22ytp-cued-icon%20html5-center-overlay%20ytp-scalable-icon-shrink%22%3E%3Cstyle%3E%20%20%20%20%20%20%20%20.ytp-pill-background%20%7B%20%20%20%20%20%20%20%20%20%20opacity%3A%200.9%3B%20%20%20%20%20%20%20%20%7D%20%20%20%20%20%20%3C%2Fstyle%3E%3Cpolygon%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20fill%3D%22%23FFFFFF%22%20points%3D%2233.3%2C41.4%2033.3%2C17.75%2056%2C29.6%20%20%22%3E%3C%2Fpolygon%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20fill%3D%22%231F1F1F%22%20class%3D%22ytp-pill-background%22%20d%3D%22M84.15%2C26.4v6.35c0%2C2.833-0.15%2C5.967-0.45%2C9.4%20%20%20%20c-0.133%2C1.7-0.267%2C3.117-0.4%2C4.25l-0.15%2C0.95c-0.167%2C0.767-0.367%2C1.517-0.6%2C2.25c-0.667%2C2.367-1.533%2C4.083-2.6%2C5.15%20%20%20%20c-1.367%2C1.4-2.967%2C2.383-4.8%2C2.95c-0.633%2C0.2-1.316%2C0.333-2.05%2C0.4c-0.767%2C0.1-1.3%2C0.167-1.6%2C0.2%20%20%20%20c-4.9%2C0.367-11.283%2C0.617-19.15%2C0.75c-2.434%2C0.034-4.883%2C0.067-7.35%2C0.1h-2.95C38.417%2C59.117%2C34.5%2C59.067%2C30.3%2C59%20%20%20%20c-8.433-0.167-14.05-0.383-16.85-0.65c-0.067-0.033-0.667-0.117-1.8-0.25c-0.9-0.133-1.683-0.283-2.35-0.45%20%20%20%20c-2.066-0.533-3.783-1.5-5.15-2.9c-1.033-1.067-1.9-2.783-2.6-5.15C1.317%2C48.867%2C1.133%2C48.117%2C1%2C47.35L0.8%2C46.4%20%20%20%20c-0.133-1.133-0.267-2.55-0.4-4.25C0.133%2C38.717%2C0%2C35.583%2C0%2C32.75V26.4c0-2.833%2C0.133-5.95%2C0.4-9.35l0.4-4.25%20%20%20%20c0.167-0.966%2C0.417-2.05%2C0.75-3.25c0.7-2.333%2C1.567-4.033%2C2.6-5.1c1.367-1.434%2C2.967-2.434%2C4.8-3c0.633-0.167%2C1.333-0.3%2C2.1-0.4%20%20%20%20c0.4-0.066%2C0.917-0.133%2C1.55-0.2c4.9-0.333%2C11.283-0.567%2C19.15-0.7C35.65%2C0.05%2C39.083%2C0%2C42.05%2C0L45%2C0.05%20%20%20%20c2.467%2C0%2C4.933%2C0.034%2C7.4%2C0.1c7.833%2C0.133%2C14.2%2C0.367%2C19.1%2C0.7c0.3%2C0.033%2C0.833%2C0.1%2C1.6%2C0.2c0.733%2C0.1%2C1.417%2C0.233%2C2.05%2C0.4%20%20%20%20c1.833%2C0.566%2C3.434%2C1.566%2C4.8%2C3c1.066%2C1.066%2C1.933%2C2.767%2C2.6%2C5.1c0.367%2C1.2%2C0.617%2C2.284%2C0.75%2C3.25l0.4%2C4.25%20%20%20%20C84%2C20.45%2C84.15%2C23.567%2C84.15%2C26.4z%20M33.3%2C41.4L56%2C29.6L33.3%2C17.75V41.4z%22%3E%3C%2Fpath%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22ytp-pill-active-gradient%22%20gradientUnits%3D%22userSpaceOnUse%22%20x1%3D%22-59.1948%22%20y1%3D%2242.0752%22%20x2%3D%22-0.042%22%20y2%3D%2242.0752%22%20gradientTransform%3D%22matrix(1.690617e-05%20-1%201%20-0.001%200%200)%22%3E%3Cstop%20offset%3D%220%22%20style%3D%22stop-color%3A%23CC181E%22%3E%3C%2Fstop%3E%3Cstop%20offset%3D%221%22%20style%3D%22stop-color%3A%23E52D27%22%3E%3C%2Fstop%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3C%2Fsvg%3E");
 		}
 		.html5-video-player:hover & {
-			& when (@PlayButtonStyle = 2012E) {
+			& when (@PlayButtonStyle = Sync) and ((@PlayerStyle = 20120913) or (@PlayerStyle = 20121207)) or (@PlayButtonStyle = 201205) {
 				background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='html5-big-play-button html5-center-overlay html5-scalable-icon'%3E%3Cpath fill='%23380308' d='M89.2,34.4c-0.064,2.649-0.265,5.434-0.6,8.35c-0.467,3.733-1.05,6.867-1.75,9.4 c-1.4,5.133-4.4,8.184-9,9.149c-3.533,0.733-7.6,1.217-12.2,1.45c-4.033,0.233-9.867,0.35-17.5,0.35H40.1 c-10.567,0-20.133-0.6-28.7-1.8c-4.467-0.667-7.467-3.716-9-9.149c-0.7-2.533-1.267-5.667-1.7-9.4 c-0.361-2.916-0.578-5.699-0.65-8.35c0.122,2.316,0.338,4.733,0.65,7.25c0.433,3.732,1,6.866,1.7,9.399 c1.533,5.435,4.533,8.483,9,9.15c8.567,1.2,18.133,1.8,28.7,1.8h8.05c7.633,0,13.467-0.117,17.5-0.35 c4.6-0.233,8.667-0.718,12.2-1.45c4.6-0.967,7.6-4.018,9-9.15c0.7-2.533,1.283-5.667,1.75-9.399 C88.89,39.134,89.089,36.717,89.2,34.4z'/%3E%3Cpath class='html5-overlay-button-background' d='M86.85,10.9c0.7,2.532,1.283,5.684,1.75,9.449c0.433,3.733,0.65,7.268,0.65,10.601V31 c0,3.333-0.217,6.883-0.65,10.65c-0.467,3.732-1.05,6.866-1.75,9.399c-1.4,5.133-4.4,8.185-9,9.15 c-3.533,0.732-7.6,1.216-12.2,1.45C61.617,61.883,55.783,62,48.15,62H40.1c-10.567,0-20.133-0.6-28.7-1.8 c-4.467-0.667-7.467-3.717-9-9.15c-0.7-2.533-1.267-5.667-1.7-9.399C0.233,37.883,0,34.333,0,31v-0.05 c0-3.333,0.233-6.867,0.7-10.601c0.433-3.767,1-6.917,1.7-9.449c1.4-5.134,4.4-8.184,9-9.15c3.5-0.7,7.567-1.183,12.2-1.45 C27.533,0.1,33.367,0,41.1,0h8.05c10.8,0,20.367,0.583,28.7,1.75C82.317,2.417,85.317,5.467,86.85,10.9z' style='&%2310; fill: url(%23html5-big-play-button-red);&%2310;'/%3E%3Cg viewBox='-15.025 -15.151 30.05 30.303' transform='matrix(1 0 0 -1 47.375 29.75)'%3E%3Cpath fill='%23FCFCFC' d='M10.275,4c3.167-1.866,4.75-3.199,4.75-4c0-0.8-1.583-2.149-4.75-4.05 c-1.367-0.8-4.517-2.482-9.45-5.05c-4.5-2.333-7.233-3.733-8.2-4.2c-2.533-1.232-4.066-1.85-4.6-1.85 c-1.233-0.033-2.083,0.399-2.55,1.3c-0.333,0.667-0.5,1.75-0.5,3.25v21.2c0,1.5,0.167,2.583,0.5,3.25 c0.467,0.899,1.317,1.333,2.55,1.3c0.534,0,2.067-0.617,4.6-1.85c0.967-0.468,3.7-1.867,8.2-4.2C5.758,6.533,8.908,4.833,10.275,4 z'/%3E%3C/g%3E%3Cdefs%3E%3ClinearGradient id='html5-big-play-button-red' gradientUnits='userSpaceOnUse' x1='44.625' y1='0' x2='44.625' y2='62'%3E%3Cstop offset='0' style='stop-color:%23CD332D'/%3E%3Cstop offset='0.8549' style='stop-color:%236E0610'/%3E%3C/linearGradient%3E%3ClinearGradient id='html5-big-play-button-black' gradientUnits='userSpaceOnUse' x1='44.625' y1='0' x2='44.625' y2='62'%3E%3Cstop offset='0' style='stop-color:%233E3D3D'/%3E%3Cstop offset='0.7451' style='stop-color:%23131313'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E")
 			}
 			& when (@PlayButtonStyle = 2013M) {
@@ -7337,14 +7598,46 @@
 	}
 
 	.queue-miniplayer-close .oz-sprite when (@MiniplayerXBtnQoL = 1) {
-		top: 6px;
-		right: 11px;
-		background-color: rgba(255, 255, 255, .5);
-		border: 1px solid rgba(255, 255, 255, .25);
-		border-radius: 3px;
+		background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) -28px -104px;
+		background-color: rgba(0, 0, 0, 0.5);
+		border-radius: 2px;
+		height: 12px;
+		width: 12px;
+		opacity: 0.5;
+		cursor: pointer;
+		-moz-box-shadow: rgba(0,0,0,0.5) 0 0 3px;
+		-ms-box-shadow: rgba(0,0,0,0.5) 0 0 3px;
+		-webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 0 3px;
+		box-shadow: rgba(0, 0, 0, 0.5) 0 0 3px;
+		position: absolute;
+		right: 10px;
+		top: 9px;
+		filter: none;
 		&:hover {
-			background-color: rgba(255, 255, 255, .75);
-			border-color: rgba(255, 255, 255, .5);
+			background: no-repeat url(//s.ytimg.com/yts/imgbin/player-common-vflGpPVmw.png) 0 -118px;
+			background-color: transparent;
+			opacity: 1;
+		}
+	}
+
+	#watch7-playlist-tray-trim when (@PlaylistTrayTrimMatches = 1) {
+		& when (@PlayerStyle = 20120125) or (@PlayerStyle = 20120913) {
+			background: #000;
+			background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAdCAYAAABrAQZpAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAABIAAAASABGyWs+AAAACXZwQWcAAAABAAAAHQAh4gKwAAAAMUlEQVQI12OQlJD4x2Sgr8/I9OTZs5dM//79Y2T6//8/IyqLAcLClEBjYahDKCHSKADN5VNQpdTxzgAAAABJRU5ErkJggg==);
+			/* requires a browser that supports the has selector */
+			.player-api:has(.light-theme) ~ .playlist-tray & {
+				background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAdCAAAAABOalm1AAAACXBIWXMAAABIAAAASABGyWs+AAAACXZwQWcAAAABAAAAHQAh4gKwAAAAKUlEQVQI1x3CiQkAIAwEwfTfpW9M1BIEl2PGnl052EgEljgmBro0VJQPA6waTMFaRdkAAAAASUVORK5CYII=);
+			}
+			.player-api:has(.ytp-error) ~ .playlist-tray & {
+				background: #1b1b1b;
+			}
+		}
+		& when (@PlayerStyle = 20121207) {
+			background: #1b1b1b;
+			/* requires a browser that supports the has selector */
+			.player-api:has(.light-theme) ~ .playlist-tray & {
+				background: #ccc;
+			}
 		}
 	}
 
@@ -7366,22 +7659,22 @@
 	September 2013
 
 	== Presets ==
-	= 2011 =
-	https://discord.com/channels/1132972877755469824/1234318018310438913/1402131276957356132
+	https://docs.google.com/document/d/1Cw2RUDC5B4fetmFtUJ_v99lke0wBF2oAQtSG94_sE-w
 
-	= 2012 =
-	https://discord.com/channels/1132972877755469824/1234318018310438913/1402131286549860364
-
-	= 2013 =
-	https://discord.com/channels/1132972877755469824/1234318018310438913/1402131318808121364
-	https://discord.com/channels/1132972877755469824/1234318018310438913/1404061099296428082
-
-	== TODO Features ==
+	== TODO ==
 	Fix and redo captions CSS on all periods ( X | % )
+	Fix settings menu items overflowing out of the player.
 	Impliment Early 2012 & 2013 infobar ( X | % )
 	Impliment Flash Player sub options ( X | % )
 	Impliment Tablet Player support ( X | % )
 	Impliment 2013 flat translate menu option ( X | % )
+
+	== Notes ==
+	Pre December 2012 color gradient should use 3.7% darken and 20% darken of the original HEX, for post December use the original HEX color.
+	For example:
+	HEX: #cc181e
+	darken(#cc181e, 3.7%) => #bb161c
+	darken(#cc181e, 20%) => #710d11
 
 	== Legend ==
 	| => Separator
