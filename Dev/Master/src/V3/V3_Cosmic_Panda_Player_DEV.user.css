@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player (DEV)
 @namespace      userstyles.world/user/tersiswilvin
-@version        20260329-00.1.2
+@version        20260331-00.1.2
 @description    Recreates the cosmic panda player look for V3.
 @author         TersisWilvin
 @updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_DEV.user.css
@@ -933,6 +933,7 @@
 			}
 		}
 		&-content {
+			display: block;
 			border-spacing: 0
 		}
 		.ytp-drop-down-menu {
@@ -943,8 +944,12 @@
 			bottom: 0 !important;
 			overflow: unset;
 			&-content {
-				max-height: unset;
-				overflow-y: unset;
+				& when (@FlatterSettings = 0) {
+					max-height: 190px
+				}
+				& when (@FlatterSettings = 1) {
+					max-height: 206px
+				}
 			}
 			&-button {
 				color: #aaa;
@@ -1035,6 +1040,7 @@
 					}
 				}
 				&:hover:not(.ytp-disabled):not(&-selected):not(&-checked) {
+					color: #fff;
 					& when (@FlatterSettings = 0) {
 						background: #601212;
 					}
@@ -1090,9 +1096,32 @@
 			min-width: 0 !important
 		}
 		.ytp-menu-more-options {
-			vertical-align: middle;
+			color: #aaa;
+			padding: 4px 7px;
+			position: relative;
+			& when (@FlatterSettings = 1) {
+				margin: 6px 5px;
+			}
 			float: none;
-			display: inline-block;
+			&:hover:not(.ytp-disabled):not(&-selected):not(&-checked) {
+				color: #fff;
+				& when (@FlatterSettings = 0) {
+					background: #601212;
+				}
+				& when (@FlatterSettings = 1) {
+					background-color: #cc181e;
+					&:after {
+						content: "";
+						background-color: #cc181e;
+						left: -5px;
+						top: -2px;
+						right: -5px;
+						bottom: -2px;
+						position: absolute;
+						z-index: -1;
+					}
+				}
+			}
 		}
 	}
 	.ytp-menu-container {
@@ -7663,7 +7692,6 @@
 
 	== TODO ==
 	Fix and redo captions CSS on all periods ( X | % )
-	Fix settings menu items overflowing out of the player.
 	Impliment Early 2012 & 2013 infobar ( X | % )
 	Impliment Flash Player sub options ( X | % )
 	Impliment Tablet Player support ( X | % )
