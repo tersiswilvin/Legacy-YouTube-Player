@@ -43,6 +43,7 @@
 @var            select                                            FsLocPre                    " └ Location Preset"                         ["Left", "Right", "Bottom*"]
 @var            select                                            MiniplayerAutohide          "Miniplayer Autohide Preset"                 ["Sync", "Off", "On", "Fade", "Auto*"]
 @var            checkbox                                          MiniplayerEndscreen         "Miniplayer Endscreen Visible"               0
+@var            checkbox                                          MiniplayerXBtnQoL           "Miniplayer Improved X Button"               1
 @var            select                                            PlayerAutohide              "Player Autohide Preset"                     ["Off", "On", "Fade*", "Auto"] 
 @var            select                                            PlayerStyle                 "Player Style"                               ["20120125", "20120913*", "20121207", "20130101", "20130110", "20130418"]
 @var            checkbox                                          201201FsExperiment          " ├ (Experiment) 20120125 Fullscreen"        0
@@ -53,7 +54,6 @@
 @var            select                                            CustomProgress              " ├ (Fun) Custom Video Progress"             ["None*", "Bowser", "Donkey_Kong_Jr", "Hamster", "Koopa_Troopa", "Knuckles", "Luigi", "Mario", "Peach", "Pikachu", "Pikachu_alternative", "Rilakkuma", "Sonic", "Square", "Tails", "Toad", "Wario", "Yoshi"]
 @var            checkbox                                          ECMHSFix                    " ├ (QoL) 20120125 Context Menu Hover Fix"   0
 @var            checkbox                                          201201ClipsEnabled          " ├ (QoL) 20120125 Clips Enabled"            0
-@var            checkbox                                          MiniplayerXBtnQoL           " ├ (QoL) Miniplayer Improved X Button"      1
 @var            checkbox                                          PlaylistTrayTrimMatches     " ├ (QoL) Playlist Tray Trim Matches"        0
 @var            checkbox                                          RemovePlayFocusState        " ├ (QoL) Remove Fullscreen Play Focus"      0
 @var            checkbox                                          SponsorPreviewFix           " ├ (QoL) SponsorBlock Preview Fix"          0
