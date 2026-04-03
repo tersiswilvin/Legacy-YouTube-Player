@@ -45,7 +45,7 @@
 @var            checkbox                                          MiniplayerEndscreen         "Miniplayer Endscreen Visible"               0
 @var            checkbox                                          MiniplayerXBtnQoL           "Miniplayer Improved X Button"               1
 @var            select                                            PlayerAutohide              "Player Autohide Preset"                     ["Off", "On", "Fade*", "Auto"] 
-@var            select                                            PlayerStyle                 "Player Style"                               ["20120125", "20120913*", "20121207", "20130101", "20130110", "20130418"]
+@var            select                                            PlayerStyle                 "Player Style"                               ["20120125", "20120913*", "20121207", "20130101", "20130110", "20130418", "201306x1", "201306x2", "201307xx", "201309xx"]
 @var            checkbox                                          201201FsExperiment          " ├ (Experiment) 20120125 Fullscreen"        0
 @var            checkbox                                          201201ReplayExperiment      " ├ (Experiment) 20120125 Replay Icon"       0
 @var            checkbox                                          201201SizeExperiment        " ├ (Experiment) 20120125 Size Icons"        0
