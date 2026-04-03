@@ -1,19 +1,13 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player (DEV)
 @namespace      userstyles.world/user/tersiswilvin
-@version        20260331-00.1.2
-@description    Recreates the cosmic panda player look for V3.
+@version        20260403-00.1.2
+@description    Recreates the Cosmic Panda Player look for the 2014 / 2015 YouTube Player.
 @author         TersisWilvin
 @updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_DEV.user.css
 @license        CC-BY-SA-4.0
 @preprocessor   less
-@var            select                                            CustomProgress              "(Fun) Custom Video Progress"                ["None*", "Bowser", "Donkey_Kong_Jr", "Hamster", "Koopa_Troopa", "Knuckles", "Luigi", "Mario", "Peach", "Pikachu", "Pikachu_alternative", "Rilakkuma", "Sonic", "Square", "Tails", "Toad", "Wario", "Yoshi"]
-@var            checkbox                                          ECMHSFix                    "(QoL) 20120125 Context Menu Hover Fix"      0
-@var            checkbox                                          MiniplayerXBtnQoL           "(QoL) Miniplayer Improved X Button"         1
-@var            checkbox                                          PlaylistTrayTrimMatches     "(QoL) Playlist Tray Trim Matches"           0
-@var            checkbox                                          RemovePlayFocusState        "(QoL) Remove Fullscreen Play Focus"         0
-@var            checkbox                                          SponsorPreviewFix           "(QoL) SponsorBlock Preview Fix"             0
-@var            checkbox                                          TooltipCrtFix               "(QoL) Tooltip 20121207 Caret Fix"           0
+@var            checkbox                                          AccPlyrCttitems             "Accurate Player Context Menu items"         1
 @var            checkbox                                          AccPlyrCtlPos               "Accurate Player Controls Positions"         1
 @var            number                                            AccPlyrCtlPos_media         " ├ Multimedia button order"                 1
 @var            number                                            AccPlyrCtlPos_prev          " ├ Prev button order"                       2
@@ -35,47 +29,37 @@
 @var            checkbox                                          AccPrevTailPos              "Accurate Preview Tail Position"             1
 @var            checkbox                                          AccSizeBtnBehavior          "Accurate Size Button Behavior"              1
 @var            checkbox                                          AccWtmAnim                  "Accurate Watermark Animations"              1
-@var            select                                            AhCursor                    "Cursor Preset"                              ["Default*", "Default_Autohide", "Off", "Off_Autohide"]
 @var            checkbox                                          DEV                         "Developer Options"                          0
-@var            checkbox                                          Forceinfobar                " ├ Force Infobar"                           1
+@var            checkbox                                          ForceContextMenu            " ├ Force Context Menu"                      1
+@var            checkbox                                          ForceInfobar                " ├ Force Infobar"                           1
 @var            checkbox                                          ForceProgressTooltip        " ├ Force Progress Tooltip"                  1
 @var            checkbox                                          ForceSettingsMenu           " ├ Force Settings Menu"                     1
 @var            checkbox                                          ForceThumbnail              " ├ Force Thumbnail"                         1
 @var            checkbox                                          ForceWOYTi                  " ├ Force Watch On Youtube icon"             1
 @var            checkbox                                          Forcewatermark              " ├ Force Watermark"                         1
 @var            checkbox                                          ForceYTPButtons             " └ Force YTP Buttons"                       1
-@var            checkbox                                          ExtraSFNItems               "Extra Stats for nerds items"                0
 @var            checkbox                                          FlashPlayerMode             "Flash Player Mode ( WIP )"                  0
-@var            checkbox                                          FocusOutline                "Focus Outline"                              1
 @var            number                                            FsTbS                       "Fullscreen Taskbar Size"                    [0, 0, null, 1, "px"]
 @var            select                                            FsLocPre                    " └ Location Preset"                         ["Left", "Right", "Bottom*"]
-@var            checkbox                                          HideAdProgress              "Hide Ad Progress"                           1
-@var            checkbox                                          HideAdSkipButton            "Hide Ad Skip Container"                     1
-@var            checkbox                                          HideAnnotation              "Hide Annotation Button"                     0
-@var            checkbox                                          HideBranding                "Hide Annotation Branding"                   1
-@var            checkbox                                          HideASRIcons                "Hide ASR Icons"                             0
-@var            checkbox                                          HideCaptionSettingsRow      "Hide Caption Settings Row"                  1
-@var            checkbox                                          HideCards                   "Hide Cards"                                 1
-@var            checkbox                                          HideCMIcons                 "Hide Context Menu Icons"                    1
-@var            checkbox                                          HESR                        "Hide Extra Settings Rows"                   1
-@var            checkbox                                          HideIBLikeTooltip           "Hide Infobar Like Tooltip"                  1
-@var            checkbox                                          HidePlrChptrs               "Hide Player Chapters"                       1
-@var            checkbox                                          HPaNB                       "Hide Prev & Next Buttons"                   1
-@var            checkbox                                          HideSettingBoxShadow        "Hide Settings Box Shadow"                   0
-@var            checkbox                                          HideSponsorBlockButtons     "Hide SponsorBlock Control Buttons"          0
-@var            checkbox                                          HideSponsorBlockPrevbar     "Hide SponsorBlock Previewbar"               0
-@var            checkbox                                          SupportWarning              "Hide Support Warning"                       0
-@var            checkbox                                          HUnB                        "Hide Unavailable Buttons"                   1
-@var            checkbox                                          QualityBadges               "Hide Quality Badges"                        1
 @var            select                                            MiniplayerAutohide          "Miniplayer Autohide Preset"                 ["Sync", "Off", "On", "Fade", "Auto*"]
 @var            checkbox                                          MiniplayerEndscreen         "Miniplayer Endscreen Visible"               0
 @var            select                                            PlayerAutohide              "Player Autohide Preset"                     ["Off", "On", "Fade*", "Auto"] 
 @var            select                                            PlayerStyle                 "Player Style"                               ["20120125", "20120913*", "20121207", "20130101", "20130110", "20130418"]
-@var            checkbox                                          201201ClipsEnabled          " ├ 20120125 Clips Enabled"                  0
-@var            checkbox                                          201201FsExperiment          " ├ 20120125 Fullscreen Experiment"          0
-@var            checkbox                                          201201ReplayExperiment      " ├ 20120125 Replay Icon Experiment"         0
-@var            checkbox                                          201201SizeExperiment        " ├ 20120125 Size Icons Experiment"          0
+@var            checkbox                                          201201FsExperiment          " ├ (Experiment) 20120125 Fullscreen"        0
+@var            checkbox                                          201201ReplayExperiment      " ├ (Experiment) 20120125 Replay Icon"       0
+@var            checkbox                                          201201SizeExperiment        " ├ (Experiment) 20120125 Size Icons"        0
+@var            checkbox                                          ReplayIconExperiment        " ├ (Experiment) Replay Icon"                0
+@var            checkbox                                          SoloSizeBtnExperiment       " ├ (Experiment) Solo Size Button"           0
+@var            select                                            CustomProgress              " ├ (Fun) Custom Video Progress"             ["None*", "Bowser", "Donkey_Kong_Jr", "Hamster", "Koopa_Troopa", "Knuckles", "Luigi", "Mario", "Peach", "Pikachu", "Pikachu_alternative", "Rilakkuma", "Sonic", "Square", "Tails", "Toad", "Wario", "Yoshi"]
+@var            checkbox                                          ECMHSFix                    " ├ (QoL) 20120125 Context Menu Hover Fix"   0
+@var            checkbox                                          201201ClipsEnabled          " ├ (QoL) 20120125 Clips Enabled"            0
+@var            checkbox                                          MiniplayerXBtnQoL           " ├ (QoL) Miniplayer Improved X Button"      1
+@var            checkbox                                          PlaylistTrayTrimMatches     " ├ (QoL) Playlist Tray Trim Matches"        0
+@var            checkbox                                          RemovePlayFocusState        " ├ (QoL) Remove Fullscreen Play Focus"      0
+@var            checkbox                                          SponsorPreviewFix           " ├ (QoL) SponsorBlock Preview Fix"          0
+@var            checkbox                                          TooltipCrtFix               " ├ (QoL) Tooltip 20121207 Caret Fix"        0
 @var            checkbox                                          ActiveSettingsBtnGlow       " ├ Active Settings Button Glow"             0
+@var            select                                            AhCursor                    " ├ Cursor Preset"                           ["Default*", "Default_Autohide", "Off", "Off_Autohide"]
 @var            checkbox                                          DefaultBezelStyle           " ├ Default Bezel Style"                     0
 @var            checkbox                                          DefaultContextMenuStyle     " ├ Default Context Menu Style"              0
 @var            checkbox                                          DefaultDialogStyle          " ├ Default Dialog Style"                    0
@@ -89,16 +73,34 @@
 @var            checkbox                                          DefaultUnavailableStyle     " ├ Default Unavailable Style"               0
 @var            checkbox                                          DefaultInfoPanelStyle       " ├ Default Video Info Style"                0
 @var            checkbox                                          DefaultVideoLoader          " ├ Default Video Loader"                    0
+@var            checkbox                                          ExtraSFNItems               " ├ Extra Stats for nerds items"             0
 @var            select                                            FallbackTVStaticPreset      " ├ Fallback TV Static Preset"               ["None*", "Animated", "Canvas", "Static"]
 @var            checkbox                                          FlatterSettings             " ├ Flatter Menu Styling"                    0
 @var            checkbox                                          FSFloating                  "    └ Floating"                             1
+@var            checkbox                                          FocusOutline                " ├ Focus Outline"                           1
+@var            checkbox                                          HideAdProgress              " ├ Hide Ad Progress"                        1
+@var            checkbox                                          HideAdSkipButton            " ├ Hide Ad Skip Container"                  1
+@var            checkbox                                          HideAnnotation              " ├ Hide Annotation Button"                  0
+@var            checkbox                                          HideBranding                " ├ Hide Annotation Branding"                1
+@var            checkbox                                          HideASRIcons                " ├ Hide ASR Icons"                          0
+@var            checkbox                                          HideCaptionSettingsRow      " ├ Hide Caption Settings Row"               1
+@var            checkbox                                          HideCards                   " ├ Hide Cards"                              1
+@var            checkbox                                          HideCMIcons                 " ├ Hide Context Menu Icons"                 1
+@var            checkbox                                          HESR                        " ├ Hide Extra Settings Rows"                1
+@var            checkbox                                          HideIBLikeTooltip           " ├ Hide Infobar Like Tooltip"               1
+@var            checkbox                                          HidePlrChptrs               " ├ Hide Player Chapters"                    1
+@var            checkbox                                          HPaNB                       " ├ Hide Prev & Next Buttons"                1
+@var            checkbox                                          HideSettingBoxShadow        " ├ Hide Settings Box Shadow"                0
+@var            checkbox                                          HideSponsorBlockButtons     " ├ Hide SponsorBlock Control Buttons"       0
+@var            checkbox                                          HideSponsorBlockPrevbar     " ├ Hide SponsorBlock Previewbar"            0
+@var            checkbox                                          SupportWarning              " ├ Hide Support Warning"                    0
+@var            checkbox                                          HUnB                        " ├ Hide Unavailable Buttons"                1
+@var            checkbox                                          QualityBadges               " ├ Hide Quality Badges"                     1
 @var            select                                            IBIO                        " ├ Infobar Icons Only"                      ["Sync*", "Off", "On"]
 @var            select                                            PlayButtonStyle             " ├ Play Button Style"                       ["Sync*", "Off", "20100601", "2011M", "201205", "2013M"]
 @var            checkbox                                          PlayerSizeTransition        " ├ Player Size Transition"                  1
 @var            checkbox                                          PlayerTheaterTransition     " ├ Player Theater Transition"               1
 @var            checkbox                                          PlayerTheaterGradient       " ├ Player Theater Gradient"                 1
-@var            checkbox                                          ReplayIconExperiment        " ├ Replay Icon Experiment"                  0
-@var            checkbox                                          SoloSizeBtnExperiment       " ├ Solo Size Button Experiment"             0
 @var            select                                            TooltipStyle                " └ Tooltip Style"                           ["Sync*", "Off", "20111201", "20121207"]
 @var            select                                            TooltipAnimations           "    └ Animations"                           ["Sync*", "Off", "On"]
 ==/UserStyle== */
@@ -631,6 +633,134 @@
 					list-style: none;
 				}
 			}
+			& when (@AccPlyrCttitems = 1) {
+				li {
+					&:nth-child(1) .yt-uix-button-menu-item {
+						font-size: 0;
+						padding: 0;
+						line-height: 0;
+						&:before {
+							content: "Copy video URL";
+							& when (@PlayerStyle = 20120125) {
+								padding: .4166em .6666em;
+							}
+							& when not (@PlayerStyle = 20120125) {
+								padding: 6px 20px;
+							}
+							font-size: 12px;
+							line-height: normal;
+							display: block
+						}
+					}
+					&:nth-child(2) .yt-uix-button-menu-item {
+						font-size: 0;
+						padding: 0;
+						line-height: 0;
+						&:before {
+							content: "Copy video URL at current time";
+							& when (@PlayerStyle = 20120125) {
+								padding: .4166em .6666em;
+							}
+							& when not (@PlayerStyle = 20120125) {
+								padding: 6px 20px;
+							}
+							font-size: 12px;
+							line-height: normal;
+							display: block
+						}
+					}
+					&:nth-child(3) .yt-uix-button-menu-item {
+						font-size: 0;
+						padding: 0;
+						line-height: 0;
+						&:before {
+							content: "Copy embed HTML";
+							& when (@PlayerStyle = 20120125) {
+								padding: .4166em .6666em;
+							}
+							& when not (@PlayerStyle = 20120125) {
+								padding: 6px 20px;
+							}
+							font-size: 12px;
+							line-height: normal;
+							display: block
+						}
+					}
+					&:nth-child(4) {
+						.yt-uix-button-menu-item {
+							font-size: 0;
+							padding: 0;
+							line-height: 0;
+							&:before {
+								content: "Report playback issue";
+								& when (@PlayerStyle = 20120125) {
+									padding: .4166em .6666em;
+								}
+								& when not (@PlayerStyle = 20120125) {
+									padding: 6px 20px;
+								}
+								font-size: 12px;
+								line-height: normal;
+								display: block
+							}
+						}
+					}
+					&:nth-child(5) .yt-uix-button-menu-item {
+						font-size: 0;
+						padding: 0;
+						line-height: 0;
+						&:before {
+							content: "Copy debug info";
+							& when (@PlayerStyle = 20120125) {
+								padding: .4166em .6666em;
+							}
+							& when not (@PlayerStyle = 20120125) {
+								padding: 6px 20px;
+							}
+							font-size: 12px;
+							line-height: normal;
+							display: block
+						}
+					}
+					&:nth-child(6) .yt-uix-button-menu-item {
+						font-size: 0;
+						padding: 0;
+						line-height: 0;
+						&:before {
+							content: "Show video info";
+							& when (@PlayerStyle = 20120125) {
+								padding: .4166em .6666em;
+							}
+							& when not (@PlayerStyle = 20120125) {
+								padding: 6px 20px;
+							}
+							font-size: 12px;
+							line-height: normal;
+							display: block
+						}
+					}
+					&:nth-child(7) .yt-uix-button-menu-item {
+						font-size: 0;
+						padding: 0;
+						line-height: 0;
+						&:before {
+							content: "About HTML5";
+							& when (@PlayerStyle = 20120125) {
+								padding: .4166em .6666em;
+							}
+							& when not (@PlayerStyle = 20120125) {
+								padding: 6px 20px;
+							}
+							font-size: 12px;
+							line-height: normal;
+							display: block
+						}
+					}
+					&:nth-child(8) {
+						display: none
+					}
+				}
+			}
 			& when not (@PlayerStyle = 20120125) {
 				-moz-border-radius: 3px;
 				-webkit-border-radius: 3px;
@@ -640,7 +770,16 @@
 				-webkit-box-shadow: 0 1px 1px rgba(100,100,100,.2);
 				box-shadow: 0 1px 1px rgba(100,100,100,.2);
 			}
+			& when (@DEV = 1) and (@ForceContextMenu = 1) {
+				display: block !important;
+				&:not([style*="top: "]) {
+					left: 0%;
+					top: 100%;
+					transform: translate(0%, -100%);
+				}
+			}
 			.yt-uix-button-menu-item {
+				font-size: 12px;
 				& when (@PlayerStyle = 20120125) {
 					padding: .4166em .6666em;
 					color: #000;
@@ -698,10 +837,10 @@
 	}
 
 	.html5-info-bar {
-		& when (@DEV = 0) and (@Forceinfobar = 0) {
+		& when (@DEV = 0) and (@ForceInfobar = 0) {
 			display: none;
 		}
-		& when (@DEV = 1) and (@Forceinfobar = 1) {
+		& when (@DEV = 1) and (@ForceInfobar = 1) {
 			display: block;
 		}
 		& when (@DefaultInfobarStyle = 0) {
@@ -856,7 +995,7 @@
 
 	.html5-endscreen {
 		z-index: 922;
-		html:not([data-player-size=fullscreen]) & when (@DEV = 1) and (@Forceinfobar = 1) {
+		html:not([data-player-size=fullscreen]) & when (@DEV = 1) and (@ForceInfobar = 1) {
 			top: 28px;
 		}
 	}
@@ -2360,7 +2499,7 @@
 			@Koopa_Troopa: "http://i.imgur.com/aZxO1Zy.gif";
 			@Donkey_Kong_Jr: "http://i.imgur.com/VdB9p6r.gif";
 			@Bowser: "http://i.imgur.com/sVpRjhS.gif";
-		};
+			};
 		@Hamster_GIF: "data:image/gif;base64,R0lGODlhIwAXAPMAAAAAAAAA//+EpffGe//v3v///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQJFAABACwAAAAAIwAXAAAIswADCBxIsKDBgwgTKgwAAMDChwkBDBjgEKJFgRIHCKh4sWDDjxUzbvzYkWHGiRMbohQgAGVDiydRypw5k2NEmjhlqhxAwKbBmDlrAigAgIBRnwSBBnX50ejRg0qXMnX69CcBqTNZCqDa02dDo1hlauXac+DXomDDTiRbFW1PqmqpurUJkitWsiShkpWKF6lZtnZlyvXrETBclEcJW31rOOPLi2hBSv6YsmRkhY5LmnyYV2FAACH5BAkPAAEALAAAAAAjABcAAAiwAAMIHEiwoEEAAAwqXMhQIIABAxI2nLjwIUSJFCsi3OgQYkSOGQci9OhxJMmSGCdaPMmyZcqKLWOivNhwpUyWCAsAIEDgJUGbN0lu3MnTZwCgQYUSLapwZ9KTAqLyLOqT6FOSUQVMZSoS4dSrH71ulSh2KQGwKLke7Sn2K9qdCAua3Xo26dC4cunq3XpyrFGHbfcKZhsy8OCpf2veXTw05EHEIiE7bqqWaOLJeLtODggAIfkECRQAAQAsAAAAACMAFwAACLEAAwgcSLCgwYMIEypcyLChQAAAHEoMABHAgAERJy60aPFiRo0PK0KkCPEixpETS5r02HElS4ctXcqU+TFhzJkzVdY0eBOnS4gFABAgsJNgT58mRQ4levAo0qRClxalSOCpTAFYlxLdCXGoVZdYBWhlGpLo0q8mx0p9KFUrWq1RyYbs6vap2ooI4561C3cqW7VjceK1Cbjw0Jh+/xoujJjwVpGQI1dMmlekUbyWL6McGBAAIfkECRQAAQAsAAAAACMAFwAACLMAAwgcSLCgwYMIEyoMAADAwocJAQwY4BCiRYESBwioeLFgw48VM2782JFhxokTG6IUIABlQ4snUcqcOZNjRJo4ZaocQMCmwZg5awIoAICAUZ8EgQZ1+dHo0YNKlzJ1+vQnAakzWQqg2tNnQ6NYZWrl2nPg16Jgw04kWxVtT6pqqbq1CZIrVrIkoZKVihepWbZ2Zcr16xEwXJRHCVt9azjjy4toQUr+mLJkZIWOS5p8mFdhQAAh+QQJDwABACwAAAAAIwAXAAAIvQADCBxIsKBBAAAMKlzIUCCAAQMQNpy48KEAAQgTUlSYMaPDARc7biSIEKLJiA9BCjgpcWPKkzBjmtTY8KXMmCUHECBAk+PNmwgLANi5s2dBmz9nZiRa1GdSmQiZNj1I4OnJiwKkeiQ5tKpViFilTg3QkehXk2KLJuzKk+lZomx5QlxbVKpVrRlnOoxqN6nYjlsdpu0LEe/EuINPwjVaUatYtDwZ12QK2GbLkQPZ9nwpGXPXzXoxc7y8t/PCgAAh+QQJFAABACwAAAAAIwAXAAAIuAADCBxIsKDBgwgTKlzIsGEAAAAeOpz4cMAAABcpMsQoQADGiBoFQhwJkqPHkRohWlx5EeOAjgJWQnTokqXNmzI34tzZ0iIBAiAR1uTJEmIBAD9/BjU4lKhFkkmVHmzq9CnSqECnEqi6EiZWlAQh/uRq0SvWrCKRXt1KdsBZqQ+TrmVbVW7UpVCj1r0LlulZp2dnCg08l+XXpX7n2gVqWCliv0oPM17pGK5QkopHysTcdyPmh50XBgQAIf4TZ2lmIGFuaW1lIGJ5IG1vbW9tbwAh/htHaWZBbmltIGJ5IE5vYnVoaXJvIEhhdHRvcmkAOw==";
 		-ms-touch-action: none;
 		& when (@CustomProgress = None) {
@@ -7674,6 +7813,7 @@
 	== Info ==
 	V3 Cosmic Panda Player
 	By TersisWilvin ( aka: Tersis, or 9T2K )
+	Description: Recreates the Cosmic Panda Player look for the 2014 / 2015 YouTube Player.
 
 	== Supported Time Periods ==
 	January 25th 2012
