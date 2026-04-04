@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player (DEV)
 @namespace      userstyles.world/user/tersiswilvin
-@version        20260404-00.1.2
+@version        20260404-02.1.2
 @description    Recreates the Cosmic Panda Player look for the 2014 / 2015 YouTube Player.
 @author         TersisWilvin
 @updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_DEV.user.css
@@ -321,6 +321,33 @@
 				-webkit-transition: top 0.5s ease-in;
 				transition: top 0.5s ease-in;
 			}
+		}
+		@Watermark: DEV;
+		&:after when not (@Watermark = Release) {
+			& when (@Watermark = Experimental) {
+				content: "BETA";
+			}
+			& when (@Watermark = DEV) {
+				content: "DEV Build 20260404-02.1.2";
+			}
+			font-size: 8px;
+			color: #c80000;
+			text-shadow: currentColor;
+			font-weight: bold;
+			line-height: normal;
+			background: #191919;
+			background: rgba(25, 25, 25, .75);
+			backdrop-filter: blur(2px);
+			border: 1px solid;
+			border-color: #808080;
+			border-color: rgba(128, 128, 128, .5);
+			border-radius: 3px;
+			padding: 6px 10px 5px;
+			margin: 15px;
+			position: absolute;
+			z-index: 1000;
+			pointer-events: none;
+			white-space: pre;
 		}
 		&:has(.html5-info-bar .ytp-button-like:hover) .ytp-tooltip[style*="display: block"] when (@HideIBLikeTooltip = 1) {
 			display: none !important;
@@ -761,7 +788,7 @@
 						display: block
 					}
 				}
-				&:nth-child(8) {
+				&:nth-child(8) when (@AccPlyrCttitems_loop = 0) {
 					display: none
 				}
 			}
@@ -2503,7 +2530,7 @@
 			@Koopa_Troopa: "http://i.imgur.com/aZxO1Zy.gif";
 			@Donkey_Kong_Jr: "http://i.imgur.com/VdB9p6r.gif";
 			@Bowser: "http://i.imgur.com/sVpRjhS.gif";
-			};
+		};
 		@Hamster_GIF: "data:image/gif;base64,R0lGODlhIwAXAPMAAAAAAAAA//+EpffGe//v3v///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQJFAABACwAAAAAIwAXAAAIswADCBxIsKDBgwgTKgwAAMDChwkBDBjgEKJFgRIHCKh4sWDDjxUzbvzYkWHGiRMbohQgAGVDiydRypw5k2NEmjhlqhxAwKbBmDlrAigAgIBRnwSBBnX50ejRg0qXMnX69CcBqTNZCqDa02dDo1hlauXac+DXomDDTiRbFW1PqmqpurUJkitWsiShkpWKF6lZtnZlyvXrETBclEcJW31rOOPLi2hBSv6YsmRkhY5LmnyYV2FAACH5BAkPAAEALAAAAAAjABcAAAiwAAMIHEiwoEEAAAwqXMhQIIABAxI2nLjwIUSJFCsi3OgQYkSOGQci9OhxJMmSGCdaPMmyZcqKLWOivNhwpUyWCAsAIEDgJUGbN0lu3MnTZwCgQYUSLapwZ9KTAqLyLOqT6FOSUQVMZSoS4dSrH71ulSh2KQGwKLke7Sn2K9qdCAua3Xo26dC4cunq3XpyrFGHbfcKZhsy8OCpf2veXTw05EHEIiE7bqqWaOLJeLtODggAIfkECRQAAQAsAAAAACMAFwAACLEAAwgcSLCgwYMIEypcyLChQAAAHEoMABHAgAERJy60aPFiRo0PK0KkCPEixpETS5r02HElS4ctXcqU+TFhzJkzVdY0eBOnS4gFABAgsJNgT58mRQ4levAo0qRClxalSOCpTAFYlxLdCXGoVZdYBWhlGpLo0q8mx0p9KFUrWq1RyYbs6vap2ooI4561C3cqW7VjceK1Cbjw0Jh+/xoujJjwVpGQI1dMmlekUbyWL6McGBAAIfkECRQAAQAsAAAAACMAFwAACLMAAwgcSLCgwYMIEyoMAADAwocJAQwY4BCiRYESBwioeLFgw48VM2782JFhxokTG6IUIABlQ4snUcqcOZNjRJo4ZaocQMCmwZg5awIoAICAUZ8EgQZ1+dHo0YNKlzJ1+vQnAakzWQqg2tNnQ6NYZWrl2nPg16Jgw04kWxVtT6pqqbq1CZIrVrIkoZKVihepWbZ2Zcr16xEwXJRHCVt9azjjy4toQUr+mLJkZIWOS5p8mFdhQAAh+QQJDwABACwAAAAAIwAXAAAIvQADCBxIsKBBAAAMKlzIUCCAAQMQNpy48KEAAQgTUlSYMaPDARc7biSIEKLJiA9BCjgpcWPKkzBjmtTY8KXMmCUHECBAk+PNmwgLANi5s2dBmz9nZiRa1GdSmQiZNj1I4OnJiwKkeiQ5tKpViFilTg3QkehXk2KLJuzKk+lZomx5QlxbVKpVrRlnOoxqN6nYjlsdpu0LEe/EuINPwjVaUatYtDwZ12QK2GbLkQPZ9nwpGXPXzXoxc7y8t/PCgAAh+QQJFAABACwAAAAAIwAXAAAIuAADCBxIsKDBgwgTKlzIsGEAAAAeOpz4cMAAABcpMsQoQADGiBoFQhwJkqPHkRohWlx5EeOAjgJWQnTokqXNmzI34tzZ0iIBAiAR1uTJEmIBAD9/BjU4lKhFkkmVHmzq9CnSqECnEqi6EiZWlAQh/uRq0SvWrCKRXt1KdsBZqQ+TrmVbVW7UpVCj1r0LlulZp2dnCg08l+XXpX7n2gVqWCliv0oPM17pGK5QkopHysTcdyPmh50XBgQAIf4TZ2lmIGFuaW1lIGJ5IG1vbW9tbwAh/htHaWZBbmltIGJ5IE5vYnVoaXJvIEhhdHRvcmkAOw==";
 		-ms-touch-action: none;
 		& when (@CustomProgress = None) {
