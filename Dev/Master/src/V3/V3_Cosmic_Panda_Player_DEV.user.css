@@ -1,13 +1,21 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player (DEV)
 @namespace      userstyles.world/user/tersiswilvin
-@version        20260403-00.1.2
+@version        20260404-00.1.2
 @description    Recreates the Cosmic Panda Player look for the 2014 / 2015 YouTube Player.
 @author         TersisWilvin
 @updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_DEV.user.css
 @license        CC-BY-SA-4.0
 @preprocessor   less
 @var            checkbox                                          AccPlyrCttitems             "Accurate Player Context Menu items"         1
+@var            text                                              AccPlyrCttitems_vid-url     " ├ Get video URL"                           Copy video URL
+@var            text                                              AccPlyrCttitems_vid-url-ct  " ├ Get video URL at current time"           Copy video URL at current time
+@var            text                                              AccPlyrCttitems_embed-html  " ├ Get embed code"                          Copy embed HTML
+@var            text                                              AccPlyrCttitems_report      " ├ Report playback issue"                   Report playback issue
+@var            text                                              AccPlyrCttitems_debug-info  " ├ Get debug info"                          Copy debug info
+@var            text                                              AccPlyrCttitems_vid-info    " ├ Stats for nerds"                         Show video info
+@var            text                                              AccPlyrCttitems_about-html5 " └ About the HTML5 player"                  About HTML5
+@var            checkbox                                          AccPlyrCttitems_loop        " └ Show Loop"                               0
 @var            checkbox                                          AccPlyrCtlPos               "Accurate Player Controls Positions"         1
 @var            number                                            AccPlyrCtlPos_media         " ├ Multimedia button order"                 1
 @var            number                                            AccPlyrCtlPos_prev          " ├ Prev button order"                       2
@@ -633,132 +641,128 @@
 					list-style: none;
 				}
 			}
-			& when (@AccPlyrCttitems = 1) {
-				li {
-					&:nth-child(1) .yt-uix-button-menu-item {
-						font-size: 0;
-						padding: 0;
-						line-height: 0;
-						&:before {
-							content: "Copy video URL";
-							& when (@PlayerStyle = 20120125) {
-								padding: .4166em .6666em;
-							}
-							& when not (@PlayerStyle = 20120125) {
-								padding: 6px 20px;
-							}
-							font-size: 12px;
-							line-height: normal;
-							display: block
+			li when (@AccPlyrCttitems = 1) {
+				&:nth-child(1) .yt-uix-button-menu-item {
+					font-size: 0;
+					padding: 0;
+					line-height: 0;
+					&:before {
+						content: "@{AccPlyrCttitems_vid-url}";
+						& when (@PlayerStyle = 20120125) {
+							padding: .4166em .6666em;
 						}
-					}
-					&:nth-child(2) .yt-uix-button-menu-item {
-						font-size: 0;
-						padding: 0;
-						line-height: 0;
-						&:before {
-							content: "Copy video URL at current time";
-							& when (@PlayerStyle = 20120125) {
-								padding: .4166em .6666em;
-							}
-							& when not (@PlayerStyle = 20120125) {
-								padding: 6px 20px;
-							}
-							font-size: 12px;
-							line-height: normal;
-							display: block
+						& when not (@PlayerStyle = 20120125) {
+							padding: 6px 20px;
 						}
+						font-size: 12px;
+						line-height: normal;
+						display: block
 					}
-					&:nth-child(3) .yt-uix-button-menu-item {
-						font-size: 0;
-						padding: 0;
-						line-height: 0;
-						&:before {
-							content: "Copy embed HTML";
-							& when (@PlayerStyle = 20120125) {
-								padding: .4166em .6666em;
-							}
-							& when not (@PlayerStyle = 20120125) {
-								padding: 6px 20px;
-							}
-							font-size: 12px;
-							line-height: normal;
-							display: block
+				}
+				&:nth-child(2) .yt-uix-button-menu-item {
+					font-size: 0;
+					padding: 0;
+					line-height: 0;
+					&:before {
+						content: "@{AccPlyrCttitems_vid-url-ct}";
+						& when (@PlayerStyle = 20120125) {
+							padding: .4166em .6666em;
 						}
-					}
-					&:nth-child(4) {
-						.yt-uix-button-menu-item {
-							font-size: 0;
-							padding: 0;
-							line-height: 0;
-							&:before {
-								content: "Report playback issue";
-								& when (@PlayerStyle = 20120125) {
-									padding: .4166em .6666em;
-								}
-								& when not (@PlayerStyle = 20120125) {
-									padding: 6px 20px;
-								}
-								font-size: 12px;
-								line-height: normal;
-								display: block
-							}
+						& when not (@PlayerStyle = 20120125) {
+							padding: 6px 20px;
 						}
+						font-size: 12px;
+						line-height: normal;
+						display: block
 					}
-					&:nth-child(5) .yt-uix-button-menu-item {
-						font-size: 0;
-						padding: 0;
-						line-height: 0;
-						&:before {
-							content: "Copy debug info";
-							& when (@PlayerStyle = 20120125) {
-								padding: .4166em .6666em;
-							}
-							& when not (@PlayerStyle = 20120125) {
-								padding: 6px 20px;
-							}
-							font-size: 12px;
-							line-height: normal;
-							display: block
+				}
+				&:nth-child(3) .yt-uix-button-menu-item {
+					font-size: 0;
+					padding: 0;
+					line-height: 0;
+					&:before {
+						content: "@{AccPlyrCttitems_embed-html}";
+						& when (@PlayerStyle = 20120125) {
+							padding: .4166em .6666em;
 						}
-					}
-					&:nth-child(6) .yt-uix-button-menu-item {
-						font-size: 0;
-						padding: 0;
-						line-height: 0;
-						&:before {
-							content: "Show video info";
-							& when (@PlayerStyle = 20120125) {
-								padding: .4166em .6666em;
-							}
-							& when not (@PlayerStyle = 20120125) {
-								padding: 6px 20px;
-							}
-							font-size: 12px;
-							line-height: normal;
-							display: block
+						& when not (@PlayerStyle = 20120125) {
+							padding: 6px 20px;
 						}
+						font-size: 12px;
+						line-height: normal;
+						display: block
 					}
-					&:nth-child(7) .yt-uix-button-menu-item {
-						font-size: 0;
-						padding: 0;
-						line-height: 0;
-						&:before {
-							content: "About HTML5";
-							& when (@PlayerStyle = 20120125) {
-								padding: .4166em .6666em;
-							}
-							& when not (@PlayerStyle = 20120125) {
-								padding: 6px 20px;
-							}
-							font-size: 12px;
-							line-height: normal;
-							display: block
+				}
+				&:nth-child(4) .yt-uix-button-menu-item {
+					font-size: 0;
+					padding: 0;
+					line-height: 0;
+					&:before {
+						content: "@{AccPlyrCttitems_report}";
+						& when (@PlayerStyle = 20120125) {
+							padding: .4166em .6666em;
 						}
+						& when not (@PlayerStyle = 20120125) {
+							padding: 6px 20px;
+						}
+						font-size: 12px;
+						line-height: normal;
+						display: block
 					}
-					&:nth-child(8) {
-						display: none
+				}
+				&:nth-child(5) .yt-uix-button-menu-item {
+					font-size: 0;
+					padding: 0;
+					line-height: 0;
+					&:before {
+						content: "@{AccPlyrCttitems_debug-info}";
+						& when (@PlayerStyle = 20120125) {
+							padding: .4166em .6666em;
+						}
+						& when not (@PlayerStyle = 20120125) {
+							padding: 6px 20px;
+						}
+						font-size: 12px;
+						line-height: normal;
+						display: block
 					}
+				}
+				&:nth-child(6) .yt-uix-button-menu-item {
+					font-size: 0;
+					padding: 0;
+					line-height: 0;
+					&:before {
+						content: "@{AccPlyrCttitems_vid-info}";
+						& when (@PlayerStyle = 20120125) {
+							padding: .4166em .6666em;
+						}
+						& when not (@PlayerStyle = 20120125) {
+							padding: 6px 20px;
+						}
+						font-size: 12px;
+						line-height: normal;
+						display: block
+					}
+				}
+				&:nth-child(7) .yt-uix-button-menu-item {
+					font-size: 0;
+					padding: 0;
+					line-height: 0;
+					&:before {
+						content: "@{AccPlyrCttitems_about-html5}";
+						& when (@PlayerStyle = 20120125) {
+							padding: .4166em .6666em;
+						}
+						& when not (@PlayerStyle = 20120125) {
+							padding: 6px 20px;
+						}
+						font-size: 12px;
+						line-height: normal;
+						display: block
+					}
+				}
+				&:nth-child(8) {
+					display: none
 				}
 			}
 			& when not (@PlayerStyle = 20120125) {
