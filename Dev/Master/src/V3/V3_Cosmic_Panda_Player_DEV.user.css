@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player (DEV)
 @namespace      userstyles.world/user/tersiswilvin
-@version        20260404-02.1.2
+@version        20260410-02.1.2
 @description    Recreates the Cosmic Panda Player look for the 2014 / 2015 YouTube Player.
 @author         TersisWilvin
 @updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_DEV.user.css
@@ -111,6 +111,7 @@
 @var            checkbox                                          PlayerTheaterGradient       " ├ Player Theater Gradient"                 1
 @var            select                                            TooltipStyle                " └ Tooltip Style"                           ["Sync*", "Off", "20111201", "20121207"]
 @var            select                                            TooltipAnimations           "    └ Animations"                           ["Sync*", "Off", "On"]
+@var            select                                            Watermark                   "Watermark"                                  ["None", "DEV*", "Testers"]
 ==/UserStyle== */
 
 @-moz-document regexp("^https?:\\/\\/(www\\.)?youtube\\.com\\/(?!embed\\/?).*") {
@@ -322,13 +323,12 @@
 				transition: top 0.5s ease-in;
 			}
 		}
-		@Watermark: DEV;
-		&:after when not (@Watermark = Release) {
-			& when (@Watermark = Experimental) {
+		&:after when not ((@Watermark = Release) or (@Watermark = None)) {
+			& when (@Watermark = Testers) {
 				content: "BETA";
 			}
 			& when (@Watermark = DEV) {
-				content: "DEV Build 20260404-02.1.2";
+				content: "DEV Build 20260410-00.1.2";
 			}
 			font-size: 8px;
 			color: #c80000;
