@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           V3 Cosmic Panda Player (DEV)
 @namespace      userstyles.world/user/tersiswilvin
-@version        20260410-00.1.2
+@version        20260410-01.1.2
 @description    Recreates the Cosmic Panda Player look for the 2014 / 2015 YouTube Player.
 @author         TersisWilvin
 @updateURL      https://github.com/tersiswilvin/Legacy-YouTube-Player/raw/Release/Dev/Master/src/V3/V3_Cosmic_Panda_Player_DEV.user.css
@@ -323,16 +323,18 @@
 				transition: top 0.5s ease-in;
 			}
 		}
-		&:after when not ((@Watermark = Release) or (@Watermark = None)) {
+		@-Watermark: Release;
+		&:after when not ((@Watermark = None) or (@Watermark = Release)) {
 			& when (@Watermark = Testers) {
 				content: "BETA";
 			}
 			& when (@Watermark = DEV) {
-				content: "DEV Build 20260410-00.1.2";
+				content: "DEV Build 20260410-01.1.2";
 			}
 			font-size: 8px;
 			color: #c80000;
-			text-shadow: currentColor;
+			text-shadow: 0 0 0 black;
+			text-shadow: 0 0 0 rgba(0, 0, 0, .75);
 			font-weight: bold;
 			line-height: normal;
 			background: #191919;
